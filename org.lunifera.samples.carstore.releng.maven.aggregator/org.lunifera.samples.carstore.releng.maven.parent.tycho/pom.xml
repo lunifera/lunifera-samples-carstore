@@ -17,6 +17,7 @@
 		<groupId>org.lunifera.samples.carstore</groupId>
 		<artifactId>org.lunifera.samples.carstore.releng.maven.parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../org.lunifera.samples.carstore.releng.maven.parent/pom.xml</relativePath>
 	</parent>
 
 	<artifactId>org.lunifera.samples.carstore.releng.maven.parent.tycho</artifactId>

@@ -37,19 +37,9 @@
 		</license>
 	</licenses>
 
-	<modules>
-		<module>org.lunifera.samples.carstore.releng.maven.parent.mbp</module>
-		<module>org.lunifera.samples.carstore.releng.maven.parent.mbp.aggregator</module>
-		<module>org.lunifera.samples.carstore.releng.maven.parent.mbp.repository.obr</module>
-		<module>org.lunifera.samples.carstore.releng.maven.parent.tycho</module>
-		<module>org.lunifera.samples.carstore.releng.maven.parent.tycho.aggregator</module>
-		<module>org.lunifera.samples.carstore.releng.maven.parent.tycho.product</module>
-		<module>org.lunifera.samples.carstore.releng.maven.parent.tycho.repository.p2</module>
-	</modules>
-
 	<issueManagement>
 		<system>Jira</system>
-		<url>https://lunifera.atlassian.net</url>
+		<url>https://lunifera.atlassian.net/browse/LUNCAR</url>
 	</issueManagement>
 
 	<distributionManagement>
@@ -66,7 +56,7 @@
 	</distributionManagement>
 
 	<scm>
-		<connection>scm:git:git://github.com/lunifera/lunifera-releng.git</connection>
+		<connection>scm:git:git://github.com/lunifera/samples-carstore.git</connection>
 		<developerConnection>scm:git:ssh://git@github.com:lunifera/samples-carstore.git</developerConnection>
 		<url>https://github.com/lunifera/samples-carstore</url>
 	</scm>
@@ -93,8 +83,6 @@
 		<lunifera.deployment.p2.keep.old>false</lunifera.deployment.p2.keep.old>
 
 		<lunifera.version>0.0.1-SNAPSHOT</lunifera.version>
-		<mbp.version>2.4.0</mbp.version>
-		<scr.version>1.16.0</scr.version>
 
 		<distribution.repository.release.url>http://maven.lunifera.org:8086/nexus/content/repositories/releases/</distribution.repository.release.url>
 		<distribution.repository.snapshot.url>http://maven.lunifera.org:8086/nexus/content/repositories/snapshots/</distribution.repository.snapshot.url>
@@ -143,7 +131,133 @@
 				</plugins>
 			</build>
 		</profile>
-
+		<!-- This profile is used to gather code coverage for Sonar -->
+		<profile>
+			<id>codeCoverage</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<!-- Sonar -->
+				<!-- ************************ -->
+				<!-- Sonar/Reporting settings -->
+				<!-- ************************ -->
+				<!-- Sonar/Jacoco integration. Note that these properties need to be 
+					defined outside the "coverage" profile because we want to be to able to execute 
+					mvn sonar:sonar without passing a profile -->
+				<!-- Tells Sonar to use jacoco for coverage results -->
+				<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+				<!-- The Sonar Jacoco Listener for JUnit to extract coverage details 
+					per test -->
+				<sonar-jacoco-listeners.version>2.1</sonar-jacoco-listeners.version>
+				<!-- Don't let Sonar execute tests. We will ask it to Maven -->
+				<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+				<!-- The system property jacoco.outputDir needs to be override on the 
+					command line with an absolute path if you want to merge results from all 
+					modules. Example in a Jenkins build where ${WORKSPACE} is defined and your 
+					project is in the root directory of the workspace : mvn clean install -Prun-its,coverage 
+					-Djacoco.outputDir=${WORKSPACE}/target Note that unfortunately using the 
+					following does not work because of http://jira.codehaus.org/browse/SONAR-3427: 
+					<jacoco.outputDir>${session.executionRootDirectory}/target/</jacoco.outputDir> -->
+				<jacoco.outputDir>${project.build.directory}</jacoco.outputDir>
+				<!-- Jacoco output file for UTs -->
+				<jacoco.out.ut.file>jacoco-ut.exec</jacoco.out.ut.file>
+				<!-- Tells Sonar where the Jacoco coverage result file is located for 
+					Unit Tests -->
+				<sonar.jacoco.reportPath>${jacoco.outputDir}/${jacoco.out.ut.file}</sonar.jacoco.reportPath>
+				<!-- Jacoco output file for ITs -->
+				<jacoco.out.it.file>jacoco-it.exec</jacoco.out.it.file>
+				<!-- Tells Sonar where the Jacoco coverage result file is located for 
+					Integration Tests -->
+				<sonar.jacoco.itReportPath>${jacoco.outputDir}/${jacoco.out.it.file}</sonar.jacoco.itReportPath>
+				<sonar.language>java</sonar.language>
+				<jacoco.version>0.7.0.201403182114</jacoco.version>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<configuration>
+							<argLine>${jacoco.agent.ut.arg}</argLine>
+							<!-- Specific to generate mapping between tests and covered code -->
+							<properties>
+								<property>
+									<name>listener</name>
+									<value>org.sonar.java.jacoco.JUnitListener</value>
+								</property>
+							</properties>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-failsafe-plugin</artifactId>
+						<configuration>
+							<argLine>-Xmx1024m -XX:MaxPermSize=256m ${jacoco.agent.it.arg}</argLine>
+							<!-- Specific to generate mapping between tests and covered code -->
+							<properties>
+								<property>
+									<name>listener</name>
+									<value>org.sonar.java.jacoco.JUnitListener</value>
+								</property>
+							</properties>
+							<!-- Let's put failsafe reports with surefire to have access to tests 
+								failures/success reports in sonar -->
+							<reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
+						</configuration>
+					</plugin>
+					<!-- Enabling use of jacoco -->
+					<plugin>
+						<groupId>org.jacoco</groupId>
+						<artifactId>jacoco-maven-plugin</artifactId>
+						<executions>
+							<!-- Prepares a variable, jacoco.agent.ut.arg, that contains the info 
+								to be passed to the JVM hosting the code being tested. -->
+							<execution>
+								<id>prepare-ut-agent</id>
+								<phase>process-test-classes</phase>
+								<goals>
+									<goal>prepare-agent</goal>
+								</goals>
+								<configuration>
+									<destFile>${sonar.jacoco.reportPath}</destFile>
+									<propertyName>jacoco.agent.ut.arg</propertyName>
+									<append>true</append>
+								</configuration>
+							</execution>
+							<!-- Prepares a variable, jacoco.agent.it.arg, that contains the info 
+								to be passed to the JVM hosting the code being tested. -->
+							<execution>
+								<id>prepare-it-agent</id>
+								<phase>pre-integration-test</phase>
+								<goals>
+									<goal>prepare-agent</goal>
+								</goals>
+								<configuration>
+									<destFile>${sonar.jacoco.itReportPath}</destFile>
+									<propertyName>jacoco.agent.it.arg</propertyName>
+									<append>true</append>
+								</configuration>
+							</execution>
+							<execution>
+								<id>post-test</id>
+								<goals>
+									<goal>report</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+			<dependencies>
+				<dependency>
+					<groupId>org.codehaus.sonar-plugins.java</groupId>
+					<artifactId>sonar-jacoco-listeners</artifactId>
+					<version>${sonar-jacoco-listeners.version}</version>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+		</profile>
 	</profiles>
 
 	<developers>
@@ -242,23 +356,6 @@
 					<version>4.0</version>
 				</plugin>
 				<plugin>
-					<groupId>org.apache.felix</groupId>
-					<artifactId>maven-scr-plugin</artifactId>
-					<version>1.15.0</version>
-					<executions>
-						<execution>
-							<id>generate-scr-scrdescriptor</id>
-							<goals>
-								<goal>scr</goal>
-							</goals>
-							<configuration>
-								<outputDirectory>${project.build.outputDirectory}</outputDirectory>
-								<specVersion>1.2</specVersion>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
-				<plugin>
 					<groupId>org.jacoco</groupId>
 					<artifactId>jacoco-maven-plugin</artifactId>
 					<version>${jacoco.version}</version>
@@ -287,18 +384,6 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-release-plugin</artifactId>
 					<version>2.4.2</version>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.felix</groupId>
-					<artifactId>maven-bundle-plugin</artifactId>
-					<version>${mbp.version}</version>
-					<extensions>true</extensions>
-					<configuration>
-						<instructions>
-							<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-							<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
-						</instructions>
-					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>com.mycila.maven-license-plugin</groupId>
@@ -363,6 +448,8 @@
 
 	<dependencyManagement>
 		<dependencies>
+			<!-- Used in order to import all dependencies with versions avoiding duplicate 
+				things -->
 			<dependency>
 				<groupId>org.lunifera.releng.maven</groupId>
 				<artifactId>org.lunifera.releng.maven.parent</artifactId>
@@ -372,5 +459,14 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.lunifera.runtime</groupId>
+			<artifactId>org.lunifera.runtime.kernel.api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+	</dependencies>
 
 </project>

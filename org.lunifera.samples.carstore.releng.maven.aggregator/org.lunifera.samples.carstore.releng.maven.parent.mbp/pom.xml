@@ -14,20 +14,17 @@
 
 	<parent>
 		<groupId>org.lunifera.samples.carstore</groupId>
-		<artifactId>org.lunifera.samples.carstore.releng.maven.parent.mbp</artifactId>
+		<artifactId>org.lunifera.samples.carstore.releng.maven.parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../org.lunifera.samples.carstore.releng.maven.parent/pom.xml</relativePath>
 	</parent>
 
-	<artifactId>org.lunifera.samples.carstore.releng.maven.parent.subsystem</artifactId>
+	<artifactId>org.lunifera.samples.carstore.releng.maven.parent.mbp</artifactId>
 	<packaging>pom</packaging>
 
 	<properties>
+		<mbp.version>2.4.0</mbp.version>
 	</properties>
-
-
-	<!-- <scm> <url></url> <connection></connection> <developerConnection></developerConnection> 
-		</scm> <developers> <developer> <id></id> <name></name> <email></email> </developer> 
-		</developers> -->
 
 	<profiles>
 		<profile>
@@ -44,37 +41,19 @@
 						<plugin>
 							<groupId>org.apache.felix</groupId>
 							<artifactId>maven-bundle-plugin</artifactId>
-							<version>${maven-bundle-plugin.version}</version>
+							<version>${mbp.version}</version>
 							<extensions>true</extensions>
 							<configuration>
 								<instructions>
+									<Bundle-Name>${project.name}</Bundle-Name>
 									<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 									<Bundle-Version>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${osgi-version-qualifier}</Bundle-Version>
 									<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
 									<_snapshot>${osgi-version-qualifier}</_snapshot>
 									<Bundle-RequiredExecutionEnvironment>JavaSE-1.7</Bundle-RequiredExecutionEnvironment>
+									<_dsannotations>*</_dsannotations>
 								</instructions>
 							</configuration>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.felix</groupId>
-							<artifactId>maven-scr-plugin</artifactId>
-							<version>1.16.0</version>
-							<executions>
-								<execution>
-									<id>generate-scr-scrdescriptor</id>
-									<goals>
-										<goal>scr</goal>
-									</goals>
-									<configuration>
-										<supportedProjectTypes>
-											<supportedProjectType>bundle</supportedProjectType>
-										</supportedProjectTypes>
-										<outputDirectory>${project.build.outputDirectory}</outputDirectory>
-										<specVersion>1.2</specVersion>
-									</configuration>
-								</execution>
-							</executions>
 						</plugin>
 						<plugin>
 							<artifactId>maven-clean-plugin</artifactId>
@@ -111,102 +90,6 @@
 				<pluginManagement>
 					<plugins>
 						<plugin>
-							<groupId>org.apache.felix</groupId>
-							<artifactId>maven-bundle-plugin</artifactId>
-							<extensions>true</extensions>
-							<configuration>
-								<!-- that unpack is reaaaaly needed -->
-								<unpackBundle>true</unpackBundle>
-								<manifestLocation>${basedir}/META-INF</manifestLocation>
-								<instructions>
-									<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-									<Bundle-Version>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${osgi-version-qualifier}</Bundle-Version>
-									<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
-									<_snapshot>${osgi-version-qualifier}</_snapshot>
-									<Bundle-RequiredExecutionEnvironment>JavaSE-1.7</Bundle-RequiredExecutionEnvironment>
-								</instructions>
-							</configuration>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.felix</groupId>
-							<artifactId>maven-scr-plugin</artifactId>
-							<version>1.16.0</version>
-							<executions>
-								<execution>
-									<id>generate-scr-scrdescriptor</id>
-									<phase>generate-resources</phase>
-									<goals>
-										<goal>scr</goal>
-									</goals>
-									<configuration>
-										<supportedProjectTypes>
-											<supportedProjectType>bundle</supportedProjectType>
-										</supportedProjectTypes>
-										<outputDirectory>${project.build.outputDirectory}</outputDirectory>
-										<specVersion>1.2</specVersion>
-									</configuration>
-								</execution>
-							</executions>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-antrun-plugin</artifactId>
-							<executions>
-								<execution>
-									<id>copy-meta-inf</id>
-									<phase>generate-resources</phase>
-									<goals>
-										<goal>run</goal>
-									</goals>
-									<configuration>
-										<tasks>
-											<delete dir="${project.build.outputDirectory}/META-INF"
-												quiet="true" />
-											<mkdir dir="${project.build.outputDirectory}/META-INF" />
-											<copy file="${basedir}/META-INF/MANIFEST.MF"
-												tofile="${project.build.outputDirectory}/META-INF/MANIFEST.MF" />
-										</tasks>
-									</configuration>
-								</execution>
-								<execution>
-									<id>copy-osgi-inf</id>
-									<phase>generate-resources</phase>
-									<goals>
-										<goal>run</goal>
-									</goals>
-									<configuration>
-										<tasks>
-											<delete dir="${basedir}/OSGI-INF" quiet="true" />
-											<mkdir dir="${basedir}/OSGI-INF" />
-											<copy todir="${basedir}/OSGI-INF">
-												<fileset dir="${project.build.outputDirectory}/OSGI-INF" />
-											</copy>
-										</tasks>
-									</configuration>
-								</execution>
-							</executions>
-						</plugin>
-						<plugin>
-							<artifactId>maven-dependency-plugin</artifactId>
-							<version>2.8</version>
-							<executions>
-								<execution>
-									<id>copy-dependencies</id>
-									<phase>prepare-package</phase>
-									<goals>
-										<goal>copy-dependencies</goal>
-									</goals>
-									<configuration>
-										<outputDirectory>${basedir}</outputDirectory>
-										<includeScope>runtime</includeScope>
-										<overWriteReleases>false</overWriteReleases>
-										<overWriteSnapshots>false</overWriteSnapshots>
-										<overWriteIfNewer>true</overWriteIfNewer>
-									</configuration>
-								</execution>
-							</executions>
-						</plugin>
-						<plugin>
 							<groupId>org.eclipse.m2e</groupId>
 							<artifactId>lifecycle-mapping</artifactId>
 							<version>1.0.0</version>
@@ -239,19 +122,130 @@
 												<execute />
 											</action>
 										</pluginExecution>
+										<pluginExecution>
+											<pluginExecutionFilter>
+												<groupId>org.jacoco</groupId>
+												<artifactId>jacoco-maven-plugin</artifactId>
+												<versionRange>[0.6,)
+												</versionRange>
+												<goals>
+													<goal>prepare-agent</goal>
+												</goals>
+											</pluginExecutionFilter>
+											<action>
+												<!-- m2e doesn't know what to do with jacoco, let's ignore it 
+													or annoying error markers appear see http://wiki.eclipse.org/M2E_plugin_execution_not_covered -->
+												<ignore></ignore>
+											</action>
+										</pluginExecution>
 									</pluginExecutions>
 								</lifecycleMappingMetadata>
 							</configuration>
 						</plugin>
 						<plugin>
+							<groupId>org.apache.felix</groupId>
+							<artifactId>maven-bundle-plugin</artifactId>
+							<version>${mbp.version}</version>
+							<extensions>true</extensions>
+							<configuration>
+								<unpackBundle>true</unpackBundle>
+								<manifestLocation>${basedir}/META-INF</manifestLocation>
+								<instructions>
+									<Bundle-Name>${project.name}</Bundle-Name>
+									<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+									<Bundle-Version>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${osgi-version-qualifier}</Bundle-Version>
+									<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
+									<_snapshot>${osgi-version-qualifier}</_snapshot>
+									<Bundle-RequiredExecutionEnvironment>JavaSE-1.7</Bundle-RequiredExecutionEnvironment>
+									<_dsannotations>*</_dsannotations>
+								</instructions>
+							</configuration>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-antrun-plugin</artifactId>
+							<executions>
+								<execution>
+									<id>copy-manifest</id>
+									<phase>package</phase>
+									<goals>
+										<goal>run</goal>
+									</goals>
+									<configuration>
+										<target>
+											<taskdef resource="net/sf/antcontrib/antlib.xml" />
+											<taskdef resource="net/sf/antcontrib/antcontrib.properties" />
+											<if>
+												<available file="${basedir}/META-INF/MANIFEST.MF"
+													type="file" />
+												<then>
+													<delete dir="${project.build.outputDirectory}/META-INF"
+														quiet="true" />
+													<mkdir dir="${project.build.outputDirectory}/META-INF" />
+													<copy file="${basedir}/META-INF/MANIFEST.MF"
+														tofile="${project.build.outputDirectory}/META-INF/MANIFEST.MF" />
+												</then>
+											</if>
+										</target>
+									</configuration>
+								</execution>
+								<!-- <execution> -->
+								<!-- <id>copy-osgi-inf</id> -->
+								<!-- <phase>prepare-package</phase> -->
+								<!-- <goals> -->
+								<!-- <goal>run</goal> -->
+								<!-- </goals> -->
+								<!-- <configuration> -->
+								<!-- <target> -->
+								<!-- <taskdef resource="net/sf/antcontrib/antlib.xml" /> -->
+								<!-- <taskdef resource="net/sf/antcontrib/antcontrib.properties" 
+									/> -->
+								<!-- <if> -->
+								<!-- <available file="${project.build.outputDirectory}/OSGI-INF" -->
+								<!-- type="dir" /> -->
+								<!-- <then> -->
+								<!-- <echo message="Copying OSGI-INF..." level="info" /> -->
+								<!-- <delete dir="${basedir}/OSGI-INF" quiet="true" /> -->
+								<!-- <mkdir dir="${basedir}/OSGI-INF" /> -->
+								<!-- <copy todir="${basedir}/OSGI-INF"> -->
+								<!-- <fileset dir="${project.build.outputDirectory}/OSGI-INF" /> -->
+								<!-- </copy> -->
+								<!-- </then> -->
+								<!-- </if> -->
+								<!-- </target> -->
+								<!-- </configuration> -->
+								<!-- </execution> -->
+							</executions>
+						</plugin>
+						<plugin>
 							<artifactId>maven-clean-plugin</artifactId>
+						</plugin>
+						<plugin>
+							<artifactId>maven-dependency-plugin</artifactId>
+							<version>2.8</version>
+							<executions>
+								<execution>
+									<id>copy-dependencies</id>
+									<phase>prepare-package</phase>
+									<goals>
+										<goal>copy-dependencies</goal>
+									</goals>
+									<configuration>
+										<outputDirectory>${basedir}</outputDirectory>
+										<includeScope>runtime</includeScope>
+										<overWriteReleases>false</overWriteReleases>
+										<overWriteSnapshots>true</overWriteSnapshots>
+										<overWriteIfNewer>true</overWriteIfNewer>
+									</configuration>
+								</execution>
+							</executions>
 						</plugin>
 					</plugins>
 				</pluginManagement>
 			</build>
 		</profile>
 		<profile>
-			<id>sources</id>
+			<id>release</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
@@ -278,6 +272,7 @@
 							</excludes>
 							<archive>
 								<manifestEntries>
+									<Bundle-Vendor>WSO2 Inc</Bundle-Vendor>
 									<Bundle-ManifestVersion>2</Bundle-ManifestVersion>
 									<Bundle-Name>${project.name}</Bundle-Name>
 									<Bundle-SymbolicName>${project.artifactId}.source</Bundle-SymbolicName>
@@ -288,16 +283,6 @@
 							</archive>
 						</configuration>
 					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		<profile>
-			<id>javadoc</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<build>
-				<plugins>
 					<!-- Generates Javadoc -->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
@@ -311,6 +296,7 @@
 							</execution>
 						</executions>
 					</plugin>
+
 				</plugins>
 			</build>
 		</profile>
@@ -346,14 +332,6 @@
 							</execution>
 						</executions>
 					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		<!-- This profile is activated when a project is released. -->
-		<profile>
-			<id>release</id>
-			<build>
-				<plugins>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-enforcer-plugin</artifactId>
@@ -414,10 +392,10 @@
 							</execution>
 						</executions>
 					</plugin>
+
 				</plugins>
 			</build>
 		</profile>
-
 	</profiles>
 
 	<dependencies>
@@ -437,13 +415,18 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-core</artifactId>
+			<groupId>org.lunifera.osgi</groupId>
+			<artifactId>org.hamcrest.core</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-library</artifactId>
+			<groupId>org.lunifera.osgi</groupId>
+			<artifactId>org.hamcrest.integration</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.lunifera.osgi</groupId>
+			<artifactId>org.hamcrest.library</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -451,23 +434,22 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+			</plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+			</plugin>
 		</plugins>
 	</build>
-
-	<repositories>
-		<repository>
-			<id>ecf</id>
-			<url>http://build.ecf-project.org/maven/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
 
 </project>
