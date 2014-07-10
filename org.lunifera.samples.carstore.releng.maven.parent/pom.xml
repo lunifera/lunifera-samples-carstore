@@ -1,0 +1,730 @@
+<!--#======================================================================= -->
+<!--# Copyright (c) 2012, 2014 C4biz Softwares ME, Loetz KG. -->
+<!--# All rights reserved. This program and the accompanying materials -->
+<!--# are made available under the terms of the Eclipse Public License v1.0 -->
+<!--# which accompanies this distribution, and is available at -->
+<!--# http://www.eclipse.org/legal/epl-v10.html -->
+<!--# -->
+<!--# Contributors: -->
+<!--# Cristiano Gavião (C4biz)- initial API and implementation -->
+<!--#======================================================================= -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.lunifera.samples.carstore</groupId>
+	<artifactId>org.lunifera.samples.carstore.releng.maven.parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<inceptionYear>2014</inceptionYear>
+	<description>Lunifera - Maven based Release Engineering POM files.</description>
+
+	<organization>
+		<name>Lunifera.org</name>
+		<url>www.lunifera.org</url>
+	</organization>
+	<prerequisites>
+		<maven>3.2.2</maven>
+	</prerequisites>
+
+	<properties>
+		<!-- ### LUNIFERA VERSION -->
+		<lunifera.kernel.version>0.0.1-SNAPSHOT</lunifera.kernel.version>
+		<lunifera.releng.version>0.8.1-SNAPSHOT</lunifera.releng.version>
+
+		<!-- the name of the git repository that the aggregator represents -->
+		<lunifera.aggregator.name>samples-carstore</lunifera.aggregator.name>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+		<osgi-version-qualifier>${maven.build.timestamp}</osgi-version-qualifier>
+
+		<!-- the base for SCM URL -->
+		<lunifera.ci.server.url>http://jenkins.lunifera.org:8083/job/</lunifera.ci.server.url>
+
+		<!-- protocol used to deploy the site -->
+		<lunifera.site.protocol>github:</lunifera.site.protocol>
+
+		<!-- points to the root of project's site at github -->
+		<lunifera.site.url>http://lunifera.github.io/</lunifera.site.url>
+
+		<!-- the url of the repository's site -->
+		<lunifera.site.repository.url>${lunifera.site.url}${lunifera.aggregator.name}</lunifera.site.repository.url>
+
+		<!-- the complete url (to be use with distribution site settings) -->
+		<distribution.site.url>${lunifera.site.protocol}${lunifera.site.url}${lunifera.aggregator.name}/${project.artifactId}</distribution.site.url>
+
+		<!-- where to deploy the release artifacts -->
+		<distribution.repository.release.url>http://maven.lunifera.org:8086/nexus/content/repositories/releases/</distribution.repository.release.url>
+
+		<!-- where to deploy the snapshot artifacts -->
+		<distribution.repository.snapshot.url>http://maven.lunifera.org:8086/nexus/content/repositories/snapshots/</distribution.repository.snapshot.url>
+
+		<!-- #### MAVEN PLUGIN VERSIONS #### -->
+		<maven.version>3.2.2</maven.version>
+		<mbp.version>2.5.0</mbp.version>
+		<maven.site.version>3.4-SNAPSHOT</maven.site.version>
+
+		<!-- #### REPORTS #### -->
+		<report.javadoc.version>2.9.1</report.javadoc.version>
+		<report.license.version>1.7</report.license.version>
+		<report.version.version>2.1</report.version.version>
+		<report.surefire.version>${surefire.version}</report.surefire.version>
+		<report.jxr.version>2.4</report.jxr.version>
+		<report.sonar.version>0.1</report.sonar.version>
+		<report.project-info.version>2.7</report.project-info.version>
+
+		<!-- #### JACOCO and SONAR #### -->
+		<jacoco.version>0.7.1.201405082137</jacoco.version>
+		<sonar-jacoco-listeners.version>2.2</sonar-jacoco-listeners.version>
+
+		<!-- files to be included -->
+		<lunifera.jacoco.include>*/**</lunifera.jacoco.include>
+
+		<!-- Sonar/Jacoco integration. Note that you need to call this profile 
+			when to execute mvn sonar:sonar -->
+		<sonar.host.url>http://88.198.33.16:9000/</sonar.host.url>
+
+		<!-- Tells Sonar to use jacoco for coverage results -->
+		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+
+		<!-- Don't let Sonar execute tests. We will ask it to Maven -->
+		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+
+		<!-- The system property jacoco.outputDir needs to be override on the command 
+			line with an absolute path if you want to merge results from all modules. 
+			Example in a Jenkins build where ${WORKSPACE} is defined and your project 
+			is in the root directory of the workspace : mvn clean install -Prun-its,coverage 
+			-Djacoco.outputDir=${WORKSPACE}/target. Note that unfortunately using the 
+			following does not work because of http://jira.codehaus.org/browse/SONAR-3427: 
+			<jacoco.outputDir>${session.executionRootDirectory}/target/</jacoco.outputDir> -->
+		<jacoco.outputDir>${project.basedir}/../target/</jacoco.outputDir>
+
+		<!-- Jacoco output file for UTs -->
+		<jacoco.out.ut.file>jacoco-ut.exec</jacoco.out.ut.file>
+
+		<!-- Tells Sonar where the Jacoco coverage result file is located for Unit 
+			Tests -->
+		<sonar.jacoco.reportPath>${jacoco.outputDir}/${jacoco.out.ut.file}</sonar.jacoco.reportPath>
+
+		<!-- Jacoco output file for ITs -->
+		<jacoco.out.it.file>jacoco-it.exec</jacoco.out.it.file>
+
+		<!-- Tells Sonar where the Jacoco coverage result file is located for Integration 
+			Tests -->
+		<sonar.jacoco.itReportPath>${jacoco.outputDir}/${jacoco.out.it.file}</sonar.jacoco.itReportPath>
+
+		<!-- main language -->
+		<sonar.language>java</sonar.language>
+
+
+		<!-- #### LICENSE CONFIGURATION #### -->
+		<!-- default license to use for children -->
+		<license.licenseName>epl_v1</license.licenseName>
+		<license.failIfWarning>true</license.failIfWarning>
+		<license.dryRun>true</license.dryRun>
+		<license.copyrightOwners>C4biz Softwares ME, Loetz KG</license.copyrightOwners>
+		<license.skip.header>false</license.skip.header>
+		<license.roots>src</license.roots>
+		<license.canUpdateCopyright>true</license.canUpdateCopyright>
+		<license.canUpdateDescription>true</license.canUpdateDescription>
+		<lunifera.license.version>${lunifera.releng.version}</lunifera.license.version>
+
+		<!-- #### DEPENDENCIES VERSIONS #### -->
+		<bundle.full.version>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${osgi-version-qualifier}</bundle.full.version>
+
+	</properties>
+
+	<!-- ciManagement, distributionManagement(Site) and scm should be duplicated 
+		for every git repository (parent pom) and in most cases for each aggregator 
+		due the fact that its modules uses different parents. -->
+
+	<ciManagement>
+		<system>Jenkins</system>
+		<url>${lunifera.ci.server.url}${lunifera.aggregator.name}/</url>
+	</ciManagement>
+
+	<url>${distribution.site.url}</url>
+	<distributionManagement>
+		<repository>
+			<id>lunifera-nexus-release</id>
+			<name>Nexus Release Repository</name>
+			<url>${distribution.repository.release.url}</url>
+		</repository>
+		<snapshotRepository>
+			<id>lunifera-nexus-snapshots</id>
+			<name>Sonatype Nexus Snapshots</name>
+			<url>${distribution.repository.snapshot.url}</url>
+		</snapshotRepository>
+		<site>
+			<id>gh-pages</id>
+			<name>Lunifera GitHub Pages</name>
+			<url>${distribution.site.url}</url>
+		</site>
+	</distributionManagement>
+
+	<scm>
+		<!-- convention is that the repository's name be the same as the aggregator 
+			name -->
+		<connection>${lunifera.scm.connection}</connection>
+		<developerConnection>${lunifera.scm.connection.dev}</developerConnection>
+		<url>${lunifera.scm.url}</url>
+		<tag>HEAD</tag>
+	</scm>
+	<!-- End -->
+
+	<licenses>
+		<license>
+			<name>Eclipse Public License v1.0</name>
+			<url>http://www.eclipse.org/legal/epl-v10.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<profiles>
+		<profile>
+			<id>not-in-eclipse</id>
+			<!-- activated in normal Maven build -->
+			<activation>
+				<property>
+					<name>!m2e.version</name>
+				</property>
+			</activation>
+			<properties>
+				<osgi-version-qualifier>${maven.build.timestamp}</osgi-version-qualifier>
+			</properties>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.apache.felix</groupId>
+							<artifactId>maven-bundle-plugin</artifactId>
+							<version>${mbp.version}</version>
+							<extensions>true</extensions>
+							<executions>
+								<execution>
+									<id>bundle</id>
+									<goals>
+										<goal>bundle</goal>
+									</goals>
+									<inherited>true</inherited>
+									<configuration>
+										<instructions>
+											<Bundle-Vendor>Lunifera.org</Bundle-Vendor>
+											<Bundle-Name>${project.name}</Bundle-Name>
+											<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+											<Bundle-Version>${bundle.full.version}</Bundle-Version>
+											<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
+											<_snapshot>${osgi-version-qualifier}</_snapshot>
+											<Bundle-RequiredExecutionEnvironment>JavaSE-1.7</Bundle-RequiredExecutionEnvironment>
+											<_dsannotations>*</_dsannotations>
+											<_versionpolicy>[$(version;==;$(@)),$(version;+;$(@)))</_versionpolicy>
+											<_removeheaders>Private-Package,Ignore-Package,Include-Resource</_removeheaders>
+										</instructions>
+									</configuration>
+								</execution>
+								<execution>
+									<id>baseline</id>
+									<goals>
+										<goal>baseline</goal>
+									</goals>
+									<configuration>
+
+										<!-- <comparisonVersion>0.1.2</comparisonVersion> -->
+										<failOnWarning>true</failOnWarning>
+									</configuration>
+								</execution>
+							</executions>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.sonar</groupId>
+						<artifactId>sonar-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>in-eclipse</id>
+			<!-- This profile is only activated when building in Eclipse with m2e -->
+			<activation>
+				<property>
+					<name>m2e.version</name>
+				</property>
+				<file>
+					<exists>bundle</exists>
+				</file>
+			</activation>
+			<properties>
+				<osgi-version-qualifier>qualifier</osgi-version-qualifier>
+			</properties>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.apache.felix</groupId>
+							<artifactId>maven-bundle-plugin</artifactId>
+							<version>${mbp.version}</version>
+							<extensions>true</extensions>
+							<configuration>
+								<unpackBundle>true</unpackBundle>
+								<!-- <manifestLocation>${basedir}/META-INF</manifestLocation> -->
+								<instructions>
+									<Bundle-Vendor>Lunifera.org</Bundle-Vendor>
+									<Bundle-Name>${project.name}</Bundle-Name>
+									<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+									<!-- <Bundle-Version>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${osgi-version-qualifier}</Bundle-Version> -->
+									<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
+									<_snapshot>${osgi-version-qualifier}</_snapshot>
+									<Bundle-RequiredExecutionEnvironment>JavaSE-1.7</Bundle-RequiredExecutionEnvironment>
+									<_dsannotations>*</_dsannotations>
+								</instructions>
+							</configuration>
+						</plugin>
+						<plugin>
+							<groupId>org.eclipse.m2e</groupId>
+							<artifactId>lifecycle-mapping</artifactId>
+							<version>1.0.0</version>
+							<configuration>
+								<lifecycleMappingMetadata>
+									<pluginExecutions>
+										<pluginExecution>
+											<pluginExecutionFilter>
+												<groupId>org.apache.maven.plugins</groupId>
+												<artifactId>maven-dependency-plugin</artifactId>
+												<versionRange>[2.0,)</versionRange>
+												<goals>
+													<goal>copy-dependencies</goal>
+													<goal>unpack</goal>
+												</goals>
+											</pluginExecutionFilter>
+											<action>
+												<ignore />
+											</action>
+										</pluginExecution>
+										<pluginExecution>
+											<pluginExecutionFilter>
+												<groupId>org.apache.maven.plugins</groupId>
+												<artifactId>maven-plugin-plugin</artifactId>
+												<versionRange>[3.0,)</versionRange>
+												<goals>
+													<goal>descriptor</goal>
+													<goal>helpmojo</goal>
+												</goals>
+											</pluginExecutionFilter>
+											<action>
+												<ignore />
+											</action>
+										</pluginExecution>
+										<pluginExecution>
+											<pluginExecutionFilter>
+												<groupId>org.apache.maven.plugins</groupId>
+												<artifactId>maven-antrun-plugin</artifactId>
+												<versionRange>[1.0,)</versionRange>
+												<goals>
+													<goal>run</goal>
+												</goals>
+											</pluginExecutionFilter>
+											<action>
+												<execute>
+													<runOnIncremental>false</runOnIncremental>
+												</execute>
+											</action>
+										</pluginExecution>
+										<pluginExecution>
+											<pluginExecutionFilter>
+												<groupId>org.jacoco</groupId>
+												<artifactId>jacoco-maven-plugin</artifactId>
+												<versionRange>[0.6,)
+												</versionRange>
+												<goals>
+													<goal>prepare-agent</goal>
+												</goals>
+											</pluginExecutionFilter>
+											<action>
+												<!-- m2e doesn't know what to do with jacoco, let's ignore it 
+													or annoying error markers appear see http://wiki.eclipse.org/M2E_plugin_execution_not_covered -->
+												<ignore />
+											</action>
+										</pluginExecution>
+										<pluginExecution>
+											<pluginExecutionFilter>
+												<groupId>org.codehaus.mojo</groupId>
+												<artifactId>license-maven-plugin</artifactId>
+												<versionRange>[1.7,)</versionRange>
+												<goals>
+													<goal>add-third-party</goal>
+													<goal>update-project-license</goal>
+													<goal>update-file-header</goal>
+												</goals>
+											</pluginExecutionFilter>
+											<action>
+												<execute>
+													<ignore />
+												</execute>
+											</action>
+										</pluginExecution>
+										<pluginExecution>
+											<pluginExecutionFilter>
+												<groupId>org.ops4j.pax.exam</groupId>
+												<artifactId>maven-paxexam-plugin</artifactId>
+												<versionRange>[1.2.4,)</versionRange>
+												<goals>
+													<goal>
+														generate-depends-file
+													</goal>
+												</goals>
+											</pluginExecutionFilter>
+											<action>
+												<execute>
+													<runOnIncremental>false</runOnIncremental>
+												</execute>
+											</action>
+										</pluginExecution>
+									</pluginExecutions>
+								</lifecycleMappingMetadata>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+
+		<profile>
+			<id>itest.m2e</id>
+			<!-- This profile is only activated when a .itests file were found. -->
+			<activation>
+				<property>
+					<name>m2e.version</name>
+				</property>
+				<file>
+					<exists>.itests</exists>
+				</file>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>org.lunifera.releng.maven</groupId>
+					<artifactId>org.lunifera.releng.maven.pom.felix</artifactId>
+					<version>${lunifera.releng.version}</version>
+					<type>pom</type>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.lunifera.releng.maven</groupId>
+					<artifactId>org.lunifera.releng.maven.pom.node</artifactId>
+					<version>${lunifera.releng.version}</version>
+					<type>pom</type>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>itests.felix</id>
+			<activation>
+				<property>
+					<name>osgi.framework</name>
+					<value>felix</value>
+				</property>
+				<file>
+					<exists>.itests</exists>
+				</file>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>org.lunifera.releng.maven</groupId>
+					<artifactId>org.lunifera.releng.maven.pom.felix</artifactId>
+					<version>${lunifera.releng.version}</version>
+					<type>pom</type>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.lunifera.releng.maven</groupId>
+					<artifactId>org.lunifera.releng.maven.pom.node</artifactId>
+					<version>${lunifera.releng.version}</version>
+					<type>pom</type>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>itests.equinox.luna</id>
+			<!-- LUNA 3.10 -->
+			<activation>
+				<property>
+					<name>osgi.framework</name>
+					<value>equinox_luna</value>
+				</property>
+				<file>
+					<exists>.itests</exists>
+				</file>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>org.lunifera.releng.maven</groupId>
+					<artifactId>org.lunifera.releng.maven.pom.equinox.luna</artifactId>
+					<version>${lunifera.releng.version}</version>
+					<type>pom</type>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.lunifera.releng.maven</groupId>
+					<artifactId>org.lunifera.releng.maven.pom.node</artifactId>
+					<version>${lunifera.releng.version}</version>
+					<type>pom</type>
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.felix</groupId>
+					<artifactId>maven-bundle-plugin</artifactId>
+					<version>${mbp.version}</version>
+					<extensions>true</extensions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-project-info-reports-plugin</artifactId>
+					<version>2.7</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.6</version>
+					<configuration>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>2.2.1</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>2.5</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>1.9</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>1.7</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>2.4</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.1</version>
+					<configuration>
+						<source>1.7</source>
+						<target>1.7</target>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>2.5.1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>2.5</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>findbugs-maven-plugin</artifactId>
+					<version>2.5.3</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-checkstyle-plugin</artifactId>
+					<version>2.12.1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>2.8.1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>${maven.site.version}</version>
+					<dependencies>
+						<dependency><!-- add support for ssh/scp -->
+							<groupId>org.apache.maven.wagon</groupId>
+							<artifactId>wagon-ssh</artifactId>
+							<version>2.6</version>
+						</dependency>
+						<!-- support to github pages deployment -->
+						<dependency>
+							<groupId>net.trajano.wagon</groupId>
+							<artifactId>wagon-git</artifactId>
+							<version>2.0.0</version>
+						</dependency>
+						<dependency>
+							<groupId>org.apache.maven.skins</groupId>
+							<artifactId>maven-fluido-skin</artifactId>
+							<version>1.3.1</version>
+						</dependency>
+					</dependencies>
+					<configuration>
+						<topSiteURL>${lunifera.site.url}</topSiteURL>
+						<chmod>true</chmod>
+						<inputEncoding>UTF-8</inputEncoding>
+						<outputEncoding>UTF-8</outputEncoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>${jacoco.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.sonar-plugins</groupId>
+					<artifactId>maven-report</artifactId>
+					<version>0.1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-report-plugin</artifactId>
+					<version>${report.surefire.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jxr-plugin</artifactId>
+					<version>${report.jxr.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jarsigner-plugin</artifactId>
+					<version>1.3</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>${report.javadoc.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.sonar</groupId>
+					<artifactId>sonar-maven-plugin</artifactId>
+					<version>4.3.1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>2.5</version>
+					<configuration>
+						<releaseProfiles>codeCoverage,reporting</releaseProfiles>
+						<localCheckout>true</localCheckout>
+						<tagNameFormat>v@{bundle.full.version}</tagNameFormat>
+						<pushChanges>true</pushChanges>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-gpg-plugin</artifactId>
+					<version>1.5</version>
+				</plugin>
+				<plugin>
+					<groupId>org.fornax.toolsupport</groupId>
+					<artifactId>fornax-oaw-m2-plugin</artifactId>
+					<version>3.4.0</version>
+					<configuration>
+						<workflowEngine>mwe2</workflowEngine>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.xtend</groupId>
+					<artifactId>xtend-maven-plugin</artifactId>
+					<version>2.6.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>versions-maven-plugin</artifactId>
+					<version>${report.version.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>animal-sniffer-maven-plugin</artifactId>
+					<version>1.11</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-enforcer-plugin</artifactId>
+					<version>1.3.1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-invoker-plugin</artifactId>
+					<version>1.8</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>parse-version</id>
+						<goals>
+							<goal>parse-version</goal>
+						</goals>
+						<phase>validate</phase>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.lunifera.releng.maven</groupId>
+				<artifactId>org.lunifera.releng.maven.parent.mbp</artifactId>
+				<version>${lunifera.releng.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.lunifera.runtime</groupId>
+				<artifactId>org.lunifera.runtime.kernel.api</artifactId>
+				<version>${lunifera.kernel.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<dependencies>
+		<dependency>
+			<groupId>org.lunifera.releng.maven</groupId>
+			<artifactId>org.lunifera.releng.maven.licenses</artifactId>
+			<classifier>third-party</classifier>
+			<type>properties</type>
+		</dependency>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.core</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.compendium</artifactId>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+</project>

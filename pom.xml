@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+
 <!--#======================================================================= -->
 <!--# Copyright (c) 2012, 2014 C4biz Softwares ME, Loetz KG. -->
 <!--# All rights reserved. This program and the accompanying materials -->
@@ -12,15 +12,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
-	<parent>
-		<groupId>org.lunifera.samples.carstore</groupId>
-		<artifactId>org.lunifera.samples.carstore.releng.maven.parent.tycho</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../org.lunifera.samples.carstore.releng.maven.parent.tycho/pom.xml</relativePath>
-	</parent>
-
-	<artifactId>org.lunifera.samples.carstore.releng.maven.parent.tycho.aggregator</artifactId>
+	<groupId>org.lunifera.samples.carstore</groupId>
+	<artifactId>org.lunifera.samples.carstore.root</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
+	<name>CarStore System</name>
+	<description>CarStore is a multi-application web based system developed using Lunifera Subsystems in combination with many state of art OSGi based tools and frameworks.</description>
+
+	<modules>
+		<module>org.lunifera.samples.carstore.releng.maven.parent</module>
+	</modules>
+	
 
 </project>
