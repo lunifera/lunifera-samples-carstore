@@ -30,7 +30,7 @@
 
 	<properties>
 		<!-- ### LUNIFERA VERSION -->
-		<lunifera.kernel.version>0.0.1-SNAPSHOT</lunifera.kernel.version>
+		<lunifera.kernel.version>0.6.1-SNAPSHOT</lunifera.kernel.version>
 		<lunifera.releng.version>0.8.1-SNAPSHOT</lunifera.releng.version>
 
 		<!-- the name of the git repository that the aggregator represents -->
