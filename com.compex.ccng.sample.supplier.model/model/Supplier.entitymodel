@@ -1,0 +1,40 @@
+package com.compex.ccng.sample.supplier.model {
+
+	datatype LDate dateType date;
+
+	mapped superclass BaseUUID {
+		uuid String id;
+	}
+
+	bean Address {
+		var String streetname;
+		var String housenumber;
+		var String city;
+		var String zipcode;
+	} 
+
+	bean Contact {
+		var String firstname;
+		var String lastname;
+		var LDate birthday;
+		var Address homeAddress;
+		var String imageURL;
+	}
+
+	entity Supplier extends BaseUUID {
+		var String gln;
+		var Address headquarter;
+		var Contact [*] contacts;
+		var ABC priority;
+		var boolean locked;
+		var double yearly_turnover;
+		var int number_of_orders;
+		var LDate lastOrder;
+		var String imageURL;
+	}
+
+	enum ABC {
+		A, B, C
+	}
+	
+}

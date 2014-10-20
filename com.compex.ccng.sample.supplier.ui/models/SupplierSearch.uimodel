@@ -1,0 +1,46 @@
+package com.compex.ccng.sample.supplier.model.views
+
+import com.compex.ccng.sample.supplier.model.dtos.*;
+
+ideview SupplierSearchView {
+	rootType SupplierDto
+
+	datasource selection:SupplierDto
+ 
+	verticalLayout {
+		panel searchPanelx {
+			content 
+			verticalLayout {
+				searchPanel searchFields {
+					type SupplierDto
+					searchfield gln
+					searchfield locked
+					searchfield number_of_orders
+				}
+				button applyFilter
+
+				bind [this.applyFilter].click --> [this.searchFields].applyFilter
+			}
+		} 
+		
+		table master {
+			type SupplierDto useBeanService
+
+			imageField imageURL
+
+			columns {
+				column gln
+				column priority
+				column lastOrder
+				column locked
+				column number_of_orders
+				column yearly_turnover
+			}
+
+			bind [this].selection --> selection
+		}
+		align top-fill
+
+		bind [this.searchPanelx.searchFields].filter --> [this.master].filter
+	}
+}

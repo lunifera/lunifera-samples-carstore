@@ -1,0 +1,15 @@
+package com.compex.ccng.sample.supplier.model.dtos.services {
+	
+	/* Imports the original entity and dto package */
+	import com.compex.ccng.sample.supplier.model.dtos.*;
+	import com.compex.ccng.sample.supplier.model.dtos.dtos.*; 
+	
+	dtoservice BaseUUIDService provides BaseUUIDDto {
+	}
+	dtoservice SupplierService provides SupplierDto {
+	}
+	dtoservice AddressService provides AddressDto {
+	}
+	dtoservice ContactService provides ContactDto {
+	}
+}
