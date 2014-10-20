@@ -1,8 +1,8 @@
 
-package com.compex.ccng.sample.supplier.model.dtos {
+package org.lunifera.samples.carstore.dtos {
 
 /* Imports the original entity package */
-	import com.compex.ccng.sample.supplier.model.*;
+	import org.lunifera.samples.carstore.model.*;
 
 	datatype LDate dateType date;
 

@@ -1,0 +1,15 @@
+package org.lunifera.samples.carstore.dtos.services {
+	
+	/* Imports the original entity and dto package */
+	import org.lunifera.samples.carstore.dtos.*;
+	import org.lunifera.samples.carstore.dtos.dtos.*; 
+	
+	dtoservice BaseUUIDService provides BaseUUIDDto {
+	}
+	dtoservice SupplierService provides SupplierDto {
+	}
+	dtoservice AddressService provides AddressDto {
+	}
+	dtoservice ContactService provides ContactDto { 
+	}
+}

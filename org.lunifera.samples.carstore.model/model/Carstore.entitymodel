@@ -1,4 +1,4 @@
-package com.compex.ccng.sample.supplier.model {
+package org.lunifera.samples.carstore.model {
 
 	datatype LDate dateType date;
 
