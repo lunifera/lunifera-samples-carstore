@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="org.lunifera.samples.carstore.dtos.sales.mapper.inventorydtomapper">
+       <implementation class="org.lunifera.samples.carstore.dtos.sales.mapper.InventoryDtoMapper"/>
+       <service>
+		<provide interface="org.lunifera.dsl.dto.lib.IMapper"/>
+	   </service>
+		<property name="dto" type="String">org.lunifera.samples.carstore.dtos.sales.InventoryDto
+		org.lunifera.samples.carstore.dtos.general.BaseDto
+		</property>
+		
+       <property name="entity" type="String" value="org.lunifera.samples.carstore.entities.sales.Inventory"/>
+       <property name="service.pid" type="String" value="org.lunifera.samples.carstore.dtos.sales.mapper.inventorydtomapper"/>
+       <reference name="bind" interface="org.lunifera.dsl.dto.lib.IMapperAccess" 
+       		cardinality="1..1" policy="static" bind="bindMapperAccess" unbind="unbindMapperAccess"/>
+</scr:component>

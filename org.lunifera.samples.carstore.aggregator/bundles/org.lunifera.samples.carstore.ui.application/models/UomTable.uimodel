@@ -1,0 +1,37 @@
+package org.lunifera.samples.carstore.views.sales
+
+ideview UomTableView {
+	exposedActions {
+		deleteEntity id org.lunifera.actions.delete
+		saveEntity id org.lunifera.actions.save
+		applyFilter id org.lunifera.actions.applyFilter
+		newRow id org.lunifera.actions.addNewRow
+	}
+ 
+	verticalLayout {
+		searchPanel SearchPanel {
+			type org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto
+			searchfield number
+		}
+		align top-fill
+
+		table UomTable {
+			useBeanService
+			type org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto
+
+			columns {
+				column number
+				column description
+				column family
+				column siType
+			}
+  
+			bind [this].selection --> sendEvent("org/lunifera/samples/carstore/UnitOfMeasureDto/selection")
+		}
+		align fill-fill
+	}
+	align fill-fill
+
+	bind [this.newRow].onClick --> addToTable UomTable
+	bind [this.applyFilter].onClick --> [this.SearchPanel].applyFilter
+}

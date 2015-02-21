@@ -1,0 +1,15 @@
+package org.lunifera.samples.carstore.dtos.general.mobile.services {
+	
+	/* Imports the original entity and dto package */
+	import org.lunifera.samples.carstore.dtos.general.mobile.*;
+	import org.lunifera.samples.carstore.dtos.general.mobile.dtos.*; 
+	
+	dtoservice AccessoryService provides AccessoryMobileDto {
+	}
+	dtoservice CarService provides CarMobileDto {
+	}
+	dtoservice PickupService provides PickupMobileDto {
+	}
+	dtoservice ConvertibleService provides ConvertibleMobileDto {
+	}
+}

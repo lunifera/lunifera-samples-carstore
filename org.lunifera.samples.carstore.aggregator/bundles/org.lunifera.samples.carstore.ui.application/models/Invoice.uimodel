@@ -1,0 +1,5 @@
+package org.lunifera.samples.carstore.views.sales.invoice
+	
+ideview InvoiceView {
+	label sample
+}	

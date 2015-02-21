@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?><target name="Carstore Targetdefinition" sequenceNumber="15">
+<locations>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.lunifera.runtime.feature.allinone.feature.group" version="0.8.1.201501301423"/>
+<unit id="org.lunifera.runtime.feature.allinone.source.feature.group" version="0.8.1.201501301423"/>
+<repository location="http://lun.lunifera.org/downloads/p2/lunifera/luna/latest/"/>
+</location>
+</locations>
+<environment>
+<arch>x86_64</arch>
+<nl>de_AT</nl>
+</environment>
+</target>

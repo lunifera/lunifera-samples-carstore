@@ -1,0 +1,15 @@
+package org.lunifera.samples.carstore.views.sales
+
+ideview UomDetailView {
+
+	exposedActions {
+		deleteEntity id org.lunifera.actions.delete
+		saveEntity id org.lunifera.actions.save
+	}
+
+	datasource ds:org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto eventTopic "org/lunifera/samples/carstore/UnitOfMeasureDto/selection"
+
+	horizontalLayout Detail {
+		autowire source ds
+	} align fill-fill
+}

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.lunifera.samples.carstore.feature"
+      label="Feature carstore"
+      version="0.0.1.qualifier"
+      provider-name="Lunifera GmbH">
+
+   <description>
+      An SDK feature for carstore
+   </description>
+
+   <copyright>
+      MyCompany
+   </copyright>
+
+   <plugin
+         id="org.lunifera.samples.carstore.dtos"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.lunifera.samples.carstore.entities"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.lunifera.samples.carstore.ui.application"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.lunifera.samples.carstore.bootstrap"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.lunifera.samples.carstore.ui.mobile"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

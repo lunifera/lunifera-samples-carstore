@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="org.lunifera.samples.carstore.dtos.general.mobile.mapper.itemmobiledtomapper">
+       <implementation class="org.lunifera.samples.carstore.dtos.general.mobile.mapper.ItemMobileDtoMapper"/>
+       <service>
+		<provide interface="org.lunifera.dsl.dto.lib.IMapper"/>
+	   </service>
+		<property name="dto" type="String">org.lunifera.samples.carstore.dtos.general.mobile.ItemMobileDto
+		org.lunifera.samples.carstore.dtos.general.NumberedWithDescriptionDto
+		org.lunifera.samples.carstore.dtos.general.BaseDto
+		</property>
+		
+       <property name="entity" type="String" value="org.lunifera.samples.carstore.entities.general.Item"/>
+       <property name="service.pid" type="String" value="org.lunifera.samples.carstore.dtos.general.mobile.mapper.itemmobiledtomapper"/>
+       <reference name="bind" interface="org.lunifera.dsl.dto.lib.IMapperAccess" 
+       		cardinality="1..1" policy="static" bind="bindMapperAccess" unbind="unbindMapperAccess"/>
+</scr:component>

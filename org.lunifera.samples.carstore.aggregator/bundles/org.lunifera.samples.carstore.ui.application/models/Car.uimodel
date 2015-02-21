@@ -1,0 +1,21 @@
+package org.lunifera.samples.carstore.views.sales
+
+ideview CarTableView {
+
+	verticalLayout {
+		searchPanel {
+			type org.lunifera.samples.carstore.dtos.general.CarDto
+			searchfield price.amount 
+ 		}
+  
+		table CarTable {
+			useBeanService
+			type org.lunifera.samples.carstore.dtos.general.CarDto
+			
+			columns {
+				column weight.amount
+				column axes
+			}
+		}
+	}
+}

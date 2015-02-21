@@ -1,0 +1,151 @@
+	<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.lunifera.releng.maven</groupId>
+		<artifactId>lunifera-releng-maven-parent-tycho</artifactId>
+		<version>0.12.3-SNAPSHOT</version>
+	</parent>
+
+	<groupId>org.lunifera.samples.carstore</groupId>
+	<artifactId>org.lunifera.samples.carstore.aggregator</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<license.licenseName>apache_v2</license.licenseName>
+		<license.copyrightOwners>Lunifera GmbH</license.copyrightOwners>
+		<lunifera.gitrepo.name>sample-carstore</lunifera.gitrepo.name>
+		<lunifera.releng.version>0.12.3-SNAPSHOT</lunifera.releng.version>
+	</properties>
+
+	<modules>
+		<module>bundles/org.lunifera.samples.carstore.bootstrap</module>
+		<module>bundles/org.lunifera.samples.carstore.dtos</module>
+		<module>bundles/org.lunifera.samples.carstore.entities</module>
+		<module>bundles/org.lunifera.samples.carstore.tests</module>
+		<module>bundles/org.lunifera.samples.carstore.ui.application</module>
+		<module>bundles/org.lunifera.samples.carstore.ui.mobile</module>
+		
+		<module>features/org.lunifera.samples.carstore.feature</module>
+		
+		<module>releng/org.lunifera.samples.carstore.p2</module>
+<!-- 		<module>releng/org.lunifera.samples.carstore.product</module> -->
+	</modules>
+
+	<repositories>
+		<repository>
+			<id>oss.sonatype.org-snapshot</id>
+			<url>http://oss.sonatype.org/content/repositories/snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<updatePolicy>always</updatePolicy>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>lunifera-nexus-snapshots</id>
+			<name>Lunifera Nexus Snapshots</name>
+			<url>http://maven.lunifera.org:8086/nexus/content/repositories/snapshots/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<updatePolicy>always</updatePolicy>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>lunifera-nexus-release</id>
+			<name>Lunifera Nexus Release</name>
+			<url>http://maven.lunifera.org:8086/nexus/content/repositories/releases/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>lunifera-snapshots</id>
+			<url>http://lun.lunifera.org/downloads/p2/lunifera/luna/latest/</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>xtext</id>
+			<url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</url>
+			<layout>p2</layout>
+		</repository>
+	</repositories>
+	
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>target-platform-configuration</artifactId>
+					<version>${tycho-version}</version>
+					<configuration>
+						<resolver>p2</resolver>
+						<pomDependencies>consider</pomDependencies>
+						<environments>
+							<environment>
+								<os>win32</os>
+								<ws>win32</ws>
+								<arch>x86_64</arch>
+							</environment>
+							<environment>
+								<os>linux</os>
+								<ws>gtk</ws>
+								<arch>x86</arch>
+							</environment>
+							<environment>
+								<os>linux</os>
+								<ws>gtk</ws>
+								<arch>x86_64</arch>
+							</environment>
+							<environment>
+								<os>macosx</os>
+								<ws>cocoa</ws>
+								<arch>x86_64</arch>
+							</environment>
+						</environments>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>xtend-gen</directory>
+							<includes>
+								<include>**</include>
+							</includes>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.xtend</groupId>
+				<artifactId>xtend-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compile</goal>
+							<goal>testCompile</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>xtend-gen</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
