@@ -8,13 +8,13 @@ package org.lunifera.samples.carstore.entities.sales {
 	import org.lunifera.samples.carstore.entities.general.Amount;
 	import org.lunifera.samples.carstore.entities.general.Quantity;
 	import org.lunifera.samples.carstore.entities.general.ConfigDetailDefinition;
-
+ 
 	entity SalesOrder extends Base {
 		var String number;
 		ref Customer customer;
 		ref PaymentTerm paymentTerm;
 	}
-	   
+	    
 	entity SalesOrderDetail extends Base {
 		var int number;
 		ref Item item;

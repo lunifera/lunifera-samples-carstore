@@ -5,6 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 
 import org.lunifera.samples.carstore.entities.general.Car;
+import org.lunifera.samples.carstore.entities.general.ConfigDetailDefinition;
 import org.lunifera.samples.carstore.entities.general.Convertible;
 import org.lunifera.samples.carstore.entities.general.Length;
 import org.lunifera.samples.carstore.entities.general.Pickup;
@@ -92,6 +93,12 @@ public class DBSetupHelper {
 		bmw_convertible.setPrice(createPrice(16000, "EUR"));
 		bmw_convertible.setWeight(createWeight(1.89f, "Tons"));
 		bmw_convertible.setRoofType(RoofType.SOFT);
+		
+		ConfigDetailDefinition bmw_Detail1 = new ConfigDetailDefinition();
+		bmw_Detail1.setCar(bmw_convertible);
+		bmw_Detail1.setNumber("0001");
+		bmw_Detail1.setPrice(createPrice(700, "EUR"));
+		
 		em.persist(bmw_convertible);
 
 		Pickup man = new Pickup();

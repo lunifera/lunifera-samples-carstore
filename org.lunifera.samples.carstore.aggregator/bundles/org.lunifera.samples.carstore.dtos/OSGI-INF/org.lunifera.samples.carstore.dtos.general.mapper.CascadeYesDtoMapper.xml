@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="org.lunifera.samples.carstore.dtos.general.mapper.cascadeyesdtomapper">
+       <implementation class="org.lunifera.samples.carstore.dtos.general.mapper.CascadeYesDtoMapper"/>
+       <service>
+		<provide interface="org.lunifera.dsl.dto.lib.IMapper"/>
+	   </service>
+		<property name="dto" type="String" value="org.lunifera.samples.carstore.dtos.general.CascadeYesDto"/>
+		
+       <property name="entity" type="String" value="org.lunifera.samples.carstore.entities.general.CascadeYes"/>
+       <property name="service.pid" type="String" value="org.lunifera.samples.carstore.dtos.general.mapper.cascadeyesdtomapper"/>
+       <reference name="bind" interface="org.lunifera.dsl.dto.lib.IMapperAccess" 
+       		cardinality="1..1" policy="static" bind="bindMapperAccess" unbind="unbindMapperAccess"/>
+</scr:component>

@@ -20,14 +20,16 @@ import javax.persistence.spi.PersistenceProviderResolverHolder;
 
 import org.eclipse.persistence.config.PersistenceUnitProperties;
 import org.lunifera.samples.carstore.entities.general.Currency;
-import org.lunifera.samples.carstore.tests.setup.Activator;
 import org.lunifera.samples.carstore.tests.setup.DBSetupHelper;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
+import org.osgi.framework.ServiceRegistration;
 
 public class AbstractJPATest {
 
 	protected Map<String, Object> properties = new HashMap<String, Object>();
+	protected EntityManagerFactory emf;
+	private ServiceRegistration<EntityManagerFactory> reg;
 
 	public void setUpDatabase() throws Exception {
 		PersistenceProviderResolverHolder
@@ -48,16 +50,27 @@ public class AbstractJPATest {
 				});
 		properties.put(PersistenceUnitProperties.CLASSLOADER,
 				Currency.class.getClassLoader());
-        properties.put(PersistenceUnitProperties.WEAVING, "false"); 
+		properties.put(PersistenceUnitProperties.WEAVING, "false");
 
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory(
-				"carstore", properties);
+		emf = Persistence.createEntityManagerFactory("carstore", properties);
 		Bundle bundle = FrameworkUtil.getBundle(AbstractJPATest.class);
-		bundle.getBundleContext().registerService(EntityManagerFactory.class,
-				emf, null);
-		
+		reg = bundle.getBundleContext().registerService(
+				EntityManagerFactory.class, emf, null);
+
 		// create the database contents
 		new DBSetupHelper(emf).setup();
+	}
+
+	public void stop() {
+		if (reg != null) {
+			reg.unregister();
+			reg = null;
+		}
+
+		if (emf != null) {
+			emf.close();
+			emf = null;
+		}
 	}
 
 }

@@ -1,6 +1,7 @@
 package org.lunifera.samples.carstore.tests.dtos;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
@@ -8,7 +9,9 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.util.Collection;
+import java.util.UUID;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.knowhowlab.osgi.testing.utils.BundleUtils;
@@ -62,6 +65,11 @@ public class SimpleMapperTests extends AbstractJPATest {
 				"org.eclipse.equinox.coordinator");
 	}
 
+	@After
+	public void teardown() throws Exception {
+		stop();
+	}
+
 	@Test
 	public void testMapper_DtoToEntity() {
 		runMapperAndMappingContext_DtoToEntity(false);
@@ -76,17 +84,19 @@ public class SimpleMapperTests extends AbstractJPATest {
 	public void testMapper_SharedState_DtoToEntity() {
 		ISharedStateContextProvider provider = ServiceUtils.getService(
 				getBundleContext(), ISharedStateContextProvider.class);
-		ISharedStateContext sharedStateContext = provider.getContext("0001");
+		ISharedStateContext sharedStateContext = provider.getContext(UUID
+				.randomUUID().toString(), null);
 
 		// run the test in the shared state work
-		new SharedStateUnitOfWork() {
+		new SharedStateUnitOfWork<Object>() {
 			@Override
-			protected void doExecute() {
+			protected Object doExecute() {
 				runMapperAndMappingContext_DtoToEntity(true);
+				return null;
 			}
 		}.execute(sharedStateContext);
 
-		provider.disposeContext(sharedStateContext);
+		provider.unget(sharedStateContext);
 
 	}
 
@@ -94,17 +104,19 @@ public class SimpleMapperTests extends AbstractJPATest {
 	public void testMapper_SharedState_EntityToDto() {
 		ISharedStateContextProvider provider = ServiceUtils.getService(
 				getBundleContext(), ISharedStateContextProvider.class);
-		ISharedStateContext sharedStateContext = provider.getContext("0001");
+		ISharedStateContext sharedStateContext = provider.getContext(UUID
+				.randomUUID().toString(), null);
 
 		// run the test in the shared state work
-		new SharedStateUnitOfWork() {
+		new SharedStateUnitOfWork<Object>() {
 			@Override
-			protected void doExecute() {
+			protected Object doExecute() {
 				runMapperAndMappingContext_EntityToDto(true);
+				return null;
 			}
 		}.execute(sharedStateContext);
 
-		provider.disposeContext(sharedStateContext);
+		provider.unget(sharedStateContext);
 	}
 
 	@Test
@@ -116,44 +128,122 @@ public class SimpleMapperTests extends AbstractJPATest {
 	public void testServices_SharedState() {
 		ISharedStateContextProvider provider = ServiceUtils.getService(
 				getBundleContext(), ISharedStateContextProvider.class);
-		ISharedStateContext sharedStateContext = provider.getContext("0001");
+		ISharedStateContext sharedStateContext = provider.getContext(UUID
+				.randomUUID().toString(), null);
 
 		// run the test in the shared state work
-		new SharedStateUnitOfWork() {
+		new SharedStateUnitOfWork<Object>() {
 			@Override
-			protected void doExecute() {
+			protected Object doExecute() {
 				try {
 					runServices(true);
 				} catch (Exception e) {
 					fail(e.getMessage());
 				}
+				return null;
 			}
 		}.execute(sharedStateContext);
 
-		provider.disposeContext(sharedStateContext);
+		provider.unget(sharedStateContext);
+	}
+
+	@Test
+	public void testUpdateDto() {
+		ISharedStateContextProvider provider = ServiceUtils.getService(
+				getBundleContext(), ISharedStateContextProvider.class);
+		ISharedStateContext sharedStateContext = provider.getContext(UUID
+				.randomUUID().toString(), null);
+
+		// run the test in the shared state work
+		new SharedStateUnitOfWork<Object>() {
+			@Override
+			protected Object doExecute() {
+				try {
+					runUpdateDto();
+				} catch (Exception e) {
+					fail(e.getMessage());
+				}
+				return null;
+			}
+		}.execute(sharedStateContext);
+
+		provider.unget(sharedStateContext);
 	}
 
 	@Test
 	public void testServices_DirtyState() {
 		ISharedStateContextProvider provider = ServiceUtils.getService(
 				getBundleContext(), ISharedStateContextProvider.class);
-		ISharedStateContext sharedStateContext = provider.getContext("0001");
+		ISharedStateContext sharedStateContext = provider.getContext(UUID
+				.randomUUID().toString(), null);
 
 		// run the test in the shared state work
-		new SharedStateUnitOfWork() {
+		new SharedStateUnitOfWork<Object>() {
 			@Override
-			protected void doExecute() {
+			protected Object doExecute() {
 				try {
 					runServicesDirtyStateTest(true);
 				} catch (Exception e) {
 					fail(e.getMessage());
 				}
+				return null;
 			}
 		}.execute(sharedStateContext);
 
-		provider.disposeContext(sharedStateContext);
+		provider.unget(sharedStateContext);
 	}
 
+	@Test
+	public void testServices_AutomaticDirtyState() {
+		ISharedStateContextProvider provider = ServiceUtils.getService(
+				getBundleContext(), ISharedStateContextProvider.class);
+		ISharedStateContext sharedStateContext = provider.getContext(UUID
+				.randomUUID().toString(), null);
+
+		// run the test in the shared state work
+		new SharedStateUnitOfWork<Object>() {
+			@Override
+			protected Object doExecute() {
+				try {
+					runServicesAutomaticDirtyStateTest();
+				} catch (Exception e) {
+					fail(e.getMessage());
+				}
+				return null;
+			}
+		}.execute(sharedStateContext);
+
+		provider.unget(sharedStateContext);
+	}
+
+	@Test
+	public void testServices_AutomaticDirtyState_Beans() {
+		ISharedStateContextProvider provider = ServiceUtils.getService(
+				getBundleContext(), ISharedStateContextProvider.class);
+		ISharedStateContext sharedStateContext = provider.getContext(UUID
+				.randomUUID().toString(), null);
+
+		// run the test in the shared state work
+		new SharedStateUnitOfWork<Object>() {
+			@Override
+			protected Object doExecute() {
+				try {
+					runServicesAutomaticDirtyState_Beans();
+				} catch (Exception e) {
+					fail(e.getMessage());
+				}
+				return null;
+			}
+		}.execute(sharedStateContext);
+
+		provider.unget(sharedStateContext);
+	}
+
+	/**
+	 * Run mapper with and without shared state.
+	 * 
+	 * @param withSharedState
+	 */
 	protected void runMapperAndMappingContext_DtoToEntity(
 			boolean withSharedState) {
 		setupBaseDtos();
@@ -184,7 +274,10 @@ public class SimpleMapperTests extends AbstractJPATest {
 		IMapper<ConvertibleDto, Convertible> mapper = access.getMapper(
 				ConvertibleDto.class, Convertible.class);
 
-		MappingContext context = new MappingContext(false);
+		MappingContext context = new MappingContext(withSharedState);
+		// increase the level to avoid flushing the state to the shared state.
+		context.increaseLevel();
+
 		Convertible cEntity = new Convertible();
 		mapper.mapToEntity(cDto, cEntity, context);
 
@@ -256,10 +349,14 @@ public class SimpleMapperTests extends AbstractJPATest {
 		// test the shared state
 		//
 		if (withSharedState) {
+			// decrease the level and flush the context to the shared state
+			context.decreaseLevel();
+			context.flush();
+
 			ISharedStateContext sharedStateContext = (ISharedStateContext) CoordinationManager
 					.getPropertyFromCurrentCoordination(ISharedStateContext.class);
 			IDataState state = sharedStateContext.getGlobalDataState();
-			assertNull(state.get(mapper.createEntityHash(cDto)));
+			assertNotNull(state.get(mapper.createEntityHash(cDto)));
 		}
 	}
 
@@ -295,7 +392,10 @@ public class SimpleMapperTests extends AbstractJPATest {
 		IMapper<ConvertibleDto, Convertible> mapper = access.getMapper(
 				ConvertibleDto.class, Convertible.class);
 
-		MappingContext context = new MappingContext();
+		MappingContext context = new MappingContext(withSharedState);
+		// increase the level to avoid flushing the state to the shared state.
+		context.increaseLevel();
+
 		ConvertibleDto cDto = new ConvertibleDto();
 		mapper.mapToDTO(cDto, cEntityRoot, context);
 
@@ -333,8 +433,9 @@ public class SimpleMapperTests extends AbstractJPATest {
 		assertNotSame(cDto.getPrice(), de2.getPrice());
 
 		// ensure same price entity after mapping
-		assertSame(de1.getPrice().getCurrency(), de2.getPrice().getCurrency());
-		assertSame(cDto.getPrice().getCurrency(), de2.getPrice().getCurrency());
+		assertEquals(de1.getPrice().getCurrency(), de2.getPrice().getCurrency());
+		assertEquals(cDto.getPrice().getCurrency(), de2.getPrice()
+				.getCurrency());
 
 		//
 		// now map again with the same context
@@ -366,6 +467,10 @@ public class SimpleMapperTests extends AbstractJPATest {
 		// test the shared state
 		//
 		if (withSharedState) {
+			// decrease the level and flush the context to the shared state
+			context.decreaseLevel();
+			context.flush();
+
 			ISharedStateContext sharedStateContext = (ISharedStateContext) CoordinationManager
 					.getPropertyFromCurrentCoordination(ISharedStateContext.class);
 			IDataState state = sharedStateContext.getGlobalDataState();
@@ -374,6 +479,12 @@ public class SimpleMapperTests extends AbstractJPATest {
 		}
 	}
 
+	/**
+	 * Demonstrates the use of DtoServices.
+	 * 
+	 * @param sharedState
+	 * @throws Exception
+	 */
 	protected void runServices(boolean sharedState) throws Exception {
 		setUpDatabase();
 
@@ -404,6 +515,13 @@ public class SimpleMapperTests extends AbstractJPATest {
 		}
 	}
 
+	/**
+	 * Ensures, that dtos contained in the same shared state are shared by
+	 * service access.
+	 * 
+	 * @param sharedState
+	 * @throws Exception
+	 */
 	protected void runServicesDirtyStateTest(boolean sharedState)
 			throws Exception {
 		setUpDatabase();
@@ -422,8 +540,8 @@ public class SimpleMapperTests extends AbstractJPATest {
 		ISharedStateContext sharedStateContext = (ISharedStateContext) CoordinationManager
 				.getPropertyFromCurrentCoordination(ISharedStateContext.class);
 		sharedStateContext.getDirtyState().register(
-				HashUtil.createObjectWithIdHash(ConvertibleDto.class,
-						dto.getId()), dirty);
+				HashUtil.createObjectWithIdHash(ConvertibleDto.class, dto),
+				dirty);
 
 		// execute query again
 		ConvertibleDto dto2 = (ConvertibleDto) service.find(query).iterator()
@@ -431,6 +549,199 @@ public class SimpleMapperTests extends AbstractJPATest {
 		assertSame(dirty, dto2);
 		assertEquals("inDirtyState", dto2.getDescription());
 
+	}
+
+	/**
+	 * Changing a property of a dto will add it automatically to the dirty state
+	 * cache.
+	 * 
+	 * @throws Exception
+	 */
+	protected void runServicesAutomaticDirtyStateTest() throws Exception {
+		setUpDatabase();
+
+		ISharedStateContext sharedStateContext = (ISharedStateContext) CoordinationManager
+				.getPropertyFromCurrentCoordination(ISharedStateContext.class);
+		IDataState globalState = sharedStateContext.getGlobalDataState();
+		IDataState dirtyState = sharedStateContext.getDirtyState();
+		assertEquals(0, globalState.size());
+		assertEquals(0, dirtyState.size());
+
+		IDTOService<CarDto> service = DtoServiceAccess.getService(CarDto.class);
+		Query query = new Query(new LCompare.Equal("number", "00003"));
+		ConvertibleDto dto = (ConvertibleDto) service.find(query).iterator()
+				.next();
+
+		// contains all retrieved and mapped DTOs (car and its config detail
+		// DTO)
+		assertEquals(2, globalState.size());
+		assertEquals(0, dirtyState.size());
+
+		dto.setDescription("Just a test");
+
+		assertEquals(2, globalState.size());
+		assertEquals(1, dirtyState.size());
+
+		ConvertibleDto dto2 = (ConvertibleDto) service.find(query).iterator()
+				.next();
+		assertEquals(2, globalState.size());
+		assertEquals(1, dirtyState.size());
+		assertSame(dto, dto2);
+
+		dto.setDescription("Another description");
+		assertEquals(2, globalState.size());
+		assertEquals(1, dirtyState.size());
+
+		service.update(dto2);
+		assertEquals(2, globalState.size());
+		assertEquals(0, dirtyState.size());
+
+		dto2.setDescription("Test 3");
+		assertEquals(2, globalState.size());
+		assertEquals(1, dirtyState.size());
+
+		dto2.dispose();
+		assertEquals(0, globalState.size());
+		assertEquals(0, dirtyState.size());
+
+	}
+
+	/**
+	 * 
+	 * @throws Exception
+	 */
+	protected void runServicesAutomaticDirtyState_Beans() throws Exception {
+		setUpDatabase();
+
+		ISharedStateContext sharedStateContext = (ISharedStateContext) CoordinationManager
+				.getPropertyFromCurrentCoordination(ISharedStateContext.class);
+		IDataState globalState = sharedStateContext.getGlobalDataState();
+		IDataState dirtyState = sharedStateContext.getDirtyState();
+		assertEquals(0, globalState.size());
+		assertEquals(0, dirtyState.size());
+
+		IDTOService<CarDto> service = DtoServiceAccess.getService(CarDto.class);
+		Query query = new Query(new LCompare.Equal("number", "00003"));
+		ConvertibleDto dto = (ConvertibleDto) service.find(query).iterator()
+				.next();
+
+		// contains all retrieved and mapped DTOs (car and its config detail
+		// DTO)
+		assertEquals(2, globalState.size());
+		assertEquals(0, dirtyState.size());
+
+		// changing the bean (embeddable) will add its parent DTO to the shared
+		// state
+		dto.getPrice().setAmount(5000);
+
+		assertEquals(2, globalState.size());
+		assertEquals(1, dirtyState.size());
+
+		// check that dto was added to shared state
+		ConvertibleDto dto2 = (ConvertibleDto) dirtyState.get(HashUtil
+				.createObjectWithIdHash(ConvertibleDto.class, dto));
+		assertSame(dto, dto2);
+
+	}
+
+	@Test
+	public void testSharedStateTest_GC() {
+		ISharedStateContextProvider provider = ServiceUtils.getService(
+				getBundleContext(), ISharedStateContextProvider.class);
+		ISharedStateContext sharedStateContext = provider.getContext(UUID
+				.randomUUID().toString(), null);
+		// run the test in the shared state work
+		new SharedStateUnitOfWork<Object>() {
+			@Override
+			protected Object doExecute() {
+				try {
+					runSharedStateTest_GC();
+				} catch (Exception e) {
+					fail(e.getMessage());
+				}
+				return null;
+			}
+		}.execute(sharedStateContext);
+
+		provider.unget(sharedStateContext);
+	}
+
+	/**
+	 * Dtos contained in the shared state will be removed if no references point
+	 * to them.
+	 * 
+	 * @throws Exception
+	 */
+	protected void runSharedStateTest_GC() throws Exception {
+		setUpDatabase();
+
+		ISharedStateContext sharedStateContext = (ISharedStateContext) CoordinationManager
+				.getPropertyFromCurrentCoordination(ISharedStateContext.class);
+		IDataState globalState = sharedStateContext.getGlobalDataState();
+		IDataState dirtyState = sharedStateContext.getDirtyState();
+		assertEquals(0, globalState.size());
+		assertEquals(0, dirtyState.size());
+
+		IDTOService<CarDto> service = DtoServiceAccess.getService(CarDto.class);
+		Collection<CarDto> dtos = service.find(new Query());
+
+		// contains all retrieved and mapped DTOs
+		assertEquals(5, globalState.size());
+		assertEquals(0, dirtyState.size());
+
+		CarDto car1 = dtos.iterator().next();
+		car1.setDescription("Do not GC me!");
+
+		// prepare for GC
+		dtos.clear();
+		dtos = null;
+		System.gc();
+
+		Thread.sleep(2500);
+
+		// contains all retrieved and mapped DTOs
+		assertEquals(1, globalState.size());
+		assertEquals(1, dirtyState.size());
+
+		// prepare for GC 2
+		car1 = null;
+		System.gc();
+
+		Thread.sleep(2500);
+
+		// no records available anymore
+		assertEquals(0, globalState.size());
+		assertEquals(0, dirtyState.size());
+	}
+
+	protected void runUpdateDto() throws Exception {
+		setUpDatabase();
+
+		ISharedStateContext sharedStateContext = (ISharedStateContext) CoordinationManager
+				.getPropertyFromCurrentCoordination(ISharedStateContext.class);
+		IDataState globalState = sharedStateContext.getGlobalDataState();
+		IDataState dirtyState = sharedStateContext.getDirtyState();
+		assertEquals(0, globalState.size());
+		assertEquals(0, dirtyState.size());
+
+		IDTOService<CarDto> service = DtoServiceAccess.getService(CarDto.class);
+		Query query = new Query(new LCompare.Equal("number", "00003"));
+		ConvertibleDto dto = (ConvertibleDto) service.find(query).iterator()
+				.next();
+
+		// contains all retrieved and mapped DTOs (convertible and the config
+		// detail DTO)
+		assertEquals(2, globalState.size());
+		assertEquals(0, dirtyState.size());
+
+		dto.setDescription("Just a test");
+		assertEquals(2, globalState.size());
+		assertEquals(1, dirtyState.size());
+
+		service.update(dto);
+
+		assertEquals(2, globalState.size());
+		assertEquals(0, dirtyState.size());
 	}
 
 	private BundleContext getBundleContext() {
