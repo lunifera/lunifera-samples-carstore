@@ -3,7 +3,6 @@ package org.lunifera.samples.carstore.tests.dtos;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNotSame;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -171,6 +170,29 @@ public class SimpleMapperTests extends AbstractJPATest {
 	}
 
 	@Test
+	public void testDeleteDto() {
+		ISharedStateContextProvider provider = ServiceUtils.getService(
+				getBundleContext(), ISharedStateContextProvider.class);
+		ISharedStateContext sharedStateContext = provider.getContext(UUID
+				.randomUUID().toString(), null);
+
+		// run the test in the shared state work
+		new SharedStateUnitOfWork<Object>() {
+			@Override
+			protected Object doExecute() {
+				try {
+					runDeleteDto();
+				} catch (Exception e) {
+					fail(e.getMessage());
+				}
+				return null;
+			}
+		}.execute(sharedStateContext);
+
+		provider.unget(sharedStateContext);
+	}
+
+	@Test
 	public void testServices_DirtyState() {
 		ISharedStateContextProvider provider = ServiceUtils.getService(
 				getBundleContext(), ISharedStateContextProvider.class);
@@ -271,7 +293,7 @@ public class SimpleMapperTests extends AbstractJPATest {
 
 		IMapperAccess access = ServiceUtils.getService(getBundleContext(),
 				IMapperAccess.class);
-		IMapper<ConvertibleDto, Convertible> mapper = access.getMapper(
+		IMapper<ConvertibleDto, Convertible> mapper = access.getToEntityMapper(
 				ConvertibleDto.class, Convertible.class);
 
 		MappingContext context = new MappingContext(withSharedState);
@@ -389,7 +411,7 @@ public class SimpleMapperTests extends AbstractJPATest {
 
 		IMapperAccess access = ServiceUtils.getService(getBundleContext(),
 				IMapperAccess.class);
-		IMapper<ConvertibleDto, Convertible> mapper = access.getMapper(
+		IMapper<ConvertibleDto, Convertible> mapper = access.getToDtoMapper(
 				ConvertibleDto.class, Convertible.class);
 
 		MappingContext context = new MappingContext(withSharedState);
@@ -697,7 +719,7 @@ public class SimpleMapperTests extends AbstractJPATest {
 		dtos = null;
 		System.gc();
 
-		Thread.sleep(2500);
+		Thread.sleep(5000);
 
 		// contains all retrieved and mapped DTOs
 		assertEquals(1, globalState.size());
@@ -707,7 +729,7 @@ public class SimpleMapperTests extends AbstractJPATest {
 		car1 = null;
 		System.gc();
 
-		Thread.sleep(2500);
+		Thread.sleep(5000);
 
 		// no records available anymore
 		assertEquals(0, globalState.size());
@@ -741,6 +763,36 @@ public class SimpleMapperTests extends AbstractJPATest {
 		service.update(dto);
 
 		assertEquals(2, globalState.size());
+		assertEquals(0, dirtyState.size());
+	}
+
+	protected void runDeleteDto() throws Exception {
+		setUpDatabase();
+
+		ISharedStateContext sharedStateContext = (ISharedStateContext) CoordinationManager
+				.getPropertyFromCurrentCoordination(ISharedStateContext.class);
+		IDataState globalState = sharedStateContext.getGlobalDataState();
+		IDataState dirtyState = sharedStateContext.getDirtyState();
+		assertEquals(0, globalState.size());
+		assertEquals(0, dirtyState.size());
+
+		IDTOService<CarDto> service = DtoServiceAccess.getService(CarDto.class);
+		Query query = new Query(new LCompare.Equal("number", "00003"));
+		ConvertibleDto dto = (ConvertibleDto) service.find(query).iterator()
+				.next();
+
+		// contains all retrieved and mapped DTOs (convertible and the config
+		// detail DTO)
+		assertEquals(2, globalState.size());
+		assertEquals(0, dirtyState.size());
+
+		dto.setDescription("Just a test");
+		assertEquals(2, globalState.size());
+		assertEquals(1, dirtyState.size());
+
+		service.delete(dto);
+
+		assertEquals(0, globalState.size());
 		assertEquals(0, dirtyState.size());
 	}
 

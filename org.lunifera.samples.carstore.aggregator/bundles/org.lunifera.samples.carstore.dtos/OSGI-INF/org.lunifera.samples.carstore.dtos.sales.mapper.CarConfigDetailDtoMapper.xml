@@ -3,13 +3,19 @@
        <implementation class="org.lunifera.samples.carstore.dtos.sales.mapper.CarConfigDetailDtoMapper"/>
        <service>
 		<provide interface="org.lunifera.dsl.dto.lib.IMapper"/>
-	   </service>
-		<property name="dto" type="String">org.lunifera.samples.carstore.dtos.sales.CarConfigDetailDto
+		  </service>
+		  
+		<property name="fordto.from.entity" type="String" value="org.lunifera.samples.carstore.entities.sales.CarConfigDetail"/>
+		<property name="fordto.to.dto" type="String">org.lunifera.samples.carstore.dtos.sales.CarConfigDetailDto
 		org.lunifera.samples.carstore.dtos.general.BaseDto
 		</property>
+
+		<property name="forentity.from.dto" type="String" value="org.lunifera.samples.carstore.dtos.sales.CarConfigDetailDto"/>
+		<property name="forentity.to.entity" type="String">org.lunifera.samples.carstore.entities.sales.CarConfigDetail
+		org.lunifera.samples.carstore.entities.general.Base
+		</property>
 		
-       <property name="entity" type="String" value="org.lunifera.samples.carstore.entities.sales.CarConfigDetail"/>
-       <property name="service.pid" type="String" value="org.lunifera.samples.carstore.dtos.sales.mapper.carconfigdetaildtomapper"/>
-       <reference name="bind" interface="org.lunifera.dsl.dto.lib.IMapperAccess" 
-       		cardinality="1..1" policy="static" bind="bindMapperAccess" unbind="unbindMapperAccess"/>
+		<property name="service.pid" type="String" value="org.lunifera.samples.carstore.dtos.sales.mapper.carconfigdetaildtomapper"/>
+		<reference name="bind" interface="org.lunifera.dsl.dto.lib.IMapperAccess" 
+				cardinality="1..1" policy="static" bind="bindMapperAccess" unbind="unbindMapperAccess"/>
 </scr:component>

@@ -3,11 +3,15 @@
        <implementation class="org.lunifera.samples.carstore.dtos.general.mapper.LengthDtoMapper"/>
        <service>
 		<provide interface="org.lunifera.dsl.dto.lib.IMapper"/>
-	   </service>
-		<property name="dto" type="String" value="org.lunifera.samples.carstore.dtos.general.LengthDto"/>
+		  </service>
+		  
+		<property name="fordto.from.entity" type="String" value="org.lunifera.samples.carstore.entities.general.Length"/>
+		<property name="fordto.to.dto" type="String" value="org.lunifera.samples.carstore.dtos.general.LengthDto"/>
+
+		<property name="forentity.from.dto" type="String" value="org.lunifera.samples.carstore.dtos.general.LengthDto"/>
+		<property name="forentity.to.entity" type="String" value="org.lunifera.samples.carstore.entities.general.Length"/>
 		
-       <property name="entity" type="String" value="org.lunifera.samples.carstore.entities.general.Length"/>
-       <property name="service.pid" type="String" value="org.lunifera.samples.carstore.dtos.general.mapper.lengthdtomapper"/>
-       <reference name="bind" interface="org.lunifera.dsl.dto.lib.IMapperAccess" 
-       		cardinality="1..1" policy="static" bind="bindMapperAccess" unbind="unbindMapperAccess"/>
+		<property name="service.pid" type="String" value="org.lunifera.samples.carstore.dtos.general.mapper.lengthdtomapper"/>
+		<reference name="bind" interface="org.lunifera.dsl.dto.lib.IMapperAccess" 
+				cardinality="1..1" policy="static" bind="bindMapperAccess" unbind="unbindMapperAccess"/>
 </scr:component>

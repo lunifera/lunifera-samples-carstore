@@ -1,4 +1,4 @@
-package org.lunifera.samples.carstore.dtos.general {
+ package org.lunifera.samples.carstore.dtos.general {
 	
 	/* Imports the required artifacts */
 	import org.lunifera.samples.carstore.dtos.general.*;
@@ -10,12 +10,12 @@ package org.lunifera.samples.carstore.dtos.general {
 	autoDto BaseDto wraps Base {
 		inherit var id;
 	}
-	
+
 	abstract autoDto NumberedWithDescriptionDto extends BaseDto wraps NumberedWithDescription {
 		inherit var number;
 		inherit var description;
 	}
-	
+ 
 	autoDto CascadeRootDto wraps CascadeRoot {
 		inherit var id;
 		inherit ref refYes mapto CascadeYesDto;

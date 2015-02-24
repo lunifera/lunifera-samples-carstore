@@ -29,17 +29,4 @@ public abstract class AbstractDtoTest extends AbstractTestClass {
 		return DtoServiceAccess.getService(dtoClass);
 	}
 
-	/**
-	 * Returns a proper mapper that can map between the dtoClass and the
-	 * entityClass.
-	 * 
-	 * @param dtoClass
-	 * @param entityClass
-	 * @return
-	 */
-	protected <D, E> IMapper<D, E> getDtoMapper(Class<D> dtoClass,
-			Class<E> entityClass) {
-		return getMapperAccess().getMapper(dtoClass, entityClass);
-	}
-
 }
