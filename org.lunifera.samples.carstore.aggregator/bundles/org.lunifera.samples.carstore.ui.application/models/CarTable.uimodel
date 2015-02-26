@@ -1,0 +1,37 @@
+package org.lunifera.samples.carstore.views.sales
+
+ideview CarTableView {
+
+	sharedStateGroup "org.lunifera.samples.carstore.sales"
+
+	exposedActions {
+		deleteEntity id org.lunifera.actions.delete
+		saveEntity id org.lunifera.actions.save
+		applyFilter id org.lunifera.actions.applyFilter
+		newRow id org.lunifera.actions.addNewRow
+	}
+
+	verticalLayout {
+		searchPanel {
+			type org.lunifera.samples.carstore.dtos.general.CarDto
+			searchfield number
+			searchfield description
+ 		} align top-fill
+
+		table CarTable { 
+			useBeanService
+			type org.lunifera.samples.carstore.dtos.general.CarDto
+
+			columns {
+				column number
+				column axes
+				column description
+				column dirty
+//				column weight.amount
+//				column weight.uom
+			}
+			
+			bind [this].selection --> sendEvent("org/lunifera/samples/carstore/CarDto/selection")
+		} align fill-fill
+	} align fill-fill
+}

@@ -1,0 +1,56 @@
+package org.lunifera.samples.carstore.views.sales
+
+ideview CarMaintenance {
+	sharedStateGroup "org.lunifera.samples.carstore.sales" exposedActions {
+		deleteEntity id org.lunifera.actions.delete
+		saveEntity id org.lunifera.actions.save
+	}
+
+	datasource ds:org.lunifera.samples.carstore.dtos.general.CarDto
+	eventTopic "org/lunifera/samples/carstore/CarDto/selection"
+
+	verticalLayout {
+		horizontalLayout {
+			form Detail_left {
+				textfield number
+				numericField axes
+				decimalField weightAmount
+				
+				bind ds.number <--> [this.number].value
+				bind ds.axes <--> [this.axes].value
+				bind ds.weight.amount <--> [this.weightAmount].value
+			}
+			align top-left 
+			
+			form Detail_right {
+				textfield description
+				checkbox (readonly) dirty
+				referenceField weightUom {
+					type org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto
+					captionField description
+					refSource org.lunifera.samples.carstore.dtos.general.CarDto:weight 
+				}
+				
+				bind ds.description <--> [this.description].value
+				bind ds.dirty --> [this.dirty].value
+				bind ds.weight.uom <--> [this.weightUom].value
+			}
+			align top-left
+		}
+
+		table configDetails {
+			type org.lunifera.samples.carstore.dtos.general.ConfigDetailDefinitionDto
+
+			columns {
+				column number
+				column description
+				column price.amount
+				column price.currency.iso3Code
+			}
+			
+			bind ds.configDetails <--> [this].collection
+		}
+	}
+
+	bind ds.dirty --> [CarMaintenance.saveEntity].enabled
+}

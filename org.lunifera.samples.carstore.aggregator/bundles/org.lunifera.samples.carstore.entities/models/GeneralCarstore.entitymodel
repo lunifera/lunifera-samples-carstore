@@ -18,12 +18,12 @@ package org.lunifera.samples.carstore.entities.general {
 		ref cascade CascadeYes[*] refYes opposite root;
 		ref CascadeNo[*] refNo opposite root;	
 	}
-	
+
 	entity CascadeYes {
 		uuid String id;
 		ref CascadeRoot root opposite refYes;
 	}
-	  
+ 
 	entity CascadeNo {
 		uuid String id;
 		ref CascadeRoot root opposite refNo;

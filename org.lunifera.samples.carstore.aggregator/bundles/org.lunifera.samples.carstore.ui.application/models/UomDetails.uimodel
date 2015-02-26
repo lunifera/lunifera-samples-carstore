@@ -1,6 +1,8 @@
 package org.lunifera.samples.carstore.views.sales
 
 ideview UomDetailView {
+	
+	sharedStateGroup "org.lunifera.samples.carstore.sales"
 
 	exposedActions {
 		deleteEntity id org.lunifera.actions.delete
@@ -12,4 +14,6 @@ ideview UomDetailView {
 	horizontalLayout Detail {
 		autowire source ds
 	} align fill-fill
+
+	bind ds.dirty --> [UomDetailView.saveEntity].enabled
 }

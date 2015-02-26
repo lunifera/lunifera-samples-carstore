@@ -9,6 +9,9 @@
 	/** The mapped superclass providing an UUID. */
 	autoDto BaseDto wraps Base {
 		inherit var id;
+		 
+		@org.lunifera.runtime.common.annotations.Dirty
+		var boolean dirty;
 	}
 
 	abstract autoDto NumberedWithDescriptionDto extends BaseDto wraps NumberedWithDescription {
@@ -21,7 +24,7 @@
 		inherit ref refYes mapto CascadeYesDto;
 		inherit ref refNo mapto CascadeNoDto;
 	}
-	
+	  
 	autoDto CascadeYesDto wraps CascadeYes {
 		inherit var id;
 		inherit ref root mapto CascadeRootDto;

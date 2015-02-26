@@ -1,17 +1,23 @@
 package org.lunifera.samples.carstore.views.sales
 
 ideview UomTableView {
+	
+	sharedStateGroup "org.lunifera.samples.carstore.sales"
+	
 	exposedActions {
 		deleteEntity id org.lunifera.actions.delete
 		saveEntity id org.lunifera.actions.save
 		applyFilter id org.lunifera.actions.applyFilter
 		newRow id org.lunifera.actions.addNewRow
-	}
- 
+	} 
+	
+	datasource ds:org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto eventTopic "org/lunifera/samples/carstore/UnitOfMeasureDto/selection"
+
 	verticalLayout {
 		searchPanel SearchPanel {
 			type org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto
 			searchfield number
+			searchfield description
 		}
 		align top-fill
 
@@ -19,13 +25,15 @@ ideview UomTableView {
 			useBeanService
 			type org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto
 
-			columns {
+			columns {	
 				column number
 				column description
 				column family
 				column siType
+				column dirty
 			}
-  
+ 
+ 			bind ds --> [this].selection
 			bind [this].selection --> sendEvent("org/lunifera/samples/carstore/UnitOfMeasureDto/selection")
 		}
 		align fill-fill
@@ -34,4 +42,5 @@ ideview UomTableView {
 
 	bind [this.newRow].onClick --> addToTable UomTable
 	bind [this.applyFilter].onClick --> [this.SearchPanel].applyFilter
+	
 }

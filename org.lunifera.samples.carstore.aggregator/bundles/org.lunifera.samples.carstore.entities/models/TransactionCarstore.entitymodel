@@ -14,7 +14,7 @@ package org.lunifera.samples.carstore.entities.sales {
 		ref Customer customer;
 		ref PaymentTerm paymentTerm;
 	}
-	    
+
 	entity SalesOrderDetail extends Base {
 		var int number;
 		ref Item item;
