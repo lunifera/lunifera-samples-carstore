@@ -1,12 +1,13 @@
-package org.lunifera.samples.carstore.views.sales
+package org.lunifera.samples.carstore.views.general
 
 ideview CarMaintenance {
-	sharedStateGroup "org.lunifera.samples.carstore.sales" exposedActions {
+	sharedStateGroup "org.lunifera.samples.carstore.general" exposedActions {
 		deleteEntity id org.lunifera.actions.delete
 		saveEntity id org.lunifera.actions.save
+		newEntity id org.lunifera.actions.addNew
 	}
 
-	datasource ds:org.lunifera.samples.carstore.dtos.general.CarDto
+	datasource main:org.lunifera.samples.carstore.dtos.general.CarDto
 	eventTopic "org/lunifera/samples/carstore/CarDto/selection"
 
 	verticalLayout {
@@ -15,29 +16,25 @@ ideview CarMaintenance {
 				textfield number
 				numericField axes
 				decimalField weightAmount
-				
-				bind ds.number <--> [this.number].value
-				bind ds.axes <--> [this.axes].value
-				bind ds.weight.amount <--> [this.weightAmount].value
+
+				bind main.number <--> [this.number].value
+				bind main.axes <--> [this.axes].value
+				bind main.weight.amount <--> [this.weightAmount].value
 			}
-			align top-left 
-			
-			form Detail_right {
+			align top-left form Detail_right {
 				textfield description
-				checkbox (readonly) dirty
+				checkbox(readonly) dirty
 				referenceField weightUom {
 					type org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto
-					captionField description
-					refSource org.lunifera.samples.carstore.dtos.general.CarDto:weight 
+					captionField description refSource org.lunifera.samples.carstore.dtos.general.CarDto:weight
 				}
-				
-				bind ds.description <--> [this.description].value
-				bind ds.dirty --> [this.dirty].value
-				bind ds.weight.uom <--> [this.weightUom].value
+
+				bind main.description <--> [this.description].value
+				bind main.dirty --> [this.dirty].value
+				bind main.weight.uom <--> [this.weightUom].value
 			}
 			align top-left
 		}
-
 		table configDetails {
 			type org.lunifera.samples.carstore.dtos.general.ConfigDetailDefinitionDto
 
@@ -47,10 +44,14 @@ ideview CarMaintenance {
 				column price.amount
 				column price.currency.iso3Code
 			}
-			
-			bind ds.configDetails <--> [this].collection
+
+			bind main.configDetails <--> [this].collection
 		}
 	}
 
-	bind ds.dirty --> [CarMaintenance.saveEntity].enabled
+	bind main.dirty --> [CarMaintenance.saveEntity].enabled
+	bind [CarMaintenance.saveEntity].onClick --> sendEvent("org/lunifera/samples/carstore/CarDto/table/refresh")
+	bind [CarMaintenance.deleteEntity].onClick --> sendEvent("org/lunifera/samples/carstore/CarDto/table/refresh")
+	bind [CarMaintenance.deleteEntity].onClick --> newInstance main
+	bind [CarMaintenance.newEntity].onClick --> newInstance main
 }

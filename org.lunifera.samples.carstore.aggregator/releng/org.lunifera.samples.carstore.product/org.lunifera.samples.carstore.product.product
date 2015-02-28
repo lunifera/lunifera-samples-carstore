@@ -3,6 +3,7 @@
 
 <product name="CarstoreProduct" uid="org.lunifera.samples.carstore.product.CarstoreProduct" id="org.lunifera.samples.carstore.bootstrap.CarstoreProduct" application="org.lunifera.vaaclipse.app.application" version="0.0.1.qualifier" useFeatures="true" includeLaunchers="true">
 
+
    <configIni use="">
    </configIni>
 
@@ -15,12 +16,14 @@
 
    <windowImages/>
 
+
    <launcher>
       <solaris/>
       <win useIco="false">
          <bmp/>
       </win>
    </launcher>
+
 
    <vm>
    </vm>
@@ -38,9 +41,11 @@
       <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.coordinator" autoStart="true" startLevel=4" />
       <plugin id="org.eclipse.gemini.dbaccess.derby" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.gemini.jpa" autoStart="true" startLevel="3" />
       <plugin id="org.lunifera.ecview.jetty.manager" autoStart="true" startLevel="4" />
+      <plugin id="org.lunifera.xtext.builder.metadata.services" autoStart="true" startLevel="4" />
    </configurations>
 
 </product>

@@ -1,17 +1,16 @@
-package org.lunifera.samples.carstore.views.sales
+package org.lunifera.samples.carstore.views.general
 
 ideview UomTableView {
 	
-	sharedStateGroup "org.lunifera.samples.carstore.sales"
+	sharedStateGroup "org.lunifera.samples.carstore.general"
 	
 	exposedActions {
 		deleteEntity id org.lunifera.actions.delete
 		saveEntity id org.lunifera.actions.save
 		applyFilter id org.lunifera.actions.applyFilter
-		newRow id org.lunifera.actions.addNewRow
 	} 
 	
-	datasource ds:org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto eventTopic "org/lunifera/samples/carstore/UnitOfMeasureDto/selection"
+	datasource main:org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto eventTopic "org/lunifera/samples/carstore/UnitOfMeasureDto/selection"
 
 	verticalLayout {
 		searchPanel SearchPanel {
@@ -33,14 +32,13 @@ ideview UomTableView {
 				column dirty
 			}
  
- 			bind ds --> [this].selection
+ 			bind main --> [this].selection
 			bind [this].selection --> sendEvent("org/lunifera/samples/carstore/UnitOfMeasureDto/selection")
 		}
 		align fill-fill
 	}
 	align fill-fill
 
-	bind [this.newRow].onClick --> addToTable UomTable
 	bind [this.applyFilter].onClick --> [this.SearchPanel].applyFilter
 	
 }

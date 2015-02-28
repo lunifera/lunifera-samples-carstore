@@ -51,3 +51,6 @@
 /org.lunifera.samples.carstore.dtos.sales.services.ManufacturerOrderService.xml
 /org.lunifera.samples.carstore.dtos.sales.services.SalesOrderDetailService.xml
 /org.lunifera.samples.carstore.dtos.sales.services.SalesOrderService.xml
+/org.lunifera.samples.carstore.dtos.general.mapper.CascadeNoDtoMapper.xml
+/org.lunifera.samples.carstore.dtos.general.mapper.CascadeRootDtoMapper.xml
+/org.lunifera.samples.carstore.dtos.general.mapper.CascadeYesDtoMapper.xml

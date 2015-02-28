@@ -1,18 +1,17 @@
-package org.lunifera.samples.carstore.views.sales
+package org.lunifera.samples.carstore.views.general
 
 ideview CarTableView {
 
-	sharedStateGroup "org.lunifera.samples.carstore.sales"
+	sharedStateGroup "org.lunifera.samples.carstore.general"
 
 	exposedActions {
-		deleteEntity id org.lunifera.actions.delete
-		saveEntity id org.lunifera.actions.save
 		applyFilter id org.lunifera.actions.applyFilter
-		newRow id org.lunifera.actions.addNewRow
 	}
 
+	datasource tableRefresh:Object eventTopic "org/lunifera/samples/carstore/CarDto/table/refresh"
+
 	verticalLayout {
-		searchPanel {
+		searchPanel SearchPanel {
 			type org.lunifera.samples.carstore.dtos.general.CarDto
 			searchfield number
 			searchfield description
@@ -27,11 +26,16 @@ ideview CarTableView {
 				column axes
 				column description
 				column dirty
-//				column weight.amount
+				column weight.amount
 //				column weight.uom
 			}
 			
 			bind [this].selection --> sendEvent("org/lunifera/samples/carstore/CarDto/selection")
+			bind tableRefresh --> [this].refresh
+			
 		} align fill-fill
 	} align fill-fill
+	
+	bind [CarTableView.applyFilter].onClick --> [CarTableView.SearchPanel].applyFilter
+	bind [CarTableView.SearchPanel].filter --> [CarTableView.CarTable].filter
 }

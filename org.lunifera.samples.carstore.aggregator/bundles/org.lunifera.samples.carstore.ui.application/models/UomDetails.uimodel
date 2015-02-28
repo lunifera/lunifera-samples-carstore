@@ -1,19 +1,21 @@
-package org.lunifera.samples.carstore.views.sales
+package org.lunifera.samples.carstore.views.general
 
 ideview UomDetailView {
 	
-	sharedStateGroup "org.lunifera.samples.carstore.sales"
+	sharedStateGroup "org.lunifera.samples.carstore.general"
 
 	exposedActions {
 		deleteEntity id org.lunifera.actions.delete
 		saveEntity id org.lunifera.actions.save
+		newEntity id org.lunifera.actions.addNew
 	}
 
-	datasource ds:org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto eventTopic "org/lunifera/samples/carstore/UnitOfMeasureDto/selection"
+	datasource main:org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto eventTopic "org/lunifera/samples/carstore/UnitOfMeasureDto/selection"
 
 	horizontalLayout Detail {
-		autowire source ds
+		autowire source main
 	} align fill-fill
 
-	bind ds.dirty --> [UomDetailView.saveEntity].enabled
+	bind main.dirty --> [UomDetailView.saveEntity].enabled
+	bind [this.newEntity].onClick --> newInstance main
 }

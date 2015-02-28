@@ -13,6 +13,50 @@
       MyCompany
    </copyright>
 
+   <requires>
+      <import plugin="javax.persistence" version="2.1.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.xbase.lib" version="2.6.2" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtend.lib" version="2.7.3" match="greaterOrEqual"/>
+      <import plugin="com.google.guava" version="15.0.0" match="greaterOrEqual"/>
+      <import plugin="org.slf4j.api"/>
+      <import plugin="org.eclipse.xtext.xbase.lib" version="2.7.3" match="greaterOrEqual"/>
+      <import plugin="org.apache.derby" version="10.8.2" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gemini.jpa" version="1.2.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.persistence.core" version="2.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtend.lib" version="2.6.2" match="greaterOrEqual"/>
+      <import plugin="com.vaadin.server"/>
+      <import plugin="org.eclipse.e4.core.contexts"/>
+      <import plugin="javax.inject"/>
+      <import plugin="org.eclipse.e4.core.di.extensions"/>
+      <import plugin="org.eclipse.e4.core.services"/>
+      <import plugin="org.eclipse.osgi"/>
+      <import plugin="org.eclipse.osgi.services"/>
+      <import plugin="org.eclipse.core.runtime" version="3.10.0" match="greaterOrEqual"/>
+      <import plugin="org.lunifera.samples.carstore.entities" version="0.0.1" match="greaterOrEqual"/>
+      <import plugin="org.lunifera.ecview.vaadin.servlet.mobile"/>
+      <import plugin="org.json" version="0.0.20080701" match="greaterOrEqual"/>
+      <import plugin="org.lunifera.dsl.datatype.lib" version="0.8.1" match="greaterOrEqual"/>
+      <import plugin="org.lunifera.dsl.dto.lib" version="0.8.1" match="greaterOrEqual"/>
+      <import plugin="org.lunifera.runtime.common" version="0.8.1" match="greaterOrEqual"/>
+      <import plugin="org.lunifera.ecview.core.common" version="0.7.3" match="greaterOrEqual"/>
+      <import plugin="org.lunifera.dsl.datatype.lib" version="0.7.3" match="greaterOrEqual"/>
+      <import plugin="org.lunifera.dsl.dto.lib" version="0.7.3" match="greaterOrEqual"/>
+      <import plugin="org.lunifera.runtime.common" version="0.7.5" match="greaterOrEqual"/>
+      <import plugin="org.lunifera.ecview.dsl.lib" version="0.8.1" match="greaterOrEqual"/>
+      <import plugin="org.lunifera.ecview.semantic.uimodel" version="0.8.1" match="greaterOrEqual"/>
+      <import plugin="osgi.enterprise"/>
+      <import plugin="com.vaadin.server" version="7.3.7" match="greaterOrEqual"/>
+      <import plugin="com.vaadin.shared" version="7.3.7" match="greaterOrEqual"/>
+      <import plugin="org.lunifera.ecview.core.common.model" version="0.8.1" match="greaterOrEqual"/>
+      <import plugin="org.lunifera.ecview.core.extension.editparts" version="0.8.1" match="greaterOrEqual"/>
+      <import plugin="org.lunifera.ecview.core.extension.model" version="0.8.1" match="greaterOrEqual"/>
+      <import plugin="org.lunifera.ecview.core.util.emf" version="0.8.1" match="greaterOrEqual"/>
+      <import plugin="org.lunifera.mobile.vaadin.ecview.editparts" version="0.8.1" match="greaterOrEqual"/>
+      <import plugin="org.lunifera.mobile.vaadin.ecview.model" version="0.8.1" match="greaterOrEqual"/>
+      <import plugin="org.lunifera.runtime.web.ecview.presentation.vaadin" version="0.8.1" match="greaterOrEqual"/>
+      <import plugin="org.lunifera.ecview.xtext.builder.participant" version="0.8.1" match="greaterOrEqual"/>
+   </requires>
+
    <plugin
          id="org.lunifera.samples.carstore.dtos"
          download-size="0"
