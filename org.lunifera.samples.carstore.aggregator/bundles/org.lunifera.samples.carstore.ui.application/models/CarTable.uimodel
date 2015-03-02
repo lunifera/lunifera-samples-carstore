@@ -27,7 +27,7 @@ ideview CarTableView {
 				column description
 				column dirty
 				column weight.amount
-//				column weight.uom
+				column weight.uom.description
 			}
 			
 			bind [this].selection --> sendEvent("org/lunifera/samples/carstore/CarDto/selection")

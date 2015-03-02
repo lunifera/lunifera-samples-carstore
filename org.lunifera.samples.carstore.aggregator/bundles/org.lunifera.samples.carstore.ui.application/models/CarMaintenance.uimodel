@@ -1,20 +1,21 @@
 package org.lunifera.samples.carstore.views.general
 
 ideview CarMaintenance {
-	sharedStateGroup "org.lunifera.samples.carstore.general" 
+	sharedStateGroup "org.lunifera.samples.carstore.general"
 	
 	exposedActions {
-		reloadEntity id org.lunifera.actions.load
+		reloadEntity id org.lunifera.actions.load 
 		deleteEntity id org.lunifera.actions.delete
 		saveEntity id org.lunifera.actions.save
+		validateEntity id org.lunifera.actions.validate
 		newCar id "org.lunifera.actions.new.car" checkDirty
 		newPickup id "org.lunifera.actions.new.pickup" checkDirty
 		newConvertible id "org.lunifera.actions.new.convertible" checkDirty
+		somethingMagic id "org.lunifera.actions.somethingmagic" checkDirty externalCommand "org.lunifera.vaaclipse.addons.application.command.openBrowser"
 	}
 
-	datasource main:org.lunifera.samples.carstore.dtos.general.CarDto
-	eventTopic "org/lunifera/samples/carstore/CarDto/selection"
-
+	datasource main:org.lunifera.samples.carstore.dtos.general.CarDto eventTopic "org/lunifera/samples/carstore/CarDto/selection"
+ 
 	verticalLayout {
 		horizontalLayout {
 			form Detail_left {
