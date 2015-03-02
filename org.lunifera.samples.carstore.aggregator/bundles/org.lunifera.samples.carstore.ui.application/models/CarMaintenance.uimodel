@@ -1,10 +1,15 @@
 package org.lunifera.samples.carstore.views.general
 
 ideview CarMaintenance {
-	sharedStateGroup "org.lunifera.samples.carstore.general" exposedActions {
+	sharedStateGroup "org.lunifera.samples.carstore.general" 
+	
+	exposedActions {
+		reloadEntity id org.lunifera.actions.load
 		deleteEntity id org.lunifera.actions.delete
 		saveEntity id org.lunifera.actions.save
-		newEntity id org.lunifera.actions.addNew
+		newCar id "org.lunifera.actions.new.car" checkDirty
+		newPickup id "org.lunifera.actions.new.pickup" checkDirty
+		newConvertible id "org.lunifera.actions.new.convertible" checkDirty
 	}
 
 	datasource main:org.lunifera.samples.carstore.dtos.general.CarDto
@@ -50,8 +55,14 @@ ideview CarMaintenance {
 	}
 
 	bind main.dirty --> [CarMaintenance.saveEntity].enabled
-	bind [CarMaintenance.saveEntity].onClick --> sendEvent("org/lunifera/samples/carstore/CarDto/table/refresh")
-	bind [CarMaintenance.deleteEntity].onClick --> sendEvent("org/lunifera/samples/carstore/CarDto/table/refresh")
-	bind [CarMaintenance.deleteEntity].onClick --> newInstance main
-	bind [CarMaintenance.newEntity].onClick --> newInstance main
+	bind [CarMaintenance.saveEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/CarDto/table/refresh")
+	bind [CarMaintenance.deleteEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/CarDto/table/refresh")
+	bind [CarMaintenance.deleteEntity].onExecuted --> [CarMaintenance.newCar].click
+	bind [CarMaintenance.reloadEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/CarDto/table/refresh")
+
+	// new cars
+	bind [CarMaintenance.newCar].onExecuted --> newInstance for org.lunifera.samples.carstore.dtos.general.CarDto at main
+	bind [CarMaintenance.newPickup].onExecuted --> newInstance for org.lunifera.samples.carstore.dtos.general.PickupDto at main
+	bind [CarMaintenance.newConvertible].onExecuted --> newInstance for
+	org.lunifera.samples.carstore.dtos.general.ConvertibleDto at main
 }

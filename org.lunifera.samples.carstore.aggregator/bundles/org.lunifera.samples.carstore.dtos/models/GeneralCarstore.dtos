@@ -9,8 +9,7 @@
 	autoDto BaseDto wraps Base {
 		inherit var id;
 		 
-		@org.lunifera.runtime.common.annotations.Dirty
-		var boolean dirty;
+		dirty boolean ^dirty;
 	}
   
 	abstract autoDto NumberedWithDescriptionDto extends BaseDto wraps NumberedWithDescription {
