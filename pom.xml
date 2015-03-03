@@ -14,13 +14,18 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.lunifera.samples.carstore</groupId>
 	<artifactId>org.lunifera.samples.carstore.root</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.9.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>CarStore System</name>
 	<description>CarStore is a multi-application web based system developed using Lunifera Subsystems in combination with many state of art OSGi based tools and frameworks.</description>
 
 	<modules>
 		<module>org.lunifera.samples.carstore.releng.maven.parent</module>
+		<module>org.lunifera.samples.carstore.dtos</module>
+		<module>org.lunifera.samples.carstore.model</module>
+		<module>org.lunifera.samples.carstore.ui</module>
+		<module>org.lunifera.samples.carstore.feature</module>
+		<module>org.lunifera.samples.carstore.p2</module>
 	</modules>
 	
 
