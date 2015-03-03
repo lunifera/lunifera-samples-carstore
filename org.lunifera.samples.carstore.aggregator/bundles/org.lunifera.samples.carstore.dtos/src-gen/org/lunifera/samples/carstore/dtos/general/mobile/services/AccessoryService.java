@@ -1,28 +1,27 @@
 package org.lunifera.samples.carstore.dtos.general.mobile.services;
 
-import javax.persistence.EntityManagerFactory;
+import org.lunifera.samples.carstore.dtos.general.mobile.AccessoryMobileDto;
+import org.lunifera.samples.carstore.entities.general.Accessory;
 
 @SuppressWarnings("all")
-public class AccessoryService {
-  private EntityManagerFactory emf;
-  
-  /**
-   * Binds the service {@link javax.persistence.EntityManagerFactory} to this component. 
-   * <br>The cardinality is ONE_TO_ONE
-   * 
-   * @param emf the service
-   */
-  protected void bindEmf(final EntityManagerFactory emf) {
-    this.emf = emf;
+public class AccessoryService implements org.lunifera.dsl.dto.lib.services.impl.AbstractDTOService {
+  public Class<AccessoryMobileDto> getDtoClass() {
+    return AccessoryMobileDto.class;
   }
   
-  /**
-   * Unbinds the service from this component. 
-   * <br>The cardinality is ONE_TO_ONE
-   * 
-   * @param emf the service
-   */
-  protected void unbindEmf(final EntityManagerFactory emf) {
-    this.emf = null;
+  public AccessoryMobileDto createDto() {
+    return new AccessoryMobileDto();
+  }
+  
+  public Accessory createEntity() {
+    return new Accessory();
+  }
+  
+  public Class<Accessory> getEntityClass() {
+    return Accessory.class;
+  }
+  
+  public Object getId(final AccessoryMobileDto dto) {
+    throw new UnsupportedOperationException("No id available for DTO.");
   }
 }

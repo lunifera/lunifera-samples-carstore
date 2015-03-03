@@ -1,0 +1,193 @@
+package org.lunifera.samples.carstore.dtos {
+	
+	/* Imports the required artifacts */
+	import org.lunifera.samples.carstore.BaseUUID;
+	import org.lunifera.samples.carstore.dtos.BaseUUIDDto;
+	import org.lunifera.samples.carstore.UnitOfMeasure;
+	import org.lunifera.samples.carstore.dtos.UnitOfMeasureDto;
+	import org.lunifera.samples.carstore.dtos.BaseUUIDDto;
+	import org.lunifera.samples.carstore.PaymentTerm;
+	import org.lunifera.samples.carstore.dtos.PaymentTermDto;
+	import org.lunifera.samples.carstore.dtos.BaseUUIDDto;
+	import org.lunifera.samples.carstore.Currency;
+	import org.lunifera.samples.carstore.dtos.CurrencyDto;
+	import org.lunifera.samples.carstore.dtos.BaseUUIDDto;
+	import org.lunifera.samples.carstore.Customer;
+	import org.lunifera.samples.carstore.dtos.CustomerDto;
+	import org.lunifera.samples.carstore.dtos.BaseUUIDDto;
+	import org.lunifera.samples.carstore.Address;
+	import org.lunifera.samples.carstore.dtos.AddressDto;
+	import org.lunifera.samples.carstore.PaymentTerm;
+	import org.lunifera.samples.carstore.dtos.PaymentTermDto;
+	import org.lunifera.samples.carstore.SalesOrder;
+	import org.lunifera.samples.carstore.dtos.SalesOrderDto;
+	import org.lunifera.samples.carstore.SalesOrder;
+	import org.lunifera.samples.carstore.dtos.SalesOrderDto;
+	import org.lunifera.samples.carstore.dtos.BaseUUIDDto;
+	import org.lunifera.samples.carstore.Currency;
+	import org.lunifera.samples.carstore.dtos.CurrencyDto;
+	import org.lunifera.samples.carstore.Customer;
+	import org.lunifera.samples.carstore.dtos.CustomerDto;
+	import org.lunifera.samples.carstore.SODetail;
+	import org.lunifera.samples.carstore.dtos.SODetailDto;
+	import org.lunifera.samples.carstore.SODetail;
+	import org.lunifera.samples.carstore.dtos.SODetailDto;
+	import org.lunifera.samples.carstore.dtos.BaseUUIDDto;
+	import org.lunifera.samples.carstore.SalesOrder;
+	import org.lunifera.samples.carstore.dtos.SalesOrderDto;
+	import org.lunifera.samples.carstore.Item;
+	import org.lunifera.samples.carstore.dtos.ItemDto;
+	import org.lunifera.samples.carstore.Item;
+	import org.lunifera.samples.carstore.dtos.ItemDto;
+	import org.lunifera.samples.carstore.dtos.BaseUUIDDto;
+	import org.lunifera.samples.carstore.UnitOfMeasure;
+	import org.lunifera.samples.carstore.dtos.UnitOfMeasureDto;
+	import org.lunifera.samples.carstore.Accessory;
+	import org.lunifera.samples.carstore.dtos.AccessoryDto;
+	import org.lunifera.samples.carstore.dtos.ItemDto;
+	import org.lunifera.samples.carstore.Car;
+	import org.lunifera.samples.carstore.dtos.CarDto;
+	import org.lunifera.samples.carstore.dtos.ItemDto;
+	import org.lunifera.samples.carstore.Weight;
+	import org.lunifera.samples.carstore.dtos.WeightDto;
+	import org.lunifera.samples.carstore.Price;
+	import org.lunifera.samples.carstore.dtos.PriceDto;
+	import org.lunifera.samples.carstore.ConfigDetail;
+	import org.lunifera.samples.carstore.dtos.ConfigDetailDto;
+	import org.lunifera.samples.carstore.ConfigDetail;
+	import org.lunifera.samples.carstore.dtos.ConfigDetailDto;
+	import org.lunifera.samples.carstore.dtos.BaseUUIDDto;
+	import org.lunifera.samples.carstore.Car;
+	import org.lunifera.samples.carstore.dtos.CarDto;
+	import org.lunifera.samples.carstore.Price;
+	import org.lunifera.samples.carstore.dtos.PriceDto;
+	import org.lunifera.samples.carstore.Pickup;
+	import org.lunifera.samples.carstore.dtos.PickupDto;
+	import org.lunifera.samples.carstore.dtos.CarDto;
+	import org.lunifera.samples.carstore.Length;
+	import org.lunifera.samples.carstore.dtos.LengthDto;
+	import org.lunifera.samples.carstore.Length;
+	import org.lunifera.samples.carstore.dtos.LengthDto;
+	import org.lunifera.samples.carstore.Convertible;
+	import org.lunifera.samples.carstore.dtos.ConvertibleDto;
+	import org.lunifera.samples.carstore.dtos.CarDto;
+	import org.lunifera.samples.carstore.Weight;
+	import org.lunifera.samples.carstore.dtos.WeightDto;
+	import org.lunifera.samples.carstore.Price;
+	import org.lunifera.samples.carstore.dtos.PriceDto;
+	import org.lunifera.samples.carstore.Length;
+	import org.lunifera.samples.carstore.dtos.LengthDto;
+	import org.lunifera.samples.carstore.Address;
+	import org.lunifera.samples.carstore.dtos.AddressDto;
+
+
+	datatype LDate dateType date;
+
+	autoDto BaseUUIDDto wraps BaseUUID {
+		inherit var id;
+	}
+	
+	autoDto UnitOfMeasureDto extends BaseUUIDDto wraps UnitOfMeasure {
+		inherit var number;
+		inherit var name;
+		inherit var siType;
+		inherit var family;
+	}
+	
+	autoDto PaymentTermDto extends BaseUUIDDto wraps PaymentTerm {
+		inherit var number;
+		inherit var description;
+	}
+	
+	autoDto CurrencyDto extends BaseUUIDDto wraps Currency {
+		inherit var number;
+		inherit var description;
+		inherit var iso3Code;
+	}
+	
+	autoDto CustomerDto extends BaseUUIDDto wraps Customer {
+		inherit var number;
+		inherit var name;
+		inherit var address;
+		inherit ref paymentTerm mapto PaymentTermDto;
+		inherit ref orders mapto SalesOrderDto;
+	}
+	
+	autoDto SalesOrderDto extends BaseUUIDDto wraps SalesOrder {
+		inherit var number;
+		inherit ref currency mapto CurrencyDto;
+		inherit ref customer mapto CustomerDto;
+		inherit ref soDetails mapto SODetailDto;
+	}
+	
+	autoDto SODetailDto extends BaseUUIDDto wraps SODetail {
+		inherit ref order mapto SalesOrderDto;
+		inherit ref item mapto ItemDto;
+	}
+	
+	abstract autoDto ItemDto extends BaseUUIDDto wraps Item {
+		inherit var number;
+		inherit var description;
+		inherit ref uom mapto UnitOfMeasureDto;
+	}
+	
+	autoDto AccessoryDto extends ItemDto wraps Accessory {
+	}
+	
+	abstract autoDto CarDto extends ItemDto wraps Car {
+		inherit var axes;
+		inherit var weight;
+		inherit var price;
+		inherit ref configDetails mapto ConfigDetailDto;
+	}
+	
+	autoDto ConfigDetailDto extends BaseUUIDDto wraps ConfigDetail {
+		inherit ref car mapto CarDto;
+		inherit var number;
+		inherit var description;
+		inherit var price;
+	}
+	
+	autoDto PickupDto extends CarDto wraps Pickup {
+		inherit var loadingAreaWidth;
+		inherit var loadingAreaLength;
+	}
+	
+	autoDto ConvertibleDto extends CarDto wraps Convertible {
+		inherit var roofType;
+		inherit var color;
+	}
+	
+	autoDto WeightDto wraps Weight {
+		inherit var amount;
+		inherit var siType;
+	}
+	
+	autoDto PriceDto wraps Price {
+		inherit var amount;
+		inherit var currency;
+	}
+	
+	autoDto LengthDto wraps Length {
+		inherit var amount;
+		inherit var siType;
+	}
+	
+	autoDto AddressDto wraps Address {
+		inherit var street;
+		inherit var postalcode;
+	}
+	
+	enum UOMFamilyEnum {
+		WEIGHT, LENGTH, QTY, TIME
+	}
+	
+	enum SITypeEnum {
+		km, m, cm, mm, h, min, sec, t, kg, g
+	}
+	
+	enum RoofType {
+		SOLID, FOLDABLE, NONE
+	}
+	
+}

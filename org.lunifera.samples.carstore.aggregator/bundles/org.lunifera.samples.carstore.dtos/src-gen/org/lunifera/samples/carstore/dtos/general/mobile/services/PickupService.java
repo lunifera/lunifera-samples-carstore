@@ -1,28 +1,27 @@
 package org.lunifera.samples.carstore.dtos.general.mobile.services;
 
-import javax.persistence.EntityManagerFactory;
+import org.lunifera.samples.carstore.dtos.general.mobile.PickupMobileDto;
+import org.lunifera.samples.carstore.entities.general.Pickup;
 
 @SuppressWarnings("all")
-public class PickupService {
-  private EntityManagerFactory emf;
-  
-  /**
-   * Binds the service {@link javax.persistence.EntityManagerFactory} to this component. 
-   * <br>The cardinality is ONE_TO_ONE
-   * 
-   * @param emf the service
-   */
-  protected void bindEmf(final EntityManagerFactory emf) {
-    this.emf = emf;
+public class PickupService implements org.lunifera.dsl.dto.lib.services.impl.AbstractDTOService {
+  public Class<PickupMobileDto> getDtoClass() {
+    return PickupMobileDto.class;
   }
   
-  /**
-   * Unbinds the service from this component. 
-   * <br>The cardinality is ONE_TO_ONE
-   * 
-   * @param emf the service
-   */
-  protected void unbindEmf(final EntityManagerFactory emf) {
-    this.emf = null;
+  public PickupMobileDto createDto() {
+    return new PickupMobileDto();
+  }
+  
+  public Pickup createEntity() {
+    return new Pickup();
+  }
+  
+  public Class<Pickup> getEntityClass() {
+    return Pickup.class;
+  }
+  
+  public Object getId(final PickupMobileDto dto) {
+    throw new UnsupportedOperationException("No id available for DTO.");
   }
 }

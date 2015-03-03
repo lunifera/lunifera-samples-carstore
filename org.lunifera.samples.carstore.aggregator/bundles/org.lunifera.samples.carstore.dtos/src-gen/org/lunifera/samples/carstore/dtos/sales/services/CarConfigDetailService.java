@@ -1,28 +1,27 @@
 package org.lunifera.samples.carstore.dtos.sales.services;
 
-import javax.persistence.EntityManagerFactory;
+import org.lunifera.samples.carstore.dtos.sales.CarConfigDetailDto;
+import org.lunifera.samples.carstore.entities.sales.CarConfigDetail;
 
 @SuppressWarnings("all")
-public class CarConfigDetailService {
-  private EntityManagerFactory emf;
-  
-  /**
-   * Binds the service {@link javax.persistence.EntityManagerFactory} to this component. 
-   * <br>The cardinality is ONE_TO_ONE
-   * 
-   * @param emf the service
-   */
-  protected void bindEmf(final EntityManagerFactory emf) {
-    this.emf = emf;
+public class CarConfigDetailService implements org.lunifera.dsl.dto.lib.services.impl.AbstractDTOService {
+  public Class<CarConfigDetailDto> getDtoClass() {
+    return CarConfigDetailDto.class;
   }
   
-  /**
-   * Unbinds the service from this component. 
-   * <br>The cardinality is ONE_TO_ONE
-   * 
-   * @param emf the service
-   */
-  protected void unbindEmf(final EntityManagerFactory emf) {
-    this.emf = null;
+  public CarConfigDetailDto createDto() {
+    return new CarConfigDetailDto();
+  }
+  
+  public CarConfigDetail createEntity() {
+    return new CarConfigDetail();
+  }
+  
+  public Class<CarConfigDetail> getEntityClass() {
+    return CarConfigDetail.class;
+  }
+  
+  public Object getId(final CarConfigDetailDto dto) {
+    return dto.getId();
   }
 }

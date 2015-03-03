@@ -6,6 +6,9 @@
        </service>
        <property name="dto" type="String" value="org.lunifera.samples.carstore.dtos.sales.CarConfigDetailDto"/>
        <property name="service.pid" type="String" value="org.lunifera.samples.carstore.dtos.sales.services.carconfigdetailservice"/>
-       <reference name="emf" interface="javax.persistence.EntityManagerFactory" 
-       		cardinality="1..1" policy="dynamic" bind="bindEmf" unbind="unbindEmf/>
+       <reference name="emf" interface="javax.persistence.EntityManagerFactory" cardinality="1..1" 
+       		policy="dynamic" bind="bindEmf" unbind="unbindEmf" />
+       <reference name="mapper" interface="org.lunifera.dsl.dto.lib.IMapper" cardinality="1..1" 
+       		policy="dynamic" bind="bindMapper" unbind="unbindMapper" 
+       		target="(dto=org.lunifera.samples.carstore.dtos.sales.CarConfigDetailDto)"/>
 </scr:component>

@@ -1,28 +1,27 @@
 package org.lunifera.samples.carstore.dtos.sales.services;
 
-import javax.persistence.EntityManagerFactory;
+import org.lunifera.samples.carstore.dtos.sales.SalesOrderDto;
+import org.lunifera.samples.carstore.entities.sales.SalesOrder;
 
 @SuppressWarnings("all")
-public class SalesOrderService {
-  private EntityManagerFactory emf;
-  
-  /**
-   * Binds the service {@link javax.persistence.EntityManagerFactory} to this component. 
-   * <br>The cardinality is ONE_TO_ONE
-   * 
-   * @param emf the service
-   */
-  protected void bindEmf(final EntityManagerFactory emf) {
-    this.emf = emf;
+public class SalesOrderService implements org.lunifera.dsl.dto.lib.services.impl.AbstractDTOService {
+  public Class<SalesOrderDto> getDtoClass() {
+    return SalesOrderDto.class;
   }
   
-  /**
-   * Unbinds the service from this component. 
-   * <br>The cardinality is ONE_TO_ONE
-   * 
-   * @param emf the service
-   */
-  protected void unbindEmf(final EntityManagerFactory emf) {
-    this.emf = null;
+  public SalesOrderDto createDto() {
+    return new SalesOrderDto();
+  }
+  
+  public SalesOrder createEntity() {
+    return new SalesOrder();
+  }
+  
+  public Class<SalesOrder> getEntityClass() {
+    return SalesOrder.class;
+  }
+  
+  public Object getId(final SalesOrderDto dto) {
+    return dto.getId();
   }
 }
