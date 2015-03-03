@@ -1,28 +1,28 @@
 package org.lunifera.samples.carstore.dtos.general.mobile.services;
 
-import org.lunifera.dsl.dto.lib.services.impl.AbstractDTOService;
-import org.lunifera.samples.carstore.dtos.general.mobile.ConvertibleMobileDto;
-import org.lunifera.samples.carstore.entities.general.Convertible;
+import javax.persistence.EntityManagerFactory;
 
 @SuppressWarnings("all")
-public class ConvertibleService extends AbstractDTOService<ConvertibleMobileDto, Convertible> {
-  public Class<ConvertibleMobileDto> getDtoClass() {
-    return ConvertibleMobileDto.class;
+public class ConvertibleService {
+  private EntityManagerFactory emf;
+  
+  /**
+   * Binds the service {@link javax.persistence.EntityManagerFactory} to this component. 
+   * <br>The cardinality is ONE_TO_ONE
+   * 
+   * @param emf the service
+   */
+  protected void bindEmf(final EntityManagerFactory emf) {
+    this.emf = emf;
   }
   
-  public ConvertibleMobileDto createDto() {
-    return new ConvertibleMobileDto();
-  }
-  
-  public Convertible createEntity() {
-    return new Convertible();
-  }
-  
-  public Class<Convertible> getEntityClass() {
-    return Convertible.class;
-  }
-  
-  public Object getId(final ConvertibleMobileDto dto) {
-    return dto.getId();
+  /**
+   * Unbinds the service from this component. 
+   * <br>The cardinality is ONE_TO_ONE
+   * 
+   * @param emf the service
+   */
+  protected void unbindEmf(final EntityManagerFactory emf) {
+    this.emf = null;
   }
 }

@@ -5,12 +5,12 @@
 	<parent>
 		<groupId>org.lunifera.releng.maven</groupId>
 		<artifactId>lunifera-releng-maven-parent-tycho</artifactId>
-		<version>0.12.3-SNAPSHOT</version>
+		<version>0.12.5-SNAPSHOT</version>
 	</parent>
 
 	<groupId>org.lunifera.samples.carstore</groupId>
 	<artifactId>org.lunifera.samples.carstore.aggregator</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.9.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<properties>

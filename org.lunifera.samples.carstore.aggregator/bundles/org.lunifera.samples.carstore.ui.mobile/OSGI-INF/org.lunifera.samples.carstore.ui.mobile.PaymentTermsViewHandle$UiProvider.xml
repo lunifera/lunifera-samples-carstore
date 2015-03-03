@@ -2,7 +2,7 @@
 <scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="org.lunifera.samples.carstore.ui.mobile.PaymentTermsViewHandle$UiProvider">
    <implementation class="org.lunifera.samples.carstore.ui.mobile.PaymentTermsViewHandle$UiProvider"/>
    <service>
-      <provide interface="org.lunifera.ecview.servlet.mobile.IMobileUiParticipant"/>
+      <provide interface="IMobileUiParticipant"/>
    </service>
    <property name="uriFragment" value="org.lunifera.samples.carstore.ui.mobile.PaymentTermsView"/>
 </scr:component>

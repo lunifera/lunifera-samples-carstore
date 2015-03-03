@@ -2,7 +2,7 @@
 <feature
       id="org.lunifera.samples.carstore.feature"
       label="Feature carstore"
-      version="0.0.1.qualifier"
+      version="0.9.1.qualifier"
       provider-name="Lunifera GmbH">
 
    <description>

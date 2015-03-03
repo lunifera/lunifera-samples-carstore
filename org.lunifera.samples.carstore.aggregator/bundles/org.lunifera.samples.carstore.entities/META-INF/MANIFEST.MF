@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.lunifera.samples.carstore.entities
 Bundle-Vendor: My Company
-Bundle-Version: 0.0.1.qualifier
+Bundle-Version: 0.9.1.qualifier
 Bundle-SymbolicName: org.lunifera.samples.carstore.entities; singleton:=true
 Require-Bundle: javax.persistence;bundle-version="2.1.0",
  org.lunifera.dsl.dto.lib;bundle-version="0.8.1",
