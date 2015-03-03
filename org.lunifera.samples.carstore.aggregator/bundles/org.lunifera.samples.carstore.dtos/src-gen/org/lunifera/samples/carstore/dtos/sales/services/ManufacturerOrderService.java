@@ -1,10 +1,11 @@
 package org.lunifera.samples.carstore.dtos.sales.services;
 
+import org.lunifera.dsl.dto.lib.services.impl.AbstractDTOService;
 import org.lunifera.samples.carstore.dtos.sales.ManufacturerOrderDto;
 import org.lunifera.samples.carstore.entities.sales.ManufacturerOrder;
 
 @SuppressWarnings("all")
-public class ManufacturerOrderService implements org.lunifera.dsl.dto.lib.services.impl.AbstractDTOService {
+public class ManufacturerOrderService extends AbstractDTOService<ManufacturerOrderDto, ManufacturerOrder> {
   public Class<ManufacturerOrderDto> getDtoClass() {
     return ManufacturerOrderDto.class;
   }

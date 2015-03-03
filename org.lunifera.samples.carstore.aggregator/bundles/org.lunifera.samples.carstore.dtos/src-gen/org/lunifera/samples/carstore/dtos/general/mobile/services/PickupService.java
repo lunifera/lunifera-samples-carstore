@@ -1,10 +1,11 @@
 package org.lunifera.samples.carstore.dtos.general.mobile.services;
 
+import org.lunifera.dsl.dto.lib.services.impl.AbstractDTOService;
 import org.lunifera.samples.carstore.dtos.general.mobile.PickupMobileDto;
 import org.lunifera.samples.carstore.entities.general.Pickup;
 
 @SuppressWarnings("all")
-public class PickupService implements org.lunifera.dsl.dto.lib.services.impl.AbstractDTOService {
+public class PickupService extends AbstractDTOService<PickupMobileDto, Pickup> {
   public Class<PickupMobileDto> getDtoClass() {
     return PickupMobileDto.class;
   }
@@ -22,6 +23,6 @@ public class PickupService implements org.lunifera.dsl.dto.lib.services.impl.Abs
   }
   
   public Object getId(final PickupMobileDto dto) {
-    throw new UnsupportedOperationException("No id available for DTO.");
+    return dto.getId();
   }
 }

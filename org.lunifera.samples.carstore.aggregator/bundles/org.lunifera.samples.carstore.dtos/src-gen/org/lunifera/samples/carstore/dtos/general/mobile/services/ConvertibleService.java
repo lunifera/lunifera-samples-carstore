@@ -1,10 +1,11 @@
 package org.lunifera.samples.carstore.dtos.general.mobile.services;
 
+import org.lunifera.dsl.dto.lib.services.impl.AbstractDTOService;
 import org.lunifera.samples.carstore.dtos.general.mobile.ConvertibleMobileDto;
 import org.lunifera.samples.carstore.entities.general.Convertible;
 
 @SuppressWarnings("all")
-public class ConvertibleService implements org.lunifera.dsl.dto.lib.services.impl.AbstractDTOService {
+public class ConvertibleService extends AbstractDTOService<ConvertibleMobileDto, Convertible> {
   public Class<ConvertibleMobileDto> getDtoClass() {
     return ConvertibleMobileDto.class;
   }
@@ -22,6 +23,6 @@ public class ConvertibleService implements org.lunifera.dsl.dto.lib.services.imp
   }
   
   public Object getId(final ConvertibleMobileDto dto) {
-    throw new UnsupportedOperationException("No id available for DTO.");
+    return dto.getId();
   }
 }
