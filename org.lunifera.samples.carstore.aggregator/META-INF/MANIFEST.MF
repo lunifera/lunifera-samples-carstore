@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.lunifera.samples.carstore.aggregator
+Bundle-Vendor: My Company
+Bundle-Version: 0.0.1.qualifier
+Bundle-SymbolicName: org.lunifera.samples.carstore.aggregator; singleton:=true
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: J2SE-1.5

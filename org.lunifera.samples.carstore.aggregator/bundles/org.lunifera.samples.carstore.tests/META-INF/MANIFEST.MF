@@ -1,0 +1,32 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.lunifera.samples.carstore.tests
+Bundle-Vendor: My Company
+Bundle-Version: 0.0.1.qualifier
+Bundle-SymbolicName: org.lunifera.samples.carstore.tests; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.lunifera.samples.carstore.dtos,
+ org.eclipse.core.runtime,
+ org.junit;bundle-version="4.11.0",
+ org.eclipse.equinox.ds,
+ org.knowhowlab.osgi.testing.assertions;bundle-version="1.2.2",
+ org.knowhowlab.osgi.testing.utils;bundle-version="1.2.2",
+ org.lunifera.dsl.dto.lib;bundle-version="0.8.1",
+ org.lunifera.samples.carstore.entities;bundle-version="0.0.1",
+ org.lunifera.runtime.common;bundle-version="0.8.1",
+ javax.persistence,
+ org.eclipse.persistence.core;bundle-version="2.6.0",
+ org.eclipse.persistence.jpa;bundle-version="2.6.0",
+ org.apache.derby;bundle-version="10.8.2"
+Import-Package: org.slf4j,
+ org.junit;version="4.5.0",
+ org.junit.runner;version="4.5.0",
+ org.junit.runner.manipulation;version="4.5.0",
+ org.junit.runner.notification;version="4.5.0",
+ org.junit.runners;version="4.5.0",
+ org.junit.runners.model;version="4.5.0",
+ org.hamcrest.core
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: org.lunifera.samples.carstore.tests,
+ org.lunifera.samples.carstore.tests.dtos
+Bundle-Activator: org.lunifera.samples.carstore.tests.setup.Activator
