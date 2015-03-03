@@ -1,0 +1,44 @@
+package org.lunifera.samples.carstore.views.general
+
+ideview UomTableView {
+	
+	sharedStateGroup "org.lunifera.samples.carstore.general"
+	
+	exposedActions {
+		deleteEntity id org.lunifera.actions.delete
+		saveEntity id org.lunifera.actions.save
+		applyFilter id org.lunifera.actions.applyFilter
+	} 
+	
+	datasource main:org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto eventTopic "org/lunifera/samples/carstore/UnitOfMeasureDto/selection"
+
+	verticalLayout {
+		searchPanel SearchPanel {
+			type org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto
+			searchfield number
+			searchfield description
+		}
+		align top-fill
+
+		table UomTable {
+			useBeanService
+			type org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto
+
+			columns {	
+				column number
+				column description
+				column family
+				column siType
+				column dirty
+			}
+ 
+ 			bind main --> [this].selection
+			bind [this].selection --> sendEvent("org/lunifera/samples/carstore/UnitOfMeasureDto/selection")
+		}
+		align fill-fill
+	}
+	align fill-fill
+
+	bind [this.applyFilter].onClick --> [this.SearchPanel].applyFilter
+	
+}

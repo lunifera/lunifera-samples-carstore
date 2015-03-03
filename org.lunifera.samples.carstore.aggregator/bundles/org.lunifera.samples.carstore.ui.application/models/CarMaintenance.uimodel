@@ -1,0 +1,69 @@
+package org.lunifera.samples.carstore.views.general
+
+ideview CarMaintenance {
+	sharedStateGroup "org.lunifera.samples.carstore.general"
+	
+	exposedActions {
+		reloadEntity id org.lunifera.actions.load 
+		deleteEntity id org.lunifera.actions.delete
+		saveEntity id org.lunifera.actions.save
+		validateEntity id org.lunifera.actions.validate
+		newCar id "org.lunifera.actions.new.car" checkDirty
+		newPickup id "org.lunifera.actions.new.pickup" checkDirty
+		newConvertible id "org.lunifera.actions.new.convertible" checkDirty
+		somethingMagic id "org.lunifera.actions.somethingmagic" checkDirty externalCommand "org.lunifera.vaaclipse.addons.application.command.openBrowser"
+	}
+
+	datasource main:org.lunifera.samples.carstore.dtos.general.CarDto eventTopic "org/lunifera/samples/carstore/CarDto/selection"
+ 
+	verticalLayout {
+		horizontalLayout {
+			form Detail_left {
+				textfield number
+				numericField axes
+				decimalField weightAmount
+
+				bind main.number <--> [this.number].value
+				bind main.axes <--> [this.axes].value
+				bind main.weight.amount <--> [this.weightAmount].value
+			}
+			align top-left form Detail_right {
+				textfield description
+				checkbox(readonly) dirty
+				referenceField weightUom {
+					type org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto
+					captionField description refSource org.lunifera.samples.carstore.dtos.general.CarDto:weight
+				}
+
+				bind main.description <--> [this.description].value
+				bind main.dirty --> [this.dirty].value
+				bind main.weight.uom <--> [this.weightUom].value
+			}
+			align top-left
+		}
+		table configDetails {
+			type org.lunifera.samples.carstore.dtos.general.ConfigDetailDefinitionDto
+
+			columns {
+				column number
+				column description
+				column price.amount
+				column price.currency.iso3Code
+			}
+
+			bind main.configDetails <--> [this].collection
+		}
+	}
+
+	bind main.dirty --> [CarMaintenance.saveEntity].enabled
+	bind [CarMaintenance.saveEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/CarDto/table/refresh")
+	bind [CarMaintenance.deleteEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/CarDto/table/refresh")
+	bind [CarMaintenance.deleteEntity].onExecuted --> [CarMaintenance.newCar].click
+	bind [CarMaintenance.reloadEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/CarDto/table/refresh")
+
+	// new cars
+	bind [CarMaintenance.newCar].onExecuted --> newInstance for org.lunifera.samples.carstore.dtos.general.CarDto at main
+	bind [CarMaintenance.newPickup].onExecuted --> newInstance for org.lunifera.samples.carstore.dtos.general.PickupDto at main
+	bind [CarMaintenance.newConvertible].onExecuted --> newInstance for
+	org.lunifera.samples.carstore.dtos.general.ConvertibleDto at main
+}

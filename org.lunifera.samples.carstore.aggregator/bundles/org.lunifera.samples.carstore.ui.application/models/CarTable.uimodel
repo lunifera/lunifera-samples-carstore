@@ -1,0 +1,41 @@
+package org.lunifera.samples.carstore.views.general
+
+ideview CarTableView {
+
+	sharedStateGroup "org.lunifera.samples.carstore.general"
+
+	exposedActions {
+		applyFilter id org.lunifera.actions.applyFilter
+	}
+
+	datasource tableRefresh:Object eventTopic "org/lunifera/samples/carstore/CarDto/table/refresh"
+
+	verticalLayout {
+		searchPanel SearchPanel {
+			type org.lunifera.samples.carstore.dtos.general.CarDto
+			searchfield number
+			searchfield description
+ 		} align top-fill
+
+		table CarTable { 
+			useBeanService
+			type org.lunifera.samples.carstore.dtos.general.CarDto
+
+			columns {
+				column number
+				column axes
+				column description
+				column dirty
+				column weight.amount
+				column weight.uom.description
+			}
+			
+			bind [this].selection --> sendEvent("org/lunifera/samples/carstore/CarDto/selection")
+			bind tableRefresh --> [this].refresh
+			
+		} align fill-fill
+	} align fill-fill
+	
+	bind [CarTableView.applyFilter].click --> [CarTableView.SearchPanel].applyFilter
+	bind [CarTableView.SearchPanel].filter --> [CarTableView.CarTable].filter
+}

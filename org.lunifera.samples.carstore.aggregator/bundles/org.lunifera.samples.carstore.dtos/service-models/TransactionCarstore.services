@@ -1,0 +1,19 @@
+package org.lunifera.samples.carstore.dtos.sales.services {
+	
+	/* Imports the original entity and dto package */
+	import org.lunifera.samples.carstore.dtos.sales.*;
+	import org.lunifera.samples.carstore.dtos.sales.dtos.*; 
+	
+	dtoservice SalesOrderService provides SalesOrderDto {
+	}
+	dtoservice SalesOrderDetailService provides SalesOrderDetailDto {
+	}
+	dtoservice CarConfigDetailService provides CarConfigDetailDto {
+	}
+	dtoservice ManufacturerOrderService provides ManufacturerOrderDto {
+	}
+	dtoservice CarReceiptService provides CarReceiptDto {
+	}
+	dtoservice InventoryService provides InventoryDto {
+	}
+}

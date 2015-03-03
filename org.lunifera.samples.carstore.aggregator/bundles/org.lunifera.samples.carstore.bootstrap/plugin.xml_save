@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+   <extension
+         id="CarstoreProduct"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.lunifera.vaaclipse.app.application"
+            name="CarstoreProduct">
+      	 <property
+               name="applicationXMI"
+               value="org.lunifera.vaaclipse.addons.application/Application.e4xmi">
+         </property>
+         <property
+               name="applicationWidgetset"
+               value="platform:/plugin/org.semanticsoft.vaaclipse.widgetset.default/resources/org.semanticsoft.vaaclipse.widgetset.DefaultWidgetset">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
+         </property>
+         <property
+               name="vaadin.productionMode"
+               value="true">
+         </property>
+         <property
+               name="vaadin.disable-xsrf-protection"
+               value="true">
+         </property>
+         <property
+               name="startupForegroundColor"
+               value="FFFFFF">
+         </property>
+         <property
+               name="startupMessageRect"
+               value="7,252,445,20">
+         </property>
+         <property
+               name="startupProgressRect"
+               value="5,275,445,15">
+         </property>
+         <property
+               name="cssTheme"
+               value="reindeer">
+         </property>
+         
+         <property
+               name="applicationHeaderIcon"
+               value="org.lunifera.samples.carstore.bootstrap/images/16x16_Carstore.png">
+         </property>
+      </product>
+   </extension>
+</plugin>

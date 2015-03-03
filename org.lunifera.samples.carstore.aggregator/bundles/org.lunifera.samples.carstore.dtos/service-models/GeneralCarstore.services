@@ -1,0 +1,29 @@
+package org.lunifera.samples.carstore.dtos.general.services {
+	
+	/* Imports the original entity and dto package */
+	import org.lunifera.samples.carstore.dtos.general.*;
+	import org.lunifera.samples.carstore.dtos.general.dtos.*; 
+	
+	dtoservice BaseService provides BaseDto {
+	}
+	dtoservice UnitOfMeasureService provides UnitOfMeasureDto {
+	}
+	dtoservice PaymentTermService provides PaymentTermDto {
+	}
+	dtoservice AccessoryService provides AccessoryDto {
+	}
+	dtoservice CarService provides CarDto {
+	}
+	dtoservice PickupService provides PickupDto {
+	}
+	dtoservice ConvertibleService provides ConvertibleDto {
+	}
+	dtoservice ConfigDetailDefinitionService provides ConfigDetailDefinitionDto {
+	}
+	dtoservice CurrencyService provides CurrencyDto {
+	}
+	dtoservice CustomerService provides CustomerDto {
+	}
+	dtoservice CarManufacturerService provides CarManufacturerDto {
+	}
+}

@@ -1,0 +1,50 @@
+package org.lunifera.samples.carstore.dtos.sales {
+	
+	/* Imports the required artifacts */
+	import org.lunifera.samples.carstore.dtos.general.*;
+	import org.lunifera.samples.carstore.dtos.general.mapper.*;
+	import org.lunifera.samples.carstore.dtos.sales.*;
+	import org.lunifera.samples.carstore.dtos.sales.mapper.*;
+	import org.lunifera.samples.carstore.entities.general.*;
+	import org.lunifera.samples.carstore.entities.sales.*;
+
+
+	autoDto SalesOrderDto extends BaseDto wraps SalesOrder {
+		inherit var number;
+		inherit ref customer mapto CustomerDto;
+		inherit ref paymentTerm mapto PaymentTermDto;
+	}
+	
+	autoDto SalesOrderDetailDto extends BaseDto wraps SalesOrderDetail {
+		inherit var number;
+		inherit ref item mapto ItemDto;
+		inherit ref paymentTerm mapto PaymentTermDto;
+		inherit var price;
+		inherit var quantity;
+		inherit var value;
+		inherit ref configDetails mapto CarConfigDetailDto;
+	}
+	
+	autoDto CarConfigDetailDto extends BaseDto wraps CarConfigDetail {
+		inherit var number;
+		inherit ref parent mapto SalesOrderDetailDto;
+		inherit ref configDef mapto ConfigDetailDefinitionDto;
+	}
+	
+	autoDto ManufacturerOrderDto extends BaseDto wraps ManufacturerOrder {
+		inherit var number;
+		inherit ref salesOrderDetail mapto SalesOrderDetailDto;
+	}
+	
+	autoDto CarReceiptDto extends BaseDto wraps CarReceipt {
+		inherit var number;
+		inherit ref order mapto ManufacturerOrderDto;
+	}
+	
+	autoDto InventoryDto extends BaseDto wraps Inventory {
+		inherit ref item mapto ItemDto;
+		inherit var requestedQuantity;
+		inherit var countedQuantity;
+	}
+	
+}

@@ -1,0 +1,146 @@
+package org.lunifera.samples.carstore.entities.general {
+
+	/**
+	 * The mapped superclass providing an UUID.
+	 */
+	mapped superclass Base {
+		uuid String id;
+	} 
+  
+	abstract entity NumberedWithDescription extends Base {
+		inheritance per subclass {}
+		var String number;
+		var String description;
+	}
+	 
+	entity CascadeRoot {
+		uuid String id;
+		ref cascade CascadeYes[*] refYes opposite root;
+		ref CascadeNo[*] refNo opposite root;	
+	}
+
+	entity CascadeYes {
+		uuid String id;
+		ref CascadeRoot root opposite refYes;
+	}
+ 
+	entity CascadeNo {
+		uuid String id;
+		ref CascadeRoot root opposite refNo;
+	}
+
+	entity UnitOfMeasure extends NumberedWithDescription {
+		inheritance per subclass {}
+		var SiType siType;
+		var UOMFamily family;
+	}
+
+	entity PaymentTerm extends NumberedWithDescription {
+		inheritance per subclass {}
+	}
+  
+	abstract entity Item extends NumberedWithDescription {
+		inheritance per subclass {}
+	}
+ 
+	entity Accessory extends Item {
+		inheritance per subclass {}
+	}
+   
+	entity Car extends Item {
+		inheritance per subclass {}
+		var int axes;
+		var Weight weight;
+		var Price price;
+		ref cascade ConfigDetailDefinition [*] configDetails opposite car;
+	}
+
+	entity Pickup extends Car {
+		inheritance per subclass {}
+		var Length loadingAreaWidth;
+		var Length loadingAreaLength;
+	}
+
+	entity Convertible extends Car {
+		inheritance per subclass {}
+		var RoofType roofType;
+		var String color;
+	}
+
+	entity ConfigDetailDefinition extends NumberedWithDescription {
+		inheritance per subclass {}
+		var Price price;
+		ref Car car opposite configDetails;
+	}
+
+	entity Currency extends NumberedWithDescription {
+		inheritance per subclass {}
+		var String iso3Code;
+	}
+     
+	entity Customer extends Base {
+		inheritance per subclass {}
+		var String number;
+		var String name;
+		ref PaymentTerm paymentTerms;
+		var Address deliveryAddress;
+		var Address invoiceAddress;
+	}
+
+	entity CarManufacturer extends Base {
+		inheritance per subclass {}
+		var String number;
+		var String name;
+	}
+	 
+	// ..............
+	// Beans
+	// ..............
+ 
+	bean Address {
+		var String street;
+		var String postalCode;
+	}
+  
+	bean Weight {
+		var float amount;
+		ref UnitOfMeasure uom constraints {
+			family == WEIGHT;
+		}
+	}
+
+	bean Length {
+		var float amount;
+		ref UnitOfMeasure uom constraints {
+			family == LENGTH;
+		}
+	} 
+
+	bean Quantity {
+		var float amount;
+		ref UnitOfMeasure uom constraints {
+			family == QUANTITY;
+		}
+	}
+ 
+	bean Price {
+		var float amount;
+		ref Currency currency;
+	}
+
+	bean Amount {
+		var float amount;
+	}
+
+	enum SiType {
+		METER,  KG,  LITER
+	}
+
+	enum UOMFamily {
+		WEIGHT,  LENGTH,  QUANTITY,  VOLUME
+	}
+
+	enum RoofType {
+		SOFT,  HARD
+	}
+}
