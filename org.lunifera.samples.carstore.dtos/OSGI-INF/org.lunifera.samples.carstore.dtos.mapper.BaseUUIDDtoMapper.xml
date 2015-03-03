@@ -5,7 +5,7 @@
 		<provide interface="org.lunifera.dsl.dto.lib.IMapper"/>
 	   </service>
        <property name="dto" type="String" value="org.lunifera.samples.carstore.dtos.BaseUUIDDto"/>
-       <property name="entity" type="String" value="org.lunifera.samples.carstore.model.BaseUUID"/>
+       <property name="entity" type="String" value="org.lunifera.samples.carstore.BaseUUID"/>
        <property name="service.pid" type="String" value="org.lunifera.samples.carstore.dtos.mapper.baseuuiddtomapper"/>
        <reference name="bind" interface="org.lunifera.dsl.dto.lib.IMapperAccess" 
        		cardinality="1..1" policy="static" bind="bindMapperAccess" unbind="unbindMapperAccess"/>
