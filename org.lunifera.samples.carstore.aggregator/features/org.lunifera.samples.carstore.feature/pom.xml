@@ -37,6 +37,7 @@
 								<plugin id="org.lunifera.samples.carstore.ui.mobile" versionRange="0.0.0" />
 							</plugins>
 							<excludes>
+								<plugin id="org.lunifera.samples.carstore.tests" versionRange="0.0.0" />
 							</excludes>
 						</configuration>
 					</execution>
