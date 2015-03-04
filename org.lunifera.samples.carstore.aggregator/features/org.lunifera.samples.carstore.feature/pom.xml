@@ -32,11 +32,12 @@
 								<plugin id="org.lunifera.samples.carstore.bootstrap" versionRange="0.0.0" />
 								<plugin id="org.lunifera.samples.carstore.dtos" versionRange="0.0.0" />
 								<plugin id="org.lunifera.samples.carstore.entities" versionRange="0.0.0" />
-								<plugin id="org.lunifera.samples.carstore.tests" versionRange="0.0.0" />
+<!-- 								<plugin id="org.lunifera.samples.carstore.tests" versionRange="0.0.0" /> -->
 								<plugin id="org.lunifera.samples.carstore.ui.application" versionRange="0.0.0" />
 								<plugin id="org.lunifera.samples.carstore.ui.mobile" versionRange="0.0.0" />
 							</plugins>
 							<excludes>
+								<plugin id="org.lunifera.samples.carstore.tests"/>
 								<plugin id="org.lunifera.samples.carstore.tests"/>
 							</excludes>
 						</configuration>
