@@ -55,6 +55,9 @@
       <import plugin="org.lunifera.mobile.vaadin.ecview.model" version="0.8.1" match="greaterOrEqual"/>
       <import plugin="org.lunifera.runtime.web.ecview.presentation.vaadin" version="0.8.1" match="greaterOrEqual"/>
       <import plugin="org.lunifera.ecview.xtext.builder.participant" version="0.8.1" match="greaterOrEqual"/>
+      <import plugin="org.apache.felix.gogo.command" version="0.10.0" match="equivalent"/>
+      <import plugin="org.apache.felix.gogo.runtime" version="0.10.0" match="equivalent"/>
+      <import plugin="org.apache.felix.gogo.shell" version="0.10.0" match="equivalent"/>
    </requires>
 
    <plugin
