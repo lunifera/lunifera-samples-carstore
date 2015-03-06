@@ -1,6 +1,6 @@
 package org.lunifera.samples.carstore.views.general
 
-ideview CarMaintenance {
+ideview CarDetails {
 	sharedStateGroup "org.lunifera.samples.carstore.general"
 	
 	exposedActions {
@@ -65,15 +65,15 @@ ideview CarMaintenance {
 		}
 	}
 
-	bind main.dirty --> [CarMaintenance.saveEntity].enabled
-	bind [CarMaintenance.saveEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/CarDto/table/refresh")
-	bind [CarMaintenance.deleteEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/CarDto/table/refresh")
-	bind [CarMaintenance.deleteEntity].onExecuted --> [CarMaintenance.newCar].click
-	bind [CarMaintenance.reloadEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/CarDto/table/refresh")
+	bind main.dirty --> [this.saveEntity].enabled
+	bind [this.saveEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/CarDto/table/refresh")
+	bind [this.deleteEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/CarDto/table/refresh")
+	bind [this.deleteEntity].onExecuted --> [this.newCar].click
+	bind [this.reloadEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/CarDto/table/refresh")
 
 	// new cars
-	bind [CarMaintenance.newCar].onExecuted --> newInstance for org.lunifera.samples.carstore.dtos.general.CarDto at main
-	bind [CarMaintenance.newPickup].onExecuted --> newInstance for org.lunifera.samples.carstore.dtos.general.PickupDto at main
-	bind [CarMaintenance.newConvertible].onExecuted --> newInstance for
+	bind [this.newCar].onExecuted --> newInstance for org.lunifera.samples.carstore.dtos.general.CarDto at main
+	bind [this.newPickup].onExecuted --> newInstance for org.lunifera.samples.carstore.dtos.general.PickupDto at main
+	bind [this.newConvertible].onExecuted --> newInstance for
 	org.lunifera.samples.carstore.dtos.general.ConvertibleDto at main
 }

@@ -1,6 +1,6 @@
 package org.lunifera.samples.carstore.views.general
 
-ideview UomDetails {
+ideview CurrencyDetails {
 	
 	sharedStateGroup "org.lunifera.samples.carstore.general"
 
@@ -12,17 +12,17 @@ ideview UomDetails {
 		validateEntity id org.lunifera.actions.validate
 	}
 
-	datasource main:org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto eventTopic "org/lunifera/samples/carstore/UnitOfMeasureDto/selection"
+	datasource main:org.lunifera.samples.carstore.dtos.general.CurrencyDto eventTopic "org/lunifera/samples/carstore/CurrencyDto/selection"
 
 	horizontalLayout Detail {
 		autowire source main
 	} align fill-fill
 
 	bind main.dirty --> [this.saveEntity].enabled
-	bind [this.saveEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/UnitOfMeasureDto/table/refresh")
-	bind [this.deleteEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/UnitOfMeasureDto/table/refresh")
+	bind [this.saveEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/CurrencyDto/table/refresh")
+	bind [this.deleteEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/CurrencyDto/table/refresh")
 	bind [this.deleteEntity].onExecuted --> [this.newEntity].click
-	bind [this.reloadEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/UnitOfMeasureDto/table/refresh")
+	bind [this.reloadEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/CurrencyDto/table/refresh")
 
 	// new cars
 	bind [this.newEntity].onExecuted --> newInstance at main

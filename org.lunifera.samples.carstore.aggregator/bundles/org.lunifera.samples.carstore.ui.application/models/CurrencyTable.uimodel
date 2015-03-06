@@ -1,34 +1,32 @@
 package org.lunifera.samples.carstore.views.general
 
-ideview UomTableView {
+ideview CurrencyTableView {
 	sharedStateGroup "org.lunifera.samples.carstore.general" exposedActions {
 		applyFilter id org.lunifera.actions.applyFilter
 	}
 
 	datasource tableRefresh:Object
-	eventTopic "org/lunifera/samples/carstore/UnitOfMeasureDto/table/refresh"
+	eventTopic "org/lunifera/samples/carstore/CurrencyDto/table/refresh"
 
 	verticalLayout {
 		searchPanel SearchPanel {
-			type org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto
-			searchfield number
+			type org.lunifera.samples.carstore.dtos.general.CurrencyDto
+			searchfield iso3Code
 			searchfield description
 		}
 		align top-fill
 
 		table DataTable {
 			useBeanService
-			type org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto
+			type org.lunifera.samples.carstore.dtos.general.CurrencyDto
 
 			columns {
-				column number
+				column iso3Code
 				column description
-				column family
-				column siType
 				column dirty
 			}
 
-			bind [this].selection --> sendEvent("org/lunifera/samples/carstore/UnitOfMeasureDto/selection")
+			bind [this].selection --> sendEvent("org/lunifera/samples/carstore/CurrencyDto/selection")
 		}
 		align fill-fill
 	}

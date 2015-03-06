@@ -17,7 +17,7 @@ ideview CarTableView {
 			searchfield description
  		} align top-fill
 
-		table CarTable { 
+		table DataTable { 
 			useBeanService
 			type org.lunifera.samples.carstore.dtos.general.CarDto
 
@@ -37,5 +37,5 @@ ideview CarTableView {
 	} align fill-fill
 	
 	bind [CarTableView.applyFilter].click --> [CarTableView.SearchPanel].applyFilter
-	bind [CarTableView.SearchPanel].filter --> [CarTableView.CarTable].filter
+	bind [CarTableView.SearchPanel].filter --> [CarTableView.DataTable].filter
 }
