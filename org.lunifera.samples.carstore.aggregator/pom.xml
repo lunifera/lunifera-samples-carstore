@@ -29,6 +29,7 @@
 		<module>bundles/org.lunifera.samples.carstore.ui.mobile</module>
 		
 		<module>features/org.lunifera.samples.carstore.feature</module>
+		<module>releng/org.lunifera.samples.carstore.product</module>
 		
 		<module>releng/org.lunifera.samples.carstore.p2</module>
 <!-- 		<module>releng/org.lunifera.samples.carstore.product</module> -->

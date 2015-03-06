@@ -9,9 +9,33 @@
 	</parent>
 
 	<artifactId>org.lunifera.samples.carstore.product</artifactId>
-	<packaging>eclipse-application</packaging>
+	<packaging>eclipse-repository</packaging>
 
 	<name>Product definition for carstore</name>
 	<description>Product definition for carstore</description>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-p2-director-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<executions>
+					<execution>
+						<id>materialize-products</id>
+						<goals>
+							<goal>materialize-products</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>archive-products</id>
+						<goals>
+							<goal>archive-products</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>

@@ -22,22 +22,32 @@ ideview CarMaintenance {
 				textfield number
 				numericField axes
 				decimalField weightAmount
+				decimalField priceAmount
 
 				bind main.number <--> [this.number].value
 				bind main.axes <--> [this.axes].value
 				bind main.weight.amount <--> [this.weightAmount].value
-			}
-			align top-left form Detail_right {
+				bind main.price.amount <--> [this.priceAmount].value
+			} align top-left 
+			
+			form Detail_right {
 				textfield description
 				checkbox(readonly) dirty
 				referenceField weightUom {
 					type org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto
-					captionField description refSource org.lunifera.samples.carstore.dtos.general.CarDto:weight
+					captionField description 
+					refSource org.lunifera.samples.carstore.dtos.general.CarDto:weight
+				}
+				referenceField priceCurrency {
+					type org.lunifera.samples.carstore.dtos.general.CurrencyDto
+					captionField iso3Code 
+					refSource org.lunifera.samples.carstore.dtos.general.CarDto:price
 				}
 
 				bind main.description <--> [this.description].value
 				bind main.dirty --> [this.dirty].value
 				bind main.weight.uom <--> [this.weightUom].value
+				bind main.price.currency <--> [this.priceCurrency].value
 			}
 			align top-left
 		}
