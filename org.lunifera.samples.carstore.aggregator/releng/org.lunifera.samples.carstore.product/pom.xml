@@ -14,6 +14,10 @@
 	<name>Product definition for carstore</name>
 	<description>Product definition for carstore</description>
 
+	<properties>
+		<carstore.product.download.folder>/lunifera/downloads/products/carstore</carstore.product.download.folder>
+	</properties>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -31,6 +35,25 @@
 						<id>archive-products</id>
 						<goals>
 							<goal>archive-products</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>deploy</phase>
+						<configuration>
+							<quiet>true</quiet>
+							<target>
+								<ant antfile="publish-product.xml" target="main" dir=".">
+									<property name="product.targetFolder" value="${carstore.product.download.folder}" />
+								</ant>
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
 						</goals>
 					</execution>
 				</executions>

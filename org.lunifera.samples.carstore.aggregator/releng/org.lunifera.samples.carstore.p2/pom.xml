@@ -8,9 +8,7 @@
 		<relativePath>../../</relativePath>
 	</parent>
 
-	<groupId>org.lunifera.samples.carstore</groupId>
 	<artifactId>org.lunifera.samples.carstore.p2</artifactId>
-	<version>0.9.1-SNAPSHOT</version>
 	<packaging>eclipse-repository</packaging>
 
 	<name>P2-Repository for carstore</name>
