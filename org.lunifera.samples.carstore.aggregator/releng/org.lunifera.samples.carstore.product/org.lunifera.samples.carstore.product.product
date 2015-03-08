@@ -57,9 +57,9 @@
       <plugin id="org.apache.commons.lang"/>
       <plugin id="org.apache.commons.logging"/>
       <plugin id="org.apache.derby"/>
-      <plugin id="org.apache.felix.gogo.command" version="0.10.0"/>
-      <plugin id="org.apache.felix.gogo.runtime" version="0.10.0"/>
-      <plugin id="org.apache.felix.gogo.shell" version="0.10.0"/>
+      <plugin id="org.apache.felix.gogo.command" version="0.10.0.v201209301215"/>
+      <plugin id="org.apache.felix.gogo.runtime" version="0.10.0.v201209301036"/>
+      <plugin id="org.apache.felix.gogo.shell" version="0.10.0.v201212101605"/>
       <plugin id="org.apache.log4j"/>
       <plugin id="org.apache.xerces"/>
       <plugin id="org.apache.xml.resolver"/>
