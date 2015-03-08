@@ -15,4 +15,5 @@ target
 /target/
 target/
 
+*.DS_Store
 .*.java._trace
