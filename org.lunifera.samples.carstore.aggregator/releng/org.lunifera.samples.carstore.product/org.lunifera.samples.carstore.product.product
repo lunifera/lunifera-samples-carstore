@@ -9,7 +9,7 @@
    <launcherArgs>
       <programArgs>-console -consoleLog
       </programArgs>
-      <vmArgs>-XX:MaxPermSize=256m -Xms512m -Xmx4048m -Dorg.lunifera.ecview.jetty.contextpath=/carstore -Dorg.lunifera.ecview.jetty.port=8084
+      <vmArgs>-XX:MaxPermSize=256m -Xms512m -Xmx4048m -Dorg.lunifera.ecview.jetty.contextpath=/carstore -Dorg.lunifera.ecview.jetty.port=8084 –Dorg.eclipse.gemini.refreshBundles=FALSE
       </vmArgs>
    </launcherArgs>
 
@@ -57,9 +57,9 @@
       <plugin id="org.apache.commons.lang"/>
       <plugin id="org.apache.commons.logging"/>
       <plugin id="org.apache.derby"/>
-      <plugin id="org.apache.felix.gogo.command"/>
-      <plugin id="org.apache.felix.gogo.runtime"/>
-      <plugin id="org.apache.felix.gogo.shell"/>
+      <plugin id="org.apache.felix.gogo.command" version="0.10.0"/>
+      <plugin id="org.apache.felix.gogo.runtime" version="0.10.0"/>
+      <plugin id="org.apache.felix.gogo.shell" version="0.10.0"/>
       <plugin id="org.apache.log4j"/>
       <plugin id="org.apache.xerces"/>
       <plugin id="org.apache.xml.resolver"/>
