@@ -1,0 +1,6 @@
+bin/
+.*.jar
+.DS_Store
+target
+**/log
+.*.java._trace
