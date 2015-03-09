@@ -183,6 +183,7 @@
       <plugin id="org.lunifera.mobile.vaadin.widgetset"/>
       <plugin id="org.lunifera.runtime.common"/>
       <plugin id="org.lunifera.runtime.event"/>
+      <plugin id="org.lunifera.runtime.web.atmosphere.fragment" fragment="true"/>
       <plugin id="org.lunifera.runtime.web.common"/>
       <plugin id="org.lunifera.runtime.web.ecview.presentation.vaadin"/>
       <plugin id="org.lunifera.runtime.web.vaadin.common"/>
