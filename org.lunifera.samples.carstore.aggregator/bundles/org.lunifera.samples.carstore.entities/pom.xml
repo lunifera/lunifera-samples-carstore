@@ -68,6 +68,29 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+			<!-- https://bugs.eclipse.org/bugs/show_bug.cgi?id=461788. Folder can 
+				be removed if bug is fixed. Also see folder -->
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-packaging-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<executions>
+					<execution>
+						<id>add-gemini-classpath-file</id>
+						<phase>package</phase>
+						<configuration>
+							<additionalFileSets>
+								<fileSet>
+									<directory>rtClasspathHelper/</directory>
+									<includes>
+										<include>.classpath</include>
+									</includes>
+								</fileSet>
+							</additionalFileSets>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 
 		<pluginManagement>
