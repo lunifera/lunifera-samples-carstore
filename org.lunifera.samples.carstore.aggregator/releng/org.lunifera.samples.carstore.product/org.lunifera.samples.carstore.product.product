@@ -208,6 +208,7 @@
       <plugin id="org.lunifera.xtext.builder.xbase.setups"/>
       <plugin id="org.objectweb.asm"/>
       <plugin id="org.semanticsoft.commons"/>
+      <plugin id="org.semanticsoft.e4.injector.objectsuppliers"/>
       <plugin id="org.semanticsoft.e4extension"/>
       <plugin id="org.semanticsoft.e4modelextension"/>
       <plugin id="org.semanticsoft.vaaclipse.additions"/>
