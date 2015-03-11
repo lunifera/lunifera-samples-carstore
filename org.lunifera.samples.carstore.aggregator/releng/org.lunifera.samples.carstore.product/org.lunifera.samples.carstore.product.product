@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="CarstoreProduct" uid="org.lunifera.samples.carstore.product.CarstoreProduct" id="org.lunifera.samples.carstore.bootstrap.CarstoreProduct" application="org.lunifera.vaaclipse.app.application" version="0.0.1.qualifier" useFeatures="false" includeLaunchers="true">
+<product name="CarstoreProduct" uid="org.lunifera.samples.carstore.product.CarstoreProduct" id="org.lunifera.samples.carstore.bootstrap.CarstoreProduct" application="org.lunifera.vaaclipse.app.application" version="0.0.1.qualifier" useFeatures="true" includeLaunchers="true">
 
    <configIni use="">
    </configIni>
@@ -26,226 +26,17 @@
    </vm>
 
    <plugins>
-      <plugin id="ch.qos.logback.classic"/>
-      <plugin id="ch.qos.logback.core"/>
-      <plugin id="ch.qos.logback.slf4j" fragment="true"/>
-      <plugin id="com.google.guava"/>
-      <plugin id="com.google.gwt.thirdparty.guava"/>
-      <plugin id="com.google.gwt.thirdparty.streamhtmlparser"/>
-      <plugin id="com.google.inject"/>
-      <plugin id="com.google.inject.multibindings" fragment="true"/>
-      <plugin id="com.ibm.icu"/>
-      <plugin id="com.vaadin.client"/>
-      <plugin id="com.vaadin.client-compiled"/>
-      <plugin id="com.vaadin.external.atmosphere.runtime"/>
-      <plugin id="com.vaadin.external.org.slf4j"/>
-      <plugin id="com.vaadin.push"/>
-      <plugin id="com.vaadin.server"/>
-      <plugin id="com.vaadin.shared"/>
-      <plugin id="com.vaadin.themes"/>
-      <plugin id="javax.annotation"/>
-      <plugin id="javax.inject"/>
-      <plugin id="javax.persistence"/>
-      <plugin id="javax.servlet"/>
-      <plugin id="javax.xml"/>
-      <plugin id="org.antlr.runtime"/>
-      <plugin id="org.apache.batik.css"/>
-      <plugin id="org.apache.batik.util"/>
-      <plugin id="org.apache.batik.util.gui"/>
-      <plugin id="org.apache.commons.beanutils"/>
-      <plugin id="org.apache.commons.collections"/>
-      <plugin id="org.apache.commons.lang"/>
-      <plugin id="org.apache.commons.logging"/>
-      <plugin id="org.apache.derby"/>
-      <plugin id="org.apache.felix.gogo.command" version="0.10.0.v201209301215"/>
-      <plugin id="org.apache.felix.gogo.runtime" version="0.10.0.v201209301036"/>
-      <plugin id="org.apache.felix.gogo.shell" version="0.10.0.v201212101605"/>
-      <plugin id="org.apache.log4j"/>
-      <plugin id="org.apache.xerces"/>
-      <plugin id="org.apache.xml.resolver"/>
-      <plugin id="org.apache.xml.serializer"/>
-      <plugin id="org.eclipse.compare.core"/>
-      <plugin id="org.eclipse.core.commands"/>
-      <plugin id="org.eclipse.core.contenttype"/>
-      <plugin id="org.eclipse.core.databinding"/>
-      <plugin id="org.eclipse.core.databinding.beans"/>
-      <plugin id="org.eclipse.core.databinding.observable"/>
-      <plugin id="org.eclipse.core.databinding.property"/>
-      <plugin id="org.eclipse.core.expressions"/>
-      <plugin id="org.eclipse.core.filebuffers"/>
-      <plugin id="org.eclipse.core.filesystem"/>
-      <plugin id="org.eclipse.core.jobs"/>
-      <plugin id="org.eclipse.core.resources"/>
-      <plugin id="org.eclipse.core.runtime"/>
-      <plugin id="org.eclipse.e4.core.commands"/>
-      <plugin id="org.eclipse.e4.core.contexts"/>
-      <plugin id="org.eclipse.e4.core.di"/>
-      <plugin id="org.eclipse.e4.core.di.extensions"/>
-      <plugin id="org.eclipse.e4.core.services"/>
-      <plugin id="org.eclipse.e4.ui.css.core"/>
-      <plugin id="org.eclipse.e4.ui.di"/>
-      <plugin id="org.eclipse.e4.ui.model.workbench"/>
-      <plugin id="org.eclipse.e4.ui.services"/>
-      <plugin id="org.eclipse.e4.ui.workbench"/>
-      <plugin id="org.eclipse.emf.common"/>
-      <plugin id="org.eclipse.emf.databinding"/>
-      <plugin id="org.eclipse.emf.ecore"/>
-      <plugin id="org.eclipse.emf.ecore.change"/>
-      <plugin id="org.eclipse.emf.ecore.edit"/>
-      <plugin id="org.eclipse.emf.ecore.xcore.lib"/>
-      <plugin id="org.eclipse.emf.ecore.xmi"/>
-      <plugin id="org.eclipse.emf.edit"/>
-      <plugin id="org.eclipse.equinox.app"/>
-      <plugin id="org.eclipse.equinox.common"/>
-      <plugin id="org.eclipse.equinox.console"/>
-      <plugin id="org.eclipse.equinox.coordinator"/>
-      <plugin id="org.eclipse.equinox.ds"/>
-      <plugin id="org.eclipse.equinox.event"/>
-      <plugin id="org.eclipse.equinox.http.registry"/>
-      <plugin id="org.eclipse.equinox.http.servlet"/>
-      <plugin id="org.eclipse.equinox.preferences"/>
-      <plugin id="org.eclipse.equinox.region" fragment="true"/>
-      <plugin id="org.eclipse.equinox.registry"/>
-      <plugin id="org.eclipse.equinox.util"/>
-      <plugin id="org.eclipse.gemini.dbaccess.derby"/>
-      <plugin id="org.eclipse.gemini.dbaccess.util"/>
-      <plugin id="org.eclipse.gemini.jpa"/>
-      <plugin id="org.eclipse.gemini.naming"/>
-      <plugin id="org.eclipse.jetty.continuation"/>
-      <plugin id="org.eclipse.jetty.http"/>
-      <plugin id="org.eclipse.jetty.io"/>
-      <plugin id="org.eclipse.jetty.security"/>
-      <plugin id="org.eclipse.jetty.server"/>
-      <plugin id="org.eclipse.jetty.servlet"/>
-      <plugin id="org.eclipse.jetty.util"/>
-      <plugin id="org.eclipse.jetty.websocket"/>
-      <plugin id="org.eclipse.osgi"/>
-      <plugin id="org.eclipse.osgi.compatibility.state" fragment="true"/>
-      <plugin id="org.eclipse.osgi.services"/>
-      <plugin id="org.eclipse.osgi.util"/>
-      <plugin id="org.eclipse.persistence.antlr"/>
-      <plugin id="org.eclipse.persistence.asm"/>
-      <plugin id="org.eclipse.persistence.core"/>
-      <plugin id="org.eclipse.persistence.jpa"/>
-      <plugin id="org.eclipse.persistence.jpa.jpql"/>
-      <plugin id="org.eclipse.persistence.nosql" fragment="true"/>
-      <plugin id="org.eclipse.persistence.oracle" fragment="true"/>
-      <plugin id="org.eclipse.persistence.oracle.nosql" fragment="true"/>
-      <plugin id="org.eclipse.text"/>
-      <plugin id="org.eclipse.xsd"/>
-      <plugin id="org.eclipse.xtend.lib"/>
-      <plugin id="org.eclipse.xtend.lib.macro"/>
-      <plugin id="org.eclipse.xtext"/>
-      <plugin id="org.eclipse.xtext.common.types"/>
-      <plugin id="org.eclipse.xtext.logging" fragment="true"/>
-      <plugin id="org.eclipse.xtext.util"/>
-      <plugin id="org.eclipse.xtext.xbase"/>
-      <plugin id="org.eclipse.xtext.xbase.lib"/>
-      <plugin id="org.json"/>
-      <plugin id="org.jsoup"/>
-      <plugin id="org.lunifera.dsl.common.xtext"/>
-      <plugin id="org.lunifera.dsl.datatype.lib"/>
-      <plugin id="org.lunifera.dsl.datatype.xtext"/>
-      <plugin id="org.lunifera.dsl.dto.lib"/>
-      <plugin id="org.lunifera.dsl.dto.xtext"/>
-      <plugin id="org.lunifera.dsl.entity.xtext"/>
-      <plugin id="org.lunifera.dsl.semantic.common"/>
-      <plugin id="org.lunifera.dsl.semantic.dto"/>
-      <plugin id="org.lunifera.dsl.semantic.entity"/>
-      <plugin id="org.lunifera.dsl.semantic.service"/>
-      <plugin id="org.lunifera.dsl.services.xtext"/>
-      <plugin id="org.lunifera.dsl.xtext.lazyresolver"/>
-      <plugin id="org.lunifera.dsl.xtext.lazyresolver.api"/>
-      <plugin id="org.lunifera.ecview.core.common"/>
-      <plugin id="org.lunifera.ecview.core.common.editparts.emf"/>
-      <plugin id="org.lunifera.ecview.core.common.model"/>
-      <plugin id="org.lunifera.ecview.core.databinding.beans"/>
-      <plugin id="org.lunifera.ecview.core.databinding.emf"/>
-      <plugin id="org.lunifera.ecview.core.extension.editparts"/>
-      <plugin id="org.lunifera.ecview.core.extension.editparts.emf"/>
-      <plugin id="org.lunifera.ecview.core.extension.model"/>
-      <plugin id="org.lunifera.ecview.core.ui.presentation.common"/>
-      <plugin id="org.lunifera.ecview.core.util.emf"/>
-      <plugin id="org.lunifera.ecview.dsl"/>
-      <plugin id="org.lunifera.ecview.dsl.lib"/>
-      <plugin id="org.lunifera.ecview.jetty.manager"/>
-      <plugin id="org.lunifera.ecview.semantic.uimodel"/>
-      <plugin id="org.lunifera.ecview.semantic.uisemantics"/>
-      <plugin id="org.lunifera.ecview.uisemantics"/>
-      <plugin id="org.lunifera.ecview.vaadin.servlet.mobile"/>
-      <plugin id="org.lunifera.ecview.xtext.builder.participant"/>
-      <plugin id="org.lunifera.ecview.xtext.builder.participant.i18n"/>
-      <plugin id="org.lunifera.mobile.vaadin.ecview.editparts"/>
-      <plugin id="org.lunifera.mobile.vaadin.ecview.editparts.emf"/>
-      <plugin id="org.lunifera.mobile.vaadin.ecview.model"/>
-      <plugin id="org.lunifera.mobile.vaadin.ecview.presentation"/>
-      <plugin id="org.lunifera.mobile.vaadin.touchkit.osgi"/>
-      <plugin id="org.lunifera.mobile.vaadin.widgetset"/>
-      <plugin id="org.lunifera.runtime.common"/>
-      <plugin id="org.lunifera.runtime.event"/>
-      <plugin id="org.lunifera.runtime.web.atmosphere.fragment" fragment="true"/>
-      <plugin id="org.lunifera.runtime.web.common"/>
-      <plugin id="org.lunifera.runtime.web.ecview.presentation.vaadin"/>
-      <plugin id="org.lunifera.runtime.web.vaadin.common"/>
-      <plugin id="org.lunifera.runtime.web.vaadin.components"/>
-      <plugin id="org.lunifera.runtime.web.vaadin.databinding"/>
-      <plugin id="org.lunifera.samples.carstore.bootstrap"/>
-      <plugin id="org.lunifera.samples.carstore.dtos"/>
-      <plugin id="org.lunifera.samples.carstore.entities"/>
-      <plugin id="org.lunifera.samples.carstore.ui.application"/>
-      <plugin id="org.lunifera.samples.carstore.ui.mobile"/>
-      <plugin id="org.lunifera.vaaclipse.addons.application"/>
-      <plugin id="org.lunifera.vaaclipse.addons.common"/>
-      <plugin id="org.lunifera.vaaclipse.addons.common.api"/>
-      <plugin id="org.lunifera.vaaclipse.addons.ecview"/>
-      <plugin id="org.lunifera.vaaclipse.app"/>
-      <plugin id="org.lunifera.vaaclipse.ui.preferences.addon"/>
-      <plugin id="org.lunifera.vaaclipse.ui.preferences.model"/>
-      <plugin id="org.lunifera.xtext.builder.metadata.services"/>
-      <plugin id="org.lunifera.xtext.builder.types.bundles"/>
-      <plugin id="org.lunifera.xtext.builder.types.loader.api"/>
-      <plugin id="org.lunifera.xtext.builder.types.loader.runtime"/>
-      <plugin id="org.lunifera.xtext.builder.xbase.setups"/>
-      <plugin id="org.objectweb.asm"/>
-      <plugin id="org.semanticsoft.commons"/>
-      <plugin id="org.semanticsoft.e4.injector.objectsuppliers"/>
-      <plugin id="org.semanticsoft.e4extension"/>
-      <plugin id="org.semanticsoft.e4modelextension"/>
-      <plugin id="org.semanticsoft.vaaclipse.additions"/>
-      <plugin id="org.semanticsoft.vaaclipse.api"/>
-      <plugin id="org.semanticsoft.vaaclipse.behaviour"/>
-      <plugin id="org.semanticsoft.vaaclipse.contributions"/>
-      <plugin id="org.semanticsoft.vaaclipse.presentation"/>
-      <plugin id="org.semanticsoft.vaaclipse.publicapi"/>
-      <plugin id="org.semanticsoft.vaaclipse.resources" fragment="true"/>
-      <plugin id="org.semanticsoft.vaaclipse.theme"/>
-      <plugin id="org.semanticsoft.vaaclipse.util"/>
-      <plugin id="org.semanticsoft.vaaclipse.vaadin.addon.contextmenu"/>
-      <plugin id="org.semanticsoft.vaaclipse.vaadin.addon.dndlayout"/>
-      <plugin id="org.semanticsoft.vaaclipse.widgets"/>
-      <plugin id="org.semanticsoft.vaaclipse.widgetset.default"/>
-      <plugin id="org.semanticsoft.vaadin"/>
-      <plugin id="org.slf4j.api"/>
-      <plugin id="org.w3c.css.sac"/>
-      <plugin id="org.w3c.dom.events"/>
-      <plugin id="org.w3c.dom.smil"/>
-      <plugin id="org.w3c.dom.svg"/>
-      <plugin id="org.w3c.flute"/>
-      <plugin id="osgi.enterprise"/>
    </plugins>
 
-   <configurations>
-      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="0" />
-      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
-      <plugin id="org.eclipse.equinox.coordinator" autoStart="true" startLevel="0" />
-      <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="1" />
-      <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="0" />
-      <plugin id="org.eclipse.gemini.dbaccess.derby" autoStart="true" startLevel="2" />
-      <plugin id="org.eclipse.gemini.jpa" autoStart="true" startLevel="3" />
-      <plugin id="org.eclipse.osgi" autoStart="true" startLevel="-1" />
-      <plugin id="org.lunifera.ecview.jetty.manager" autoStart="true" startLevel="0" />
-      <plugin id="org.lunifera.samples.carstore.entities" autoStart="true" startLevel="2" />
-      <plugin id="org.lunifera.xtext.builder.metadata.services" autoStart="true" startLevel="0" />
-   </configurations>
+   <features>
+      <feature id="org.lunifera.idesdk.feature.runtimeonly.allinone" version="0.9.1.qualifier"/>
+      <feature id="org.lunifera.samples.carstore.feature" version="0.9.1.qualifier"/>
+      <feature id="org.lunifera.ecview.feature.runtime"/>
+      <feature id="org.eclipse.xtext.xbase"/>
+      <feature id="org.eclipse.xtext.xbase.lib"/>
+      <feature id="org.lunifera.xtext.builder.feature.runtime"/>
+      <feature id="org.lunifera.ecview.feature.runtimeonly"/>
+   </features>
+
 
 </product>
