@@ -36,5 +36,18 @@
       <feature id="org.lunifera.ecview.feature.runtimeonly"/>
    </features>
 
+   <configurations>
+      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.coordinator" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="1" />
+      <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.gemini.dbaccess.derby" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.gemini.jpa" autoStart="true" startLevel="3" />
+      <plugin id="org.eclipse.osgi" autoStart="true" startLevel="-1" />
+      <plugin id="org.lunifera.ecview.jetty.manager" autoStart="true" startLevel="0" />
+      <plugin id="org.lunifera.samples.carstore.entities" autoStart="true" startLevel="2" />
+      <plugin id="org.lunifera.xtext.builder.metadata.services" autoStart="true" startLevel="0" />
+   </configurations>
 
 </product>
