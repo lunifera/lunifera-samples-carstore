@@ -30,6 +30,11 @@
 							<id>org.eclipse.emf.mwe2.launch</id>
 							<removeAll />
 						</filter>
+						<filter>
+							<type>eclipse-plugin</type>
+							<id>org.eclipse.ui</id>
+							<removeAll />
+						</filter>
 					</filters>
 				</configuration>
 			</plugin>
