@@ -29,13 +29,13 @@
    </plugins>
 
    <features>
-      <feature id="org.lunifera.idesdk.feature.runtimeonly.allinone" version="0.9.1.qualifier"/>
-      <feature id="org.lunifera.samples.carstore.feature" version="0.9.1.qualifier"/>
-      <feature id="org.lunifera.ecview.feature.runtime"/>
-      <feature id="org.eclipse.xtext.xbase"/>
-      <feature id="org.eclipse.xtext.xbase.lib"/>
-      <feature id="org.lunifera.xtext.builder.feature.runtime"/>
-      <feature id="org.lunifera.ecview.feature.runtimeonly"/>
+      <feature id="org.lunifera.idesdk.feature.runtimeonly.allinone" version="0.9.1"/>
+      <feature id="org.lunifera.samples.carstore.feature" version="0.9.1"/>
+      <feature id="org.lunifera.ecview.feature.runtime" version="0.9.1"/>
+      <feature id="org.eclipse.xtext.xbase" version="2.7.3"/>
+      <feature id="org.eclipse.xtext.xbase.lib" version="2.7.3"/>
+      <feature id="org.lunifera.xtext.builder.feature.runtime" version="0.9.1"/>
+      <feature id="org.lunifera.ecview.feature.runtimeonly" version="0.9.1"/>
    </features>
 
 
