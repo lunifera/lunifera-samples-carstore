@@ -60,14 +60,21 @@
 			<layout>p2</layout>
 		</repository>
 	</repositories>
-	
-	
+
+
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>
 				<configuration>
+					<filters>
+						<filter>
+							<type>eclipse-plugin</type>
+							<id>org.eclipse.emf.mwe2.launch</id>
+							<removeAll />
+						</filter>
+					</filters>
 					<resolver>p2</resolver>
 					<pomDependencies>consider</pomDependencies>
 					<environments>
@@ -156,5 +163,5 @@
 			</build>
 		</profile>
 	</profiles>
-	
+
 </project>
