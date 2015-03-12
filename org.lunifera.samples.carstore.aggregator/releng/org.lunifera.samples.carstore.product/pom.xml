@@ -35,6 +35,13 @@
 							<id>org.eclipse.ui</id>
 							<removeAll />
 						</filter>
+						<filter>
+							<type>eclipse-plugin</type>
+							<id>org.eclipse.e4.core.services</id>
+							<restrictTo>
+								<versionRange>[1.2.0,2.0.0)</versionRange>
+							</restrictTo>
+						</filter>
 					</filters>
 				</configuration>
 			</plugin>
