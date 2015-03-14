@@ -35,7 +35,7 @@ ideview CarTableView {
 			
 		} align fill-fill
 	} align fill-fill
-	
-	bind [CarTableView.applyFilter].click --> [CarTableView.SearchPanel].applyFilter
+
+	bind [CarTableView.applyFilter].onExecuted --> [CarTableView.SearchPanel].applyFilter
 	bind [CarTableView.SearchPanel].filter --> [CarTableView.DataTable].filter
 }

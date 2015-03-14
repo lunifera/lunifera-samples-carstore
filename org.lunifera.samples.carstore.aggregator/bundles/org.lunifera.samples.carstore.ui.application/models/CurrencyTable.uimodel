@@ -33,6 +33,6 @@ ideview CurrencyTableView {
 	align fill-fill
 
 	bind tableRefresh --> [this.DataTable].refresh
-	bind [this.applyFilter].click --> [this.SearchPanel].applyFilter
+	bind [this.applyFilter].onExecuted --> [this.SearchPanel].applyFilter
 	bind [this.SearchPanel].filter --> [this.DataTable].filter
 }

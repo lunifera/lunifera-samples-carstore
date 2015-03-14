@@ -11,7 +11,7 @@
 		 
 		dirty boolean ^dirty;
 	}
-  
+
 	abstract autoDto NumberedWithDescriptionDto extends BaseDto wraps NumberedWithDescription {
 		inherit var number;
 		inherit var description;
