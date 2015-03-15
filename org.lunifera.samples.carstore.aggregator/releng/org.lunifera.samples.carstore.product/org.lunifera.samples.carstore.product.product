@@ -48,6 +48,7 @@
       <plugin id="org.lunifera.ecview.jetty.manager" autoStart="true" startLevel="0" />
       <plugin id="org.lunifera.samples.carstore.entities" autoStart="true" startLevel="2" />
       <plugin id="org.lunifera.xtext.builder.metadata.services" autoStart="true" startLevel="0" />
+      <plugin id="org.lunifera.samples.carstore.bootstrap" autoStart="true" startLevel="0" />
    </configurations>
 
 </product>
