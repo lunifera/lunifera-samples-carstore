@@ -4,6 +4,8 @@ ideview CurrencyTableView {
 	sharedStateGroup "org.lunifera.samples.carstore.general" exposedActions {
 		applyFilter id org.lunifera.actions.applyFilter
 	}
+	
+	category org.lunifera.vaaclipse.addons.application.partstack.materdetail.master
 
 	datasource tableRefresh:Object
 	eventTopic "org/lunifera/samples/carstore/CurrencyDto/table/refresh"

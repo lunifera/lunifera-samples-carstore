@@ -11,14 +11,41 @@ ideview UomDetails {
 		newEntity id org.lunifera.actions.addNew checkDirty
 		validateEntity id org.lunifera.actions.validate
 	}
+	
+	category org.lunifera.vaaclipse.addons.application.partstack.main
 
 	datasource main:org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto eventTopic "org/lunifera/samples/carstore/UnitOfMeasureDto/selection"
 
 	horizontalLayout Detail {
 		autowire source main
 	} align fill-fill
-
-	bind main.dirty --> [this.saveEntity].enabled
+	visibility UomActions {
+		fireOn main as main
+		fireOn main.dirty as dirty
+		ui [this.reloadEntity] as reloadAction
+		ui [this.deleteEntity] as deleteAction
+		ui [this.saveEntity] as saveAction
+		ui [this.validateEntity] as validateAction
+		ui [this.Detail] as mainLayout
+		{
+			mainLayout.enabled = true
+			reloadAction.enabled = false
+			deleteAction.enabled = false
+			saveAction.enabled = false
+			validateAction.enabled = false
+			if(main != null){
+				if(dirty){
+					reloadAction.enabled = true
+					saveAction.enabled = true
+				}
+				deleteAction.enabled = true
+				validateAction.enabled = true
+			} else {
+				mainLayout.enabled = false
+			}
+		}
+	}
+	
 	bind [this.saveEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/UnitOfMeasureDto/table/refresh")
 	bind [this.deleteEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/UnitOfMeasureDto/table/refresh")
 	bind [this.deleteEntity].onExecuted --> [this.newEntity].click

@@ -1,22 +1,22 @@
 package org.lunifera.samples.carstore.views.general
 
 ideview CarDetails {
-	sharedStateGroup "org.lunifera.samples.carstore.general"
-	
-	exposedActions {
-		reloadEntity id org.lunifera.actions.load 
+	sharedStateGroup "org.lunifera.samples.carstore.general" exposedActions {
+		reloadEntity id org.lunifera.actions.load
 		deleteEntity id org.lunifera.actions.delete
 		saveEntity id org.lunifera.actions.save
 		validateEntity id org.lunifera.actions.validate
 		newCar id "org.lunifera.actions.new.car" checkDirty
 		newPickup id "org.lunifera.actions.new.pickup" checkDirty
 		newConvertible id "org.lunifera.actions.new.convertible" checkDirty
-		somethingMagic id "org.lunifera.actions.somethingmagic" checkDirty externalCommand "org.lunifera.vaaclipse.addons.application.command.openBrowser"
 	}
 
-	datasource main:org.lunifera.samples.carstore.dtos.general.CarDto eventTopic "org/lunifera/samples/carstore/CarDto/selection"
- 
-	verticalLayout {
+//	category org.lunifera.vaaclipse.addons.application.partstack.main
+
+	datasource main:org.lunifera.samples.carstore.dtos.general.CarDto
+	eventTopic "org/lunifera/samples/carstore/CarDto/selection"
+
+	verticalLayout mainView {
 		horizontalLayout {
 			form Detail_left {
 				textfield number
@@ -28,20 +28,19 @@ ideview CarDetails {
 				bind main.axes <--> [this.axes].value
 				bind main.weight.amount <--> [this.weightAmount].value
 				bind main.price.amount <--> [this.priceAmount].value
-			} align top-left 
-			
+			}
+			align top-left 
+			 
 			form Detail_right {
 				textfield description
 				checkbox(readonly) dirty
 				referenceField weightUom {
 					type org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto
-					captionField description 
-					refSource org.lunifera.samples.carstore.dtos.general.CarDto:weight
+					captionField description refSource org.lunifera.samples.carstore.dtos.general.CarDto:weight
 				}
 				referenceField priceCurrency {
 					type org.lunifera.samples.carstore.dtos.general.CurrencyDto
-					captionField iso3Code 
-					refSource org.lunifera.samples.carstore.dtos.general.CarDto:price
+					captionField iso3Code refSource org.lunifera.samples.carstore.dtos.general.CarDto:price
 				}
 
 				bind main.description <--> [this.description].value
@@ -49,8 +48,29 @@ ideview CarDetails {
 				bind main.weight.uom <--> [this.weightUom].value
 				bind main.price.currency <--> [this.priceCurrency].value
 			}
-			align top-left
 		}
+		align top-left
+		
+//		horizontalLayout ConvertibleForm {
+//			form ConvertibleForm_left {
+//				decimalField loadingAreaWidth
+//			}
+//			align top-left 
+//			form ConvertibleForm_right {
+//				decimalField loadingAreaLength
+//			}
+//		} align top-left
+//		
+//		horizontalLayout PickupForm {
+//			form PickupForm_left {
+//				optionsgroup roofType
+//			}
+//			align top-left 
+//			form PickupForm_right {
+//				textfield color
+//			}
+//		} align top-left
+		
 		table configDetails {
 			type org.lunifera.samples.carstore.dtos.general.ConfigDetailDefinitionDto
 
@@ -60,12 +80,53 @@ ideview CarDetails {
 				column price.amount
 				column price.currency.iso3Code
 			}
-
 			bind main.configDetails <--> [this].collection
 		}
+	} visibility CarActions { 
+		fireOn main as main
+		fireOn main.dirty as dirty
+		ui [this.reloadEntity] as reloadAction
+		ui [this.deleteEntity] as deleteAction
+		ui [this.saveEntity] as saveAction
+		ui [this.validateEntity] as validateAction
+		ui [this.mainView] as mainLayout
+		{
+			mainLayout.enabled = true
+			reloadAction.enabled = false
+			deleteAction.enabled = false
+			saveAction.enabled = false
+			validateAction.enabled = false
+			if(main != null){
+				if(dirty){
+					reloadAction.enabled = true
+					saveAction.enabled = true
+				}
+				deleteAction.enabled = true
+				validateAction.enabled = true
+			} else {
+				mainLayout.enabled = false
+			}
+		}
 	}
+	 
+//	visibility CarSpecifics {
+//		fireOn main as main
+//		ui [this.PickupForm] as pickupForm
+//		ui [this.ConvertibleForm] as convertibleForm
+//		
+//		{
+//			pickupForm.visible = false
+//			convertibleForm.visible = false
+//			
+//			if(main instanceof org.lunifera.samples.carstore.dtos.general.PickupDto){
+//				pickupForm.visible = true
+//			}
+//			if(main instanceof org.lunifera.samples.carstore.dtos.general.ConvertibleDto){
+//				convertibleForm.visible = true
+//			}
+//		}
+//	}
 
-	bind main.dirty --> [this.saveEntity].enabled
 	bind [this.saveEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/CarDto/table/refresh")
 	bind [this.deleteEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/CarDto/table/refresh")
 	bind [this.deleteEntity].onExecuted --> [this.newCar].click
@@ -74,6 +135,6 @@ ideview CarDetails {
 	// new cars
 	bind [this.newCar].onExecuted --> newInstance for org.lunifera.samples.carstore.dtos.general.CarDto at main
 	bind [this.newPickup].onExecuted --> newInstance for org.lunifera.samples.carstore.dtos.general.PickupDto at main
-	bind [this.newConvertible].onExecuted --> newInstance for
-	org.lunifera.samples.carstore.dtos.general.ConvertibleDto at main
+	bind [this.newConvertible].onExecuted --> newInstance for org.lunifera.samples.carstore.dtos.general.ConvertibleDto at
+	main
 }

@@ -12,13 +12,40 @@ ideview CurrencyDetails {
 		validateEntity id org.lunifera.actions.validate
 	}
 
+	category org.lunifera.vaaclipse.addons.application.partstack.main
+
 	datasource main:org.lunifera.samples.carstore.dtos.general.CurrencyDto eventTopic "org/lunifera/samples/carstore/CurrencyDto/selection"
 
 	horizontalLayout Detail {
 		autowire source main
-	} align fill-fill
+	} align fill-fill 
+	 visibility CurrencyActions {
+		fireOn main as main
+		fireOn main.dirty as dirty
+		ui [this.reloadEntity] as reloadAction
+		ui [this.deleteEntity] as deleteAction
+		ui [this.saveEntity] as saveAction
+		ui [this.validateEntity] as validateAction
+		ui [this.Detail] as mainLayout
+		{
+			mainLayout.enabled = true
+			reloadAction.enabled = false
+			deleteAction.enabled = false
+			saveAction.enabled = false
+			validateAction.enabled = false
+			if(main != null){
+				if(dirty){
+					reloadAction.enabled = true
+					saveAction.enabled = true
+				}
+				deleteAction.enabled = true
+				validateAction.enabled = true
+			} else {
+				mainLayout.enabled = false
+			}
+		}
+	}
 
-	bind main.dirty --> [this.saveEntity].enabled
 	bind [this.saveEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/CurrencyDto/table/refresh")
 	bind [this.deleteEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/CurrencyDto/table/refresh")
 	bind [this.deleteEntity].onExecuted --> [this.newEntity].click

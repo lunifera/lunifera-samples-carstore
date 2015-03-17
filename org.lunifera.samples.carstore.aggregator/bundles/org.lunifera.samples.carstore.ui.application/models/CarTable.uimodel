@@ -7,6 +7,8 @@ ideview CarTableView {
 	exposedActions {
 		applyFilter id org.lunifera.actions.applyFilter
 	}
+	
+	category org.lunifera.vaaclipse.addons.application.partstack.materdetail.master
 
 	datasource tableRefresh:Object eventTopic "org/lunifera/samples/carstore/CarDto/table/refresh"
 
@@ -34,7 +36,7 @@ ideview CarTableView {
 			bind tableRefresh --> [this].refresh
 			
 		} align fill-fill
-	} align fill-fill
+	} align fill-fill 
 
 	bind [CarTableView.applyFilter].onExecuted --> [CarTableView.SearchPanel].applyFilter
 	bind [CarTableView.SearchPanel].filter --> [CarTableView.DataTable].filter

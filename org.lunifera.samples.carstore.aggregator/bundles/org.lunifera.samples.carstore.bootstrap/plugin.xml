@@ -30,7 +30,6 @@
                name="cssTheme"
                value="reindeer">
          </property>
-         
          <property
                name="applicationHeaderIcon"
                value="org.lunifera.samples.carstore.bootstrap/images/16x16_Carstore.png">
