@@ -1,7 +1,9 @@
 package org.lunifera.samples.carstore.views.general
 
 ideview CarDetails {
-	sharedStateGroup "org.lunifera.samples.carstore.general" exposedActions {
+	sharedStateGroup "org.lunifera.samples.carstore.general" 
+	
+	exposedActions {
 		reloadEntity id org.lunifera.actions.load
 		deleteEntity id org.lunifera.actions.delete
 		saveEntity id org.lunifera.actions.save
@@ -10,8 +12,7 @@ ideview CarDetails {
 		newPickup id "org.lunifera.actions.new.pickup" checkDirty
 		newConvertible id "org.lunifera.actions.new.convertible" checkDirty
 	}
-
-//	category org.lunifera.vaaclipse.addons.application.partstack.main
+	category org.lunifera.vaaclipse.addons.application.partstack.main
 
 	datasource main:org.lunifera.samples.carstore.dtos.general.CarDto
 	eventTopic "org/lunifera/samples/carstore/CarDto/selection"
@@ -29,9 +30,7 @@ ideview CarDetails {
 				bind main.weight.amount <--> [this.weightAmount].value
 				bind main.price.amount <--> [this.priceAmount].value
 			}
-			align top-left 
-			 
-			form Detail_right {
+			align top-left form Detail_right {
 				textfield description
 				checkbox(readonly) dirty
 				referenceField weightUom {
@@ -50,27 +49,27 @@ ideview CarDetails {
 			}
 		}
 		align top-left
-		
-//		horizontalLayout ConvertibleForm {
-//			form ConvertibleForm_left {
-//				decimalField loadingAreaWidth
-//			}
-//			align top-left 
-//			form ConvertibleForm_right {
-//				decimalField loadingAreaLength
-//			}
-//		} align top-left
-//		
-//		horizontalLayout PickupForm {
-//			form PickupForm_left {
-//				optionsgroup roofType
-//			}
-//			align top-left 
-//			form PickupForm_right {
-//				textfield color
-//			}
-//		} align top-left
-		
+
+		//		horizontalLayout ConvertibleForm {
+		//			form ConvertibleForm_left {
+		//				decimalField loadingAreaWidth
+		//			}
+		//			align top-left 
+		//			form ConvertibleForm_right {
+		//				decimalField loadingAreaLength
+		//			}
+		//		} align top-left
+		//		
+		//		horizontalLayout PickupForm {
+		//			form PickupForm_left {
+		//				optionsgroup roofType
+		//			}
+		//			align top-left 
+		//			form PickupForm_right {
+		//				textfield color
+		//			}
+		//		} align top-left
+
 		table configDetails {
 			type org.lunifera.samples.carstore.dtos.general.ConfigDetailDefinitionDto
 
@@ -82,50 +81,51 @@ ideview CarDetails {
 			}
 			bind main.configDetails <--> [this].collection
 		}
-	} visibility CarActions { 
+	}
+	visibility CarActions {
 		fireOn main as main
 		fireOn main.dirty as dirty
-		ui [this.reloadEntity] as reloadAction
-		ui [this.deleteEntity] as deleteAction
-		ui [this.saveEntity] as saveAction
-		ui [this.validateEntity] as validateAction
-		ui [this.mainView] as mainLayout
+		ui [this.reloadEntity] as reloadAction 
+		ui [this.deleteEntity] as deleteAction 
+		ui [this.saveEntity] as saveAction 
+		ui [this.validateEntity] as validateAction 
+		ui [this.mainView] as mainLayout 
 		{
-			mainLayout.enabled = true
-			reloadAction.enabled = false
-			deleteAction.enabled = false
+			mainLayout.enabled = true 
+			reloadAction.enabled = false 
+			deleteAction.enabled = false 
 			saveAction.enabled = false
-			validateAction.enabled = false
-			if(main != null){
-				if(dirty){
-					reloadAction.enabled = true
+			validateAction.enabled = false 
+			if(main != null) {
+				if(dirty) {
+					reloadAction.enabled = true 
 					saveAction.enabled = true
 				}
-				deleteAction.enabled = true
+				deleteAction.enabled = true 
 				validateAction.enabled = true
 			} else {
 				mainLayout.enabled = false
 			}
 		}
 	}
-	 
-//	visibility CarSpecifics {
-//		fireOn main as main
-//		ui [this.PickupForm] as pickupForm
-//		ui [this.ConvertibleForm] as convertibleForm
-//		
-//		{
-//			pickupForm.visible = false
-//			convertibleForm.visible = false
-//			
-//			if(main instanceof org.lunifera.samples.carstore.dtos.general.PickupDto){
-//				pickupForm.visible = true
-//			}
-//			if(main instanceof org.lunifera.samples.carstore.dtos.general.ConvertibleDto){
-//				convertibleForm.visible = true
-//			}
-//		}
-//	}
+
+	//	visibility CarSpecifics {
+	//		fireOn main as main
+	//		ui [this.PickupForm] as pickupForm
+	//		ui [this.ConvertibleForm] as convertibleForm
+	//		
+	//		{
+	//			pickupForm.visible = false
+	//			convertibleForm.visible = false
+	//			
+	//			if(main instanceof org.lunifera.samples.carstore.dtos.general.PickupDto){
+	//				pickupForm.visible = true
+	//			}
+	//			if(main instanceof org.lunifera.samples.carstore.dtos.general.ConvertibleDto){
+	//				convertibleForm.visible = true
+	//			}
+	//		}
+	//	}
 
 	bind [this.saveEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/CarDto/table/refresh")
 	bind [this.deleteEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/CarDto/table/refresh")
@@ -133,6 +133,7 @@ ideview CarDetails {
 	bind [this.reloadEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/CarDto/table/refresh")
 
 	// new cars
+
 	bind [this.newCar].onExecuted --> newInstance for org.lunifera.samples.carstore.dtos.general.CarDto at main
 	bind [this.newPickup].onExecuted --> newInstance for org.lunifera.samples.carstore.dtos.general.PickupDto at main
 	bind [this.newConvertible].onExecuted --> newInstance for org.lunifera.samples.carstore.dtos.general.ConvertibleDto at
