@@ -5,13 +5,13 @@ Bundle-Vendor: My Company
 Bundle-Version: 0.9.1.qualifier
 Bundle-SymbolicName: org.lunifera.samples.carstore.ui.application; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.lunifera.ecview.core.common;bundle-version="[0.9.1,0.10.0)",
+Require-Bundle: javax.persistence;bundle-version="2.1.0",
+ org.lunifera.ecview.core.common;bundle-version="[0.9.1,0.10.0)",
  org.lunifera.dsl.datatype.lib;bundle-version="[0.9.1,0.10.0)",
  org.lunifera.dsl.dto.lib;bundle-version="[0.9.1,0.10.0)",
  org.lunifera.ecview.dsl.lib;bundle-version="[0.9.1,0.10.0)",
  com.google.guava;bundle-version="15.0.0",
  org.eclipse.xtext.xbase.lib;bundle-version="[2.7.3,2.8.0)",
- javax.persistence;bundle-version="2.1.0",
  org.lunifera.runtime.common;bundle-version="[0.9.1,0.10.0)",
  org.lunifera.samples.carstore.dtos;bundle-version="[0.9.1,0.10.0)",
  org.eclipse.xtend.lib;bundle-version="[2.7.3,2.8.0)",

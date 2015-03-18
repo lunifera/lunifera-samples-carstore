@@ -16,6 +16,8 @@ ideview CarDetails {
 
 	datasource main:org.lunifera.samples.carstore.dtos.general.CarDto
 	eventTopic "org/lunifera/samples/carstore/CarDto/selection"
+	datasource pickup:org.lunifera.samples.carstore.dtos.general.PickupDto
+	datasource convertible:org.lunifera.samples.carstore.dtos.general.ConvertibleDto
 
 	verticalLayout mainView {
 		horizontalLayout {
@@ -50,25 +52,52 @@ ideview CarDetails {
 		}
 		align top-left
 
-		//		horizontalLayout ConvertibleForm {
-		//			form ConvertibleForm_left {
-		//				decimalField loadingAreaWidth
-		//			}
-		//			align top-left 
-		//			form ConvertibleForm_right {
-		//				decimalField loadingAreaLength
-		//			}
-		//		} align top-left
-		//		
-		//		horizontalLayout PickupForm {
-		//			form PickupForm_left {
-		//				optionsgroup roofType
-		//			}
-		//			align top-left 
-		//			form PickupForm_right {
-		//				textfield color
-		//			}
-		//		} align top-left
+		/**
+		 * Convertible
+		 */
+		horizontalLayout ConvertibleForm {
+			form ConvertibleForm_left {
+				optionsgroup roofType {
+					type org.lunifera.samples.carstore.dtos.general.RoofType
+				}
+				
+				bind convertible.roofType <--> [this.roofType].selection
+			} align top-left 
+			
+			form ConvertibleForm_right {
+				textfield color
+				
+				bind convertible.color <--> [this.color].value
+			}
+		} align top-left
+		
+		/**
+		 * Pickup
+		 */
+		horizontalLayout PickupForm {
+			form PickupForm_left {
+				decimalField loadingAreaWidthAmount
+				decimalField loadingAreaLengthAmount
+				 
+				bind pickup.loadingAreaWidth.amount <--> [this.loadingAreaWidthAmount].value
+				bind pickup.loadingAreaLength.amount <--> [this.loadingAreaLengthAmount].value
+			}
+			align top-left 
+			
+			form PickupForm_right {
+				referenceField loadingAreaWidthUom {
+					type org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto
+					captionField description refSource org.lunifera.samples.carstore.dtos.general.PickupDto:loadingAreaWidth
+				}
+				referenceField loadingAreaLengthUom {
+					type org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto
+					captionField description refSource org.lunifera.samples.carstore.dtos.general.PickupDto:loadingAreaLength
+				}
+				
+				bind pickup.loadingAreaWidth.uom <--> [this.loadingAreaWidthUom].value
+				bind pickup.loadingAreaLength.uom <--> [this.loadingAreaWidthUom].value
+			}
+		} align top-left
 
 		table configDetails {
 			type org.lunifera.samples.carstore.dtos.general.ConfigDetailDefinitionDto
@@ -82,6 +111,7 @@ ideview CarDetails {
 			bind main.configDetails <--> [this].collection
 		}
 	}
+
 	visibility CarActions {
 		fireOn main as main
 		fireOn main.dirty as dirty
@@ -90,6 +120,7 @@ ideview CarDetails {
 		ui [this.saveEntity] as saveAction 
 		ui [this.validateEntity] as validateAction 
 		ui [this.mainView] as mainLayout 
+
 		{
 			mainLayout.enabled = true 
 			reloadAction.enabled = false 
@@ -109,23 +140,27 @@ ideview CarDetails {
 		}
 	}
 
-	//	visibility CarSpecifics {
-	//		fireOn main as main
-	//		ui [this.PickupForm] as pickupForm
-	//		ui [this.ConvertibleForm] as convertibleForm
-	//		
-	//		{
-	//			pickupForm.visible = false
-	//			convertibleForm.visible = false
-	//			
-	//			if(main instanceof org.lunifera.samples.carstore.dtos.general.PickupDto){
-	//				pickupForm.visible = true
-	//			}
-	//			if(main instanceof org.lunifera.samples.carstore.dtos.general.ConvertibleDto){
-	//				convertibleForm.visible = true
-	//			}
-	//		}
-	//	}
+	visibility CarSpecifics {
+		fireOn main as main
+		ui [CarDetails.mainView.PickupForm] as pickupForm
+		ui [CarDetails.mainView.ConvertibleForm] as convertibleForm
+		
+		{
+			pickupForm.visible = false
+			convertibleForm.visible = false
+			
+			if(main instanceof org.lunifera.samples.carstore.dtos.general.PickupDto){
+				pickupForm.visible = true
+			}
+			if(main instanceof org.lunifera.samples.carstore.dtos.general.ConvertibleDto){
+				convertibleForm.visible = true
+			}
+		}
+	}
+
+	// bind datasources for subclasses
+	bind main <--> pickup
+	bind main <--> convertible
 
 	bind [this.saveEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/CarDto/table/refresh")
 	bind [this.deleteEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/CarDto/table/refresh")
