@@ -22,6 +22,7 @@
 
 	<modules>
 		<module>bundles/org.lunifera.samples.carstore.bootstrap</module>
+		<module>bundles/org.lunifera.samples.carstore.api</module>
 		<module>bundles/org.lunifera.samples.carstore.dtos</module>
 		<module>bundles/org.lunifera.samples.carstore.entities</module>
 		<module>bundles/org.lunifera.samples.carstore.tests</module>

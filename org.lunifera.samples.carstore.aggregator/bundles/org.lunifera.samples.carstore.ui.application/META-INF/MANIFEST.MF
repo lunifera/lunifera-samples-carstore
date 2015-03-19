@@ -7,9 +7,10 @@ Bundle-SymbolicName: org.lunifera.samples.carstore.ui.application; singleton:=tr
 Bundle-ActivationPolicy: lazy
 Require-Bundle: javax.persistence;bundle-version="2.1.0",
  org.lunifera.ecview.core.common;bundle-version="[0.9.1,0.10.0)",
+ org.lunifera.samples.carstore.api;bundle-version="0.9.1",
+ org.lunifera.ecview.dsl.lib;bundle-version="[0.9.1,0.10.0)",
  org.lunifera.dsl.datatype.lib;bundle-version="[0.9.1,0.10.0)",
  org.lunifera.dsl.dto.lib;bundle-version="[0.9.1,0.10.0)",
- org.lunifera.ecview.dsl.lib;bundle-version="[0.9.1,0.10.0)",
  com.google.guava;bundle-version="15.0.0",
  org.eclipse.xtext.xbase.lib;bundle-version="[2.7.3,2.8.0)",
  org.lunifera.runtime.common;bundle-version="[0.9.1,0.10.0)",
