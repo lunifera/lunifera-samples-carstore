@@ -1,5 +1,8 @@
 package org.lunifera.samples.carstore.views.general 
 	
 ideview CustomerView {
-	label sample
-}	
+	
+	horizontalLayout {
+		textfield huhu
+	}
+}
