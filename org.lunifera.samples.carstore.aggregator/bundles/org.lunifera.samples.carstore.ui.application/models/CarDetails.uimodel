@@ -27,8 +27,8 @@ ideview CarDetails {
 					MaxLengthValidator(10)
 				}
 				numericField axes
-				decimalField weightAmount
-				decimalField priceAmount
+				decimalField (i18n "org.lunifera.samples.carstore.dtos.general.CarDto.weight") weightAmount
+				decimalField (i18n "org.lunifera.samples.carstore.dtos.general.CarDto.price") priceAmount
 
 				bind main.number <--> [this.number].value
 				bind main.axes <--> [this.axes].value
@@ -38,16 +38,18 @@ ideview CarDetails {
 			align top-left form Detail_right {
 				textfield description {
 					MinLengthValidator(3)
-					MaxLengthValidator(25)
+					MaxLengthValidator(125)
 				}
 				checkbox(readonly) dirty
 				referenceField weightUom {
 					type org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto
-					captionField description refSource org.lunifera.samples.carstore.dtos.general.CarDto:weight
+					captionField description 
+					refSource org.lunifera.samples.carstore.dtos.general.WeightDto:uom
 				}
 				referenceField priceCurrency {
 					type org.lunifera.samples.carstore.dtos.general.CurrencyDto
-					captionField iso3Code refSource org.lunifera.samples.carstore.dtos.general.CarDto:price
+					captionField iso3Code 
+					refSource org.lunifera.samples.carstore.dtos.general.PriceDto:currency
 				}
 
 				bind main.description <--> [this.description].value
@@ -82,9 +84,9 @@ ideview CarDetails {
 		 */
 		horizontalLayout PickupForm {
 			form PickupForm_left {
-				decimalField loadingAreaWidthAmount
-				decimalField loadingAreaLengthAmount
-				 
+				decimalField  (i18n "org.lunifera.samples.carstore.dtos.general.PickupDto.loadingAreaWidth") loadingAreaWidthAmount
+				decimalField  (i18n "org.lunifera.samples.carstore.dtos.general.PickupDto.loadingAreaLength") loadingAreaLengthAmount
+
 				bind pickup.loadingAreaWidth.amount <--> [this.loadingAreaWidthAmount].value
 				bind pickup.loadingAreaLength.amount <--> [this.loadingAreaLengthAmount].value
 			}
@@ -93,15 +95,17 @@ ideview CarDetails {
 			form PickupForm_right {
 				referenceField loadingAreaWidthUom {
 					type org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto
-					captionField description refSource org.lunifera.samples.carstore.dtos.general.PickupDto:loadingAreaWidth
+					captionField description 
+					refSource org.lunifera.samples.carstore.dtos.general.LengthDto:uom
 				}
 				referenceField loadingAreaLengthUom {
 					type org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto
-					captionField description refSource org.lunifera.samples.carstore.dtos.general.PickupDto:loadingAreaLength
+					captionField description 
+					refSource org.lunifera.samples.carstore.dtos.general.LengthDto:uom
 				}
 				
 				bind pickup.loadingAreaWidth.uom <--> [this.loadingAreaWidthUom].value
-				bind pickup.loadingAreaLength.uom <--> [this.loadingAreaWidthUom].value
+				bind pickup.loadingAreaLength.uom <--> [this.loadingAreaLengthUom].value
 			}
 		} align top-left
 
@@ -145,7 +149,7 @@ ideview CarDetails {
 			}
 		}
 	}
-
+ 
 	visibility CarSpecifics {
 		fireOn main as main
 		ui [CarDetails.mainView.PickupForm] as pickupForm
@@ -165,8 +169,8 @@ ideview CarDetails {
 	}
 
 	// bind datasources for subclasses
-	bind main <--> pickup
-	bind main <--> convertible
+	bind main --> convertible
+	bind main --> pickup
 
 	bind [this.saveEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/CarDto/table/refresh")
 	bind [this.deleteEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/CarDto/table/refresh")
