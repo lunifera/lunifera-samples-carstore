@@ -29,7 +29,7 @@ ideview CarDetails {
 				numericField axes
 				decimalField (i18n "org.lunifera.samples.carstore.dtos.general.CarDto.weight") weightAmount
 				decimalField (i18n "org.lunifera.samples.carstore.dtos.general.CarDto.price") priceAmount
-
+  
 				bind main.number <--> [this.number].value
 				bind main.axes <--> [this.axes].value
 				bind main.weight.amount <--> [this.weightAmount].value

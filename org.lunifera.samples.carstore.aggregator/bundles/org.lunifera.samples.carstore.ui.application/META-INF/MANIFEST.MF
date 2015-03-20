@@ -29,3 +29,4 @@ Import-Package: org.eclipse.e4.core.services.events,
  org.slf4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Lun-ECView-I18nProvider: 
+Lun-RuntimeBuilder-BundleSpace: 
