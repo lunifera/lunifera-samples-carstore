@@ -15,7 +15,7 @@ ideview UomDetails {
 	category org.lunifera.vaaclipse.addons.application.partstack.main
 
 	datasource main:org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto eventTopic "org/lunifera/samples/carstore/UnitOfMeasureDto/selection"
-
+ 
 	horizontalLayout Detail {
 		autowire source main
 	} align fill-fill

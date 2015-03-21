@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:YView xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://lunifera.org/ecview/v1/core/view" xmlns:extension="http://lunifera.org/ecview/v1/extension/view" name="org.lunifera.samples.carstore.views.sales.invoice.InvoiceView" viewName="org.lunifera.samples.carstore.views.sales.invoice.InvoiceView" contentAlignment="UNDEFINED">
+  <content xsi:type="extension:YLabel" id="InvoiceView.sample" name="sample" datadescription="//@content/@orphanDatadescriptions.0">
+    <orphanDatadescriptions label="sample" labelI18nKey="org.lunifera.samples.carstore.views.sales.invoice.sample"/>
+  </content>
+</core:YView>

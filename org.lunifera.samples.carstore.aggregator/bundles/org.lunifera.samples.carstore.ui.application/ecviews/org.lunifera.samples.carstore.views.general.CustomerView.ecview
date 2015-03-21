@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:YView xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://lunifera.org/ecview/v1/core/view" xmlns:datatypes="http://lunifera.org/ecview/v1/extension/datatypes" xmlns:extension="http://lunifera.org/ecview/v1/extension/view" name="org.lunifera.samples.carstore.views.general.CustomerView" viewName="org.lunifera.samples.carstore.views.general.CustomerView" contentAlignment="UNDEFINED">
+  <content xsi:type="extension:YHorizontalLayout">
+    <elements xsi:type="extension:YTextField" id="CustomerView.huhu" name="huhu" datatype="//@content/@elements.0/@orphanDatatypes.0" datadescription="//@content/@elements.0/@orphanDatadescriptions.0">
+      <orphanDatatypes xsi:type="datatypes:YTextDatatype" maxLength="-1" minLength="-1"/>
+      <orphanDatadescriptions label="huhu" labelI18nKey="org.lunifera.samples.carstore.views.general.huhu"/>
+    </elements>
+  </content>
+</core:YView>

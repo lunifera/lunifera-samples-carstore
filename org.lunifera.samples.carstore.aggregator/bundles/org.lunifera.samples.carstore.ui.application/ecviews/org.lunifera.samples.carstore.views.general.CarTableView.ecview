@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:YView xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:binding="http://lunifera.org/ecview/v1/core/binding" xmlns:core="http://lunifera.org/ecview/v1/core/view" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:extension="http://lunifera.org/ecview/v1/extension/view" name="org.lunifera.samples.carstore.views.general.CarTableView" viewName="org.lunifera.samples.carstore.views.general.CarTableView" sharedStateGroup="org.lunifera.samples.carstore.general" category="org.lunifera.vaaclipse.addons.application.partstack.materdetail.master">
+  <content xsi:type="extension:YVerticalLayout">
+    <elements xsi:type="extension:YSearchPanel" id="CarTableView.SearchPanel" name="SearchPanel">
+      <elements xsi:type="extension:YTextSearchField" datadescription="//@content/@elements.0/@elements.0/@orphanDatadescriptions.0" propertyPath="number">
+        <orphanDatadescriptions labelI18nKey="org.lunifera.samples.carstore.dtos.general.NumberedWithDescriptionDto.number"/>
+      </elements>
+      <elements xsi:type="extension:YTextSearchField" datadescription="//@content/@elements.0/@elements.1/@orphanDatadescriptions.0" propertyPath="description">
+        <orphanDatadescriptions labelI18nKey="org.lunifera.samples.carstore.dtos.general.NumberedWithDescriptionDto.description"/>
+      </elements>
+    </elements>
+    <elements xsi:type="extension:YTable" id="CarTableView.DataTable" name="DataTable" useBeanService="true" datadescription="//@content/@elements.1/@orphanDatadescriptions.0" type="org.lunifera.samples.carstore.dtos.general.CarDto" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.CarDto">
+      <orphanDatadescriptions label="DataTable" labelI18nKey="org.lunifera.samples.carstore.dtos.general.CarDto"/>
+      <columns icon="org.lunifera.samples.carstore.dtos.general.NumberedWithDescriptionDto.number.image" datadescription="//@content/@elements.1/@columns.0/@orphanDatadescriptions.0" propertyPath="number">
+        <orphanDatadescriptions labelI18nKey="org.lunifera.samples.carstore.dtos.general.NumberedWithDescriptionDto.number"/>
+      </columns>
+      <columns icon="org.lunifera.samples.carstore.dtos.general.CarDto.axes.image" datadescription="//@content/@elements.1/@columns.1/@orphanDatadescriptions.0" propertyPath="axes">
+        <orphanDatadescriptions labelI18nKey="org.lunifera.samples.carstore.dtos.general.CarDto.axes"/>
+      </columns>
+      <columns icon="org.lunifera.samples.carstore.dtos.general.NumberedWithDescriptionDto.description.image" datadescription="//@content/@elements.1/@columns.2/@orphanDatadescriptions.0" propertyPath="description">
+        <orphanDatadescriptions labelI18nKey="org.lunifera.samples.carstore.dtos.general.NumberedWithDescriptionDto.description"/>
+      </columns>
+      <columns icon="org.lunifera.samples.carstore.dtos.general.BaseDto.dirty.image" datadescription="//@content/@elements.1/@columns.3/@orphanDatadescriptions.0" propertyPath="dirty">
+        <orphanDatadescriptions labelI18nKey="org.lunifera.samples.carstore.dtos.general.BaseDto.dirty"/>
+      </columns>
+      <columns icon="org.lunifera.samples.carstore.dtos.general.WeightDto.amount.image" datadescription="//@content/@elements.1/@columns.4/@orphanDatadescriptions.0" propertyPath="weight.amount">
+        <orphanDatadescriptions labelI18nKey="org.lunifera.samples.carstore.dtos.general.WeightDto.amount"/>
+      </columns>
+      <columns icon="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto.description.image" datadescription="//@content/@elements.1/@columns.5/@orphanDatadescriptions.0" propertyPath="weight.uom.description">
+        <orphanDatadescriptions labelI18nKey="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto.description"/>
+      </columns>
+    </elements>
+    <cellStyles target="CarTableView.SearchPanel" alignment="TOP_FILL"/>
+    <cellStyles target="CarTableView.DataTable" alignment="FILL_FILL"/>
+  </content>
+  <bindingSet>
+    <bindings xsi:type="binding:YValueBinding" targetToModelStrategy="ON_REQUEST">
+      <targetEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="//@commandSet/@commands.0">
+        <features xsi:type="ecore:EAttribute" href="http://lunifera.org/ecview/v1/core/view#//YSendEventCommand/message"/>
+      </targetEndpoint>
+      <modelEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="CarTableView.DataTable" propertyPath="selection" type="org.lunifera.samples.carstore.dtos.general.CarDto" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.CarDto"/>
+    </bindings>
+    <bindings xsi:type="binding:YValueBinding" targetToModelStrategy="ON_REQUEST">
+      <targetEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="CarTableView.DataTable" propertyPath="refresh" typeQualifiedName="void"/>
+      <modelEndpoint xsi:type="core:YBeanSlotValueBindingEndpoint" attributePath="value" beanSlot="//@beanSlots.0"/>
+    </bindings>
+    <bindings xsi:type="binding:YValueBinding" targetToModelStrategy="ON_REQUEST">
+      <targetEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="CarTableView.SearchPanel" propertyPath="applyFilter" type="org.lunifera.samples.carstore.dtos.general.CarDto" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.CarDto"/>
+      <modelEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="org.lunifera.actions.applyFilter" propertyPath="executedNotificationTime" type="java.lang.Long" typeQualifiedName="java.lang.Long"/>
+    </bindings>
+    <bindings xsi:type="binding:YValueBinding" targetToModelStrategy="ON_REQUEST">
+      <targetEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="CarTableView.DataTable" propertyPath="filter" type="org.lunifera.samples.carstore.dtos.general.CarDto" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.CarDto"/>
+      <modelEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="CarTableView.SearchPanel" propertyPath="filter" type="org.lunifera.samples.carstore.dtos.general.CarDto" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.CarDto"/>
+    </bindings>
+  </bindingSet>
+  <beanSlots name="tableRefresh" valueType="java.lang.Object" valueTypeQualifiedName="java.lang.Object" eventTopic="org/lunifera/samples/carstore/CarDto/table/refresh"/>
+  <commandSet>
+    <commands xsi:type="core:YSendEventCommand" eventTopic="org/lunifera/samples/carstore/CarDto/selection"/>
+  </commandSet>
+  <exposedActions id="org.lunifera.actions.applyFilter" name="applyFilter" icon="org.lunifera.actions.applyFilter.image" label="applyFilter" labelI18nKey="org.lunifera.actions.applyFilter"/>
+</core:YView>
