@@ -11,7 +11,7 @@ ideview CarTableView {
 	category org.lunifera.vaaclipse.addons.application.partstack.materdetail.master
 
 	datasource tableRefresh:Object eventTopic "org/lunifera/samples/carstore/CarDto/table/refresh"
-
+ 
 	verticalLayout {
 		searchPanel SearchPanel {
 			type org.lunifera.samples.carstore.dtos.general.CarDto

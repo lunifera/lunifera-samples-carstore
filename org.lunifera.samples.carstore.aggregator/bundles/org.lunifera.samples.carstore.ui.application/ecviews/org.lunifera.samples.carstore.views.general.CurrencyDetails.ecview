@@ -81,7 +81,7 @@
       <target xsi:type="core:YBeanSlotValueBindingEndpoint" attributePath="value" beanSlot="//@beanSlots.0"/>
     </commands>
   </commandSet>
-  <visibilityProcessors delegate="org.lunifera.samples.carstore.views.general.CurrencyActionsVisibilityProcessor" delegateQualifiedName="org.lunifera.samples.carstore.views.general.CurrencyActionsVisibilityProcessor">
+  <visibilityProcessors delegateQualifiedName="org.lunifera.samples.carstore.views.general.CurrencyActionsVisibilityProcessor">
     <triggersOn xsi:type="binding:YValueBinding" targetToModelStrategy="NEVER">
       <targetEndpoint xsi:type="binding:YVisibilityProcessorValueBindingEndpoint" property="main"/>
       <modelEndpoint xsi:type="core:YBeanSlotValueBindingEndpoint" attributePath="value" beanSlot="//@beanSlots.0"/>
