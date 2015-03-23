@@ -16,7 +16,7 @@
 		inherit var number;
 		inherit var description;
 	}
-  
+   
 	autoDto CascadeRootDto wraps CascadeRoot {
 		inherit var id;
 		inherit ref refYes mapto CascadeYesDto;

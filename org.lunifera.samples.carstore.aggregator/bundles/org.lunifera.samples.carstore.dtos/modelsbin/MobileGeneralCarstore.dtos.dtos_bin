@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ASCII"?>
+<dto:LDtoModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dto="http://www.lunifera.org/dsl/dto/v1" xmlns:entity="http://www.lunifera.org/dsl/entity/v1">
+  <packages name="org.lunifera.samples.carstore.dtos.general.mobile">
+    <imports importedNamespace="org.lunifera.samples.carstore.dtos.general.*"/>
+    <imports importedNamespace="org.lunifera.samples.carstore.dtos.general.mapper.*"/>
+    <imports importedNamespace="org.lunifera.samples.carstore.dtos.sales.*"/>
+    <imports importedNamespace="org.lunifera.samples.carstore.dtos.sales.mapper.*"/>
+    <imports importedNamespace="org.lunifera.samples.carstore.entities.general.*"/>
+    <imports importedNamespace="org.lunifera.samples.carstore.entities.sales.*"/>
+    <types xsi:type="dto:LDto" name="ItemMobileDto" abstract="true" subTypes="//@packages.0/@types.1 //@packages.0/@types.2">
+      <annotationInfo xsi:type="dto:LDto"/>
+      <wrappedType href="platform:/resource/org.lunifera.samples.carstore.entities/models/GeneralCarstore.entitymodel#/0/@packages.0/@types.7"/>
+    </types>
+    <types xsi:type="dto:LDto" name="AccessoryMobileDto" superType="//@packages.0/@types.0">
+      <annotationInfo xsi:type="dto:LDto"/>
+      <wrappedType href="platform:/resource/org.lunifera.samples.carstore.entities/models/GeneralCarstore.entitymodel#/0/@packages.0/@types.8"/>
+    </types>
+    <types xsi:type="dto:LDto" name="CarMobileDto" superType="//@packages.0/@types.0" subTypes="//@packages.0/@types.3 //@packages.0/@types.4">
+      <annotationInfo xsi:type="dto:LDto"/>
+      <features xsi:type="dto:LDtoInheritedAttribute">
+        <annotationInfo xsi:type="dto:LDtoFeature"/>
+        <inheritedFeature xsi:type="entity:LEntityAttribute" href="platform:/resource/org.lunifera.samples.carstore.entities/models/GeneralCarstore.entitymodel#/0/@packages.0/@types.9/@features.0"/>
+      </features>
+      <features xsi:type="dto:LDtoInheritedAttribute">
+        <annotationInfo xsi:type="dto:LDtoFeature"/>
+        <inheritedFeature xsi:type="entity:LEntityAttribute" href="platform:/resource/org.lunifera.samples.carstore.entities/models/GeneralCarstore.entitymodel#/0/@packages.0/@types.9/@features.1"/>
+      </features>
+      <wrappedType href="platform:/resource/org.lunifera.samples.carstore.entities/models/GeneralCarstore.entitymodel#/0/@packages.0/@types.9"/>
+    </types>
+    <types xsi:type="dto:LDto" name="PickupMobileDto" superType="//@packages.0/@types.2">
+      <annotationInfo xsi:type="dto:LDto"/>
+      <features xsi:type="dto:LDtoAttribute" name="customProperty">
+        <annotationInfo xsi:type="dto:LDtoFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+      </features>
+      <wrappedType href="platform:/resource/org.lunifera.samples.carstore.entities/models/GeneralCarstore.entitymodel#/0/@packages.0/@types.10"/>
+    </types>
+    <types xsi:type="dto:LDto" name="ConvertibleMobileDto" superType="//@packages.0/@types.2">
+      <annotationInfo xsi:type="dto:LDto"/>
+      <features xsi:type="dto:LDtoInheritedAttribute">
+        <annotationInfo xsi:type="dto:LDtoFeature"/>
+        <inheritedFeature xsi:type="entity:LEntityAttribute" href="platform:/resource/org.lunifera.samples.carstore.entities/models/GeneralCarstore.entitymodel#/0/@packages.0/@types.11/@features.1"/>
+      </features>
+      <wrappedType href="platform:/resource/org.lunifera.samples.carstore.entities/models/GeneralCarstore.entitymodel#/0/@packages.0/@types.11"/>
+    </types>
+  </packages>
+</dto:LDtoModel>
