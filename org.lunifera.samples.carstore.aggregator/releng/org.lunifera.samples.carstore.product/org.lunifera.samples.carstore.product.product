@@ -9,7 +9,7 @@
    <launcherArgs>
       <programArgs>-console -consoleLog
       </programArgs>
-      <vmArgs>-XX:MaxPermSize=256m -Xms512m -Xmx4048m -Dorg.lunifera.ecview.jetty.contextpath=/carstore -Dorg.lunifera.ecview.jetty.port=8084 –Dorg.eclipse.gemini.refreshBundles=FALSE
+      <vmArgs>-XX:MaxPermSize=256m -Xms512m -Xmx4048m -Dorg.lunifera.ecview.jetty.contextpath=/carstore -Dorg.lunifera.ecview.jetty.port=8084 -Dorg.eclipse.gemini.refreshBundles=FALSE
       </vmArgs>
    </launcherArgs>
 
