@@ -167,7 +167,7 @@ ideview CarDetails {
 			}
 		}
 	}
-
+ 
 	// bind datasources for subclasses
 	bind main --> convertible
 	bind main --> pickup

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="ASCII"?>
+<entity:LEntityModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:entity="http://www.lunifera.org/dsl/entity/v1" xmlns:types="http://www.lunifera.org/dsl/common/types/v1">
+  <packages name="org.lunifera.samples.carstore.entities.sales">
+    <imports importedNamespace="org.lunifera.samples.carstore.entities.general.Base"/>
+    <imports importedNamespace="org.lunifera.samples.carstore.entities.general.Customer"/>
+    <imports importedNamespace="org.lunifera.samples.carstore.entities.general.PaymentTerm"/>
+    <imports importedNamespace="org.lunifera.samples.carstore.entities.general.Item"/>
+    <imports importedNamespace="org.lunifera.samples.carstore.entities.general.Price"/>
+    <imports importedNamespace="org.lunifera.samples.carstore.entities.general.Amount"/>
+    <imports importedNamespace="org.lunifera.samples.carstore.entities.general.Quantity"/>
+    <imports importedNamespace="org.lunifera.samples.carstore.entities.general.ConfigDetailDefinition"/>
+    <types xsi:type="entity:LEntity" name="SalesOrder">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <features xsi:type="entity:LEntityAttribute" name="number">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+      </features>
+      <features xsi:type="entity:LEntityReference" name="customer">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.samples.carstore.entities/models/GeneralCarstore.entitymodel#/0/@packages.0/@types.14"/>
+      </features>
+      <features xsi:type="entity:LEntityReference" name="paymentTerm">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.samples.carstore.entities/models/GeneralCarstore.entitymodel#/0/@packages.0/@types.6"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LEntity" name="SalesOrderDetail">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <features xsi:type="entity:LEntityAttribute" name="number">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.2"/>
+      </features>
+      <features xsi:type="entity:LEntityReference" name="item">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.samples.carstore.entities/models/GeneralCarstore.entitymodel#/0/@packages.0/@types.7"/>
+      </features>
+      <features xsi:type="entity:LEntityReference" name="paymentTerm">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.samples.carstore.entities/models/GeneralCarstore.entitymodel#/0/@packages.0/@types.6"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="price">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.samples.carstore.entities/models/GeneralCarstore.entitymodel#/0/@packages.0/@types.20"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="quantity">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.samples.carstore.entities/models/GeneralCarstore.entitymodel#/0/@packages.0/@types.19"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="value">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.samples.carstore.entities/models/GeneralCarstore.entitymodel#/0/@packages.0/@types.21"/>
+      </features>
+      <features xsi:type="entity:LEntityReference" name="configDetails" cascading="true" type="//@packages.0/@types.2" opposite="//@packages.0/@types.2/@features.1">
+        <multiplicity lower="MANY"/>
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LEntity" name="CarConfigDetail">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <features xsi:type="entity:LEntityAttribute" name="number">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.2"/>
+      </features>
+      <features xsi:type="entity:LEntityReference" name="parent" type="//@packages.0/@types.1" opposite="//@packages.0/@types.1/@features.6">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityReference" name="configDef">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.samples.carstore.entities/models/GeneralCarstore.entitymodel#/0/@packages.0/@types.12"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LEntity" name="ManufacturerOrder">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <features xsi:type="entity:LEntityAttribute" name="number">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+      </features>
+      <features xsi:type="entity:LEntityReference" name="salesOrderDetail" type="//@packages.0/@types.1">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LEntity" name="CarReceipt">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <features xsi:type="entity:LEntityAttribute" name="number">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+      </features>
+      <features xsi:type="entity:LEntityReference" name="order" type="//@packages.0/@types.3">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LEntity" name="Inventory">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <features xsi:type="entity:LEntityReference" name="item">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.samples.carstore.entities/models/GeneralCarstore.entitymodel#/0/@packages.0/@types.7"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="requestedQuantity">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.samples.carstore.entities/models/GeneralCarstore.entitymodel#/0/@packages.0/@types.19"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="countedQuantity">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.samples.carstore.entities/models/GeneralCarstore.entitymodel#/0/@packages.0/@types.19"/>
+      </features>
+    </types>
+  </packages>
+</entity:LEntityModel>

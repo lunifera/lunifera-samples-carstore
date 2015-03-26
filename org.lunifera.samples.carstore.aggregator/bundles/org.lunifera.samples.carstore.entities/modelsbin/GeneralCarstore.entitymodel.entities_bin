@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="ASCII"?>
+<entity:LEntityModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:entity="http://www.lunifera.org/dsl/entity/v1" xmlns:types="http://www.lunifera.org/dsl/common/types/v1">
+  <packages name="org.lunifera.samples.carstore.entities.general">
+    <types xsi:type="entity:LEntity" name="Base" mappedSuperclass="true" subTypes="//@packages.0/@types.1 //@packages.0/@types.14 //@packages.0/@types.15">
+      <annotationInfo xsi:type="types:LClass"/>
+      <features xsi:type="entity:LEntityAttribute" name="id" uuid="true">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LEntity" name="NumberedWithDescription" abstract="true" superType="//@packages.0/@types.0" subTypes="//@packages.0/@types.5 //@packages.0/@types.6 //@packages.0/@types.7 //@packages.0/@types.12 //@packages.0/@types.13">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <inheritanceStrategy xsi:type="entity:LTablePerSubclassStrategy"/>
+      <features xsi:type="entity:LEntityAttribute" name="number">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="description">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LEntity" name="CascadeRoot">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <features xsi:type="entity:LEntityAttribute" name="id" uuid="true">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+      </features>
+      <features xsi:type="entity:LEntityReference" name="refYes" cascading="true" type="//@packages.0/@types.3" opposite="//@packages.0/@types.3/@features.1">
+        <multiplicity lower="MANY"/>
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityReference" name="refNo" type="//@packages.0/@types.4" opposite="//@packages.0/@types.4/@features.1">
+        <multiplicity lower="MANY"/>
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LEntity" name="CascadeYes">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <features xsi:type="entity:LEntityAttribute" name="id" uuid="true">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+      </features>
+      <features xsi:type="entity:LEntityReference" name="root" type="//@packages.0/@types.2" opposite="//@packages.0/@types.2/@features.1">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LEntity" name="CascadeNo">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <features xsi:type="entity:LEntityAttribute" name="id" uuid="true">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+      </features>
+      <features xsi:type="entity:LEntityReference" name="root" type="//@packages.0/@types.2" opposite="//@packages.0/@types.2/@features.2">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LEntity" name="UnitOfMeasure" superType="//@packages.0/@types.1">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <inheritanceStrategy xsi:type="entity:LTablePerSubclassStrategy"/>
+      <features xsi:type="entity:LEntityAttribute" name="siType" type="//@packages.0/@types.22">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="family" type="//@packages.0/@types.23">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LEntity" name="PaymentTerm" superType="//@packages.0/@types.1">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <inheritanceStrategy xsi:type="entity:LTablePerSubclassStrategy"/>
+    </types>
+    <types xsi:type="entity:LEntity" name="Item" abstract="true" superType="//@packages.0/@types.1" subTypes="//@packages.0/@types.8 //@packages.0/@types.9">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <inheritanceStrategy xsi:type="entity:LTablePerSubclassStrategy"/>
+    </types>
+    <types xsi:type="entity:LEntity" name="Accessory" superType="//@packages.0/@types.7">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <inheritanceStrategy xsi:type="entity:LTablePerSubclassStrategy"/>
+    </types>
+    <types xsi:type="entity:LEntity" name="Car" superType="//@packages.0/@types.7" subTypes="//@packages.0/@types.10 //@packages.0/@types.11">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <inheritanceStrategy xsi:type="entity:LTablePerSubclassStrategy"/>
+      <features xsi:type="entity:LEntityAttribute" name="axes">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.2"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="weight" type="//@packages.0/@types.17">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="price" type="//@packages.0/@types.20">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityReference" name="configDetails" cascading="true" type="//@packages.0/@types.12" opposite="//@packages.0/@types.12/@features.1">
+        <multiplicity lower="MANY"/>
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LEntity" name="Pickup" superType="//@packages.0/@types.9">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <inheritanceStrategy xsi:type="entity:LTablePerSubclassStrategy"/>
+      <features xsi:type="entity:LEntityAttribute" name="loadingAreaWidth" type="//@packages.0/@types.18">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="loadingAreaLength" type="//@packages.0/@types.18">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LEntity" name="Convertible" superType="//@packages.0/@types.9">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <inheritanceStrategy xsi:type="entity:LTablePerSubclassStrategy"/>
+      <features xsi:type="entity:LEntityAttribute" name="roofType" type="//@packages.0/@types.24">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="color">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LEntity" name="ConfigDetailDefinition" superType="//@packages.0/@types.1">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <inheritanceStrategy xsi:type="entity:LTablePerSubclassStrategy"/>
+      <features xsi:type="entity:LEntityAttribute" name="price" type="//@packages.0/@types.20">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityReference" name="car" type="//@packages.0/@types.9" opposite="//@packages.0/@types.9/@features.3">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LEntity" name="Currency" superType="//@packages.0/@types.1">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <inheritanceStrategy xsi:type="entity:LTablePerSubclassStrategy"/>
+      <features xsi:type="entity:LEntityAttribute" name="iso3Code">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LEntity" name="Customer" superType="//@packages.0/@types.0">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <inheritanceStrategy xsi:type="entity:LTablePerSubclassStrategy"/>
+      <features xsi:type="entity:LEntityAttribute" name="number">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="name">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+      </features>
+      <features xsi:type="entity:LEntityReference" name="paymentTerms" type="//@packages.0/@types.6">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="deliveryAddress" type="//@packages.0/@types.16">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="invoiceAddress" type="//@packages.0/@types.16">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LEntity" name="CarManufacturer" superType="//@packages.0/@types.0">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <inheritanceStrategy xsi:type="entity:LTablePerSubclassStrategy"/>
+      <features xsi:type="entity:LEntityAttribute" name="number">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="name">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LBean" name="Address">
+      <annotationInfo xsi:type="types:LClass"/>
+      <features xsi:type="entity:LBeanAttribute" name="street">
+        <annotationInfo xsi:type="entity:LBeanFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+      </features>
+      <features xsi:type="entity:LBeanAttribute" name="postalCode">
+        <annotationInfo xsi:type="entity:LBeanFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LBean" name="Weight">
+      <annotationInfo xsi:type="types:LClass"/>
+      <features xsi:type="entity:LBeanAttribute" name="amount">
+        <annotationInfo xsi:type="entity:LBeanFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.5"/>
+      </features>
+      <features xsi:type="entity:LBeanReference" name="uom" type="//@packages.0/@types.5">
+        <annotationInfo xsi:type="entity:LBeanFeature"/>
+        <constraints>
+          <constraints xsi:type="types:LAttributeMatchingConstraint" attribute="//@packages.0/@types.5/@features.1" matchingLiteral="//@packages.0/@types.23/@literals.0"/>
+        </constraints>
+      </features>
+    </types>
+    <types xsi:type="entity:LBean" name="Length">
+      <annotationInfo xsi:type="types:LClass"/>
+      <features xsi:type="entity:LBeanAttribute" name="amount">
+        <annotationInfo xsi:type="entity:LBeanFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.5"/>
+      </features>
+      <features xsi:type="entity:LBeanReference" name="uom" type="//@packages.0/@types.5">
+        <annotationInfo xsi:type="entity:LBeanFeature"/>
+        <constraints>
+          <constraints xsi:type="types:LAttributeMatchingConstraint" attribute="//@packages.0/@types.5/@features.1" matchingLiteral="//@packages.0/@types.23/@literals.1"/>
+        </constraints>
+      </features>
+    </types>
+    <types xsi:type="entity:LBean" name="Quantity">
+      <annotationInfo xsi:type="types:LClass"/>
+      <features xsi:type="entity:LBeanAttribute" name="amount">
+        <annotationInfo xsi:type="entity:LBeanFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.5"/>
+      </features>
+      <features xsi:type="entity:LBeanReference" name="uom" type="//@packages.0/@types.5">
+        <annotationInfo xsi:type="entity:LBeanFeature"/>
+        <constraints>
+          <constraints xsi:type="types:LAttributeMatchingConstraint" attribute="//@packages.0/@types.5/@features.1" matchingLiteral="//@packages.0/@types.23/@literals.2"/>
+        </constraints>
+      </features>
+    </types>
+    <types xsi:type="entity:LBean" name="Price">
+      <annotationInfo xsi:type="types:LClass"/>
+      <features xsi:type="entity:LBeanAttribute" name="amount">
+        <annotationInfo xsi:type="entity:LBeanFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.5"/>
+      </features>
+      <features xsi:type="entity:LBeanReference" name="currency" type="//@packages.0/@types.13">
+        <annotationInfo xsi:type="entity:LBeanFeature"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LBean" name="Amount">
+      <annotationInfo xsi:type="types:LClass"/>
+      <features xsi:type="entity:LBeanAttribute" name="amount">
+        <annotationInfo xsi:type="entity:LBeanFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.5"/>
+      </features>
+    </types>
+    <types xsi:type="types:LEnum" name="SiType">
+      <literals name="METER"/>
+      <literals name="KG"/>
+      <literals name="LITER"/>
+    </types>
+    <types xsi:type="types:LEnum" name="UOMFamily">
+      <literals name="WEIGHT"/>
+      <literals name="LENGTH"/>
+      <literals name="QUANTITY"/>
+      <literals name="VOLUME"/>
+    </types>
+    <types xsi:type="types:LEnum" name="RoofType">
+      <literals name="SOFT"/>
+      <literals name="HARD"/>
+    </types>
+  </packages>
+</entity:LEntityModel>
