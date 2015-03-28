@@ -18,7 +18,7 @@ ideview CarDetails {
 	eventTopic "org/lunifera/samples/carstore/CarDto/selection"
 	datasource pickup:org.lunifera.samples.carstore.dtos.general.PickupDto
 	datasource convertible:org.lunifera.samples.carstore.dtos.general.ConvertibleDto
- 
+
 	verticalLayout mainView {
 		horizontalLayout {
 			form Detail_left {
