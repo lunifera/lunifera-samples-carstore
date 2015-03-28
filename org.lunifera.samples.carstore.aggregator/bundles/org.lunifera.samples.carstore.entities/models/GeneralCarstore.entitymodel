@@ -6,13 +6,13 @@ package org.lunifera.samples.carstore.entities.general {
 	mapped superclass Base {
 		uuid String id;
 	} 
-  
+     
 	abstract entity NumberedWithDescription extends Base {
 		inheritance per subclass {}
 		var String number;
-		var String description;
+		var String description; 
 	}
-	 
+ 
 	entity CascadeRoot {
 		uuid String id;
 		ref cascade CascadeYes[*] refYes opposite root;

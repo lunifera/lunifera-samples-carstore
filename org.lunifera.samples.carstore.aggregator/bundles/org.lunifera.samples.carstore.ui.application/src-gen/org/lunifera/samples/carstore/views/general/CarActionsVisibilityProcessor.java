@@ -22,6 +22,8 @@ public class CarActionsVisibilityProcessor implements IVisibilityProcessor {
   
   private boolean dirty;
   
+  private int axes;
+  
   public void init(final IVisibilityManager manager) {
     reloadAction = manager.getById("org.lunifera.actions.load");
     deleteAction = manager.getById("org.lunifera.actions.delete");
@@ -75,6 +77,16 @@ public class CarActionsVisibilityProcessor implements IVisibilityProcessor {
   
   public void setDirty(final boolean dirty) {
     this.dirty=dirty;
+    
+    fire();
+  }
+  
+  public int getAxes() {
+    return this.axes;
+  }
+  
+  public void setAxes(final int axes) {
+    this.axes=axes;
     
     fire();
   }

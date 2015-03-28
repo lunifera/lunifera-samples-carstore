@@ -2,7 +2,7 @@ package org.lunifera.samples.carstore.views.general
 
 ideview CarDetails {
 	sharedStateGroup "org.lunifera.samples.carstore.general"
-	
+	 
 	exposedActions {
 		reloadEntity id org.lunifera.actions.load
 		deleteEntity id org.lunifera.actions.delete
@@ -13,12 +13,12 @@ ideview CarDetails {
 		newConvertible id "org.lunifera.actions.new.convertible" checkDirty
 	}
 	category org.lunifera.vaaclipse.addons.application.partstack.main
-
+ 
 	datasource main:org.lunifera.samples.carstore.dtos.general.CarDto
 	eventTopic "org/lunifera/samples/carstore/CarDto/selection"
 	datasource pickup:org.lunifera.samples.carstore.dtos.general.PickupDto
 	datasource convertible:org.lunifera.samples.carstore.dtos.general.ConvertibleDto
-
+ 
 	verticalLayout mainView {
 		horizontalLayout {
 			form Detail_left {
@@ -59,7 +59,7 @@ ideview CarDetails {
 			}
 		}
 		align top-left
- 
+  
 		/**
 		 * Convertible
 		 */
@@ -78,7 +78,7 @@ ideview CarDetails {
 				bind convertible.color <--> [this.color].value
 			}
 		} align top-left
-		
+ 
 		/**
 		 * Pickup
 		 */
@@ -108,12 +108,12 @@ ideview CarDetails {
 				bind pickup.loadingAreaLength.uom <--> [this.loadingAreaLengthUom].value
 			}
 		} align top-left
-
+ 
 		table configDetails {
 			type org.lunifera.samples.carstore.dtos.general.ConfigDetailDefinitionDto
-
-			columns {
-				column number
+    
+			columns { 
+				column number 
 				column description
 				column price.amount
 				column price.currency.iso3Code
@@ -121,10 +121,11 @@ ideview CarDetails {
 			bind main.configDetails <--> [this].collection
 		} align top-left
 	} align top-left
-
+    
 	visibility CarActions {
 		fireOn main as main
-		fireOn main.dirty as dirty
+		fireOn main.dirty as dirty 
+		fireOn main.axes as axes 
 		ui [this.reloadEntity] as reloadAction 
 		ui [this.deleteEntity] as deleteAction 
 		ui [this.saveEntity] as saveAction 

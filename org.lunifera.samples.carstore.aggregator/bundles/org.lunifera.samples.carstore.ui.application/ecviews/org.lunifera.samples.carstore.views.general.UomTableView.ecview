@@ -9,7 +9,7 @@
         <orphanDatadescriptions labelI18nKey="org.lunifera.samples.carstore.dtos.general.NumberedWithDescriptionDto.description"/>
       </elements>
     </elements>
-    <elements xsi:type="extension:YTable" id="UomTableView.DataTable" name="DataTable" useBeanService="true" datadescription="//@content/@elements.1/@orphanDatadescriptions.0" type="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto">
+    <elements xsi:type="extension:YTable" id="UomTableView.DataTable" name="DataTable" useBeanService="true" datadescription="//@content/@elements.1/@orphanDatadescriptions.0" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto">
       <orphanDatadescriptions label="DataTable" labelI18nKey="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto"/>
       <columns icon="org.lunifera.samples.carstore.dtos.general.NumberedWithDescriptionDto.number.image" datadescription="//@content/@elements.1/@columns.0/@orphanDatadescriptions.0" propertyPath="number">
         <orphanDatadescriptions labelI18nKey="org.lunifera.samples.carstore.dtos.general.NumberedWithDescriptionDto.number"/>
@@ -35,19 +35,19 @@
       <targetEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="//@commandSet/@commands.0">
         <features xsi:type="ecore:EAttribute" href="http://lunifera.org/ecview/v1/core/view#//YSendEventCommand/message"/>
       </targetEndpoint>
-      <modelEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="UomTableView.DataTable" propertyPath="selection" type="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto"/>
+      <modelEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="UomTableView.DataTable" propertyPath=""/>
     </bindings>
     <bindings xsi:type="binding:YValueBinding" targetToModelStrategy="ON_REQUEST">
-      <targetEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="UomTableView.DataTable" propertyPath="refresh" typeQualifiedName="void"/>
+      <targetEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="UomTableView.DataTable" propertyPath=""/>
       <modelEndpoint xsi:type="core:YBeanSlotValueBindingEndpoint" attributePath="value" beanSlot="//@beanSlots.0"/>
     </bindings>
     <bindings xsi:type="binding:YValueBinding" targetToModelStrategy="ON_REQUEST">
-      <targetEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="UomTableView.SearchPanel" propertyPath="applyFilter" type="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto"/>
-      <modelEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="org.lunifera.actions.applyFilter" propertyPath="executedNotificationTime" type="java.lang.Long" typeQualifiedName="java.lang.Long"/>
+      <targetEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="UomTableView.SearchPanel" propertyPath=""/>
+      <modelEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="org.lunifera.actions.applyFilter" propertyPath=""/>
     </bindings>
     <bindings xsi:type="binding:YValueBinding" targetToModelStrategy="ON_REQUEST">
-      <targetEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="UomTableView.DataTable" propertyPath="filter" type="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto"/>
-      <modelEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="UomTableView.SearchPanel" propertyPath="filter" type="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto"/>
+      <targetEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="UomTableView.DataTable" propertyPath=""/>
+      <modelEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="UomTableView.SearchPanel" propertyPath=""/>
     </bindings>
   </bindingSet>
   <beanSlots name="tableRefresh" valueType="java.lang.Object" valueTypeQualifiedName="java.lang.Object" eventTopic="org/lunifera/samples/carstore/UnitOfMeasureDto/table/refresh"/>

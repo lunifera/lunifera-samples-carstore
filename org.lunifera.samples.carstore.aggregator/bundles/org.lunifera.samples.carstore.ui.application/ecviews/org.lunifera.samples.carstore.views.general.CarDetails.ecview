@@ -32,10 +32,10 @@
         <elements xsi:type="extension:YCheckBox" id="CarDetails.mainView.Detail_right.dirty" name="dirty" initialEnabled="false" datadescription="//@content/@elements.0/@elements.1/@elements.1/@orphanDatadescriptions.0">
           <orphanDatadescriptions label="dirty" labelI18nKey="org.lunifera.samples.carstore.dtos.general.BaseDto.dirty"/>
         </elements>
-        <elements xsi:type="extension:YBeanReferenceField" id="CarDetails.mainView.Detail_right.weightUom" name="weightUom" datadescription="//@content/@elements.0/@elements.1/@elements.2/@orphanDatadescriptions.0" type="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto" captionPropertyPath="description" referenceSourceType="org.lunifera.samples.carstore.dtos.general.WeightDto" referenceSourceTypeQualifiedName="org.lunifera.samples.carstore.dtos.general.WeightDto" referenceSourceTypeProperty="uom">
+        <elements xsi:type="extension:YBeanReferenceField" id="CarDetails.mainView.Detail_right.weightUom" name="weightUom" datadescription="//@content/@elements.0/@elements.1/@elements.2/@orphanDatadescriptions.0" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto" captionPropertyPath="description" referenceSourceTypeQualifiedName="org.lunifera.samples.carstore.dtos.general.WeightDto" referenceSourceTypeProperty="uom">
           <orphanDatadescriptions label="weightUom" labelI18nKey="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto"/>
         </elements>
-        <elements xsi:type="extension:YBeanReferenceField" id="CarDetails.mainView.Detail_right.priceCurrency" name="priceCurrency" datadescription="//@content/@elements.0/@elements.1/@elements.3/@orphanDatadescriptions.0" type="org.lunifera.samples.carstore.dtos.general.CurrencyDto" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.CurrencyDto" captionPropertyPath="iso3Code" referenceSourceType="org.lunifera.samples.carstore.dtos.general.PriceDto" referenceSourceTypeQualifiedName="org.lunifera.samples.carstore.dtos.general.PriceDto" referenceSourceTypeProperty="currency">
+        <elements xsi:type="extension:YBeanReferenceField" id="CarDetails.mainView.Detail_right.priceCurrency" name="priceCurrency" datadescription="//@content/@elements.0/@elements.1/@elements.3/@orphanDatadescriptions.0" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.CurrencyDto" captionPropertyPath="iso3Code" referenceSourceTypeQualifiedName="org.lunifera.samples.carstore.dtos.general.PriceDto" referenceSourceTypeProperty="currency">
           <orphanDatadescriptions label="priceCurrency" labelI18nKey="org.lunifera.samples.carstore.dtos.general.CurrencyDto"/>
         </elements>
       </elements>
@@ -43,7 +43,7 @@
     </elements>
     <elements xsi:type="extension:YHorizontalLayout" id="CarDetails.mainView.ConvertibleForm" name="ConvertibleForm">
       <elements xsi:type="extension:YFormLayout" name="ConvertibleForm_left">
-        <elements xsi:type="extension:YEnumOptionsGroup" id="CarDetails.mainView.ConvertibleForm.ConvertibleForm_left.roofType" name="roofType" datadescription="//@content/@elements.1/@elements.0/@elements.0/@orphanDatadescriptions.0" type="org.lunifera.samples.carstore.dtos.general.RoofType" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.RoofType">
+        <elements xsi:type="extension:YEnumOptionsGroup" id="CarDetails.mainView.ConvertibleForm.ConvertibleForm_left.roofType" name="roofType" datadescription="//@content/@elements.1/@elements.0/@elements.0/@orphanDatadescriptions.0" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.RoofType">
           <orphanDatadescriptions label="roofType" labelI18nKey="org.lunifera.samples.carstore.dtos.general.RoofType"/>
         </elements>
       </elements>
@@ -67,16 +67,16 @@
         </elements>
       </elements>
       <elements xsi:type="extension:YFormLayout" name="PickupForm_right">
-        <elements xsi:type="extension:YBeanReferenceField" id="CarDetails.mainView.PickupForm.PickupForm_right.loadingAreaWidthUom" name="loadingAreaWidthUom" datadescription="//@content/@elements.2/@elements.1/@elements.0/@orphanDatadescriptions.0" type="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto" captionPropertyPath="description" referenceSourceType="org.lunifera.samples.carstore.dtos.general.LengthDto" referenceSourceTypeQualifiedName="org.lunifera.samples.carstore.dtos.general.LengthDto" referenceSourceTypeProperty="uom">
+        <elements xsi:type="extension:YBeanReferenceField" id="CarDetails.mainView.PickupForm.PickupForm_right.loadingAreaWidthUom" name="loadingAreaWidthUom" datadescription="//@content/@elements.2/@elements.1/@elements.0/@orphanDatadescriptions.0" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto" captionPropertyPath="description" referenceSourceTypeQualifiedName="org.lunifera.samples.carstore.dtos.general.LengthDto" referenceSourceTypeProperty="uom">
           <orphanDatadescriptions label="loadingAreaWidthUom" labelI18nKey="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto"/>
         </elements>
-        <elements xsi:type="extension:YBeanReferenceField" id="CarDetails.mainView.PickupForm.PickupForm_right.loadingAreaLengthUom" name="loadingAreaLengthUom" datadescription="//@content/@elements.2/@elements.1/@elements.1/@orphanDatadescriptions.0" type="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto" captionPropertyPath="description" referenceSourceType="org.lunifera.samples.carstore.dtos.general.LengthDto" referenceSourceTypeQualifiedName="org.lunifera.samples.carstore.dtos.general.LengthDto" referenceSourceTypeProperty="uom">
+        <elements xsi:type="extension:YBeanReferenceField" id="CarDetails.mainView.PickupForm.PickupForm_right.loadingAreaLengthUom" name="loadingAreaLengthUom" datadescription="//@content/@elements.2/@elements.1/@elements.1/@orphanDatadescriptions.0" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto" captionPropertyPath="description" referenceSourceTypeQualifiedName="org.lunifera.samples.carstore.dtos.general.LengthDto" referenceSourceTypeProperty="uom">
           <orphanDatadescriptions label="loadingAreaLengthUom" labelI18nKey="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto"/>
         </elements>
       </elements>
       <cellStyles target="//@content/@elements.2/@elements.0" alignment="TOP_LEFT"/>
     </elements>
-    <elements xsi:type="extension:YTable" id="CarDetails.mainView.configDetails" name="configDetails" datadescription="//@content/@elements.3/@orphanDatadescriptions.0" type="org.lunifera.samples.carstore.dtos.general.ConfigDetailDefinitionDto" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.ConfigDetailDefinitionDto">
+    <elements xsi:type="extension:YTable" id="CarDetails.mainView.configDetails" name="configDetails" datadescription="//@content/@elements.3/@orphanDatadescriptions.0" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.ConfigDetailDefinitionDto">
       <orphanDatadescriptions label="configDetails" labelI18nKey="org.lunifera.samples.carstore.dtos.general.ConfigDetailDefinitionDto"/>
       <columns icon="org.lunifera.samples.carstore.dtos.general.NumberedWithDescriptionDto.number.image" datadescription="//@content/@elements.3/@columns.0/@orphanDatadescriptions.0" propertyPath="number">
         <orphanDatadescriptions labelI18nKey="org.lunifera.samples.carstore.dtos.general.NumberedWithDescriptionDto.number"/>
@@ -122,15 +122,15 @@
       <modelEndpoint xsi:type="core:YBeanSlotValueBindingEndpoint" attributePath="dirty" beanSlot="//@beanSlots.0"/>
     </bindings>
     <bindings xsi:type="binding:YValueBinding">
-      <targetEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="CarDetails.mainView.Detail_right.weightUom" propertyPath="value" type="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto"/>
+      <targetEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="CarDetails.mainView.Detail_right.weightUom" propertyPath="value" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto"/>
       <modelEndpoint xsi:type="core:YBeanSlotValueBindingEndpoint" attributePath="weight.uom" beanSlot="//@beanSlots.0"/>
     </bindings>
     <bindings xsi:type="binding:YValueBinding">
-      <targetEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="CarDetails.mainView.Detail_right.priceCurrency" propertyPath="value" type="org.lunifera.samples.carstore.dtos.general.CurrencyDto" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.CurrencyDto"/>
+      <targetEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="CarDetails.mainView.Detail_right.priceCurrency" propertyPath="value" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.CurrencyDto"/>
       <modelEndpoint xsi:type="core:YBeanSlotValueBindingEndpoint" attributePath="price.currency" beanSlot="//@beanSlots.0"/>
     </bindings>
     <bindings xsi:type="binding:YValueBinding">
-      <targetEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="CarDetails.mainView.ConvertibleForm.ConvertibleForm_left.roofType" propertyPath="selection" type="org.lunifera.samples.carstore.dtos.general.RoofType" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.RoofType"/>
+      <targetEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="CarDetails.mainView.ConvertibleForm.ConvertibleForm_left.roofType" propertyPath="selection" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.RoofType"/>
       <modelEndpoint xsi:type="core:YBeanSlotValueBindingEndpoint" attributePath="roofType" beanSlot="//@beanSlots.2"/>
     </bindings>
     <bindings xsi:type="binding:YValueBinding">
@@ -146,15 +146,15 @@
       <modelEndpoint xsi:type="core:YBeanSlotValueBindingEndpoint" attributePath="loadingAreaLength.amount" beanSlot="//@beanSlots.1"/>
     </bindings>
     <bindings xsi:type="binding:YValueBinding">
-      <targetEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="CarDetails.mainView.PickupForm.PickupForm_right.loadingAreaWidthUom" propertyPath="value" type="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto"/>
+      <targetEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="CarDetails.mainView.PickupForm.PickupForm_right.loadingAreaWidthUom" propertyPath="value" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto"/>
       <modelEndpoint xsi:type="core:YBeanSlotValueBindingEndpoint" attributePath="loadingAreaWidth.uom" beanSlot="//@beanSlots.1"/>
     </bindings>
     <bindings xsi:type="binding:YValueBinding">
-      <targetEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="CarDetails.mainView.PickupForm.PickupForm_right.loadingAreaLengthUom" propertyPath="value" type="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto"/>
+      <targetEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="CarDetails.mainView.PickupForm.PickupForm_right.loadingAreaLengthUom" propertyPath="value" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto"/>
       <modelEndpoint xsi:type="core:YBeanSlotValueBindingEndpoint" attributePath="loadingAreaLength.uom" beanSlot="//@beanSlots.1"/>
     </bindings>
     <bindings xsi:type="binding:YValueBinding">
-      <targetEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="CarDetails.mainView.configDetails" propertyPath="collection" type="org.lunifera.samples.carstore.dtos.general.ConfigDetailDefinitionDto" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.ConfigDetailDefinitionDto"/>
+      <targetEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="CarDetails.mainView.configDetails" propertyPath="collection" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.ConfigDetailDefinitionDto"/>
       <modelEndpoint xsi:type="core:YBeanSlotValueBindingEndpoint" attributePath="configDetails" beanSlot="//@beanSlots.0"/>
     </bindings>
     <bindings xsi:type="binding:YValueBinding" targetToModelStrategy="ON_REQUEST">
@@ -206,24 +206,24 @@
       <modelEndpoint xsi:type="binding:YECViewModelValueBindingEndpoint" element="org.lunifera.actions.new.convertible" propertyPath="executedNotificationTime" type="java.lang.Long" typeQualifiedName="java.lang.Long"/>
     </bindings>
   </bindingSet>
-  <beanSlots name="main" valueType="org.lunifera.samples.carstore.dtos.general.CarDto" valueTypeQualifiedName="org.lunifera.samples.carstore.dtos.general.CarDto" eventTopic="org/lunifera/samples/carstore/CarDto/selection"/>
-  <beanSlots name="pickup" valueType="org.lunifera.samples.carstore.dtos.general.PickupDto" valueTypeQualifiedName="org.lunifera.samples.carstore.dtos.general.PickupDto"/>
-  <beanSlots name="convertible" valueType="org.lunifera.samples.carstore.dtos.general.ConvertibleDto" valueTypeQualifiedName="org.lunifera.samples.carstore.dtos.general.ConvertibleDto"/>
+  <beanSlots name="main" valueTypeQualifiedName="org.lunifera.samples.carstore.dtos.general.CarDto" eventTopic="org/lunifera/samples/carstore/CarDto/selection"/>
+  <beanSlots name="pickup" valueTypeQualifiedName="org.lunifera.samples.carstore.dtos.general.PickupDto"/>
+  <beanSlots name="convertible" valueTypeQualifiedName="org.lunifera.samples.carstore.dtos.general.ConvertibleDto"/>
   <commandSet>
     <commands xsi:type="core:YSendEventCommand" eventTopic="org/lunifera/samples/carstore/CarDto/table/refresh"/>
     <commands xsi:type="core:YSendEventCommand" eventTopic="org/lunifera/samples/carstore/CarDto/table/refresh"/>
     <commands xsi:type="core:YSendEventCommand" eventTopic="org/lunifera/samples/carstore/CarDto/table/refresh"/>
-    <commands xsi:type="extension:YSetNewBeanInstanceCommand" type="org.lunifera.samples.carstore.dtos.general.CarDto" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.CarDto">
+    <commands xsi:type="extension:YSetNewBeanInstanceCommand" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.CarDto">
       <target xsi:type="core:YBeanSlotValueBindingEndpoint" attributePath="value" beanSlot="//@beanSlots.0"/>
     </commands>
-    <commands xsi:type="extension:YSetNewBeanInstanceCommand" type="org.lunifera.samples.carstore.dtos.general.PickupDto" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.PickupDto">
+    <commands xsi:type="extension:YSetNewBeanInstanceCommand" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.PickupDto">
       <target xsi:type="core:YBeanSlotValueBindingEndpoint" attributePath="value" beanSlot="//@beanSlots.0"/>
     </commands>
-    <commands xsi:type="extension:YSetNewBeanInstanceCommand" type="org.lunifera.samples.carstore.dtos.general.ConvertibleDto" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.ConvertibleDto">
+    <commands xsi:type="extension:YSetNewBeanInstanceCommand" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.ConvertibleDto">
       <target xsi:type="core:YBeanSlotValueBindingEndpoint" attributePath="value" beanSlot="//@beanSlots.0"/>
     </commands>
   </commandSet>
-  <visibilityProcessors delegateQualifiedName="org.lunifera.samples.carstore.views.general.CarActionsVisibilityProcessor">
+  <visibilityProcessors delegate="org.lunifera.samples.carstore.views.general.CarActionsVisibilityProcessor" delegateQualifiedName="org.lunifera.samples.carstore.views.general.CarActionsVisibilityProcessor">
     <triggersOn xsi:type="binding:YValueBinding" targetToModelStrategy="NEVER">
       <targetEndpoint xsi:type="binding:YVisibilityProcessorValueBindingEndpoint" property="main"/>
       <modelEndpoint xsi:type="core:YBeanSlotValueBindingEndpoint" attributePath="value" beanSlot="//@beanSlots.0"/>
@@ -232,8 +232,12 @@
       <targetEndpoint xsi:type="binding:YVisibilityProcessorValueBindingEndpoint" property="dirty"/>
       <modelEndpoint xsi:type="core:YBeanSlotValueBindingEndpoint" attributePath="dirty" beanSlot="//@beanSlots.0"/>
     </triggersOn>
+    <triggersOn xsi:type="binding:YValueBinding" targetToModelStrategy="NEVER">
+      <targetEndpoint xsi:type="binding:YVisibilityProcessorValueBindingEndpoint" property="axes"/>
+      <modelEndpoint xsi:type="core:YBeanSlotValueBindingEndpoint" attributePath="axes" beanSlot="//@beanSlots.0"/>
+    </triggersOn>
   </visibilityProcessors>
-  <visibilityProcessors delegateQualifiedName="org.lunifera.samples.carstore.views.general.CarSpecificsVisibilityProcessor">
+  <visibilityProcessors delegate="org.lunifera.samples.carstore.views.general.CarSpecificsVisibilityProcessor" delegateQualifiedName="org.lunifera.samples.carstore.views.general.CarSpecificsVisibilityProcessor">
     <triggersOn xsi:type="binding:YValueBinding" targetToModelStrategy="NEVER">
       <targetEndpoint xsi:type="binding:YVisibilityProcessorValueBindingEndpoint" property="main"/>
       <modelEndpoint xsi:type="core:YBeanSlotValueBindingEndpoint" attributePath="value" beanSlot="//@beanSlots.0"/>
