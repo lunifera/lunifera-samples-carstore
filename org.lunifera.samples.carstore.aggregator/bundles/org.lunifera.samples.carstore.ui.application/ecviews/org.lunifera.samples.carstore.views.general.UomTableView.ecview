@@ -9,7 +9,7 @@
         <orphanDatadescriptions labelI18nKey="org.lunifera.samples.carstore.dtos.general.NumberedWithDescriptionDto.description"/>
       </elements>
     </elements>
-    <elements xsi:type="extension:YTable" id="UomTableView.DataTable" name="DataTable" useBeanService="true" datadescription="//@content/@elements.1/@orphanDatadescriptions.0" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto">
+    <elements xsi:type="extension:YTable" id="UomTableView.DataTable" name="DataTable" useBeanService="true" datadescription="//@content/@elements.1/@orphanDatadescriptions.0" type="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto">
       <orphanDatadescriptions label="DataTable" labelI18nKey="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto"/>
       <columns icon="org.lunifera.samples.carstore.dtos.general.NumberedWithDescriptionDto.number.image" datadescription="//@content/@elements.1/@columns.0/@orphanDatadescriptions.0" propertyPath="number">
         <orphanDatadescriptions labelI18nKey="org.lunifera.samples.carstore.dtos.general.NumberedWithDescriptionDto.number"/>

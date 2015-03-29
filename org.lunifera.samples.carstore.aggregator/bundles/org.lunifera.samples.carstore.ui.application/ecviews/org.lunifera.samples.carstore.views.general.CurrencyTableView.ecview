@@ -9,7 +9,7 @@
         <orphanDatadescriptions labelI18nKey="org.lunifera.samples.carstore.dtos.general.NumberedWithDescriptionDto.description"/>
       </elements>
     </elements>
-    <elements xsi:type="extension:YTable" id="CurrencyTableView.DataTable" name="DataTable" useBeanService="true" datadescription="//@content/@elements.1/@orphanDatadescriptions.0" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.CurrencyDto">
+    <elements xsi:type="extension:YTable" id="CurrencyTableView.DataTable" name="DataTable" useBeanService="true" datadescription="//@content/@elements.1/@orphanDatadescriptions.0" type="org.lunifera.samples.carstore.dtos.general.CurrencyDto" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.CurrencyDto">
       <orphanDatadescriptions label="DataTable" labelI18nKey="org.lunifera.samples.carstore.dtos.general.CurrencyDto"/>
       <columns icon="org.lunifera.samples.carstore.dtos.general.CurrencyDto.iso3Code.image" datadescription="//@content/@elements.1/@columns.0/@orphanDatadescriptions.0" propertyPath="iso3Code">
         <orphanDatadescriptions labelI18nKey="org.lunifera.samples.carstore.dtos.general.CurrencyDto.iso3Code"/>
