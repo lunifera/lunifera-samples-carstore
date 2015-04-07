@@ -1,0 +1,6 @@
+This repository uses Vaadin touchkit addon which is licensed under the CVAL 3.0 license. You are not permitted to use the code contained in this repo without a valid CVAL 3.0 license.
+
+https://vaadin.com/directory#addon/vaadin-touchkit
+
+Code implemented by Lunifera DOT org project is licensed under the EPL v1.
+

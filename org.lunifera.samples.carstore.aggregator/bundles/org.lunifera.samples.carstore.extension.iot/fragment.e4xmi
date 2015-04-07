@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ASCII"?>
+<fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/descriptor/basic" xmlns:basic_1="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmi:id="_MNDvwMWxEeSzw8CCZBgGfQ">
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_ieGRoM-xEeSscMz1WjkrfA" featurename="descriptors" parentElementId="org.lunifera.vaaclipse.addons.application">
+    <elements xsi:type="basic:PartDescriptor" xmi:id="_VG-MkM--EeSqGowmJdFaKQ" elementId="org.lunifera.samples.carstore.extension.iot.partdescriptor.pressureChart" label="Pressure Chart" iconURI="platform:/plugin/org.lunifera.samples.carstore.extension.iot/images/pressure.png" tooltip="Pressure Chart" category="org.lunifera.vaaclipse.addons.application.partstack.main" closeable="true" contributionURI="bundleclass://org.lunifera.samples.carstore.extension.iot/org.lunifera.samples.carstore.extension.iot.views.PressureViewPart">
+      <persistedState key="ecview.viewId" value="org.lunifera.vaaclipse.addons.extension.system.DatasourceDetails"/>
+      <tags>View</tags>
+      <toolbar xmi:id="_e0UXcM_FEeSqGowmJdFaKQ" elementId="org.lunifera.vaaclipse.addons.extension.system.toolbar.0"/>
+    </elements>
+    <elements xsi:type="basic:PartDescriptor" xmi:id="_xlM0IN0ZEeSOjIDi2pwsFg" elementId="org.lunifera.samples.carstore.extension.iot.partdescriptor.temperatureChart" label="Temperature Chart" iconURI="platform:/plugin/org.lunifera.samples.carstore.extension.iot/images/temperature.png" tooltip="Temperature Chart" category="org.lunifera.vaaclipse.addons.application.partstack.main" closeable="true" contributionURI="bundleclass://org.lunifera.samples.carstore.extension.iot/org.lunifera.samples.carstore.extension.iot.views.TemperatureViewPart">
+      <persistedState key="ecview.viewId" value="org.lunifera.vaaclipse.addons.extension.system.DatasourceDetails"/>
+      <tags>View</tags>
+      <toolbar xmi:id="_xlM0Id0ZEeSOjIDi2pwsFg" elementId="org.lunifera.vaaclipse.addons.extension.system.toolbar.0"/>
+    </elements>
+    <elements xsi:type="basic:PartDescriptor" xmi:id="_qpjbMN0aEeSOjIDi2pwsFg" elementId="org.lunifera.samples.carstore.extension.iot.partdescriptor.rotationChart" label="Rotation Chart" iconURI="platform:/plugin/org.lunifera.samples.carstore.extension.iot/images/rotation.png" tooltip="Rotation Chart" category="org.lunifera.vaaclipse.addons.application.partstack.main" closeable="true" contributionURI="bundleclass://org.lunifera.samples.carstore.extension.iot/org.lunifera.samples.carstore.extension.iot.views.RotationViewPart">
+      <persistedState key="ecview.viewId" value="org.lunifera.vaaclipse.addons.extension.system.DatasourceDetails"/>
+      <tags>View</tags>
+      <toolbar xmi:id="_qpjbMd0aEeSOjIDi2pwsFg" elementId="org.lunifera.vaaclipse.addons.extension.system.toolbar.0"/>
+    </elements>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_7MidoN0gEeSOjIDi2pwsFg" featurename="children" parentElementId="org.lunifera.vaaclipse.addons.application.perspectivestack.0">
+    <elements xsi:type="advanced:Perspective" xmi:id="_I2S34N0hEeSOjIDi2pwsFg" elementId="org.lunifera.samples.carstore.extension.iot.perspective" label="Measures" iconURI="platform:/plugin/org.lunifera.samples.carstore.extension.iot/images/system.png" tooltip="Measures">
+      <children xsi:type="basic_1:PartSashContainer" xmi:id="_ZqNEgN0iEeSOjIDi2pwsFg" elementId="" horizontal="true">
+        <children xsi:type="basic_1:PartSashContainer" xmi:id="_ZqNEgd0iEeSOjIDi2pwsFg" elementId="" containerData="80">
+          <children xsi:type="basic_1:PartSashContainer" xmi:id="_h0tAwN0iEeSOjIDi2pwsFg" elementId="org.lunifera.vaaclipse.addons.application.partsashcontainer.0" containerData="70" horizontal="true">
+            <children xsi:type="basic_1:PartStack" xmi:id="_oG-aoN0jEeSOjIDi2pwsFg" elementId="org.lunifera.samples.carstore.extension.iot.partstack.0" containerData="30">
+              <children xsi:type="advanced:Placeholder" xmi:id="_h0tAwd0iEeSOjIDi2pwsFg" elementId="" containerData="30" ref="_G4dAQN0jEeSOjIDi2pwsFg"/>
+            </children>
+            <children xsi:type="basic_1:PartStack" xmi:id="_otSMsN0jEeSOjIDi2pwsFg" elementId="org.lunifera.samples.carstore.extension.iot.partstack.0" containerData="30">
+              <children xsi:type="advanced:Placeholder" xmi:id="_x0oBIN0iEeSOjIDi2pwsFg" elementId="" containerData="30" ref="_L1oE4N0jEeSOjIDi2pwsFg"/>
+            </children>
+            <children xsi:type="basic_1:PartStack" xmi:id="_o1S5MN0jEeSOjIDi2pwsFg" elementId="org.lunifera.samples.carstore.extension.iot.partstack.0" containerData="30">
+              <children xsi:type="advanced:Placeholder" xmi:id="_yAX-IN0iEeSOjIDi2pwsFg" elementId="" containerData="30" ref="_Q8pCAN0jEeSOjIDi2pwsFg"/>
+            </children>
+          </children>
+          <children xsi:type="basic_1:PartSashContainer" xmi:id="_jKJwwN0iEeSOjIDi2pwsFg" elementId="org.lunifera.vaaclipse.addons.application.partsashcontainer.0" containerData="30" horizontal="true"/>
+        </children>
+      </children>
+    </elements>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_99lXAN0iEeSOjIDi2pwsFg" featurename="sharedElements" parentElementId="mainWindow">
+    <elements xsi:type="basic_1:Part" xmi:id="_G4dAQN0jEeSOjIDi2pwsFg" elementId="org.lunifera.samples.carstore.extension.iot.partdescriptor.pressureChart" accessibilityPhrase="" contributionURI="bundleclass://org.lunifera.samples.carstore.extension.iot/org.lunifera.samples.carstore.extension.iot.views.PressureViewPart" label="Pressure" iconURI="platform:/plugin/org.lunifera.samples.carstore.extension.iot/images/pressure.png" tooltip="Pressure" closeable="true"/>
+    <elements xsi:type="basic_1:Part" xmi:id="_L1oE4N0jEeSOjIDi2pwsFg" elementId="org.lunifera.samples.carstore.extension.iot.partdescriptor.temperatureChart" accessibilityPhrase="" contributionURI="bundleclass://org.lunifera.samples.carstore.extension.iot/org.lunifera.samples.carstore.extension.iot.views.TemperatureViewPart" label="Temperature" iconURI="platform:/plugin/org.lunifera.samples.carstore.extension.iot/images/temperature.png" tooltip="Temperature" closeable="true"/>
+    <elements xsi:type="basic_1:Part" xmi:id="_Q8pCAN0jEeSOjIDi2pwsFg" elementId="org.lunifera.samples.carstore.extension.iot.partdescriptor.rotationChart" accessibilityPhrase="" contributionURI="bundleclass://org.lunifera.samples.carstore.extension.iot/org.lunifera.samples.carstore.extension.iot.views.RotationViewPart" label="Rotation" iconURI="platform:/plugin/org.lunifera.samples.carstore.extension.iot/images/rotation.png" tooltip="Rotation" closeable="true"/>
+  </fragments>
+</fragment:ModelFragments>

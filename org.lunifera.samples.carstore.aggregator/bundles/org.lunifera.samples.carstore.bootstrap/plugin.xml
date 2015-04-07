@@ -12,7 +12,7 @@
          </property>
          <property
                name="applicationWidgetset"
-               value="platform:/plugin/org.semanticsoft.vaaclipse.widgetset.default/resources/org.semanticsoft.vaaclipse.widgetset.DefaultWidgetset">
+               value="platform:/plugin/org.lunifera.samples.carstore.widgetset/VAADIN/widgetsets/org.semanticsoft.vaaclipse.widgetset.DefaultWidgetset">
          </property>
          <property
                name="preferenceCustomization"
