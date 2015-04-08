@@ -49,13 +49,11 @@ public class RotationViewPart implements MqttCallback {
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(RotationViewPart.class);
 
-	public static final String BROKER = "tcp://iot.eclipse.org:1883";
-	private static final String TOPIC = "org/lunifera/carstore/rps";
+	public static final String BROKER = "tcp://10.0.0.123:1883";
+	private static final String TOPIC = "steamengine/rotations";
 
 	@Inject
 	private VerticalLayout parentLayout;
-
-	private Thread updater;
 
 	private int currentIndex;
 
@@ -63,11 +61,16 @@ public class RotationViewPart implements MqttCallback {
 
 	private double rps;
 
+	protected boolean active;
+
+	private DataSeries series;
+
 	public RotationViewPart() {
 	}
 
 	@PostConstruct
 	public void setup() {
+		active = true;
 
 		VerticalLayout layout = new VerticalLayout();
 		parentLayout.addComponent(layout);
@@ -92,11 +95,12 @@ public class RotationViewPart implements MqttCallback {
 		YAxis yAxis = configuration.getyAxis();
 		yAxis.setTitle(new Title("RPS"));
 		yAxis.setPlotLines(new PlotLine(0, 1, new SolidColor("#808080")));
+		yAxis.setMin(0);
 
 		configuration.getTooltip().setEnabled(false);
 		configuration.getLegend().setEnabled(false);
 
-		final DataSeries series = new DataSeries();
+		series = new DataSeries();
 		PlotOptionsSpline options = new PlotOptionsSpline();
 		options.setPointInterval(120);
 		series.setPlotOptions(options);
@@ -111,28 +115,6 @@ public class RotationViewPart implements MqttCallback {
 		createMqttClient();
 
 		currentIndex = 0;
-		updater = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				while (Thread.currentThread().isAlive()) {
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-					}
-
-					if (parentLayout.getUI() != null) {
-						parentLayout.getUI().access(new Runnable() {
-							@Override
-							public void run() {
-								series.add(new DataSeriesItem(++currentIndex,
-										rps), true, true);
-							}
-						});
-					}
-				}
-			}
-		});
-		updater.start();
 
 		return chart;
 	}
@@ -166,11 +148,10 @@ public class RotationViewPart implements MqttCallback {
 	public void commandExecuted() {
 	}
 
-	@SuppressWarnings("deprecation")
 	@PreDestroy
 	public void dispose() {
 		try {
-			updater.stop();
+			active = false;
 			mqttClient.disconnect();
 			mqttClient.close();
 		} catch (Exception ex) {
@@ -184,6 +165,13 @@ public class RotationViewPart implements MqttCallback {
 		synchronized (this) {
 			String rpsString = new String(message.getPayload());
 			this.rps = Double.valueOf(rpsString);
+			parentLayout.getUI().access(new Runnable() {
+				@Override
+				public void run() {
+					series.add(new DataSeriesItem(++currentIndex, rps), true,
+							true);
+				}
+			});
 		}
 	}
 

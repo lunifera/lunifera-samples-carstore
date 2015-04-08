@@ -33,6 +33,7 @@ import com.vaadin.addon.charts.model.Configuration;
 import com.vaadin.addon.charts.model.CrosshairStyle;
 import com.vaadin.addon.charts.model.DashStyle;
 import com.vaadin.addon.charts.model.ListSeries;
+import com.vaadin.addon.charts.model.YAxis;
 import com.vaadin.addon.charts.model.style.SolidColor;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.VerticalLayout;
@@ -43,23 +44,26 @@ public class TemperatureViewPart implements MqttCallback {
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(TemperatureViewPart.class);
 
-	public static final String BROKER = "tcp://iot.eclipse.org:1883";
-	private static final String TOPIC = "org/lunifera/carstore/temperature";
+	public static final String BROKER = "tcp://10.0.0.123:1883";
+	private static final String TOPIC = "steamengine/temperature";
 
 	@Inject
 	private VerticalLayout parentLayout;
 
-	private Thread updater;
-
 	private MqttClient mqttClient;
 
 	private double temperature;
+
+	protected boolean active;
+
+	private ListSeries ls;
 
 	public TemperatureViewPart() {
 	}
 
 	@PostConstruct
 	public void setup() {
+		active = true;
 
 		VerticalLayout layout = new VerticalLayout();
 		parentLayout.addComponent(layout);
@@ -74,12 +78,14 @@ public class TemperatureViewPart implements MqttCallback {
 
 		Configuration config = chart.getConfiguration();
 		config.setTitle("Temperature");
-
+		
 		config.getTooltip().setCrosshairs(
 				new CrosshairStyle(10, SolidColor.BLACK, DashStyle.SOLID, 0),
 				new CrosshairStyle(5, "#880000", DashStyle.DOT, 1));
-
-		final ListSeries ls = new ListSeries();
+		YAxis yAxis = config.getyAxis();
+		yAxis.setMin(75);
+		
+		ls = new ListSeries();
 		ls.setName("Celsius");
 		config.setSeries(ls);
 
@@ -87,27 +93,27 @@ public class TemperatureViewPart implements MqttCallback {
 
 		createMqttClient();
 
-		updater = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				while (updater.isAlive()) {
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-					}
-
-					if (parentLayout.getUI() != null) {
-						parentLayout.getUI().access(new Runnable() {
-							@Override
-							public void run() {
-								ls.addData(temperature, true, false);
-							}
-						});
-					}
-				}
-			}
-		});
-		updater.start();
+		// updater = new Thread(new Runnable() {
+		// @Override
+		// public void run() {
+		// while (active) {
+		// try {
+		// Thread.sleep(1000);
+		// } catch (InterruptedException e) {
+		// }
+		//
+		// if (active && parentLayout.getUI() != null) {
+		// parentLayout.getUI().access(new Runnable() {
+		// @Override
+		// public void run() {
+		// ls.addData(temperature, true, false);
+		// }
+		// });
+		// }
+		// }
+		// }
+		// });
+		// updater.start();
 
 		return chart;
 	}
@@ -141,11 +147,10 @@ public class TemperatureViewPart implements MqttCallback {
 	public void commandExecuted() {
 	}
 
-	@SuppressWarnings("deprecation")
 	@PreDestroy
 	public void dispose() {
 		try {
-			updater.stop();
+			active = false;
 			mqttClient.disconnect();
 			mqttClient.close();
 		} catch (Exception ex) {
@@ -169,6 +174,12 @@ public class TemperatureViewPart implements MqttCallback {
 		synchronized (this) {
 			String temperatureString = new String(message.getPayload());
 			this.temperature = Double.valueOf(temperatureString);
+			parentLayout.getUI().access(new Runnable() {
+				@Override
+				public void run() {
+					ls.addData(temperature, true, false);
+				}
+			});
 		}
 	}
 

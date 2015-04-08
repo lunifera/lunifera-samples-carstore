@@ -10,6 +10,7 @@
  */
 package org.lunifera.samples.carstore.extension.iot.views;
 
+import java.text.DecimalFormat;
 import java.util.UUID;
 
 import javax.annotation.PostConstruct;
@@ -49,8 +50,8 @@ public class PressureViewPart implements MqttCallback {
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(PressureViewPart.class);
 
-	public static final String BROKER = "tcp://iot.eclipse.org:1883";
-	private static final String TOPIC = "org/lunifera/carstore/pressure";
+	public static final String BROKER = "tcp://10.0.0.123:1883";
+	private static final String TOPIC = "steamengine/pressure";
 
 	@Inject
 	private VerticalLayout parentLayout;
