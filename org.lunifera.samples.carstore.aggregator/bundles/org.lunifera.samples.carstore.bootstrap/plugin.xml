@@ -4,7 +4,7 @@
          id="CarstoreProduct"
          point="org.eclipse.core.runtime.products">
       <product
-            application="org.lunifera.vaaclipse.app.application"
+            application="org.lunifera.vaaclipse.addons.app.application"
             name="CarstoreProduct">
       	 <property
                name="applicationXMI"

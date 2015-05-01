@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="CarstoreProduct" uid="org.lunifera.samples.carstore.product.CarstoreProduct" id="org.lunifera.samples.carstore.bootstrap.CarstoreProduct" application="org.lunifera.vaaclipse.app.application" version="0.0.1.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="CarstoreProduct" uid="org.lunifera.samples.carstore.product.CarstoreProduct" id="org.lunifera.samples.carstore.bootstrap.CarstoreProduct" application="org.lunifera.vaaclipse.addons.app.application" version="0.0.1.qualifier" useFeatures="true" includeLaunchers="true">
+
 
    <configIni use="">
    </configIni>
@@ -21,6 +22,7 @@
          <bmp/>
       </win>
    </launcher>
+
 
    <vm>
    </vm>
@@ -46,11 +48,11 @@
       <plugin id="org.eclipse.gemini.jpa" autoStart="true" startLevel="3" />
       <plugin id="org.eclipse.osgi" autoStart="true" startLevel="-1" />
       <plugin id="org.lunifera.ecview.jetty.manager" autoStart="true" startLevel="0" />
-   	  <plugin id="org.lunifera.runtime.typeprovider.bundlespace" autoStart="true" startLevel="0" />
-   	  <plugin id="org.lunifera.runtime.ecore.bundlespace" autoStart="true" startLevel="0" />
-      <plugin id="org.lunifera.xtext.builder.metadata.services" autoStart="true" startLevel="0" />
-      <plugin id="org.lunifera.samples.carstore.entities" autoStart="true" startLevel="2" />
+      <plugin id="org.lunifera.runtime.ecore.bundlespace" autoStart="true" startLevel="0" />
+      <plugin id="org.lunifera.runtime.typeprovider.bundlespace" autoStart="true" startLevel="0" />
       <plugin id="org.lunifera.samples.carstore.bootstrap" autoStart="true" startLevel="0" />
+      <plugin id="org.lunifera.samples.carstore.entities" autoStart="true" startLevel="2" />
+      <plugin id="org.lunifera.xtext.builder.metadata.services" autoStart="true" startLevel="0" />
    </configurations>
 
 </product>
