@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.lunifera.samples.carstore.feature"
-      label="Feature carstore"
+      label="Feature carstore (do not install into IDE)"
       version="0.9.1.qualifier"
       provider-name="Lunifera GmbH">
 
    <description>
-      An SDK feature for carstore
+      An SDK feature for carstore -- do not install
    </description>
 
    <copyright>

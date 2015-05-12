@@ -1,0 +1,7 @@
+package org.my.dtos.services {
+	
+	/* Imports the original entity and dto package */
+	import org.my.dtos.*;
+	import org.my.dtos.dtos.*; 
+	
+}

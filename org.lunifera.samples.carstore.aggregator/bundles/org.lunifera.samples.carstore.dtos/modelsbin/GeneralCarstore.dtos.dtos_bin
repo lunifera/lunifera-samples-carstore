@@ -12,7 +12,7 @@
       </features>
       <features xsi:type="dto:LDtoAttribute" name="^dirty" dirty="true">
         <annotationInfo xsi:type="dto:LDtoFeature"/>
-        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.0"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.0"/>
       </features>
       <wrappedType href="platform:/resource/org.lunifera.samples.carstore.entities/models/GeneralCarstore.entitymodel#/0/@packages.0/@types.0"/>
     </types>

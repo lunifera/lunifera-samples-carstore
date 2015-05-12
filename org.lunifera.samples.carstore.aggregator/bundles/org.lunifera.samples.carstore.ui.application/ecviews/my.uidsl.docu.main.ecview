@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:YView xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://lunifera.org/ecview/v1/core/view" xmlns:extension="http://lunifera.org/ecview/v1/extension/view" xmlns:validation="http://lunifera.org/ecview/v1/core/validation" name="my.uidsl.docu.main" viewName="my.uidsl.docu.main" contentAlignment="UNDEFINED">
+  <content xsi:type="extension:YFormLayout" name="Docu">
+    <elements xsi:type="extension:YTextArea" id="main.Docu.MyText" name="MyText" datadescription="//@content/@elements.0/@orphanDatadescriptions.0">
+      <orphanDatadescriptions label="MyText" labelI18nKey="my.uidsl.docu.MyText"/>
+      <validators xsi:type="validation:YRegexpValidator" errorCode="my.uidsl.docu.null.ERR011" defaultErrorMessage="That's no good" regExpression="[A-Z]{3}:[0-9]{2}"/>
+    </elements>
+  </content>
+</core:YView>

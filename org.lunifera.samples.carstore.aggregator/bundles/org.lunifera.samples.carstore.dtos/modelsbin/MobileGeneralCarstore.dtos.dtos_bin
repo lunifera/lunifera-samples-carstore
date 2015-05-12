@@ -31,7 +31,7 @@
       <annotationInfo xsi:type="dto:LDto"/>
       <features xsi:type="dto:LDtoAttribute" name="customProperty">
         <annotationInfo xsi:type="dto:LDtoFeature"/>
-        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
       </features>
       <wrappedType href="platform:/resource/org.lunifera.samples.carstore.entities/models/GeneralCarstore.entitymodel#/0/@packages.0/@types.10"/>
     </types>
