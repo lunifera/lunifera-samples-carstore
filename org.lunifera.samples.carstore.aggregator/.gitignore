@@ -17,3 +17,6 @@ target/
 
 *.DS_Store
 .*.java._trace
+*.dat
+*.lck
+*.ctrl

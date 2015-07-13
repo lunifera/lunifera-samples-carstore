@@ -64,8 +64,11 @@ public class PickupDtoMapper<DTO extends PickupDto, ENTITY extends Pickup> exten
     context.registerMappingRoot(createEntityHash(dto), dto);
     super.mapToEntity(dto, entity, context);
     
+    
     entity.setLoadingAreaWidth(toEntity_loadingAreaWidth(dto, context));
+    
     entity.setLoadingAreaLength(toEntity_loadingAreaLength(dto, context));
+    
   }
   
   /**
