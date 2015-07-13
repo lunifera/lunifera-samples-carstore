@@ -3,13 +3,14 @@ package org.lunifera.samples.carstore.dtos.general;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
+import org.lunifera.dsl.common.datatypes.IDto;
 import org.lunifera.dsl.dto.lib.MappingContext;
 import org.lunifera.runtime.common.annotations.Dispose;
 import org.lunifera.runtime.common.annotations.DomainReference;
 import org.lunifera.samples.carstore.dtos.general.CurrencyDto;
 
 @SuppressWarnings("all")
-public class PriceDto implements Serializable, PropertyChangeListener {
+public class PriceDto implements IDto, Serializable, PropertyChangeListener {
   private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
   
   @Dispose

@@ -16,6 +16,58 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-persistence-for-static-weaving</id>
+						<phase>process-classes</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/classes/META-INF</outputDirectory>
+							<overwrite>true</overwrite>
+							<resources>
+								<resource>
+									<directory>META-INF</directory>
+									<includes>
+										<include>*</include>
+									</includes>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- https://wiki.eclipse.org/EclipseLink/UserGuide/JPA/Advanced_JPA_Development/Performance/Weaving/Static_Weaving -->
+			<!-- http://www.tzavellas.com/techblog/2008/10/17/statically-weaving-jpa-entities-for-eclipselink-using-maven/ -->
+			<plugin>
+				<groupId>de.empulse.eclipselink</groupId>
+				<artifactId>staticweave-maven-plugin</artifactId>
+				<version>1.0.0</version>
+				<executions>
+					<execution>
+						<phase>process-classes</phase>
+						<goals>
+							<goal>weave</goal>
+						</goals>
+						<configuration>
+							<persistenceXMLLocation>/META-INF/persistence.xml</persistenceXMLLocation>
+							<logLevel>FINE</logLevel>
+						</configuration>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.eclipse.persistence</groupId>
+						<artifactId>org.eclipse.persistence.jpa</artifactId>
+						<version>2.6.0-M3</version>
+					</dependency>
+				</dependencies>
+			</plugin>
 		</plugins>
 
 		<pluginManagement>
@@ -27,7 +79,7 @@
 					<artifactId>lifecycle-mapping</artifactId>
 					<version>1.0.0</version>
 					<configuration>
-						<lifecycleMappingMetadata>
+						<lifecycleMappingMetadata> 
 							<pluginExecutions>
 								<pluginExecution>
 									<pluginExecutionFilter>

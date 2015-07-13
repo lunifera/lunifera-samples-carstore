@@ -1,9 +1,0 @@
-package org.lunifera.samples.carstore.dtos.sales.mobile.services {
-	
-	/* Imports the original entity and dto package */
-	import org.lunifera.samples.carstore.dtos.sales.mobile.*;
-	import org.lunifera.samples.carstore.dtos.sales.mobile.dtos.*; 
-	
-	dtoservice SalesOrderDetailService provides SalesOrderDetailMobileDto {
-	}
-}

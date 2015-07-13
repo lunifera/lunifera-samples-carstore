@@ -1,7 +1,19 @@
 package org.lunifera.samples.carstore.tests.dtos;
 
+import static org.junit.Assert.fail;
+
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.NotSupportedException;
+import javax.transaction.RollbackException;
+import javax.transaction.SystemException;
+import javax.transaction.UserTransaction;
+
 import org.eclipse.persistence.internal.jpa.EntityManagerImpl;
-import org.eclipse.persistence.internal.jpa.transaction.EntityTransactionImpl;
 import org.eclipse.persistence.internal.sessions.RepeatableWriteUnitOfWork;
 import org.eclipse.persistence.sessions.SessionEvent;
 import org.eclipse.persistence.sessions.SessionEventAdapter;
@@ -40,7 +52,7 @@ public class JPAMetamodelTests extends AbstractJPATest {
 		};
 		em.getActiveSession().getEventManager().addListener(listener);
 
-		EntityTransactionImpl txn = (EntityTransactionImpl) em.getTransaction();
+		Transaction txn = new Transaction(em);
 		txn.begin();
 		CascadeNo cNo = new CascadeNo();
 		CascadeRoot root = new CascadeRoot();
@@ -50,16 +62,85 @@ public class JPAMetamodelTests extends AbstractJPATest {
 		em.persist(root);
 		txn.commit();
 
-		txn = (EntityTransactionImpl) em.getTransaction();
 		txn.begin();
-		em.remove(root);
-		txn.commit();
+		try {
+			em.remove(root);
+			txn.commit();
+			fail("Needs exception since CascadeNo could not be deleted -> ConstraintViolation");
+		} catch (Exception e) {
+			// everything is fine
+		}
 
 	}
 
 	private BundleContext getBundleContext() {
 		return FrameworkUtil.getBundle(SimpleMapperTests.class)
 				.getBundleContext();
+	}
+
+	protected static class Transaction {
+
+		private final EntityManager em;
+		private boolean isJTA;
+		private UserTransaction ut;
+		private EntityTransaction txn;
+
+		/**
+		 * Returns true, if JTA is used.
+		 * 
+		 * @param em
+		 * @return
+		 */
+		public static boolean isJTA(EntityManager em) {
+			try {
+				em.getTransaction();
+			} catch (Exception e) {
+				return true;
+			}
+			return false;
+		}
+
+		public Transaction(EntityManager em) {
+			super();
+			this.em = em;
+
+			isJTA = isJTA(em);
+		}
+
+		public void begin() throws NamingException, NotSupportedException,
+				SystemException {
+			if (isJTA) {
+				ut = (UserTransaction) new InitialContext()
+						.lookup("osgi:service/javax.transaction.UserTransaction");
+
+				// start the user transaction
+				ut.begin();
+				em.joinTransaction();
+			} else {
+				txn = em.getTransaction();
+				txn.begin();
+			}
+		}
+
+		public void commit() throws IllegalStateException, SecurityException,
+				HeuristicMixedException, HeuristicRollbackException,
+				RollbackException, SystemException {
+			if (isJTA) {
+				ut.commit();
+			} else {
+				txn.commit();
+			}
+		}
+
+		public void rollback() throws IllegalStateException, SecurityException,
+				SystemException {
+			if (isJTA) {
+				ut.rollback();
+			} else {
+				txn.rollback();
+			}
+		}
+
 	}
 
 }

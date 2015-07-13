@@ -84,7 +84,6 @@ public class PriceDtoMapper<DTO extends PriceDto, ENTITY extends Price> implemen
     if(context == null){
     	throw new IllegalArgumentException("Please pass a context!");
     }
-    
     dto.setAmount(toDto_amount(entity, context));
     dto.setCurrency(toDto_currency(entity, context));
   }
@@ -104,9 +103,7 @@ public class PriceDtoMapper<DTO extends PriceDto, ENTITY extends Price> implemen
     
     
     entity.setAmount(toEntity_amount(dto, context));
-    
     entity.setCurrency(toEntity_currency(dto, context));
-    
   }
   
   /**

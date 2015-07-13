@@ -64,11 +64,8 @@ public class UnitOfMeasureDtoMapper<DTO extends UnitOfMeasureDto, ENTITY extends
     context.registerMappingRoot(createEntityHash(dto), dto);
     super.mapToEntity(dto, entity, context);
     
-    
     entity.setSiType(toEntity_siType(dto, context));
-    
     entity.setFamily(toEntity_family(dto, context));
-    
   }
   
   /**

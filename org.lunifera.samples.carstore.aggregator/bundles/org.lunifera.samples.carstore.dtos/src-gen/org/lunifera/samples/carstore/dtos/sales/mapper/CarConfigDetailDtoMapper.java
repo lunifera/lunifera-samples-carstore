@@ -46,6 +46,10 @@ public class CarConfigDetailDtoMapper<DTO extends CarConfigDetailDto, ENTITY ext
     super.mapToDTO(dto, entity, context);
     
     dto.setNumber(toDto_number(entity, context));
+    if(dto.getParent() == null) {
+    	// parent is container property. So check for null to avoid looping
+    	dto.setParent(toDto_parent(entity, context));
+    }
     dto.setConfigDef(toDto_configDef(entity, context));
   }
   
@@ -66,12 +70,12 @@ public class CarConfigDetailDtoMapper<DTO extends CarConfigDetailDto, ENTITY ext
     context.registerMappingRoot(createEntityHash(dto), dto);
     super.mapToEntity(dto, entity, context);
     
-    
     entity.setNumber(toEntity_number(dto, context));
-    
-    
+    if(entity.getParent() == null) {
+    	// parent is container property. So check for null to avoid looping
+    	entity.setParent(toEntity_parent(dto, context));
+    }
     entity.setConfigDef(toEntity_configDef(dto, context));
-    
   }
   
   /**

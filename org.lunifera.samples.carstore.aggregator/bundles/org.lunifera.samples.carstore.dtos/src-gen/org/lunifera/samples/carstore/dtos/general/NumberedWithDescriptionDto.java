@@ -2,12 +2,13 @@ package org.lunifera.samples.carstore.dtos.general;
 
 import java.beans.PropertyChangeListener;
 import java.io.Serializable;
+import org.lunifera.dsl.common.datatypes.IDto;
 import org.lunifera.dsl.dto.lib.MappingContext;
 import org.lunifera.runtime.common.annotations.Dispose;
 import org.lunifera.samples.carstore.dtos.general.BaseDto;
 
 @SuppressWarnings("all")
-public abstract class NumberedWithDescriptionDto extends BaseDto implements Serializable, PropertyChangeListener {
+public abstract class NumberedWithDescriptionDto extends BaseDto implements IDto, Serializable, PropertyChangeListener {
   private String number;
   
   private String description;

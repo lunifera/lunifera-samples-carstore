@@ -46,6 +46,10 @@ public class ConfigDetailDefinitionDtoMapper<DTO extends ConfigDetailDefinitionD
     super.mapToDTO(dto, entity, context);
     
     dto.setPrice(toDto_price(entity, context));
+    if(dto.getCar() == null) {
+    	// car is container property. So check for null to avoid looping
+    	dto.setCar(toDto_car(entity, context));
+    }
   }
   
   /**
@@ -65,10 +69,11 @@ public class ConfigDetailDefinitionDtoMapper<DTO extends ConfigDetailDefinitionD
     context.registerMappingRoot(createEntityHash(dto), dto);
     super.mapToEntity(dto, entity, context);
     
-    
     entity.setPrice(toEntity_price(dto, context));
-    
-    
+    if(entity.getCar() == null) {
+    	// car is container property. So check for null to avoid looping
+    	entity.setCar(toEntity_car(dto, context));
+    }
   }
   
   /**
@@ -95,7 +100,7 @@ public class ConfigDetailDefinitionDtoMapper<DTO extends ConfigDetailDefinitionD
     	return null;
     }
   }
-  
+   
   /**
    * Maps the property price from the given entity to dto property.
    * 

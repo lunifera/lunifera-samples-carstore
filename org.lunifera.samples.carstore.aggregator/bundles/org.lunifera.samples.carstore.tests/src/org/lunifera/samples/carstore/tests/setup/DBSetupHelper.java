@@ -1,8 +1,16 @@
 package org.lunifera.samples.carstore.tests.setup;
 
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.NotSupportedException;
+import javax.transaction.RollbackException;
+import javax.transaction.SystemException;
+import javax.transaction.UserTransaction;
 
 import org.lunifera.samples.carstore.entities.general.Car;
 import org.lunifera.samples.carstore.entities.general.ConfigDetailDefinition;
@@ -19,27 +27,37 @@ import org.lunifera.samples.carstore.entities.general.Weight;
 public class DBSetupHelper {
 
 	private final EntityManagerFactory emf;
+	private final UserTransaction ut;
 	private EntityManager em;
 
-	public DBSetupHelper(EntityManagerFactory emf) {
+	public DBSetupHelper(EntityManagerFactory emf) throws NamingException {
 		super();
 		this.emf = emf;
+
+		ut = (UserTransaction) new InitialContext()
+				.lookup("osgi:service/javax.transaction.UserTransaction");
 	}
 
-	public void setup() {
+	public void setup() throws NotSupportedException, SystemException,
+			IllegalStateException, SecurityException, HeuristicMixedException,
+			HeuristicRollbackException, RollbackException {
 
 		em = emf.createEntityManager();
-		EntityTransaction txn = em.getTransaction();
-		txn.begin();
+		ut.begin();
+		em.joinTransaction();
 		try {
 			prepareUoms();
 			prepareCars();
-			txn.commit();
+			ut.commit();
 		} finally {
 		}
 	}
 
 	private void prepareUoms() {
+		
+		Query q1 = em.createQuery("DELETE FROM UnitOfMeasure");
+		q1.executeUpdate();
+		
 		UnitOfMeasure kg = new UnitOfMeasure();
 		kg.setNumber("0001");
 		kg.setDescription("Kilogram");
@@ -70,6 +88,16 @@ public class DBSetupHelper {
 	}
 
 	private void prepareCars() {
+		
+		Query q1 = em.createQuery("DELETE FROM ConfigDetailDefinition");
+		q1.executeUpdate();
+		Query q2 = em.createQuery("DELETE FROM Convertible");
+		q2.executeUpdate();
+		Query q3 = em.createQuery("DELETE FROM Pickup");
+		q3.executeUpdate();
+		Query q4 = em.createQuery("DELETE FROM Car");
+		q4.executeUpdate();
+		
 		Car volvo = new Car();
 		volvo.setNumber("00001");
 		volvo.setDescription("A swedish car");
@@ -93,12 +121,12 @@ public class DBSetupHelper {
 		bmw_convertible.setPrice(createPrice(16000, "EUR"));
 		bmw_convertible.setWeight(createWeight(1.89f, "Tons"));
 		bmw_convertible.setRoofType(RoofType.SOFT);
-		
+
 		ConfigDetailDefinition bmw_Detail1 = new ConfigDetailDefinition();
 		bmw_Detail1.setCar(bmw_convertible);
 		bmw_Detail1.setNumber("0001");
 		bmw_Detail1.setPrice(createPrice(700, "EUR"));
-		
+
 		em.persist(bmw_convertible);
 
 		Pickup man = new Pickup();

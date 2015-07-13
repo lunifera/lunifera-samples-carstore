@@ -60,8 +60,10 @@ public class SalesOrderDetailDtoMapper<DTO extends SalesOrderDetailDto, ENTITY e
     dto.setPrice(toDto_price(entity, context));
     dto.setQuantity(toDto_quantity(entity, context));
     dto.setValue(toDto_value(entity, context));
-    for(org.lunifera.samples.carstore.dtos.sales.CarConfigDetailDto _dtoValue : toDto_configDetails(entity, context)) {
-    	dto.addToConfigDetails(_dtoValue);
+    if(dto.getConfigDetails().isEmpty()) {
+    	for(org.lunifera.samples.carstore.dtos.sales.CarConfigDetailDto _dtoValue : toDto_configDetails(entity, context)) {
+    		dto.addToConfigDetails(_dtoValue);
+    	}
     }
   }
   
@@ -82,25 +84,19 @@ public class SalesOrderDetailDtoMapper<DTO extends SalesOrderDetailDto, ENTITY e
     context.registerMappingRoot(createEntityHash(dto), dto);
     super.mapToEntity(dto, entity, context);
     
-    
     entity.setNumber(toEntity_number(dto, context));
-    
     entity.setItem(toEntity_item(dto, context));
-    
     entity.setPaymentTerm(toEntity_paymentTerm(dto, context));
-    
     entity.setPrice(toEntity_price(dto, context));
-    
     entity.setQuantity(toEntity_quantity(dto, context));
-    
     entity.setValue(toEntity_value(dto, context));
-    
-    List<CarConfigDetail> configDetails_entities = new java.util.ArrayList<CarConfigDetail>();
-    for(CarConfigDetail _entityValue : toEntity_configDetails(dto, context)) {
-    	configDetails_entities.add(_entityValue);
+    if(entity.getConfigDetails().isEmpty()) {
+    	List<CarConfigDetail> configDetails_entities = new java.util.ArrayList<CarConfigDetail>();
+    	for(CarConfigDetail _entityValue : toEntity_configDetails(dto, context)) {
+    		configDetails_entities.add(_entityValue);
+    	}
+    	entity.setConfigDetails(configDetails_entities);
     }
-    entity.setConfigDetails(configDetails_entities);
-    
   }
   
   /**

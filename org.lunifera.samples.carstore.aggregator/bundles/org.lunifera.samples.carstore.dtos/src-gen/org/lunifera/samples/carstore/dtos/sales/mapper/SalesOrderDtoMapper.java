@@ -67,13 +67,9 @@ public class SalesOrderDtoMapper<DTO extends SalesOrderDto, ENTITY extends Sales
     context.registerMappingRoot(createEntityHash(dto), dto);
     super.mapToEntity(dto, entity, context);
     
-    
     entity.setNumber(toEntity_number(dto, context));
-    
     entity.setCustomer(toEntity_customer(dto, context));
-    
     entity.setPaymentTerm(toEntity_paymentTerm(dto, context));
-    
   }
   
   /**

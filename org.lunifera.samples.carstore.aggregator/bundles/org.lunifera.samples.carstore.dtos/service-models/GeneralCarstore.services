@@ -6,6 +6,12 @@ package org.lunifera.samples.carstore.dtos.general.services {
 	
 	dtoservice BaseService provides BaseDto {
 	}
+	dtoservice CascadeRootService provides CascadeRootDto {
+	}
+	dtoservice CascadeYesService provides CascadeYesDto {
+	}
+	dtoservice CascadeNoService provides CascadeNoDto {
+	}
 	dtoservice UnitOfMeasureService provides UnitOfMeasureDto {
 	}
 	dtoservice PaymentTermService provides PaymentTermDto {

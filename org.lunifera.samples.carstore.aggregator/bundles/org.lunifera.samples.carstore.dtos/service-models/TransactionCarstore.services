@@ -11,7 +11,7 @@ package org.lunifera.samples.carstore.dtos.sales.services {
 	dtoservice CarConfigDetailService provides CarConfigDetailDto {
 	}
 	dtoservice ManufacturerOrderService provides ManufacturerOrderDto {
-	}
+	} 
 	dtoservice CarReceiptService provides CarReceiptDto {
 	}
 	dtoservice InventoryService provides InventoryDto {

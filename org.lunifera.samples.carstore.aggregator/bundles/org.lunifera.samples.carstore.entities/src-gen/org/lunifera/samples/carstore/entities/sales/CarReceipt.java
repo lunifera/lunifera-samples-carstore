@@ -6,6 +6,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import org.lunifera.dsl.common.datatypes.IEntity;
 import org.lunifera.runtime.common.annotations.Dispose;
 import org.lunifera.samples.carstore.entities.general.Base;
 import org.lunifera.samples.carstore.entities.sales.ManufacturerOrder;
@@ -13,7 +14,7 @@ import org.lunifera.samples.carstore.entities.sales.ManufacturerOrder;
 @Entity
 @Table(name = "CAR_RECEIPT")
 @SuppressWarnings("all")
-public class CarReceipt extends Base {
+public class CarReceipt extends Base implements IEntity {
   @Column(name = "NUMBER")
   private String number;
   

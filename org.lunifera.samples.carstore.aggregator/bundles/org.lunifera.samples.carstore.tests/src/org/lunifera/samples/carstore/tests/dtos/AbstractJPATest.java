@@ -12,11 +12,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.naming.InitialContext;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.spi.PersistenceProvider;
 import javax.persistence.spi.PersistenceProviderResolver;
 import javax.persistence.spi.PersistenceProviderResolverHolder;
+import javax.transaction.UserTransaction;
 
 import org.eclipse.persistence.config.PersistenceUnitProperties;
 import org.lunifera.samples.carstore.entities.general.Currency;
@@ -29,6 +31,7 @@ public class AbstractJPATest {
 
 	protected Map<String, Object> properties = new HashMap<String, Object>();
 	protected EntityManagerFactory emf;
+	protected UserTransaction ut;
 	private ServiceRegistration<EntityManagerFactory> reg;
 
 	public void setUpDatabase() throws Exception {
@@ -56,6 +59,9 @@ public class AbstractJPATest {
 		Bundle bundle = FrameworkUtil.getBundle(AbstractJPATest.class);
 		reg = bundle.getBundleContext().registerService(
 				EntityManagerFactory.class, emf, null);
+
+		ut = (UserTransaction) new InitialContext()
+				.lookup("osgi:service/javax.transaction.UserTransaction");
 
 		// create the database contents
 		new DBSetupHelper(emf).setup();

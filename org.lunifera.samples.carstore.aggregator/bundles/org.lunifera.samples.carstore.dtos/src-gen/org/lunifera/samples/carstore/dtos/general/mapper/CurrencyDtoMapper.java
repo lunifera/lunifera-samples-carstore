@@ -61,9 +61,7 @@ public class CurrencyDtoMapper<DTO extends CurrencyDto, ENTITY extends Currency>
     context.registerMappingRoot(createEntityHash(dto), dto);
     super.mapToEntity(dto, entity, context);
     
-    
     entity.setIso3Code(toEntity_iso3Code(dto, context));
-    
   }
   
   /**

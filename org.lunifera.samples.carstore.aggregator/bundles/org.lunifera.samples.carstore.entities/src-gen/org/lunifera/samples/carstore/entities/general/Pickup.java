@@ -10,6 +10,7 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
+import org.lunifera.dsl.common.datatypes.IEntity;
 import org.lunifera.runtime.common.annotations.Dispose;
 import org.lunifera.samples.carstore.entities.general.Car;
 import org.lunifera.samples.carstore.entities.general.Length;
@@ -18,7 +19,7 @@ import org.lunifera.samples.carstore.entities.general.Length;
 @Table(name = "PICKUP")
 @DiscriminatorValue(value = "PICKUP")
 @SuppressWarnings("all")
-public class Pickup extends Car {
+public class Pickup extends Car implements IEntity {
   @Embedded
   @AttributeOverrides(value = @AttributeOverride(name = "amount", column = @Column(name = "LOADINGAREAWIDTH_AMOUNT")))
   @AssociationOverrides(value = @AssociationOverride(name = "uom", joinColumns = @JoinColumn(name = "LOADINGAREAWIDTH_UOM")))

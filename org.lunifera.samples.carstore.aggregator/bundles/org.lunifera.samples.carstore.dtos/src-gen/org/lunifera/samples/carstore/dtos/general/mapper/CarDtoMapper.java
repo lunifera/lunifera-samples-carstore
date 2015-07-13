@@ -51,11 +51,13 @@ public class CarDtoMapper<DTO extends CarDto, ENTITY extends Car> extends ItemDt
     dto.setAxes(toDto_axes(entity, context));
     dto.setWeight(toDto_weight(entity, context));
     dto.setPrice(toDto_price(entity, context));
-    for(org.lunifera.samples.carstore.dtos.general.ConfigDetailDefinitionDto _dtoValue : toDto_configDetails(entity, context)) {
-    	dto.addToConfigDetails(_dtoValue);
+    if(dto.getConfigDetails().isEmpty()) {
+    	for(org.lunifera.samples.carstore.dtos.general.ConfigDetailDefinitionDto _dtoValue : toDto_configDetails(entity, context)) {
+    		dto.addToConfigDetails(_dtoValue);
+    	}
     }
   }
-  
+   
   /**
    * Maps the dto {@link CarDto} to the entity {@link Car}.
    * 
@@ -73,19 +75,16 @@ public class CarDtoMapper<DTO extends CarDto, ENTITY extends Car> extends ItemDt
     context.registerMappingRoot(createEntityHash(dto), dto);
     super.mapToEntity(dto, entity, context);
     
-    
     entity.setAxes(toEntity_axes(dto, context));
-    
     entity.setWeight(toEntity_weight(dto, context));
-    
     entity.setPrice(toEntity_price(dto, context));
-    
-    List<ConfigDetailDefinition> configDetails_entities = new java.util.ArrayList<ConfigDetailDefinition>();
-    for(ConfigDetailDefinition _entityValue : toEntity_configDetails(dto, context)) {
-    	configDetails_entities.add(_entityValue);
+    if(entity.getConfigDetails().isEmpty()) {
+    	List<ConfigDetailDefinition> configDetails_entities = new java.util.ArrayList<ConfigDetailDefinition>();
+    	for(ConfigDetailDefinition _entityValue : toEntity_configDetails(dto, context)) {
+    		configDetails_entities.add(_entityValue);
+    	}
+    	entity.setConfigDetails(configDetails_entities);
     }
-    entity.setConfigDetails(configDetails_entities);
-    
   }
   
   /**

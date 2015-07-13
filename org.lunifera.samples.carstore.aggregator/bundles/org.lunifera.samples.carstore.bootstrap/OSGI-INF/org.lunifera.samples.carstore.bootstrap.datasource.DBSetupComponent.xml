@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" activate="activate" deactivate="deactivate" immediate="true" name="org.lunifera.samples.carstore.bootstrap.datasource.DBSetupComponent">
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" activate="activate" deactivate="deactivate" enabled="true" immediate="true" name="org.lunifera.samples.carstore.bootstrap.datasource.DBSetupComponent">
    <implementation class="org.lunifera.samples.carstore.bootstrap.datasource.DBSetupComponent"/>
-   <reference bind="setEMF" cardinality="1..1" interface="javax.persistence.EntityManagerFactory" name="EMF" policy="static"/>
+   <reference bind="bindEMF" cardinality="1..1" interface="javax.persistence.EntityManagerFactory" name="EMF" policy="static" target="(osgi.unit.name=carstore)"/>
+   <reference bind="bindTxnManager" cardinality="1..1" interface="javax.transaction.UserTransaction" name="TxnManager" policy="static"/>
 </scr:component>

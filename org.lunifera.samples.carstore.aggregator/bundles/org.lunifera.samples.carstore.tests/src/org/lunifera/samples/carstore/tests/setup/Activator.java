@@ -32,27 +32,27 @@ public class Activator implements BundleActivator {
 		this.context = null;
 	}
 
-	/**
-	 * Returns the entity manager factory or <code>null</code>.
-	 * 
-	 * @return
-	 */
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public static EntityManagerFactory getEMF() {
-		BundleContext context = FrameworkUtil.getBundle(Activator.class)
-				.getBundleContext();
-		ServiceReference[] refs;
-		try {
-			refs = context.getServiceReferences(
-					EntityManagerFactory.class.getName(),
-					"(osgi.unit.name=dbDerby)");
-			if (refs != null) {
-				return (EntityManagerFactory) context.getService(refs[0]);
-			}
-		} catch (InvalidSyntaxException e) {
-			throw new RuntimeException(e);
-		}
-
-		return null;
-	}
+//	/**
+//	 * Returns the entity manager factory or <code>null</code>.
+//	 * 
+//	 * @return
+//	 */
+//	@SuppressWarnings({ "rawtypes", "unchecked" })
+//	public static EntityManagerFactory getEMF() {
+//		BundleContext context = FrameworkUtil.getBundle(Activator.class)
+//				.getBundleContext();
+//		ServiceReference[] refs;
+//		try {
+//			refs = context.getServiceReferences(
+//					EntityManagerFactory.class.getName(),
+//					"(osgi.unit.name=dbDerby)");
+//			if (refs != null) {
+//				return (EntityManagerFactory) context.getService(refs[0]);
+//			}
+//		} catch (InvalidSyntaxException e) {
+//			throw new RuntimeException(e);
+//		}
+//
+//		return null;
+//	}
 }

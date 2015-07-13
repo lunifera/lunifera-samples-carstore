@@ -48,7 +48,7 @@
         <annotationInfo xsi:type="entity:LEntityFeature"/>
         <type href="platform:/resource/org.lunifera.samples.carstore.entities/models/GeneralCarstore.entitymodel#/0/@packages.0/@types.19"/>
       </features>
-      <features xsi:type="entity:LEntityAttribute" name="value">
+      <features xsi:type="entity:LEntityAttribute" name="^value">
         <annotationInfo xsi:type="entity:LEntityFeature"/>
         <type href="platform:/resource/org.lunifera.samples.carstore.entities/models/GeneralCarstore.entitymodel#/0/@packages.0/@types.21"/>
       </features>

@@ -1,17 +1,17 @@
- package org.lunifera.samples.carstore.dtos.general {
-
+package org.lunifera.samples.carstore.dtos.general {
+	
 	/* Imports the required artifacts */
 	import org.lunifera.samples.carstore.dtos.general.*;
 	import org.lunifera.samples.carstore.dtos.general.mapper.*;
 	import org.lunifera.samples.carstore.entities.general.*;
 
+
 	/** The mapped superclass providing an UUID. */
 	autoDto BaseDto wraps Base {
 		inherit var id;
-     
 		dirty boolean ^dirty;
 	}
- 
+	
 	abstract autoDto NumberedWithDescriptionDto extends BaseDto wraps NumberedWithDescription {
 		inherit var number;
 		inherit var description;
@@ -22,12 +22,12 @@
 		inherit ref refYes mapto CascadeYesDto;
 		inherit ref refNo mapto CascadeNoDto;
 	}
-
+	
 	autoDto CascadeYesDto wraps CascadeYes {
 		inherit var id;
 		inherit ref root mapto CascadeRootDto;
 	}
-	
+
 	autoDto CascadeNoDto wraps CascadeNo {
 		inherit var id;
 		inherit ref root mapto CascadeRootDto;
@@ -58,7 +58,7 @@
 		inherit var loadingAreaWidth;
 		inherit var loadingAreaLength;
 	}
-	
+ 
 	autoDto ConvertibleDto extends CarDto wraps Convertible {
 		inherit var roofType;
 		inherit var color;

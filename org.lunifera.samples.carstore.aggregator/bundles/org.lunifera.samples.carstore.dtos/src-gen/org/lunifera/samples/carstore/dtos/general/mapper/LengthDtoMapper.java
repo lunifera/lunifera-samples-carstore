@@ -84,7 +84,6 @@ public class LengthDtoMapper<DTO extends LengthDto, ENTITY extends Length> imple
     if(context == null){
     	throw new IllegalArgumentException("Please pass a context!");
     }
-    
     dto.setAmount(toDto_amount(entity, context));
     dto.setUom(toDto_uom(entity, context));
   }
@@ -104,9 +103,7 @@ public class LengthDtoMapper<DTO extends LengthDto, ENTITY extends Length> imple
     
     
     entity.setAmount(toEntity_amount(dto, context));
-    
     entity.setUom(toEntity_uom(dto, context));
-    
   }
   
   /**

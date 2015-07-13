@@ -82,7 +82,6 @@ public class AddressDtoMapper<DTO extends AddressDto, ENTITY extends Address> im
     if(context == null){
     	throw new IllegalArgumentException("Please pass a context!");
     }
-    
     dto.setStreet(toDto_street(entity, context));
     dto.setPostalCode(toDto_postalCode(entity, context));
   }
@@ -102,9 +101,7 @@ public class AddressDtoMapper<DTO extends AddressDto, ENTITY extends Address> im
     
     
     entity.setStreet(toEntity_street(dto, context));
-    
     entity.setPostalCode(toEntity_postalCode(dto, context));
-    
   }
   
   /**

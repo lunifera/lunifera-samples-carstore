@@ -5,6 +5,7 @@ import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
+import org.lunifera.dsl.common.datatypes.IDto;
 import org.lunifera.dsl.dto.lib.MappingContext;
 import org.lunifera.runtime.common.annotations.Dispose;
 import org.lunifera.runtime.common.annotations.DomainReference;
@@ -12,7 +13,7 @@ import org.lunifera.samples.carstore.dtos.general.CascadeNoDto;
 import org.lunifera.samples.carstore.dtos.general.CascadeYesDto;
 
 @SuppressWarnings("all")
-public class CascadeRootDto implements Serializable, PropertyChangeListener {
+public class CascadeRootDto implements IDto, Serializable, PropertyChangeListener {
   private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
   
   @Dispose

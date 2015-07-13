@@ -2,7 +2,12 @@ package org.lunifera.samples.carstore.bootstrap.datasource;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.NotSupportedException;
+import javax.transaction.RollbackException;
+import javax.transaction.SystemException;
+import javax.transaction.UserTransaction;
 
 import org.lunifera.samples.carstore.entities.general.Car;
 import org.lunifera.samples.carstore.entities.general.ConfigDetailDefinition;
@@ -24,7 +29,7 @@ import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 
-@Component(immediate = true)
+@Component(service = {}, enabled = true, immediate = true)
 public class DBSetupComponent {
 
 	private EntityManagerFactory emf;
@@ -35,20 +40,39 @@ public class DBSetupComponent {
 	private UnitOfMeasure t;
 	private UnitOfMeasure meter;
 	private UnitOfMeasure liter;
+	private UserTransaction ut;
 
 	@Activate
 	protected void activate(ComponentContext context) {
 
 		em = emf.createEntityManager();
-		EntityTransaction txn = em.getTransaction();
-		txn.begin();
 		try {
-			prepareCurrencies();
-			prepareUoms();
-			prepareCars();
-			txn.commit();
-		} finally {
+			ut.begin();
+			em.joinTransaction();
+			try {
+				prepareCurrencies();
+				prepareUoms();
+				prepareCars();
+				
+				ut.commit();
+			} finally {
+			}
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (HeuristicMixedException e) {
+			e.printStackTrace();
+		} catch (HeuristicRollbackException e) {
+			e.printStackTrace();
+		} catch (RollbackException e) {
+			e.printStackTrace();
+		} catch (NotSupportedException e) {
+			e.printStackTrace();
+		} catch (SystemException e) {
+			e.printStackTrace();
 		}
+
 	}
 
 	private void prepareCurrencies() {
@@ -187,9 +211,14 @@ public class DBSetupComponent {
 		return length;
 	}
 
-	@Reference(cardinality = ReferenceCardinality.MANDATORY)
-	protected void setEMF(EntityManagerFactory emf) {
+	@Reference(cardinality = ReferenceCardinality.MANDATORY, target = "(osgi.unit.name=carstore)")
+	protected void bindEMF(EntityManagerFactory emf) {
 		this.emf = emf;
+	}
+
+	@Reference(cardinality = ReferenceCardinality.MANDATORY)
+	protected void bindTxnManager(UserTransaction ut) {
+		this.ut = ut;
 	}
 
 	@Deactivate

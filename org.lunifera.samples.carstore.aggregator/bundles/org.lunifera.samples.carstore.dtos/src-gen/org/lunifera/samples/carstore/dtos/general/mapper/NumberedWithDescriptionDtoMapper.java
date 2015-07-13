@@ -62,11 +62,8 @@ public class NumberedWithDescriptionDtoMapper<DTO extends NumberedWithDescriptio
     context.registerMappingRoot(createEntityHash(dto), dto);
     super.mapToEntity(dto, entity, context);
     
-    
     entity.setNumber(toEntity_number(dto, context));
-    
     entity.setDescription(toEntity_description(dto, context));
-    
   }
   
   /**

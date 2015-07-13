@@ -7,8 +7,7 @@ package org.lunifera.samples.carstore.dtos.sales {
 	import org.lunifera.samples.carstore.dtos.sales.mapper.*;
 	import org.lunifera.samples.carstore.entities.general.*;
 	import org.lunifera.samples.carstore.entities.sales.*;
-
-
+ 
 	autoDto SalesOrderDto extends BaseDto wraps SalesOrder {
 		inherit var number;
 		inherit ref customer mapto CustomerDto;
@@ -21,7 +20,7 @@ package org.lunifera.samples.carstore.dtos.sales {
 		inherit ref paymentTerm mapto PaymentTermDto;
 		inherit var price;
 		inherit var quantity;
-		inherit var value;
+		inherit var ^value;
 		inherit ref configDetails mapto CarConfigDetailDto;
 	}
 	

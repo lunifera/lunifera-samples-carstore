@@ -86,7 +86,6 @@ public class CascadeNoDtoMapper<DTO extends CascadeNoDto, ENTITY extends Cascade
     }
     context.register(createDtoHash(entity), dto);
     
-    
     dto.setId(toDto_id(entity, context));
     dto.setRoot(toDto_root(entity, context));
   }
@@ -108,9 +107,7 @@ public class CascadeNoDtoMapper<DTO extends CascadeNoDto, ENTITY extends Cascade
     context.registerMappingRoot(createEntityHash(dto), dto);
     
     entity.setId(toEntity_id(dto, context));
-    
     entity.setRoot(toEntity_root(dto, context));
-    
   }
   
   /**
