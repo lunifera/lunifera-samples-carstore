@@ -84,7 +84,6 @@ public class BaseDtoMapper<DTO extends BaseDto, ENTITY extends Base> implements 
     }
     context.register(createDtoHash(entity), dto);
     
-    
     dto.setId(toDto_id(entity, context));
   }
   
@@ -105,7 +104,6 @@ public class BaseDtoMapper<DTO extends BaseDto, ENTITY extends Base> implements 
     context.registerMappingRoot(createEntityHash(dto), dto);
     
     entity.setId(toEntity_id(dto, context));
-    
   }
   
   /**

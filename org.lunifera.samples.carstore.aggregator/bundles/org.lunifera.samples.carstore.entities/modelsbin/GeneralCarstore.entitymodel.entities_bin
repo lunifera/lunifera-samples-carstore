@@ -5,7 +5,7 @@
       <annotationInfo xsi:type="types:LClass"/>
       <features xsi:type="entity:LEntityAttribute" name="id" uuid="true">
         <annotationInfo xsi:type="entity:LEntityFeature"/>
-        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
       </features>
     </types>
     <types xsi:type="entity:LEntity" name="NumberedWithDescription" abstract="true" superType="//@packages.0/@types.0" subTypes="//@packages.0/@types.5 //@packages.0/@types.6 //@packages.0/@types.7 //@packages.0/@types.12 //@packages.0/@types.13">
@@ -14,11 +14,11 @@
       <inheritanceStrategy xsi:type="entity:LTablePerSubclassStrategy"/>
       <features xsi:type="entity:LEntityAttribute" name="number">
         <annotationInfo xsi:type="entity:LEntityFeature"/>
-        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
       </features>
       <features xsi:type="entity:LEntityAttribute" name="description">
         <annotationInfo xsi:type="entity:LEntityFeature"/>
-        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
       </features>
     </types>
     <types xsi:type="entity:LEntity" name="CascadeRoot">
@@ -26,7 +26,7 @@
       <persistenceInfo/>
       <features xsi:type="entity:LEntityAttribute" name="id" uuid="true">
         <annotationInfo xsi:type="entity:LEntityFeature"/>
-        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
       </features>
       <features xsi:type="entity:LEntityReference" name="refYes" cascading="true" type="//@packages.0/@types.3" opposite="//@packages.0/@types.3/@features.1">
         <multiplicity lower="MANY"/>
@@ -42,7 +42,7 @@
       <persistenceInfo/>
       <features xsi:type="entity:LEntityAttribute" name="id" uuid="true">
         <annotationInfo xsi:type="entity:LEntityFeature"/>
-        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
       </features>
       <features xsi:type="entity:LEntityReference" name="root" type="//@packages.0/@types.2" opposite="//@packages.0/@types.2/@features.1">
         <annotationInfo xsi:type="entity:LEntityFeature"/>
@@ -53,7 +53,7 @@
       <persistenceInfo/>
       <features xsi:type="entity:LEntityAttribute" name="id" uuid="true">
         <annotationInfo xsi:type="entity:LEntityFeature"/>
-        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
       </features>
       <features xsi:type="entity:LEntityReference" name="root" type="//@packages.0/@types.2" opposite="//@packages.0/@types.2/@features.2">
         <annotationInfo xsi:type="entity:LEntityFeature"/>
@@ -91,7 +91,7 @@
       <inheritanceStrategy xsi:type="entity:LTablePerSubclassStrategy"/>
       <features xsi:type="entity:LEntityAttribute" name="axes">
         <annotationInfo xsi:type="entity:LEntityFeature"/>
-        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.2"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.2"/>
       </features>
       <features xsi:type="entity:LEntityAttribute" name="weight" type="//@packages.0/@types.17">
         <annotationInfo xsi:type="entity:LEntityFeature"/>
@@ -124,7 +124,7 @@
       </features>
       <features xsi:type="entity:LEntityAttribute" name="color">
         <annotationInfo xsi:type="entity:LEntityFeature"/>
-        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
       </features>
     </types>
     <types xsi:type="entity:LEntity" name="ConfigDetailDefinition" superType="//@packages.0/@types.1">
@@ -144,7 +144,7 @@
       <inheritanceStrategy xsi:type="entity:LTablePerSubclassStrategy"/>
       <features xsi:type="entity:LEntityAttribute" name="iso3Code">
         <annotationInfo xsi:type="entity:LEntityFeature"/>
-        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
       </features>
     </types>
     <types xsi:type="entity:LEntity" name="Customer" superType="//@packages.0/@types.0">
@@ -153,11 +153,11 @@
       <inheritanceStrategy xsi:type="entity:LTablePerSubclassStrategy"/>
       <features xsi:type="entity:LEntityAttribute" name="number">
         <annotationInfo xsi:type="entity:LEntityFeature"/>
-        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
       </features>
       <features xsi:type="entity:LEntityAttribute" name="name">
         <annotationInfo xsi:type="entity:LEntityFeature"/>
-        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
       </features>
       <features xsi:type="entity:LEntityReference" name="paymentTerms" type="//@packages.0/@types.6">
         <annotationInfo xsi:type="entity:LEntityFeature"/>
@@ -175,29 +175,29 @@
       <inheritanceStrategy xsi:type="entity:LTablePerSubclassStrategy"/>
       <features xsi:type="entity:LEntityAttribute" name="number">
         <annotationInfo xsi:type="entity:LEntityFeature"/>
-        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
       </features>
       <features xsi:type="entity:LEntityAttribute" name="name">
         <annotationInfo xsi:type="entity:LEntityFeature"/>
-        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
       </features>
     </types>
     <types xsi:type="entity:LBean" name="Address">
       <annotationInfo xsi:type="types:LClass"/>
       <features xsi:type="entity:LBeanAttribute" name="street">
         <annotationInfo xsi:type="entity:LBeanFeature"/>
-        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
       </features>
       <features xsi:type="entity:LBeanAttribute" name="postalCode">
         <annotationInfo xsi:type="entity:LBeanFeature"/>
-        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
       </features>
     </types>
     <types xsi:type="entity:LBean" name="Weight">
       <annotationInfo xsi:type="types:LClass"/>
       <features xsi:type="entity:LBeanAttribute" name="amount">
         <annotationInfo xsi:type="entity:LBeanFeature"/>
-        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.5"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.5"/>
       </features>
       <features xsi:type="entity:LBeanReference" name="uom" type="//@packages.0/@types.5">
         <annotationInfo xsi:type="entity:LBeanFeature"/>
@@ -210,7 +210,7 @@
       <annotationInfo xsi:type="types:LClass"/>
       <features xsi:type="entity:LBeanAttribute" name="amount">
         <annotationInfo xsi:type="entity:LBeanFeature"/>
-        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.5"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.5"/>
       </features>
       <features xsi:type="entity:LBeanReference" name="uom" type="//@packages.0/@types.5">
         <annotationInfo xsi:type="entity:LBeanFeature"/>
@@ -223,7 +223,7 @@
       <annotationInfo xsi:type="types:LClass"/>
       <features xsi:type="entity:LBeanAttribute" name="amount">
         <annotationInfo xsi:type="entity:LBeanFeature"/>
-        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.5"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.5"/>
       </features>
       <features xsi:type="entity:LBeanReference" name="uom" type="//@packages.0/@types.5">
         <annotationInfo xsi:type="entity:LBeanFeature"/>
@@ -236,7 +236,7 @@
       <annotationInfo xsi:type="types:LClass"/>
       <features xsi:type="entity:LBeanAttribute" name="amount">
         <annotationInfo xsi:type="entity:LBeanFeature"/>
-        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.5"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.5"/>
       </features>
       <features xsi:type="entity:LBeanReference" name="currency" type="//@packages.0/@types.13">
         <annotationInfo xsi:type="entity:LBeanFeature"/>
@@ -246,7 +246,7 @@
       <annotationInfo xsi:type="types:LClass"/>
       <features xsi:type="entity:LBeanAttribute" name="amount">
         <annotationInfo xsi:type="entity:LBeanFeature"/>
-        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.5"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.5"/>
       </features>
     </types>
     <types xsi:type="types:LEnum" name="SiType">

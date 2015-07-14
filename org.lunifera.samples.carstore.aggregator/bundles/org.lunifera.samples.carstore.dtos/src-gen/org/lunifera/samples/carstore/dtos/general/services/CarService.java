@@ -26,4 +26,3 @@ public class CarService extends AbstractDTOService<CarDto, Car> {
     return dto.getId();
   }
 }
- 

@@ -69,17 +69,11 @@ public class CustomerDtoMapper<DTO extends CustomerDto, ENTITY extends Customer>
     context.registerMappingRoot(createEntityHash(dto), dto);
     super.mapToEntity(dto, entity, context);
     
-    
     entity.setNumber(toEntity_number(dto, context));
-    
     entity.setName(toEntity_name(dto, context));
-    
     entity.setPaymentTerms(toEntity_paymentTerms(dto, context));
-    
     entity.setDeliveryAddress(toEntity_deliveryAddress(dto, context));
-    
     entity.setInvoiceAddress(toEntity_invoiceAddress(dto, context));
-    
   }
   
   /**

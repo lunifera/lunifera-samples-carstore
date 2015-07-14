@@ -60,7 +60,6 @@ public class ItemDtoMapper<DTO extends ItemDto, ENTITY extends Item> extends Num
     context.registerMappingRoot(createEntityHash(dto), dto);
     super.mapToEntity(dto, entity, context);
     
-    
   }
   
   public String createDtoHash(final Object in) {

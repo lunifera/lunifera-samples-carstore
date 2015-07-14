@@ -14,6 +14,7 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
+import org.osgi.service.component.annotations.ReferencePolicy;
 import org.osgi.service.jdbc.DataSourceFactory;
 import org.osgi.service.jndi.JNDIConstants;
 
@@ -90,9 +91,13 @@ public class DatasourceComponent {
 				XADataSource.class, xaDs, props);
 	}
 
-	@Reference(cardinality = ReferenceCardinality.MANDATORY)
+	@Reference(cardinality = ReferenceCardinality.MANDATORY, unbind="unsetDatasourceFactory")
 	protected void setDatasourceFactory(DataSourceFactory dsf) {
 		this.dsf = dsf;
+	}
+	
+	protected void unsetDatasourceFactory(DataSourceFactory dsf) {
+		this.dsf = null;
 	}
 
 	@Deactivate

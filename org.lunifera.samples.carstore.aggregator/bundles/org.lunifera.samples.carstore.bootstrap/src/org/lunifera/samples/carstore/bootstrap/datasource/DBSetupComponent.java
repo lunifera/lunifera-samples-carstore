@@ -215,10 +215,18 @@ public class DBSetupComponent {
 	protected void bindEMF(EntityManagerFactory emf) {
 		this.emf = emf;
 	}
+	
+	protected void unbindEMF(EntityManagerFactory emf) {
+		this.emf = null;
+	}
 
 	@Reference(cardinality = ReferenceCardinality.MANDATORY)
 	protected void bindTxnManager(UserTransaction ut) {
 		this.ut = ut;
+	}
+	
+	protected void unbindTxnManager(UserTransaction ut) {
+		this.ut = null;
 	}
 
 	@Deactivate

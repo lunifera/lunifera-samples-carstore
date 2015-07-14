@@ -60,7 +60,6 @@ public class AccessoryDtoMapper<DTO extends AccessoryDto, ENTITY extends Accesso
     context.registerMappingRoot(createEntityHash(dto), dto);
     super.mapToEntity(dto, entity, context);
     
-    
   }
   
   public String createDtoHash(final Object in) {

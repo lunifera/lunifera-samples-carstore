@@ -67,13 +67,9 @@ public class InventoryDtoMapper<DTO extends InventoryDto, ENTITY extends Invento
     context.registerMappingRoot(createEntityHash(dto), dto);
     super.mapToEntity(dto, entity, context);
     
-    
     entity.setItem(toEntity_item(dto, context));
-    
     entity.setRequestedQuantity(toEntity_requestedQuantity(dto, context));
-    
     entity.setCountedQuantity(toEntity_countedQuantity(dto, context));
-    
   }
   
   /**

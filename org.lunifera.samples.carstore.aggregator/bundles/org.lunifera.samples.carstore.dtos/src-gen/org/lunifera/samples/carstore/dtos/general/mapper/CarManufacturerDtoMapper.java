@@ -62,11 +62,8 @@ public class CarManufacturerDtoMapper<DTO extends CarManufacturerDto, ENTITY ext
     context.registerMappingRoot(createEntityHash(dto), dto);
     super.mapToEntity(dto, entity, context);
     
-    
     entity.setNumber(toEntity_number(dto, context));
-    
     entity.setName(toEntity_name(dto, context));
-    
   }
   
   /**
