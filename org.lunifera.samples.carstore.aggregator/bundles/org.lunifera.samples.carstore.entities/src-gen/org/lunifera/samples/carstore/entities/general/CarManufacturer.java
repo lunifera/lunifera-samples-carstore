@@ -3,14 +3,13 @@ package org.lunifera.samples.carstore.entities.general;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import org.lunifera.dsl.common.datatypes.IEntity;
 import org.lunifera.runtime.common.annotations.Dispose;
 import org.lunifera.samples.carstore.entities.general.Base;
 
 @Entity
 @Table(name = "CAR_MANUFACTURER")
 @SuppressWarnings("all")
-public class CarManufacturer extends Base implements IEntity {
+public class CarManufacturer extends Base {
   @Column(name = "NUMBER")
   private String number;
   

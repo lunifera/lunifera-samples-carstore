@@ -13,7 +13,6 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import org.lunifera.dsl.common.datatypes.IEntity;
 import org.lunifera.runtime.common.annotations.Dispose;
 import org.lunifera.samples.carstore.entities.general.Car;
 import org.lunifera.samples.carstore.entities.general.NumberedWithDescription;
@@ -23,7 +22,7 @@ import org.lunifera.samples.carstore.entities.general.Price;
 @Table(name = "CONFIG_DETAIL_DEFINITION")
 @DiscriminatorValue(value = "CONFIG_DETAIL_DEFINITION")
 @SuppressWarnings("all")
-public class ConfigDetailDefinition extends NumberedWithDescription implements IEntity {
+public class ConfigDetailDefinition extends NumberedWithDescription {
   @Embedded
   @AttributeOverrides(value = @AttributeOverride(name = "amount", column = @Column(name = "PRICE_AMOUNT")))
   @AssociationOverrides(value = @AssociationOverride(name = "currency", joinColumns = @JoinColumn(name = "PRICE_CURRENCY")))

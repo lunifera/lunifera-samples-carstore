@@ -4,12 +4,11 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Embeddable;
 import javax.persistence.Transient;
-import org.lunifera.dsl.common.datatypes.IBean;
 import org.lunifera.runtime.common.annotations.Dispose;
 
 @Embeddable
 @SuppressWarnings("all")
-public class Amount implements Serializable, IBean {
+public class Amount implements Serializable {
   @Transient
   @Dispose
   private boolean disposed;

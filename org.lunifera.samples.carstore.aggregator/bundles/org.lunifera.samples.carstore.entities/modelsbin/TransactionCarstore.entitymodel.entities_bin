@@ -14,7 +14,7 @@
       <persistenceInfo/>
       <features xsi:type="entity:LEntityAttribute" name="number">
         <annotationInfo xsi:type="entity:LEntityFeature"/>
-        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
       </features>
       <features xsi:type="entity:LEntityReference" name="customer">
         <annotationInfo xsi:type="entity:LEntityFeature"/>
@@ -30,7 +30,7 @@
       <persistenceInfo/>
       <features xsi:type="entity:LEntityAttribute" name="number">
         <annotationInfo xsi:type="entity:LEntityFeature"/>
-        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.2"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.2"/>
       </features>
       <features xsi:type="entity:LEntityReference" name="item">
         <annotationInfo xsi:type="entity:LEntityFeature"/>
@@ -62,7 +62,7 @@
       <persistenceInfo/>
       <features xsi:type="entity:LEntityAttribute" name="number">
         <annotationInfo xsi:type="entity:LEntityFeature"/>
-        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.2"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.2"/>
       </features>
       <features xsi:type="entity:LEntityReference" name="parent" type="//@packages.0/@types.1" opposite="//@packages.0/@types.1/@features.6">
         <annotationInfo xsi:type="entity:LEntityFeature"/>
@@ -77,7 +77,7 @@
       <persistenceInfo/>
       <features xsi:type="entity:LEntityAttribute" name="number">
         <annotationInfo xsi:type="entity:LEntityFeature"/>
-        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
       </features>
       <features xsi:type="entity:LEntityReference" name="salesOrderDetail" type="//@packages.0/@types.1">
         <annotationInfo xsi:type="entity:LEntityFeature"/>
@@ -88,7 +88,7 @@
       <persistenceInfo/>
       <features xsi:type="entity:LEntityAttribute" name="number">
         <annotationInfo xsi:type="entity:LEntityFeature"/>
-        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
       </features>
       <features xsi:type="entity:LEntityReference" name="order" type="//@packages.0/@types.3">
         <annotationInfo xsi:type="entity:LEntityFeature"/>

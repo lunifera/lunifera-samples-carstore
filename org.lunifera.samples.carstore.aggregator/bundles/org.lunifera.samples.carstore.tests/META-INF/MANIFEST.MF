@@ -21,7 +21,7 @@ Require-Bundle: org.lunifera.samples.carstore.dtos,
  org.eclipse.gemini.dbaccess.derby;bundle-version="1.1.0",
  org.eclipse.gemini.dbaccess.util;bundle-version="1.1.0",
  org.eclipse.gemini.jpa;bundle-version="1.2.0",
- org.eclipse.gemini.naming;bundle-version="1.1.0"
+ org.lunifera.org.eclipse.gemini.naming;bundle-version="1.1.0"
 Import-Package: org.slf4j,
  org.junit;version="4.5.0",
  org.junit.runner;version="4.5.0",

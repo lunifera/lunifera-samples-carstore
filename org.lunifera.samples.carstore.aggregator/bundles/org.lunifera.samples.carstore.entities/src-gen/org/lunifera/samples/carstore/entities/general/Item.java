@@ -3,7 +3,6 @@ package org.lunifera.samples.carstore.entities.general;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import org.lunifera.dsl.common.datatypes.IEntity;
 import org.lunifera.runtime.common.annotations.Dispose;
 import org.lunifera.samples.carstore.entities.general.NumberedWithDescription;
 
@@ -11,7 +10,7 @@ import org.lunifera.samples.carstore.entities.general.NumberedWithDescription;
 @Table(name = "ITEM")
 @DiscriminatorValue(value = "ITEM")
 @SuppressWarnings("all")
-public abstract class Item extends NumberedWithDescription implements IEntity {
+public abstract class Item extends NumberedWithDescription {
   /**
    * Checks whether the object is disposed.
    * @throws RuntimeException if the object is disposed.
