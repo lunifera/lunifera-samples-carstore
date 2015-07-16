@@ -2,7 +2,6 @@ package org.lunifera.samples.carstore.dtos.general;
 
 import java.beans.PropertyChangeListener;
 import java.io.Serializable;
-import org.lunifera.dsl.common.datatypes.IDto;
 import org.lunifera.dsl.dto.lib.MappingContext;
 import org.lunifera.runtime.common.annotations.Dispose;
 import org.lunifera.samples.carstore.dtos.general.NumberedWithDescriptionDto;
@@ -10,7 +9,7 @@ import org.lunifera.samples.carstore.dtos.general.SiType;
 import org.lunifera.samples.carstore.dtos.general.UOMFamily;
 
 @SuppressWarnings("all")
-public class UnitOfMeasureDto extends NumberedWithDescriptionDto implements IDto, Serializable, PropertyChangeListener {
+public class UnitOfMeasureDto extends NumberedWithDescriptionDto implements Serializable, PropertyChangeListener {
   private SiType siType;
   
   private UOMFamily family;

@@ -2,13 +2,12 @@ package org.lunifera.samples.carstore.dtos.general;
 
 import java.beans.PropertyChangeListener;
 import java.io.Serializable;
-import org.lunifera.dsl.common.datatypes.IDto;
 import org.lunifera.dsl.dto.lib.MappingContext;
 import org.lunifera.runtime.common.annotations.Dispose;
 import org.lunifera.samples.carstore.dtos.general.ItemDto;
 
 @SuppressWarnings("all")
-public class AccessoryDto extends ItemDto implements IDto, Serializable, PropertyChangeListener {
+public class AccessoryDto extends ItemDto implements Serializable, PropertyChangeListener {
   /**
    * Checks whether the object is disposed.
    * @throws RuntimeException if the object is disposed.

@@ -2,7 +2,6 @@ package org.lunifera.samples.carstore.dtos.general;
 
 import java.beans.PropertyChangeListener;
 import java.io.Serializable;
-import org.lunifera.dsl.common.datatypes.IDto;
 import org.lunifera.dsl.dto.lib.MappingContext;
 import org.lunifera.runtime.common.annotations.Dispose;
 import org.lunifera.runtime.common.annotations.DomainReference;
@@ -11,7 +10,7 @@ import org.lunifera.samples.carstore.dtos.general.BaseDto;
 import org.lunifera.samples.carstore.dtos.general.PaymentTermDto;
 
 @SuppressWarnings("all")
-public class CustomerDto extends BaseDto implements IDto, Serializable, PropertyChangeListener {
+public class CustomerDto extends BaseDto implements Serializable, PropertyChangeListener {
   private String number;
   
   private String name;

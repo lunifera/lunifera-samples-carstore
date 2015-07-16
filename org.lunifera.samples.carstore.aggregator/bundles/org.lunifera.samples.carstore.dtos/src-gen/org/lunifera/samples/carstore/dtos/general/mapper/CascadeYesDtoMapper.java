@@ -86,11 +86,8 @@ public class CascadeYesDtoMapper<DTO extends CascadeYesDto, ENTITY extends Casca
     }
     context.register(createDtoHash(entity), dto);
     
+    
     dto.setId(toDto_id(entity, context));
-    if(dto.getRoot() == null) {
-    	// root is container property. So check for null to avoid looping
-    	dto.setRoot(toDto_root(entity, context));
-    }
   }
   
   /**
@@ -110,10 +107,8 @@ public class CascadeYesDtoMapper<DTO extends CascadeYesDto, ENTITY extends Casca
     context.registerMappingRoot(createEntityHash(dto), dto);
     
     entity.setId(toEntity_id(dto, context));
-    if(entity.getRoot() == null) {
-    	// root is container property. So check for null to avoid looping
-    	entity.setRoot(toEntity_root(dto, context));
-    }
+    
+    
   }
   
   /**

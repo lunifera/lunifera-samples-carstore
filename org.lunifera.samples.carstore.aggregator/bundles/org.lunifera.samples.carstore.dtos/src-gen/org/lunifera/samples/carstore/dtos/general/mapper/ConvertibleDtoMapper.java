@@ -63,8 +63,11 @@ public class ConvertibleDtoMapper<DTO extends ConvertibleDto, ENTITY extends Con
     context.registerMappingRoot(createEntityHash(dto), dto);
     super.mapToEntity(dto, entity, context);
     
+    
     entity.setRoofType(toEntity_roofType(dto, context));
+    
     entity.setColor(toEntity_color(dto, context));
+    
   }
   
   /**

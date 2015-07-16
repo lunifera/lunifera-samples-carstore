@@ -64,8 +64,11 @@ public class CarReceiptDtoMapper<DTO extends CarReceiptDto, ENTITY extends CarRe
     context.registerMappingRoot(createEntityHash(dto), dto);
     super.mapToEntity(dto, entity, context);
     
+    
     entity.setNumber(toEntity_number(dto, context));
+    
     entity.setOrder(toEntity_order(dto, context));
+    
   }
   
   /**

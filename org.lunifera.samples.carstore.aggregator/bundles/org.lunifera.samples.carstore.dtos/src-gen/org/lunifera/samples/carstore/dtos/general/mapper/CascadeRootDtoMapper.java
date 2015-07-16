@@ -89,16 +89,13 @@ public class CascadeRootDtoMapper<DTO extends CascadeRootDto, ENTITY extends Cas
     }
     context.register(createDtoHash(entity), dto);
     
+    
     dto.setId(toDto_id(entity, context));
-    if(dto.getRefYes().isEmpty()) {
-    	for(org.lunifera.samples.carstore.dtos.general.CascadeYesDto _dtoValue : toDto_refYes(entity, context)) {
-    		dto.addToRefYes(_dtoValue);
-    	}
+    for(org.lunifera.samples.carstore.dtos.general.CascadeYesDto _dtoValue : toDto_refYes(entity, context)) {
+    	dto.addToRefYes(_dtoValue);
     }
-    if(dto.getRefNo().isEmpty()) {
-    	for(org.lunifera.samples.carstore.dtos.general.CascadeNoDto _dtoValue : toDto_refNo(entity, context)) {
-    		dto.addToRefNo(_dtoValue);
-    	}
+    for(org.lunifera.samples.carstore.dtos.general.CascadeNoDto _dtoValue : toDto_refNo(entity, context)) {
+    	dto.addToRefNo(_dtoValue);
     }
   }
   
@@ -119,20 +116,19 @@ public class CascadeRootDtoMapper<DTO extends CascadeRootDto, ENTITY extends Cas
     context.registerMappingRoot(createEntityHash(dto), dto);
     
     entity.setId(toEntity_id(dto, context));
-    if(entity.getRefYes().isEmpty()) {
-    	List<CascadeYes> refYes_entities = new java.util.ArrayList<CascadeYes>();
-    	for(CascadeYes _entityValue : toEntity_refYes(dto, context)) {
-    		refYes_entities.add(_entityValue);
-    	}
-    	entity.setRefYes(refYes_entities);
+    
+    List<CascadeYes> refYes_entities = new java.util.ArrayList<CascadeYes>();
+    for(CascadeYes _entityValue : toEntity_refYes(dto, context)) {
+    	refYes_entities.add(_entityValue);
     }
-    if(entity.getRefNo().isEmpty()) {
-    	List<CascadeNo> refNo_entities = new java.util.ArrayList<CascadeNo>();
-    	for(CascadeNo _entityValue : toEntity_refNo(dto, context)) {
-    		refNo_entities.add(_entityValue);
-    	}
-    	entity.setRefNo(refNo_entities);
+    entity.setRefYes(refYes_entities);
+    
+    List<CascadeNo> refNo_entities = new java.util.ArrayList<CascadeNo>();
+    for(CascadeNo _entityValue : toEntity_refNo(dto, context)) {
+    	refNo_entities.add(_entityValue);
     }
+    entity.setRefNo(refNo_entities);
+    
   }
   
   /**

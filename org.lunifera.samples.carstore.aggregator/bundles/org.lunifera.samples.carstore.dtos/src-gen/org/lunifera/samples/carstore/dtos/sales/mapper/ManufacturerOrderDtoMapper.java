@@ -64,8 +64,11 @@ public class ManufacturerOrderDtoMapper<DTO extends ManufacturerOrderDto, ENTITY
     context.registerMappingRoot(createEntityHash(dto), dto);
     super.mapToEntity(dto, entity, context);
     
+    
     entity.setNumber(toEntity_number(dto, context));
+    
     entity.setSalesOrderDetail(toEntity_salesOrderDetail(dto, context));
+    
   }
   
   /**

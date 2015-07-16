@@ -84,6 +84,7 @@ public class QuantityDtoMapper<DTO extends QuantityDto, ENTITY extends Quantity>
     if(context == null){
     	throw new IllegalArgumentException("Please pass a context!");
     }
+    
     dto.setAmount(toDto_amount(entity, context));
     dto.setUom(toDto_uom(entity, context));
   }
@@ -103,7 +104,9 @@ public class QuantityDtoMapper<DTO extends QuantityDto, ENTITY extends Quantity>
     
     
     entity.setAmount(toEntity_amount(dto, context));
+    
     entity.setUom(toEntity_uom(dto, context));
+    
   }
   
   /**

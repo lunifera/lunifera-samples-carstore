@@ -60,6 +60,7 @@ public class PaymentTermDtoMapper<DTO extends PaymentTermDto, ENTITY extends Pay
     context.registerMappingRoot(createEntityHash(dto), dto);
     super.mapToEntity(dto, entity, context);
     
+    
   }
   
   public String createDtoHash(final Object in) {

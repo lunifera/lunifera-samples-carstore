@@ -2,14 +2,13 @@ package org.lunifera.samples.carstore.dtos.general;
 
 import java.beans.PropertyChangeListener;
 import java.io.Serializable;
-import org.lunifera.dsl.common.datatypes.IDto;
 import org.lunifera.dsl.dto.lib.MappingContext;
 import org.lunifera.runtime.common.annotations.Dispose;
 import org.lunifera.samples.carstore.dtos.general.CarDto;
 import org.lunifera.samples.carstore.dtos.general.RoofType;
 
 @SuppressWarnings("all")
-public class ConvertibleDto extends CarDto implements IDto, Serializable, PropertyChangeListener {
+public class ConvertibleDto extends CarDto implements Serializable, PropertyChangeListener {
   private RoofType roofType;
   
   private String color;

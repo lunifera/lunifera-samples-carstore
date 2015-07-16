@@ -4,7 +4,6 @@ import java.beans.PropertyChangeListener;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
-import org.lunifera.dsl.common.datatypes.IDto;
 import org.lunifera.dsl.dto.lib.MappingContext;
 import org.lunifera.runtime.common.annotations.Dispose;
 import org.lunifera.runtime.common.annotations.DomainReference;
@@ -14,7 +13,7 @@ import org.lunifera.samples.carstore.dtos.general.PriceDto;
 import org.lunifera.samples.carstore.dtos.general.WeightDto;
 
 @SuppressWarnings("all")
-public class CarDto extends ItemDto implements IDto, Serializable, PropertyChangeListener {
+public class CarDto extends ItemDto implements Serializable, PropertyChangeListener {
   private int axes;
   
   private WeightDto weight;

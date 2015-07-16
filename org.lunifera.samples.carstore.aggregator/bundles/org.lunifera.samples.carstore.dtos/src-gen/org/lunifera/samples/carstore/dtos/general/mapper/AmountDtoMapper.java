@@ -82,6 +82,7 @@ public class AmountDtoMapper<DTO extends AmountDto, ENTITY extends Amount> imple
     if(context == null){
     	throw new IllegalArgumentException("Please pass a context!");
     }
+    
     dto.setAmount(toDto_amount(entity, context));
   }
   
@@ -100,6 +101,7 @@ public class AmountDtoMapper<DTO extends AmountDto, ENTITY extends Amount> imple
     
     
     entity.setAmount(toEntity_amount(dto, context));
+    
   }
   
   /**

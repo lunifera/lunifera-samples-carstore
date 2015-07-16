@@ -4,7 +4,7 @@
     <imports importedNamespace="org.lunifera.samples.carstore.dtos.general.*"/>
     <imports importedNamespace="org.lunifera.samples.carstore.dtos.general.mapper.*"/>
     <imports importedNamespace="org.lunifera.samples.carstore.entities.general.*"/>
-    <types xsi:type="dto:LAutoInheritDto" name="BaseDto" subTypes="//@packages.0/@types.1 //@packages.0/@types.14 //@packages.0/@types.15">
+    <types xsi:type="dto:LAutoInheritDto" name="BaseDto" subTypes="//@packages.0/@types.14 //@packages.0/@types.1 //@packages.0/@types.15">
       <annotationInfo xsi:type="dto:LDto"/>
       <features xsi:type="dto:LDtoInheritedAttribute">
         <annotationInfo xsi:type="dto:LDtoFeature"/>
@@ -12,11 +12,11 @@
       </features>
       <features xsi:type="dto:LDtoAttribute" name="^dirty" dirty="true">
         <annotationInfo xsi:type="dto:LDtoFeature"/>
-        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.0"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.0"/>
       </features>
       <wrappedType href="platform:/resource/org.lunifera.samples.carstore.entities/models/GeneralCarstore.entitymodel#/0/@packages.0/@types.0"/>
     </types>
-    <types xsi:type="dto:LAutoInheritDto" name="NumberedWithDescriptionDto" abstract="true" superType="//@packages.0/@types.0" subTypes="//@packages.0/@types.5 //@packages.0/@types.6 //@packages.0/@types.7 //@packages.0/@types.12 //@packages.0/@types.13">
+    <types xsi:type="dto:LAutoInheritDto" name="NumberedWithDescriptionDto" abstract="true" superType="//@packages.0/@types.0" subTypes="//@packages.0/@types.6 //@packages.0/@types.7 //@packages.0/@types.5 //@packages.0/@types.12 //@packages.0/@types.13">
       <annotationInfo xsi:type="dto:LDto"/>
       <features xsi:type="dto:LDtoInheritedAttribute">
         <annotationInfo xsi:type="dto:LDtoFeature"/>
