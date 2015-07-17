@@ -7,10 +7,18 @@
 		<version>0.9.1-SNAPSHOT</version>
 		<relativePath>../../</relativePath>
 	</parent>
-	
+
 	<artifactId>org.lunifera.samples.carstore.tests</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
-	
+
 	<name>Tests for carstore</name>
 	<description>Tests for carstore</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>javax.transaction</groupId>
+			<artifactId>transaction-api</artifactId>
+			<version>1.1</version>
+		</dependency>
+	</dependencies>
 </project>
