@@ -29,8 +29,10 @@ Import-Package: org.slf4j,
  org.junit.runner.notification;version="4.5.0",
  org.junit.runners;version="4.5.0",
  org.junit.runners.model;version="4.5.0",
- javax.transaction
+ javax.transaction;version="1.1.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.lunifera.samples.carstore.tests,
  org.lunifera.samples.carstore.tests.dtos
 Bundle-Activator: org.lunifera.samples.carstore.tests.setup.Activator
+Bundle-ClassPath: .,
+ lib/javax.transaction_1.1.1.v201105210645.jar
