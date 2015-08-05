@@ -8,7 +8,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import org.lunifera.dsl.common.datatypes.IEntity;
 import org.lunifera.runtime.common.annotations.Dispose;
 import org.lunifera.samples.carstore.entities.general.CascadeRoot;
 
@@ -16,7 +15,7 @@ import org.lunifera.samples.carstore.entities.general.CascadeRoot;
 @Table(name = "CASCADE_NO")
 @DiscriminatorValue(value = "CASCADE_NO")
 @SuppressWarnings("all")
-public class CascadeNo implements IEntity {
+public class CascadeNo {
   @Transient
   @Dispose
   private boolean disposed;

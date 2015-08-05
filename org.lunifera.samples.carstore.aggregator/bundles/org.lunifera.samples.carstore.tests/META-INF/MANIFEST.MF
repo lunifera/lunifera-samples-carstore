@@ -36,3 +36,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.lunifera.samples.carstore.tests,
  org.lunifera.samples.carstore.tests.dtos
 Bundle-Activator: org.lunifera.samples.carstore.tests.setup.Activator
+Bundle-ClassPath: .

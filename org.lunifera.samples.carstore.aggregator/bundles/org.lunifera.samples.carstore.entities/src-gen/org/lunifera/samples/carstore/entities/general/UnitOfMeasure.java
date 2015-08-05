@@ -4,7 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import org.lunifera.dsl.common.datatypes.IEntity;
 import org.lunifera.runtime.common.annotations.Dispose;
 import org.lunifera.samples.carstore.entities.general.NumberedWithDescription;
 import org.lunifera.samples.carstore.entities.general.SiType;
@@ -14,7 +13,7 @@ import org.lunifera.samples.carstore.entities.general.UOMFamily;
 @Table(name = "UNIT_OF_MEASURE")
 @DiscriminatorValue(value = "UNIT_OF_MEASURE")
 @SuppressWarnings("all")
-public class UnitOfMeasure extends NumberedWithDescription implements IEntity {
+public class UnitOfMeasure extends NumberedWithDescription {
   @Column(name = "SI_TYPE")
   private SiType siType;
   

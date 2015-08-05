@@ -9,7 +9,6 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import org.lunifera.dsl.common.datatypes.IEntity;
 import org.lunifera.runtime.common.annotations.Dispose;
 import org.lunifera.samples.carstore.entities.general.Address;
 import org.lunifera.samples.carstore.entities.general.Base;
@@ -18,7 +17,7 @@ import org.lunifera.samples.carstore.entities.general.PaymentTerm;
 @Entity
 @Table(name = "CUSTOMER")
 @SuppressWarnings("all")
-public class Customer extends Base implements IEntity {
+public class Customer extends Base {
   @Column(name = "NUMBER")
   private String number;
   

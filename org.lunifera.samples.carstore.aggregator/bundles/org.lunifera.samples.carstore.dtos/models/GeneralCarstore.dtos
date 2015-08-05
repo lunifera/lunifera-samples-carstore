@@ -17,7 +17,7 @@ package org.lunifera.samples.carstore.dtos.general {
 
 		inherit var id;
 	}
-  
+
 	abstract autoDto NumberedWithDescriptionDto extends BaseDto wraps NumberedWithDescription {
 		
 		dirty boolean ^dirty;

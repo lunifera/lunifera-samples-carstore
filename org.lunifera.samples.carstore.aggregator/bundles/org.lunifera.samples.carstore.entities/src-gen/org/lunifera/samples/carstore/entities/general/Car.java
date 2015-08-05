@@ -15,7 +15,6 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import org.lunifera.dsl.common.datatypes.IEntity;
 import org.lunifera.runtime.common.annotations.Dispose;
 import org.lunifera.samples.carstore.entities.general.ConfigDetailDefinition;
 import org.lunifera.samples.carstore.entities.general.Item;
@@ -26,7 +25,7 @@ import org.lunifera.samples.carstore.entities.general.Weight;
 @Table(name = "CAR")
 @DiscriminatorValue(value = "CAR")
 @SuppressWarnings("all")
-public class Car extends Item implements IEntity {
+public class Car extends Item {
   @Column(name = "AXES")
   private int axes;
   

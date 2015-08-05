@@ -7,14 +7,13 @@
 		<version>0.9.1-SNAPSHOT</version>
 		<relativePath>../../</relativePath>
 	</parent>
-	
+
 	<artifactId>org.lunifera.samples.carstore.tests</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
-	
+
 	<name>Tests for carstore</name>
 	<description>Tests for carstore</description>
-	
-		<build>
+	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
@@ -121,7 +120,11 @@
 			<artifactId>com.springsource.org.hamcrest.core</artifactId>
 			<version>1.1.0</version>
 		</dependency>
+		<dependency>
+			<groupId>javax.transaction</groupId>
+			<artifactId>transaction-api</artifactId>
+			<version>1.1</version>
+		</dependency>
 	</dependencies>
 
-</project>
 </project>
