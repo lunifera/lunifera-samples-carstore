@@ -1,24 +1,71 @@
 package org.lunifera.samples.carstore.dtos.sales;
 
 import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import org.lunifera.dsl.common.datatypes.IDto;
 import org.lunifera.dsl.dto.lib.MappingContext;
 import org.lunifera.runtime.common.annotations.Dispose;
 import org.lunifera.runtime.common.annotations.DomainReference;
-import org.lunifera.samples.carstore.dtos.general.BaseDto;
-import org.lunifera.samples.carstore.dtos.general.ConfigDetailDefinitionDto;
 import org.lunifera.samples.carstore.dtos.sales.SalesOrderDetailDto;
 
 @SuppressWarnings("all")
-public class CarConfigDetailDto extends BaseDto implements IDto, Serializable, PropertyChangeListener {
+public class CarConfigDetailDto implements IDto, Serializable, PropertyChangeListener {
+  private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
+  
+  @Dispose
+  private boolean disposed;
+  
   private int number;
   
   @DomainReference
   private SalesOrderDetailDto parent;
   
-  @DomainReference
-  private ConfigDetailDefinitionDto configDef;
+  private String id = java.util.UUID.randomUUID().toString();
+  
+  /**
+   * Returns true, if the object is disposed. 
+   * Disposed means, that it is prepared for garbage collection and may not be used anymore. 
+   * Accessing objects that are already disposed will cause runtime exceptions.
+   */
+  public boolean isDisposed() {
+    return this.disposed;
+  }
+  
+  /**
+   * @see PropertyChangeSupport#addPropertyChangeListener(PropertyChangeListener)
+   */
+  public void addPropertyChangeListener(final PropertyChangeListener listener) {
+    propertyChangeSupport.addPropertyChangeListener(listener);
+  }
+  
+  /**
+   * @see PropertyChangeSupport#addPropertyChangeListener(String, PropertyChangeListener)
+   */
+  public void addPropertyChangeListener(final String propertyName, final PropertyChangeListener listener) {
+    propertyChangeSupport.addPropertyChangeListener(propertyName, listener);
+  }
+  
+  /**
+   * @see PropertyChangeSupport#removePropertyChangeListener(PropertyChangeListener)
+   */
+  public void removePropertyChangeListener(final PropertyChangeListener listener) {
+    propertyChangeSupport.removePropertyChangeListener(listener);
+  }
+  
+  /**
+   * @see PropertyChangeSupport#removePropertyChangeListener(String, PropertyChangeListener)
+   */
+  public void removePropertyChangeListener(final String propertyName, final PropertyChangeListener listener) {
+    propertyChangeSupport.removePropertyChangeListener(propertyName, listener);
+  }
+  
+  /**
+   * @see PropertyChangeSupport#firePropertyChange(String, Object, Object)
+   */
+  public void firePropertyChange(final String propertyName, final Object oldValue, final Object newValue) {
+    propertyChangeSupport.firePropertyChange(propertyName, oldValue, newValue);
+  }
   
   /**
    * Checks whether the object is disposed.
@@ -42,7 +89,7 @@ public class CarConfigDetailDto extends BaseDto implements IDto, Serializable, P
     if (isDisposed()) {
       return;
     }
-    super.dispose();
+    firePropertyChange("disposed", this.disposed, this.disposed = true);
   }
   
   /**
@@ -102,22 +149,46 @@ public class CarConfigDetailDto extends BaseDto implements IDto, Serializable, P
   }
   
   /**
-   * Returns the configDef property or <code>null</code> if not present.
+   * Returns the id property or <code>null</code> if not present.
    */
-  public ConfigDetailDefinitionDto getConfigDef() {
-    return this.configDef;
+  public String getId() {
+    return this.id;
   }
   
   /**
-   * Sets the <code>configDef</code> property to this instance.
+   * Sets the <code>id</code> property to this instance.
    * 
-   * @param configDef - the property
+   * @param id - the property
    * @throws RuntimeException if instance is <code>disposed</code>
    * 
    */
-  public void setConfigDef(final ConfigDetailDefinitionDto configDef) {
-    checkDisposed();
-    firePropertyChange("configDef", this.configDef, this.configDef = configDef);
+  public void setId(final String id) {
+    firePropertyChange("id", this.id, this.id = id );
+  }
+  
+  @Override
+  public boolean equals(final Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    CarConfigDetailDto other = (CarConfigDetailDto) obj;
+    if (this.id == null) {
+      if (other.id != null)
+        return false;
+    } else if (!this.id.equals(other.id))
+      return false;
+    return true;
+  }
+  
+  @Override
+  public int hashCode() {
+     int prime = 31;
+    int result = 1;
+    result = prime * result + ((this.id== null) ? 0 : this.id.hashCode());
+    return result;
   }
   
   public CarConfigDetailDto createDto() {
@@ -168,11 +239,12 @@ public class CarConfigDetailDto extends BaseDto implements IDto, Serializable, P
     	throw new IllegalArgumentException("Context must not be null!");
     }
     
-    super.copyContainments(dto, newDto, context);
     
     // copy attributes and beans (beans if derived from entity model)
     // copy number
     newDto.setNumber(getNumber());
+    // copy id
+    newDto.setId(getId());
     
     // copy containment references (cascading is true)
   }
@@ -184,13 +256,8 @@ public class CarConfigDetailDto extends BaseDto implements IDto, Serializable, P
     	throw new IllegalArgumentException("Context must not be null!");
     }
     
-    super.copyCrossReferences(dto, newDto, context);
     
     // copy cross references (cascading is false)
-    // copy dto configDef
-    if(getConfigDef() != null) {
-    	newDto.setConfigDef(getConfigDef().copy(context));
-    }
   }
   
   public void propertyChange(final java.beans.PropertyChangeEvent event) {
@@ -199,7 +266,7 @@ public class CarConfigDetailDto extends BaseDto implements IDto, Serializable, P
     // forward the event from embeddable beans to all listeners. So the parent of the embeddable
     // bean will become notified and its dirty state can be handled properly
     { 
-    	super.propertyChange(event);
+    	// no super class available to forward event
     }
   }
 }

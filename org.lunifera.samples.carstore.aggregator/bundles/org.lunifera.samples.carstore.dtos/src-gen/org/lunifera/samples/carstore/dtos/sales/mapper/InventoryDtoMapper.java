@@ -1,11 +1,10 @@
 package org.lunifera.samples.carstore.dtos.sales.mapper;
 
+import org.lunifera.dsl.dto.lib.IMapper;
+import org.lunifera.dsl.dto.lib.IMapperAccess;
 import org.lunifera.dsl.dto.lib.MappingContext;
-import org.lunifera.samples.carstore.dtos.general.ItemDto;
 import org.lunifera.samples.carstore.dtos.general.QuantityDto;
-import org.lunifera.samples.carstore.dtos.general.mapper.BaseDtoMapper;
 import org.lunifera.samples.carstore.dtos.sales.InventoryDto;
-import org.lunifera.samples.carstore.entities.general.Item;
 import org.lunifera.samples.carstore.entities.general.Quantity;
 import org.lunifera.samples.carstore.entities.sales.Inventory;
 
@@ -14,7 +13,51 @@ import org.lunifera.samples.carstore.entities.sales.Inventory;
  * 
  */
 @SuppressWarnings("all")
-public class InventoryDtoMapper<DTO extends InventoryDto, ENTITY extends Inventory> extends BaseDtoMapper<DTO, ENTITY> {
+public class InventoryDtoMapper<DTO extends InventoryDto, ENTITY extends Inventory> implements IMapper<DTO, ENTITY> {
+  private IMapperAccess mapperAccess;
+  
+  /**
+   * Returns the mapper instance that may map between the given dto and entity. Or <code>null</code> if no mapper is available.
+   * 
+   * @param dtoClass - the class of the dto that should be mapped
+   * @param entityClass - the class of the entity that should be mapped
+   * @return the mapper instance or <code>null</code>
+   */
+  protected <D, E> IMapper<D, E> getToDtoMapper(final Class<D> dtoClass, final Class<E> entityClass) {
+    return mapperAccess.getToDtoMapper(dtoClass, entityClass);
+  }
+  
+  /**
+   * Returns the mapper instance that may map between the given dto and entity. Or <code>null</code> if no mapper is available.
+   * 
+   * @param dtoClass - the class of the dto that should be mapped
+   * @param entityClass - the class of the entity that should be mapped
+   * @return the mapper instance or <code>null</code>
+   */
+  protected <D, E> IMapper<D, E> getToEntityMapper(final Class<D> dtoClass, final Class<E> entityClass) {
+    return mapperAccess.getToEntityMapper(dtoClass, entityClass);
+  }
+  
+  /**
+   * Called by OSGi-DS. Binds the mapper access service.
+   * 
+   * @param service - The mapper access service
+   * 
+   */
+  protected void bindMapperAccess(final IMapperAccess mapperAccess) {
+    this.mapperAccess = mapperAccess;
+  }
+  
+  /**
+   * Called by OSGi-DS. Binds the mapper access service.
+   * 
+   * @param service - The mapper access service
+   * 
+   */
+  protected void unbindMapperAccess(final IMapperAccess mapperAccess) {
+    this.mapperAccess = null;
+  }
+  
   /**
    * Creates a new instance of the entity
    */
@@ -43,11 +86,9 @@ public class InventoryDtoMapper<DTO extends InventoryDto, ENTITY extends Invento
     }
     context.register(createDtoHash(entity), dto);
     
-    super.mapToDTO(dto, entity, context);
-    
-    dto.setItem(toDto_item(entity, context));
     dto.setRequestedQuantity(toDto_requestedQuantity(entity, context));
     dto.setCountedQuantity(toDto_countedQuantity(entity, context));
+    dto.setId(toDto_id(entity, context));
   }
   
   /**
@@ -65,73 +106,10 @@ public class InventoryDtoMapper<DTO extends InventoryDto, ENTITY extends Invento
     
     context.register(createEntityHash(dto), entity);
     context.registerMappingRoot(createEntityHash(dto), dto);
-    super.mapToEntity(dto, entity, context);
     
-    entity.setItem(toEntity_item(dto, context));
     entity.setRequestedQuantity(toEntity_requestedQuantity(dto, context));
     entity.setCountedQuantity(toEntity_countedQuantity(dto, context));
-  }
-  
-  /**
-   * Maps the property item from the given entity to the dto.
-   * 
-   * @param in - The source entity
-   * @param context - The context to get information about depth,...
-   * @return the mapped dto
-   * 
-   */
-  protected ItemDto toDto_item(final Inventory in, final MappingContext context) {
-    if(in.getItem() != null) {
-    	// find a mapper that knows how to map the concrete input type.
-    	org.lunifera.dsl.dto.lib.IMapper<ItemDto, Item> mapper = (org.lunifera.dsl.dto.lib.IMapper<ItemDto, Item>) getToDtoMapper(ItemDto.class, in.getItem().getClass());
-    	if(mapper == null) {
-    		throw new IllegalStateException("Mapper must not be null!");
-    	}
-    	ItemDto dto = null;
-    	dto = context.get(mapper.createDtoHash(in.getItem()));
-    	if(dto != null) {
-    		if(context.isRefresh()){
-    			mapper.mapToDTO(dto, in.getItem(), context);
-    		}
-    		return dto;
-    	}
-    	
-    	dto = mapper.createDto();
-    	mapper.mapToDTO(dto, in.getItem(), context);
-    	return dto;
-    } else {
-    	return null;
-    }
-  }
-  
-  /**
-   * Maps the property item from the given dto to the entity.
-   * 
-   * @param in - The source dto
-   * @param context - The context to get information about depth,...
-   * @return the mapped entity
-   * 
-   */
-  protected Item toEntity_item(final InventoryDto in, final MappingContext context) {
-    if(in.getItem() != null) {
-    	// find a mapper that knows how to map the concrete input type.
-    	org.lunifera.dsl.dto.lib.IMapper<ItemDto, Item> mapper = (org.lunifera.dsl.dto.lib.IMapper<ItemDto, Item>) getToEntityMapper(in.getItem().getClass(), Item.class);
-    	if(mapper == null) {
-    		throw new IllegalStateException("Mapper must not be null!");
-    	}
-    
-    	Item entity = null;
-    	entity = context.get(mapper.createEntityHash(in.getItem()));
-    	if(entity != null) {
-    		return entity;
-    	}
-    
-    	entity = mapper.createEntity();
-    	mapper.mapToEntity(in.getItem(), entity, context);	
-    	return entity;
-    } else {
-    	return null;
-    }	
+    entity.setId(toEntity_id(dto, context));
   }
   
   /**
@@ -230,6 +208,30 @@ public class InventoryDtoMapper<DTO extends InventoryDto, ENTITY extends Invento
     } else {
     	return null;
     }
+  }
+  
+  /**
+   * Maps the property id from the given entity to dto property.
+   * 
+   * @param in - The source entity
+   * @param context - The context to get information about depth,...
+   * @return the mapped value
+   * 
+   */
+  protected String toDto_id(final Inventory in, final MappingContext context) {
+    return in.getId();
+  }
+  
+  /**
+   * Maps the property id from the given entity to dto property.
+   * 
+   * @param in - The source entity
+   * @param context - The context to get information about depth,...
+   * @return the mapped value
+   * 
+   */
+  protected String toEntity_id(final InventoryDto in, final MappingContext context) {
+    return in.getId();
   }
   
   public String createDtoHash(final Object in) {

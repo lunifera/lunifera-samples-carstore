@@ -1,11 +1,16 @@
 package org.lunifera.samples.carstore.dtos.sales.services;
 
-import org.lunifera.dsl.dto.lib.services.impl.AbstractDTOService;
+import org.lunifera.dsl.dto.lib.services.impl.AbstractDTOServiceWithMutablePersistence;
 import org.lunifera.samples.carstore.dtos.sales.SalesOrderDto;
 import org.lunifera.samples.carstore.entities.sales.SalesOrder;
 
 @SuppressWarnings("all")
-public class SalesOrderService extends AbstractDTOService<SalesOrderDto, SalesOrder> {
+public class SalesOrderService extends AbstractDTOServiceWithMutablePersistence<SalesOrderDto, SalesOrder> {
+  public SalesOrderService() {
+    // set the default persistence ID
+    setPersistenceId("carstore");
+  }
+  
   public Class<SalesOrderDto> getDtoClass() {
     return SalesOrderDto.class;
   }

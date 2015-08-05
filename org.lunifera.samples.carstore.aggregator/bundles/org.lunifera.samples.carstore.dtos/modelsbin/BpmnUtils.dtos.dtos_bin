@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ASCII"?>
+<dto:LDtoModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dto="http://www.lunifera.org/dsl/dto/v1" xmlns:entity="http://www.lunifera.org/dsl/entity/v1" xmlns:types="http://www.lunifera.org/dsl/common/types/v1">
+  <packages name="de.compex.utils.bpmn.component.dtos">
+    <imports importedNamespace="de.compex.utils.bpmn.component.*"/>
+    <imports importedNamespace="de.compex.utils.bpmn.component.dtos.*"/>
+    <imports importedNamespace="de.compex.utils.bpmn.component.dtos.mapper.*"/>
+    <types xsi:type="types:LEnum" name="BpmnShape">
+      <literals name="STARTEVENT"/>
+      <literals name="MESSAGE_STARTEVENT"/>
+      <literals name="ENDEVENT"/>
+      <literals name="ERROR_ENDEVENT"/>
+      <literals name="TASK"/>
+      <literals name="USERTASK"/>
+      <literals name="SCRIPTTASK"/>
+      <literals name="RECEIVETASK"/>
+      <literals name="SENDTASK"/>
+      <literals name="PARALLEL_GATEWAY"/>
+      <literals name="EXCLUSIVE_GATEWAY"/>
+      <literals name="INCLUSIVE_GATEWAY"/>
+      <literals name="SEQ_FLOW"/>
+    </types>
+    <types xsi:type="dto:LAutoInheritDto" name="BpmnComponentDto">
+      <annotationInfo xsi:type="dto:LDto"/>
+      <features xsi:type="dto:LDtoInheritedAttribute">
+        <annotationInfo xsi:type="dto:LDtoFeature"/>
+        <inheritedFeature xsi:type="entity:LBeanAttribute" href="platform:/resource/org.lunifera.samples.carstore.entities/models/BpmnUtils.entitymodel#/0/@packages.0/@types.0/@features.0"/>
+      </features>
+      <features xsi:type="dto:LDtoInheritedAttribute">
+        <annotationInfo xsi:type="dto:LDtoFeature"/>
+        <inheritedFeature xsi:type="entity:LBeanAttribute" href="platform:/resource/org.lunifera.samples.carstore.entities/models/BpmnUtils.entitymodel#/0/@packages.0/@types.0/@features.1"/>
+      </features>
+      <features xsi:type="dto:LDtoInheritedAttribute">
+        <annotationInfo xsi:type="dto:LDtoFeature"/>
+        <inheritedFeature xsi:type="entity:LBeanAttribute" href="platform:/resource/org.lunifera.samples.carstore.entities/models/BpmnUtils.entitymodel#/0/@packages.0/@types.0/@features.2"/>
+      </features>
+      <features xsi:type="dto:LDtoInheritedAttribute">
+        <annotationInfo xsi:type="dto:LDtoFeature"/>
+        <inheritedFeature xsi:type="entity:LBeanAttribute" href="platform:/resource/org.lunifera.samples.carstore.entities/models/BpmnUtils.entitymodel#/0/@packages.0/@types.0/@features.3"/>
+      </features>
+      <features xsi:type="dto:LDtoInheritedAttribute">
+        <annotationInfo xsi:type="dto:LDtoFeature"/>
+        <inheritedFeature xsi:type="entity:LBeanAttribute" href="platform:/resource/org.lunifera.samples.carstore.entities/models/BpmnUtils.entitymodel#/0/@packages.0/@types.0/@features.4"/>
+      </features>
+      <features xsi:type="dto:LDtoInheritedAttribute">
+        <annotationInfo xsi:type="dto:LDtoFeature"/>
+        <inheritedFeature xsi:type="entity:LBeanAttribute" href="platform:/resource/org.lunifera.samples.carstore.entities/models/BpmnUtils.entitymodel#/0/@packages.0/@types.0/@features.5"/>
+      </features>
+      <features xsi:type="dto:LDtoInheritedAttribute">
+        <annotationInfo xsi:type="dto:LDtoFeature"/>
+        <inheritedFeature xsi:type="entity:LBeanAttribute" href="platform:/resource/org.lunifera.samples.carstore.entities/models/BpmnUtils.entitymodel#/0/@packages.0/@types.0/@features.6"/>
+      </features>
+      <features xsi:type="dto:LDtoInheritedAttribute">
+        <annotationInfo xsi:type="dto:LDtoFeature"/>
+        <inheritedFeature xsi:type="entity:LBeanAttribute" href="platform:/resource/org.lunifera.samples.carstore.entities/models/BpmnUtils.entitymodel#/0/@packages.0/@types.0/@features.7"/>
+      </features>
+      <features xsi:type="dto:LDtoInheritedAttribute">
+        <annotationInfo xsi:type="dto:LDtoFeature"/>
+        <inheritedFeature xsi:type="entity:LBeanAttribute" href="platform:/resource/org.lunifera.samples.carstore.entities/models/BpmnUtils.entitymodel#/0/@packages.0/@types.0/@features.8"/>
+      </features>
+      <wrappedType href="platform:/resource/org.lunifera.samples.carstore.entities/models/BpmnUtils.entitymodel#/0/@packages.0/@types.0"/>
+    </types>
+  </packages>
+</dto:LDtoModel>

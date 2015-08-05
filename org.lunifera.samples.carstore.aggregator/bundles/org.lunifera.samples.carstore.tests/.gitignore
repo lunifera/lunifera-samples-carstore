@@ -1,2 +1,5 @@
 /carstoreDB/
 /derby.log
+/createDDL_ddlGeneration.jdbc
+/dropDDL_ddlGeneration.jdbc
+/carstore/

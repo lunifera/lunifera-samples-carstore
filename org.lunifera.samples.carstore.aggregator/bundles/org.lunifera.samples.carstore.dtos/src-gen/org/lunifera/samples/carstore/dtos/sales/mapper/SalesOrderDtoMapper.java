@@ -1,12 +1,9 @@
 package org.lunifera.samples.carstore.dtos.sales.mapper;
 
+import org.lunifera.dsl.dto.lib.IMapper;
+import org.lunifera.dsl.dto.lib.IMapperAccess;
 import org.lunifera.dsl.dto.lib.MappingContext;
-import org.lunifera.samples.carstore.dtos.general.CustomerDto;
-import org.lunifera.samples.carstore.dtos.general.PaymentTermDto;
-import org.lunifera.samples.carstore.dtos.general.mapper.BaseDtoMapper;
 import org.lunifera.samples.carstore.dtos.sales.SalesOrderDto;
-import org.lunifera.samples.carstore.entities.general.Customer;
-import org.lunifera.samples.carstore.entities.general.PaymentTerm;
 import org.lunifera.samples.carstore.entities.sales.SalesOrder;
 
 /**
@@ -14,7 +11,51 @@ import org.lunifera.samples.carstore.entities.sales.SalesOrder;
  * 
  */
 @SuppressWarnings("all")
-public class SalesOrderDtoMapper<DTO extends SalesOrderDto, ENTITY extends SalesOrder> extends BaseDtoMapper<DTO, ENTITY> {
+public class SalesOrderDtoMapper<DTO extends SalesOrderDto, ENTITY extends SalesOrder> implements IMapper<DTO, ENTITY> {
+  private IMapperAccess mapperAccess;
+  
+  /**
+   * Returns the mapper instance that may map between the given dto and entity. Or <code>null</code> if no mapper is available.
+   * 
+   * @param dtoClass - the class of the dto that should be mapped
+   * @param entityClass - the class of the entity that should be mapped
+   * @return the mapper instance or <code>null</code>
+   */
+  protected <D, E> IMapper<D, E> getToDtoMapper(final Class<D> dtoClass, final Class<E> entityClass) {
+    return mapperAccess.getToDtoMapper(dtoClass, entityClass);
+  }
+  
+  /**
+   * Returns the mapper instance that may map between the given dto and entity. Or <code>null</code> if no mapper is available.
+   * 
+   * @param dtoClass - the class of the dto that should be mapped
+   * @param entityClass - the class of the entity that should be mapped
+   * @return the mapper instance or <code>null</code>
+   */
+  protected <D, E> IMapper<D, E> getToEntityMapper(final Class<D> dtoClass, final Class<E> entityClass) {
+    return mapperAccess.getToEntityMapper(dtoClass, entityClass);
+  }
+  
+  /**
+   * Called by OSGi-DS. Binds the mapper access service.
+   * 
+   * @param service - The mapper access service
+   * 
+   */
+  protected void bindMapperAccess(final IMapperAccess mapperAccess) {
+    this.mapperAccess = mapperAccess;
+  }
+  
+  /**
+   * Called by OSGi-DS. Binds the mapper access service.
+   * 
+   * @param service - The mapper access service
+   * 
+   */
+  protected void unbindMapperAccess(final IMapperAccess mapperAccess) {
+    this.mapperAccess = null;
+  }
+  
   /**
    * Creates a new instance of the entity
    */
@@ -43,11 +84,8 @@ public class SalesOrderDtoMapper<DTO extends SalesOrderDto, ENTITY extends Sales
     }
     context.register(createDtoHash(entity), dto);
     
-    super.mapToDTO(dto, entity, context);
-    
     dto.setNumber(toDto_number(entity, context));
-    dto.setCustomer(toDto_customer(entity, context));
-    dto.setPaymentTerm(toDto_paymentTerm(entity, context));
+    dto.setId(toDto_id(entity, context));
   }
   
   /**
@@ -65,11 +103,9 @@ public class SalesOrderDtoMapper<DTO extends SalesOrderDto, ENTITY extends Sales
     
     context.register(createEntityHash(dto), entity);
     context.registerMappingRoot(createEntityHash(dto), dto);
-    super.mapToEntity(dto, entity, context);
     
     entity.setNumber(toEntity_number(dto, context));
-    entity.setCustomer(toEntity_customer(dto, context));
-    entity.setPaymentTerm(toEntity_paymentTerm(dto, context));
+    entity.setId(toEntity_id(dto, context));
   }
   
   /**
@@ -97,127 +133,27 @@ public class SalesOrderDtoMapper<DTO extends SalesOrderDto, ENTITY extends Sales
   }
   
   /**
-   * Maps the property customer from the given entity to the dto.
+   * Maps the property id from the given entity to dto property.
    * 
    * @param in - The source entity
    * @param context - The context to get information about depth,...
-   * @return the mapped dto
+   * @return the mapped value
    * 
    */
-  protected CustomerDto toDto_customer(final SalesOrder in, final MappingContext context) {
-    if(in.getCustomer() != null) {
-    	// find a mapper that knows how to map the concrete input type.
-    	org.lunifera.dsl.dto.lib.IMapper<CustomerDto, Customer> mapper = (org.lunifera.dsl.dto.lib.IMapper<CustomerDto, Customer>) getToDtoMapper(CustomerDto.class, in.getCustomer().getClass());
-    	if(mapper == null) {
-    		throw new IllegalStateException("Mapper must not be null!");
-    	}
-    	CustomerDto dto = null;
-    	dto = context.get(mapper.createDtoHash(in.getCustomer()));
-    	if(dto != null) {
-    		if(context.isRefresh()){
-    			mapper.mapToDTO(dto, in.getCustomer(), context);
-    		}
-    		return dto;
-    	}
-    	
-    	dto = mapper.createDto();
-    	mapper.mapToDTO(dto, in.getCustomer(), context);
-    	return dto;
-    } else {
-    	return null;
-    }
+  protected String toDto_id(final SalesOrder in, final MappingContext context) {
+    return in.getId();
   }
   
   /**
-   * Maps the property customer from the given dto to the entity.
-   * 
-   * @param in - The source dto
-   * @param context - The context to get information about depth,...
-   * @return the mapped entity
-   * 
-   */
-  protected Customer toEntity_customer(final SalesOrderDto in, final MappingContext context) {
-    if(in.getCustomer() != null) {
-    	// find a mapper that knows how to map the concrete input type.
-    	org.lunifera.dsl.dto.lib.IMapper<CustomerDto, Customer> mapper = (org.lunifera.dsl.dto.lib.IMapper<CustomerDto, Customer>) getToEntityMapper(in.getCustomer().getClass(), Customer.class);
-    	if(mapper == null) {
-    		throw new IllegalStateException("Mapper must not be null!");
-    	}
-    
-    	Customer entity = null;
-    	entity = context.get(mapper.createEntityHash(in.getCustomer()));
-    	if(entity != null) {
-    		return entity;
-    	}
-    
-    	entity = mapper.createEntity();
-    	mapper.mapToEntity(in.getCustomer(), entity, context);	
-    	return entity;
-    } else {
-    	return null;
-    }	
-  }
-  
-  /**
-   * Maps the property paymentTerm from the given entity to the dto.
+   * Maps the property id from the given entity to dto property.
    * 
    * @param in - The source entity
    * @param context - The context to get information about depth,...
-   * @return the mapped dto
+   * @return the mapped value
    * 
    */
-  protected PaymentTermDto toDto_paymentTerm(final SalesOrder in, final MappingContext context) {
-    if(in.getPaymentTerm() != null) {
-    	// find a mapper that knows how to map the concrete input type.
-    	org.lunifera.dsl.dto.lib.IMapper<PaymentTermDto, PaymentTerm> mapper = (org.lunifera.dsl.dto.lib.IMapper<PaymentTermDto, PaymentTerm>) getToDtoMapper(PaymentTermDto.class, in.getPaymentTerm().getClass());
-    	if(mapper == null) {
-    		throw new IllegalStateException("Mapper must not be null!");
-    	}
-    	PaymentTermDto dto = null;
-    	dto = context.get(mapper.createDtoHash(in.getPaymentTerm()));
-    	if(dto != null) {
-    		if(context.isRefresh()){
-    			mapper.mapToDTO(dto, in.getPaymentTerm(), context);
-    		}
-    		return dto;
-    	}
-    	
-    	dto = mapper.createDto();
-    	mapper.mapToDTO(dto, in.getPaymentTerm(), context);
-    	return dto;
-    } else {
-    	return null;
-    }
-  }
-  
-  /**
-   * Maps the property paymentTerm from the given dto to the entity.
-   * 
-   * @param in - The source dto
-   * @param context - The context to get information about depth,...
-   * @return the mapped entity
-   * 
-   */
-  protected PaymentTerm toEntity_paymentTerm(final SalesOrderDto in, final MappingContext context) {
-    if(in.getPaymentTerm() != null) {
-    	// find a mapper that knows how to map the concrete input type.
-    	org.lunifera.dsl.dto.lib.IMapper<PaymentTermDto, PaymentTerm> mapper = (org.lunifera.dsl.dto.lib.IMapper<PaymentTermDto, PaymentTerm>) getToEntityMapper(in.getPaymentTerm().getClass(), PaymentTerm.class);
-    	if(mapper == null) {
-    		throw new IllegalStateException("Mapper must not be null!");
-    	}
-    
-    	PaymentTerm entity = null;
-    	entity = context.get(mapper.createEntityHash(in.getPaymentTerm()));
-    	if(entity != null) {
-    		return entity;
-    	}
-    
-    	entity = mapper.createEntity();
-    	mapper.mapToEntity(in.getPaymentTerm(), entity, context);	
-    	return entity;
-    } else {
-    	return null;
-    }	
+  protected String toEntity_id(final SalesOrderDto in, final MappingContext context) {
+    return in.getId();
   }
   
   public String createDtoHash(final Object in) {

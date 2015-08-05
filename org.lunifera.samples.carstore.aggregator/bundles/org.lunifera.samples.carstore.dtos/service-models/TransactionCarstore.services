@@ -5,15 +5,21 @@ package org.lunifera.samples.carstore.dtos.sales.services {
 	import org.lunifera.samples.carstore.dtos.sales.dtos.*; 
 	
 	dtoservice SalesOrderService provides SalesOrderDto {
+		mutable persistenceID carstore
 	}
 	dtoservice SalesOrderDetailService provides SalesOrderDetailDto {
+		mutable persistenceID carstore
 	}
 	dtoservice CarConfigDetailService provides CarConfigDetailDto {
+		mutable persistenceID carstore
 	}
 	dtoservice ManufacturerOrderService provides ManufacturerOrderDto {
+		mutable persistenceID carstore
 	} 
 	dtoservice CarReceiptService provides CarReceiptDto {
+		mutable persistenceID carstore
 	}
 	dtoservice InventoryService provides InventoryDto {
+		mutable persistenceID carstore
 	}
 }

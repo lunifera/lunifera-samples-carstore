@@ -13,4 +13,115 @@
 	
 	<name>Tests for carstore</name>
 	<description>Tests for carstore</description>
+	
+		<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-surefire-plugin</artifactId>
+				<configuration>
+					<includes>
+						<include>**/*Test.class</include>
+						<include>**/*Tests.class</include>
+					</includes>
+					<failIfNoTests>false</failIfNoTests>
+					<showEclipseLog>true</showEclipseLog>
+					<!-- <argLine>${ui.test.vmargs}</argLine> -->
+					<bundleStartLevel>
+						<bundle>
+							<id>org.eclipse.osgi</id>
+							<level>-1</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.eclipse.equinox.common</id>
+							<level>1</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.eclipse.equinox.ds</id>
+							<level>2</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.eclipse.equinox.log</id>
+							<level>1</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.eclipse.osgi.services</id>
+							<level>1</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.eclipse.equinox.coordinator</id>
+							<level>2</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.eclipse.gemini.dbaccess.derby</id>
+							<level>2</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.eclipse.persistence.core</id>
+							<level>3</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.lunifera.org.eclipse.gemini.jpa</id>
+							<level>3</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.lunifera.org.eclipse.gemini.naming</id>
+							<level>2</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.lunifera.runtime.jsr303.validation</id>
+							<level>2</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.lunifera.samples.carstore.bootstrap</id>
+							<level>2</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.lunifera.samples.carstore.entities</id>
+							<level>3</level>
+							<autoStart>true</autoStart>
+						</bundle>
+					</bundleStartLevel>
+
+					<dependencies>
+						<!-- Plugins -->
+						<dependency>
+							<type>eclipse-plugin</type>
+							<artifactId>org.eclipse.equinox.ds</artifactId>
+							<version>0.0.0</version>
+						</dependency>
+						<dependency>
+							<type>eclipse-plugin</type>
+							<artifactId>org.eclipse.equinox.util</artifactId>
+							<version>0.0.0</version>
+						</dependency>
+					</dependencies>
+
+					<useUIHarness>false</useUIHarness>
+					<useUIThread>false</useUIThread>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>com.springsource.org.hamcrest.core</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+	</dependencies>
+
+</project>
 </project>

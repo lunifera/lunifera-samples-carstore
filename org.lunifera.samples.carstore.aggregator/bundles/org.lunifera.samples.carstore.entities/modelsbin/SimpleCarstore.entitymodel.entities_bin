@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ASCII"?>
+<entity:LEntityModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:entity="http://www.lunifera.org/dsl/entity/v1" xmlns:types="http://www.lunifera.org/dsl/common/types/v1">
+  <packages name="org.lunifera.samples.carstore.entities.generaly">
+    <types xsi:type="entity:LEntity" name="Basey" mappedSuperclass="true" subTypes="//@packages.0/@types.1 //@packages.0/@types.2" persistenceUnit="carstore">
+      <annotationInfo xsi:type="types:LClass"/>
+      <features xsi:type="entity:LEntityAttribute" name="id" uuid="true">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LEntity" name="NumberedWithDescriptiony" abstract="true" superType="//@packages.0/@types.0" persistenceUnit="carstore">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <inheritanceStrategy xsi:type="entity:LTablePerSubclassStrategy"/>
+      <features xsi:type="entity:LEntityAttribute" name="number">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="description">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LEntity" name="CarManufacturery" superType="//@packages.0/@types.0" persistenceUnit="carstore">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <inheritanceStrategy xsi:type="entity:LTablePerSubclassStrategy"/>
+      <features xsi:type="entity:LEntityAttribute" name="number">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="name">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.16"/>
+      </features>
+    </types>
+  </packages>
+</entity:LEntityModel>

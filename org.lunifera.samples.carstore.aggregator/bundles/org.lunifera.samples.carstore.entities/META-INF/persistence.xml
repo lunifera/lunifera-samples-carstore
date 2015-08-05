@@ -69,7 +69,7 @@
 
 			<property name="eclipselink.weaving" value="static" />
 			<!-- Enable this property in development mode if you want dynamic weaving! -->
-			<!-- <property name="eclipselink.weaving" value="true" /> -->
+<!-- 			<property name="eclipselink.weaving" value="true" /> -->
 
 		</properties>
 	</persistence-unit>

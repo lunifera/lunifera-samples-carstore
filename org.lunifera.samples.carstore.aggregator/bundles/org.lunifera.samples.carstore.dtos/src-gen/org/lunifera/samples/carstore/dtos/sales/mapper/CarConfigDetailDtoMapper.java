@@ -1,11 +1,10 @@
 package org.lunifera.samples.carstore.dtos.sales.mapper;
 
+import org.lunifera.dsl.dto.lib.IMapper;
+import org.lunifera.dsl.dto.lib.IMapperAccess;
 import org.lunifera.dsl.dto.lib.MappingContext;
-import org.lunifera.samples.carstore.dtos.general.ConfigDetailDefinitionDto;
-import org.lunifera.samples.carstore.dtos.general.mapper.BaseDtoMapper;
 import org.lunifera.samples.carstore.dtos.sales.CarConfigDetailDto;
 import org.lunifera.samples.carstore.dtos.sales.SalesOrderDetailDto;
-import org.lunifera.samples.carstore.entities.general.ConfigDetailDefinition;
 import org.lunifera.samples.carstore.entities.sales.CarConfigDetail;
 import org.lunifera.samples.carstore.entities.sales.SalesOrderDetail;
 
@@ -14,7 +13,51 @@ import org.lunifera.samples.carstore.entities.sales.SalesOrderDetail;
  * 
  */
 @SuppressWarnings("all")
-public class CarConfigDetailDtoMapper<DTO extends CarConfigDetailDto, ENTITY extends CarConfigDetail> extends BaseDtoMapper<DTO, ENTITY> {
+public class CarConfigDetailDtoMapper<DTO extends CarConfigDetailDto, ENTITY extends CarConfigDetail> implements IMapper<DTO, ENTITY> {
+  private IMapperAccess mapperAccess;
+  
+  /**
+   * Returns the mapper instance that may map between the given dto and entity. Or <code>null</code> if no mapper is available.
+   * 
+   * @param dtoClass - the class of the dto that should be mapped
+   * @param entityClass - the class of the entity that should be mapped
+   * @return the mapper instance or <code>null</code>
+   */
+  protected <D, E> IMapper<D, E> getToDtoMapper(final Class<D> dtoClass, final Class<E> entityClass) {
+    return mapperAccess.getToDtoMapper(dtoClass, entityClass);
+  }
+  
+  /**
+   * Returns the mapper instance that may map between the given dto and entity. Or <code>null</code> if no mapper is available.
+   * 
+   * @param dtoClass - the class of the dto that should be mapped
+   * @param entityClass - the class of the entity that should be mapped
+   * @return the mapper instance or <code>null</code>
+   */
+  protected <D, E> IMapper<D, E> getToEntityMapper(final Class<D> dtoClass, final Class<E> entityClass) {
+    return mapperAccess.getToEntityMapper(dtoClass, entityClass);
+  }
+  
+  /**
+   * Called by OSGi-DS. Binds the mapper access service.
+   * 
+   * @param service - The mapper access service
+   * 
+   */
+  protected void bindMapperAccess(final IMapperAccess mapperAccess) {
+    this.mapperAccess = mapperAccess;
+  }
+  
+  /**
+   * Called by OSGi-DS. Binds the mapper access service.
+   * 
+   * @param service - The mapper access service
+   * 
+   */
+  protected void unbindMapperAccess(final IMapperAccess mapperAccess) {
+    this.mapperAccess = null;
+  }
+  
   /**
    * Creates a new instance of the entity
    */
@@ -43,14 +86,12 @@ public class CarConfigDetailDtoMapper<DTO extends CarConfigDetailDto, ENTITY ext
     }
     context.register(createDtoHash(entity), dto);
     
-    super.mapToDTO(dto, entity, context);
-    
     dto.setNumber(toDto_number(entity, context));
     if(dto.getParent() == null) {
     	// parent is container property. So check for null to avoid looping
     	dto.setParent(toDto_parent(entity, context));
     }
-    dto.setConfigDef(toDto_configDef(entity, context));
+    dto.setId(toDto_id(entity, context));
   }
   
   /**
@@ -68,14 +109,13 @@ public class CarConfigDetailDtoMapper<DTO extends CarConfigDetailDto, ENTITY ext
     
     context.register(createEntityHash(dto), entity);
     context.registerMappingRoot(createEntityHash(dto), dto);
-    super.mapToEntity(dto, entity, context);
     
     entity.setNumber(toEntity_number(dto, context));
     if(entity.getParent() == null) {
     	// parent is container property. So check for null to avoid looping
     	entity.setParent(toEntity_parent(dto, context));
     }
-    entity.setConfigDef(toEntity_configDef(dto, context));
+    entity.setId(toEntity_id(dto, context));
   }
   
   /**
@@ -165,65 +205,27 @@ public class CarConfigDetailDtoMapper<DTO extends CarConfigDetailDto, ENTITY ext
   }
   
   /**
-   * Maps the property configDef from the given entity to the dto.
+   * Maps the property id from the given entity to dto property.
    * 
    * @param in - The source entity
    * @param context - The context to get information about depth,...
-   * @return the mapped dto
+   * @return the mapped value
    * 
    */
-  protected ConfigDetailDefinitionDto toDto_configDef(final CarConfigDetail in, final MappingContext context) {
-    if(in.getConfigDef() != null) {
-    	// find a mapper that knows how to map the concrete input type.
-    	org.lunifera.dsl.dto.lib.IMapper<ConfigDetailDefinitionDto, ConfigDetailDefinition> mapper = (org.lunifera.dsl.dto.lib.IMapper<ConfigDetailDefinitionDto, ConfigDetailDefinition>) getToDtoMapper(ConfigDetailDefinitionDto.class, in.getConfigDef().getClass());
-    	if(mapper == null) {
-    		throw new IllegalStateException("Mapper must not be null!");
-    	}
-    	ConfigDetailDefinitionDto dto = null;
-    	dto = context.get(mapper.createDtoHash(in.getConfigDef()));
-    	if(dto != null) {
-    		if(context.isRefresh()){
-    			mapper.mapToDTO(dto, in.getConfigDef(), context);
-    		}
-    		return dto;
-    	}
-    	
-    	dto = mapper.createDto();
-    	mapper.mapToDTO(dto, in.getConfigDef(), context);
-    	return dto;
-    } else {
-    	return null;
-    }
+  protected String toDto_id(final CarConfigDetail in, final MappingContext context) {
+    return in.getId();
   }
   
   /**
-   * Maps the property configDef from the given dto to the entity.
+   * Maps the property id from the given entity to dto property.
    * 
-   * @param in - The source dto
+   * @param in - The source entity
    * @param context - The context to get information about depth,...
-   * @return the mapped entity
+   * @return the mapped value
    * 
    */
-  protected ConfigDetailDefinition toEntity_configDef(final CarConfigDetailDto in, final MappingContext context) {
-    if(in.getConfigDef() != null) {
-    	// find a mapper that knows how to map the concrete input type.
-    	org.lunifera.dsl.dto.lib.IMapper<ConfigDetailDefinitionDto, ConfigDetailDefinition> mapper = (org.lunifera.dsl.dto.lib.IMapper<ConfigDetailDefinitionDto, ConfigDetailDefinition>) getToEntityMapper(in.getConfigDef().getClass(), ConfigDetailDefinition.class);
-    	if(mapper == null) {
-    		throw new IllegalStateException("Mapper must not be null!");
-    	}
-    
-    	ConfigDetailDefinition entity = null;
-    	entity = context.get(mapper.createEntityHash(in.getConfigDef()));
-    	if(entity != null) {
-    		return entity;
-    	}
-    
-    	entity = mapper.createEntity();
-    	mapper.mapToEntity(in.getConfigDef(), entity, context);	
-    	return entity;
-    } else {
-    	return null;
-    }	
+  protected String toEntity_id(final CarConfigDetailDto in, final MappingContext context) {
+    return in.getId();
   }
   
   public String createDtoHash(final Object in) {

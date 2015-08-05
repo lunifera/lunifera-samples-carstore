@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="org.lunifera.samples.carstore.dtos.generaly.services.carmanufacturerydtoservice">
+       <implementation class="org.lunifera.samples.carstore.dtos.generaly.services.CarManufactureryDtoService"/>
+       <service>
+       	<provide interface="org.lunifera.dsl.dto.lib.services.IDTOService"/>
+       </service>
+       <property name="dto" type="String" value="org.lunifera.samples.carstore.dtos.generaly.CarManufactureryDto"/>
+       <property name="service.pid" type="String" value="org.lunifera.samples.carstore.dtos.generaly.services.carmanufacturerydtoservice"/>
+       <reference name="mapperAccess" interface="org.lunifera.dsl.dto.lib.IMapperAccess" cardinality="1..1" 
+       		policy="dynamic" bind="bindMapperAccess" unbind="unbindMapperAccess"/>
+</scr:component>

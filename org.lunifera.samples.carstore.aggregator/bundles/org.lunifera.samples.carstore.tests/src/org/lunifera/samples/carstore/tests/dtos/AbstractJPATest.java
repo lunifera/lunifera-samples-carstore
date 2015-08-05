@@ -7,24 +7,17 @@
  */
 package org.lunifera.samples.carstore.tests.dtos;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.naming.InitialContext;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.spi.PersistenceProvider;
-import javax.persistence.spi.PersistenceProviderResolver;
-import javax.persistence.spi.PersistenceProviderResolverHolder;
 import javax.transaction.UserTransaction;
 
-import org.eclipse.persistence.config.PersistenceUnitProperties;
-import org.lunifera.samples.carstore.entities.general.Currency;
 import org.lunifera.samples.carstore.tests.setup.DBSetupHelper;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
+import org.osgi.framework.ServiceReference;
 import org.osgi.framework.ServiceRegistration;
 
 public class AbstractJPATest {
@@ -35,30 +28,42 @@ public class AbstractJPATest {
 	private ServiceRegistration<EntityManagerFactory> reg;
 
 	public void setUpDatabase() throws Exception {
-		PersistenceProviderResolverHolder
-				.setPersistenceProviderResolver(new PersistenceProviderResolver() {
-					private List<PersistenceProvider> providers = new ArrayList<PersistenceProvider>();
+		// PersistenceProviderResolverHolder
+		// .setPersistenceProviderResolver(new PersistenceProviderResolver() {
+		// private List<PersistenceProvider> providers = new
+		// ArrayList<PersistenceProvider>();
+		//
+		// @Override
+		// public List<PersistenceProvider> getPersistenceProviders() {
+		// org.eclipse.persistence.jpa.PersistenceProvider provider = new
+		// org.eclipse.persistence.jpa.PersistenceProvider();
+		// providers.add(provider);
+		// return providers;
+		// }
+		//
+		// @Override
+		// public void clearCachedProviders() {
+		// providers.clear();
+		// }
+		// });
+		// properties.put(PersistenceUnitProperties.CLASSLOADER,
+		// Currency.class.getClassLoader());
+		// properties.put(PersistenceUnitProperties.WEAVING, "false");
+		//
+		// emf = Persistence.createEntityManagerFactory("carstore", properties);
+		//
+		// Hashtable<String, Object> emfProps = new Hashtable<String, Object>();
+		// emfProps.put("", value)
+		//
+		// reg = bundle.getBundleContext().registerService(
+		// EntityManagerFactory.class, emf, emfProps);
 
-					@Override
-					public List<PersistenceProvider> getPersistenceProviders() {
-						org.eclipse.persistence.jpa.PersistenceProvider provider = new org.eclipse.persistence.jpa.PersistenceProvider();
-						providers.add(provider);
-						return providers;
-					}
-
-					@Override
-					public void clearCachedProviders() {
-						providers.clear();
-					}
-				});
-		properties.put(PersistenceUnitProperties.CLASSLOADER,
-				Currency.class.getClassLoader());
-		properties.put(PersistenceUnitProperties.WEAVING, "false");
-
-		emf = Persistence.createEntityManagerFactory("carstore", properties);
+		// new approach using gemini JPA
 		Bundle bundle = FrameworkUtil.getBundle(AbstractJPATest.class);
-		reg = bundle.getBundleContext().registerService(
-				EntityManagerFactory.class, emf, null);
+		ServiceReference<EntityManagerFactory> reference = bundle
+				.getBundleContext().getServiceReference(
+						EntityManagerFactory.class);
+		emf = bundle.getBundleContext().getService(reference);
 
 		ut = (UserTransaction) new InitialContext()
 				.lookup("osgi:service/javax.transaction.UserTransaction");

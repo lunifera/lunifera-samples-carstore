@@ -1,7 +1,8 @@
 package org.lunifera.samples.carstore.dtos.sales.mapper;
 
+import org.lunifera.dsl.dto.lib.IMapper;
+import org.lunifera.dsl.dto.lib.IMapperAccess;
 import org.lunifera.dsl.dto.lib.MappingContext;
-import org.lunifera.samples.carstore.dtos.general.mapper.BaseDtoMapper;
 import org.lunifera.samples.carstore.dtos.sales.CarReceiptDto;
 import org.lunifera.samples.carstore.dtos.sales.ManufacturerOrderDto;
 import org.lunifera.samples.carstore.entities.sales.CarReceipt;
@@ -12,7 +13,51 @@ import org.lunifera.samples.carstore.entities.sales.ManufacturerOrder;
  * 
  */
 @SuppressWarnings("all")
-public class CarReceiptDtoMapper<DTO extends CarReceiptDto, ENTITY extends CarReceipt> extends BaseDtoMapper<DTO, ENTITY> {
+public class CarReceiptDtoMapper<DTO extends CarReceiptDto, ENTITY extends CarReceipt> implements IMapper<DTO, ENTITY> {
+  private IMapperAccess mapperAccess;
+  
+  /**
+   * Returns the mapper instance that may map between the given dto and entity. Or <code>null</code> if no mapper is available.
+   * 
+   * @param dtoClass - the class of the dto that should be mapped
+   * @param entityClass - the class of the entity that should be mapped
+   * @return the mapper instance or <code>null</code>
+   */
+  protected <D, E> IMapper<D, E> getToDtoMapper(final Class<D> dtoClass, final Class<E> entityClass) {
+    return mapperAccess.getToDtoMapper(dtoClass, entityClass);
+  }
+  
+  /**
+   * Returns the mapper instance that may map between the given dto and entity. Or <code>null</code> if no mapper is available.
+   * 
+   * @param dtoClass - the class of the dto that should be mapped
+   * @param entityClass - the class of the entity that should be mapped
+   * @return the mapper instance or <code>null</code>
+   */
+  protected <D, E> IMapper<D, E> getToEntityMapper(final Class<D> dtoClass, final Class<E> entityClass) {
+    return mapperAccess.getToEntityMapper(dtoClass, entityClass);
+  }
+  
+  /**
+   * Called by OSGi-DS. Binds the mapper access service.
+   * 
+   * @param service - The mapper access service
+   * 
+   */
+  protected void bindMapperAccess(final IMapperAccess mapperAccess) {
+    this.mapperAccess = mapperAccess;
+  }
+  
+  /**
+   * Called by OSGi-DS. Binds the mapper access service.
+   * 
+   * @param service - The mapper access service
+   * 
+   */
+  protected void unbindMapperAccess(final IMapperAccess mapperAccess) {
+    this.mapperAccess = null;
+  }
+  
   /**
    * Creates a new instance of the entity
    */
@@ -41,10 +86,9 @@ public class CarReceiptDtoMapper<DTO extends CarReceiptDto, ENTITY extends CarRe
     }
     context.register(createDtoHash(entity), dto);
     
-    super.mapToDTO(dto, entity, context);
-    
     dto.setNumber(toDto_number(entity, context));
     dto.setOrder(toDto_order(entity, context));
+    dto.setId(toDto_id(entity, context));
   }
   
   /**
@@ -62,10 +106,10 @@ public class CarReceiptDtoMapper<DTO extends CarReceiptDto, ENTITY extends CarRe
     
     context.register(createEntityHash(dto), entity);
     context.registerMappingRoot(createEntityHash(dto), dto);
-    super.mapToEntity(dto, entity, context);
     
     entity.setNumber(toEntity_number(dto, context));
     entity.setOrder(toEntity_order(dto, context));
+    entity.setId(toEntity_id(dto, context));
   }
   
   /**
@@ -152,6 +196,30 @@ public class CarReceiptDtoMapper<DTO extends CarReceiptDto, ENTITY extends CarRe
     } else {
     	return null;
     }	
+  }
+  
+  /**
+   * Maps the property id from the given entity to dto property.
+   * 
+   * @param in - The source entity
+   * @param context - The context to get information about depth,...
+   * @return the mapped value
+   * 
+   */
+  protected String toDto_id(final CarReceipt in, final MappingContext context) {
+    return in.getId();
+  }
+  
+  /**
+   * Maps the property id from the given entity to dto property.
+   * 
+   * @param in - The source entity
+   * @param context - The context to get information about depth,...
+   * @return the mapped value
+   * 
+   */
+  protected String toEntity_id(final CarReceiptDto in, final MappingContext context) {
+    return in.getId();
   }
   
   public String createDtoHash(final Object in) {

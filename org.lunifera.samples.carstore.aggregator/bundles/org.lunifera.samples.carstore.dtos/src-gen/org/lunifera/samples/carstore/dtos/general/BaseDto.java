@@ -5,12 +5,8 @@ import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import org.lunifera.dsl.common.datatypes.IDto;
 import org.lunifera.dsl.dto.lib.MappingContext;
-import org.lunifera.runtime.common.annotations.Dirty;
 import org.lunifera.runtime.common.annotations.Dispose;
 
-/**
- * The mapped superclass providing an UUID.
- */
 @SuppressWarnings("all")
 public class BaseDto implements IDto, Serializable, PropertyChangeListener {
   private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
@@ -19,9 +15,6 @@ public class BaseDto implements IDto, Serializable, PropertyChangeListener {
   private boolean disposed;
   
   private String id = java.util.UUID.randomUUID().toString();
-  
-  @Dirty
-  private boolean dirty;
   
   /**
    * Returns true, if the object is disposed. 
@@ -110,24 +103,6 @@ public class BaseDto implements IDto, Serializable, PropertyChangeListener {
     firePropertyChange("id", this.id, this.id = id );
   }
   
-  /**
-   * Returns the dirty property or <code>null</code> if not present.
-   */
-  public boolean getDirty() {
-    return this.dirty;
-  }
-  
-  /**
-   * Sets the <code>dirty</code> property to this instance.
-   * 
-   * @param dirty - the property
-   * @throws RuntimeException if instance is <code>disposed</code>
-   * 
-   */
-  public void setDirty(final boolean dirty) {
-    firePropertyChange("dirty", this.dirty, this.dirty = dirty );
-  }
-  
   @Override
   public boolean equals(final Object obj) {
     if (this == obj)
@@ -205,8 +180,6 @@ public class BaseDto implements IDto, Serializable, PropertyChangeListener {
     // copy attributes and beans (beans if derived from entity model)
     // copy id
     newDto.setId(getId());
-    // copy dirty
-    newDto.setDirty(getDirty());
     
     // copy containment references (cascading is true)
   }

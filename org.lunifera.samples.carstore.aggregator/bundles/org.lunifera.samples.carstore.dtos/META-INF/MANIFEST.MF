@@ -13,11 +13,11 @@ Require-Bundle: com.google.guava;bundle-version="15.0.0",
  org.lunifera.dsl.dto.lib;bundle-version="[0.9.1,0.10.0)"
 Export-Package: org.lunifera.samples.carstore.dtos.general,
  org.lunifera.samples.carstore.dtos.general.mapper,
- org.lunifera.samples.carstore.dtos.general.services,
  org.lunifera.samples.carstore.dtos.sales,
  org.lunifera.samples.carstore.dtos.sales.mapper,
  org.lunifera.samples.carstore.dtos.sales.services
 Import-Package: javax.persistence;version="2.1.0",
+ javax.validation;version="1.0.0.GA",
  org.osgi.service.component;version="1.1.0",
  org.osgi.util.tracker;version="1.4.0",
  org.slf4j

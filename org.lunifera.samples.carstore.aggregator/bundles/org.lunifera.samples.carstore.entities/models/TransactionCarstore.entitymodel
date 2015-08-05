@@ -14,7 +14,7 @@ package org.lunifera.samples.carstore.entities.sales {
 		ref Customer customer;
 		ref PaymentTerm paymentTerm;
 	}
- 
+  
 	entity SalesOrderDetail extends Base {
 		var int number;
 		ref Item item;
@@ -24,7 +24,7 @@ package org.lunifera.samples.carstore.entities.sales {
 		var Amount ^value;
 		ref cascade CarConfigDetail[*] configDetails opposite parent;
 	}
-	
+
 	entity CarConfigDetail extends Base {
 		var int number;
 		ref SalesOrderDetail parent opposite configDetails;

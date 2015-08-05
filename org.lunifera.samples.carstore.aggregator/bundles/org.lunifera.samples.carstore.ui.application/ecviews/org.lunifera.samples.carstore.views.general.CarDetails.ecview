@@ -30,7 +30,7 @@
           <validators xsi:type="validation:YMaxLengthValidator" maxLength="125"/>
         </elements>
         <elements xsi:type="extension:YCheckBox" id="CarDetails.mainView.Detail_right.dirty" name="dirty" initialEnabled="false" datadescription="//@content/@elements.0/@elements.1/@elements.1/@orphanDatadescriptions.0">
-          <orphanDatadescriptions label="dirty" labelI18nKey="org.lunifera.samples.carstore.dtos.general.BaseDto.dirty"/>
+          <orphanDatadescriptions label="dirty" labelI18nKey="org.lunifera.samples.carstore.dtos.general.NumberedWithDescriptionDto.dirty"/>
         </elements>
         <elements xsi:type="extension:YBeanReferenceField" id="CarDetails.mainView.Detail_right.weightUom" name="weightUom" datadescription="//@content/@elements.0/@elements.1/@elements.2/@orphanDatadescriptions.0" type="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto" typeQualifiedName="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto" captionPropertyPath="description" referenceSourceType="org.lunifera.samples.carstore.dtos.general.WeightDto" referenceSourceTypeQualifiedName="org.lunifera.samples.carstore.dtos.general.WeightDto" referenceSourceTypeProperty="uom">
           <orphanDatadescriptions label="weightUom" labelI18nKey="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto"/>

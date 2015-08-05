@@ -23,8 +23,8 @@
       <columns icon="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto.siType.image" datadescription="//@content/@elements.1/@columns.3/@orphanDatadescriptions.0" propertyPath="siType">
         <orphanDatadescriptions labelI18nKey="org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto.siType"/>
       </columns>
-      <columns icon="org.lunifera.samples.carstore.dtos.general.BaseDto.dirty.image" datadescription="//@content/@elements.1/@columns.4/@orphanDatadescriptions.0" propertyPath="dirty">
-        <orphanDatadescriptions labelI18nKey="org.lunifera.samples.carstore.dtos.general.BaseDto.dirty"/>
+      <columns icon="org.lunifera.samples.carstore.dtos.general.NumberedWithDescriptionDto.dirty.image" datadescription="//@content/@elements.1/@columns.4/@orphanDatadescriptions.0" propertyPath="dirty">
+        <orphanDatadescriptions labelI18nKey="org.lunifera.samples.carstore.dtos.general.NumberedWithDescriptionDto.dirty"/>
       </columns>
     </elements>
     <cellStyles target="UomTableView.SearchPanel" alignment="TOP_FILL"/>

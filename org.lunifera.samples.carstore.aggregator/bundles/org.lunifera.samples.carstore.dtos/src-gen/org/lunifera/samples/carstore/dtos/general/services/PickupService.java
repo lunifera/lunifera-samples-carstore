@@ -1,11 +1,16 @@
 package org.lunifera.samples.carstore.dtos.general.services;
 
-import org.lunifera.dsl.dto.lib.services.impl.AbstractDTOService;
+import org.lunifera.dsl.dto.lib.services.impl.AbstractDTOServiceWithMutablePersistence;
 import org.lunifera.samples.carstore.dtos.general.PickupDto;
 import org.lunifera.samples.carstore.entities.general.Pickup;
 
 @SuppressWarnings("all")
-public class PickupService extends AbstractDTOService<PickupDto, Pickup> {
+public class PickupService extends AbstractDTOServiceWithMutablePersistence<PickupDto, Pickup> {
+  public PickupService() {
+    // set the default persistence ID
+    setPersistenceId("carstore");
+  }
+  
   public Class<PickupDto> getDtoClass() {
     return PickupDto.class;
   }

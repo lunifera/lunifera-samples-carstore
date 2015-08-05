@@ -16,6 +16,7 @@
 
    <windowImages/>
 
+
    <launcher>
       <solaris/>
       <win useIco="false">
@@ -39,20 +40,29 @@
    </features>
 
    <configurations>
-      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="0" />
-      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
-      <plugin id="org.eclipse.equinox.coordinator" autoStart="true" startLevel="0" />
-      <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="1" />
-      <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="0" />
-      <plugin id="org.eclipse.gemini.dbaccess.derby" autoStart="true" startLevel="2" />
-      <plugin id="org.eclipse.gemini.jpa" autoStart="true" startLevel="3" />
       <plugin id="org.eclipse.osgi" autoStart="true" startLevel="-1" />
-      <plugin id="org.lunifera.ecview.jetty.manager" autoStart="true" startLevel="0" />
-      <plugin id="org.lunifera.runtime.ecore.bundlespace" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="1" />
+      
+      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.gemini.dbaccess.derby" autoStart="true" startLevel="2" />
+      <plugin id="org.apache.aries.transaction.manager" autoStart="true" startLevel="2" />
+      <plugin id="org.lunifera.samples.carstore.bootstrap" autoStart="true" startLevel="2" />
+      <plugin id="org.lunifera.samples.carstore.entities" autoStart="true" startLevel="2" />
+      <plugin id="org.lunifera.org.eclipse.gemini.naming" autoStart="true" startLevel="2" />
+      
+      <plugin id="org.lunifera.runtime.ecore.bundlespace" autoStart="true" startLevel="3" />
+      <plugin id="org.eclipse.persistence.core" autoStart="true" startLevel="3" />
+      <plugin id="org.lunifera.org.eclipse.gemini.jpa" autoStart="true" startLevel="3" />
+      
+      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.coordinator" autoStart="true" startLevel="0" />
       <plugin id="org.lunifera.runtime.typeprovider.bundlespace" autoStart="true" startLevel="0" />
       <plugin id="org.lunifera.samples.carstore.bootstrap" autoStart="true" startLevel="0" />
-      <plugin id="org.lunifera.samples.carstore.entities" autoStart="true" startLevel="2" />
+      <plugin id="org.lunifera.ecview.jetty.manager" autoStart="true" startLevel="0" />
       <plugin id="org.lunifera.xtext.builder.metadata.services" autoStart="true" startLevel="0" />
+      <plugin id="org.lunifera.ecview.xtext.builder.participant.i18n" autoStart="true" startLevel="0" />
+      <plugin id="org.lunifera.samples.carstore.setup" autoStart="true" startLevel="0" />
    </configurations>
 
 </product>

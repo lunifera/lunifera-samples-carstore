@@ -1,49 +1,56 @@
+
 package org.lunifera.samples.carstore.dtos.sales {
-	
-	/* Imports the required artifacts */
+
+/* Imports the required artifacts */
 	import org.lunifera.samples.carstore.dtos.general.*;
 	import org.lunifera.samples.carstore.dtos.general.mapper.*;
 	import org.lunifera.samples.carstore.dtos.sales.*;
 	import org.lunifera.samples.carstore.dtos.sales.mapper.*;
 	import org.lunifera.samples.carstore.entities.general.*;
 	import org.lunifera.samples.carstore.entities.sales.*;
- 
-	autoDto SalesOrderDto extends BaseDto wraps SalesOrder {
+
+	autoDto SalesOrderDto wraps SalesOrder {
+
 		inherit var number;
-		inherit ref customer mapto CustomerDto;
-		inherit ref paymentTerm mapto PaymentTermDto;
+		inherit var id;
 	}
-	
-	autoDto SalesOrderDetailDto extends BaseDto wraps SalesOrderDetail {
+
+	autoDto SalesOrderDetailDto wraps SalesOrderDetail {
+
 		inherit var number;
-		inherit ref item mapto ItemDto;
-		inherit ref paymentTerm mapto PaymentTermDto;
 		inherit var price;
 		inherit var quantity;
 		inherit var ^value;
 		inherit ref configDetails mapto CarConfigDetailDto;
+		inherit var id;
 	}
-	
-	autoDto CarConfigDetailDto extends BaseDto wraps CarConfigDetail {
+ 
+	autoDto CarConfigDetailDto wraps CarConfigDetail {
+
 		inherit var number;
 		inherit ref parent mapto SalesOrderDetailDto;
-		inherit ref configDef mapto ConfigDetailDefinitionDto;
+		inherit var id;
 	}
-	
-	autoDto ManufacturerOrderDto extends BaseDto wraps ManufacturerOrder {
+
+	autoDto ManufacturerOrderDto wraps ManufacturerOrder {
+
 		inherit var number;
 		inherit ref salesOrderDetail mapto SalesOrderDetailDto;
+		inherit var id;
 	}
-	
-	autoDto CarReceiptDto extends BaseDto wraps CarReceipt {
+
+	autoDto CarReceiptDto wraps CarReceipt {
+
 		inherit var number;
 		inherit ref order mapto ManufacturerOrderDto;
+		inherit var id;
 	}
-	
-	autoDto InventoryDto extends BaseDto wraps Inventory {
-		inherit ref item mapto ItemDto;
+
+	autoDto InventoryDto wraps Inventory {
+
 		inherit var requestedQuantity;
 		inherit var countedQuantity;
+		inherit var id;
 	}
-	
+
 }

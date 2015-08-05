@@ -4,11 +4,15 @@ import java.beans.PropertyChangeListener;
 import java.io.Serializable;
 import org.lunifera.dsl.common.datatypes.IDto;
 import org.lunifera.dsl.dto.lib.MappingContext;
+import org.lunifera.runtime.common.annotations.Dirty;
 import org.lunifera.runtime.common.annotations.Dispose;
 import org.lunifera.samples.carstore.dtos.general.BaseDto;
 
 @SuppressWarnings("all")
 public abstract class NumberedWithDescriptionDto extends BaseDto implements IDto, Serializable, PropertyChangeListener {
+  @Dirty
+  private boolean dirty;
+  
   private String number;
   
   private String description;
@@ -36,6 +40,24 @@ public abstract class NumberedWithDescriptionDto extends BaseDto implements IDto
       return;
     }
     super.dispose();
+  }
+  
+  /**
+   * Returns the dirty property or <code>null</code> if not present.
+   */
+  public boolean getDirty() {
+    return this.dirty;
+  }
+  
+  /**
+   * Sets the <code>dirty</code> property to this instance.
+   * 
+   * @param dirty - the property
+   * @throws RuntimeException if instance is <code>disposed</code>
+   * 
+   */
+  public void setDirty(final boolean dirty) {
+    firePropertyChange("dirty", this.dirty, this.dirty = dirty );
   }
   
   /**
@@ -86,6 +108,8 @@ public abstract class NumberedWithDescriptionDto extends BaseDto implements IDto
     super.copyContainments(dto, newDto, context);
     
     // copy attributes and beans (beans if derived from entity model)
+    // copy dirty
+    newDto.setDirty(getDirty());
     // copy number
     newDto.setNumber(getNumber());
     // copy description

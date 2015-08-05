@@ -20,8 +20,8 @@
       <columns icon="org.lunifera.samples.carstore.dtos.general.NumberedWithDescriptionDto.description.image" datadescription="//@content/@elements.1/@columns.2/@orphanDatadescriptions.0" propertyPath="description">
         <orphanDatadescriptions labelI18nKey="org.lunifera.samples.carstore.dtos.general.NumberedWithDescriptionDto.description"/>
       </columns>
-      <columns icon="org.lunifera.samples.carstore.dtos.general.BaseDto.dirty.image" datadescription="//@content/@elements.1/@columns.3/@orphanDatadescriptions.0" propertyPath="dirty">
-        <orphanDatadescriptions labelI18nKey="org.lunifera.samples.carstore.dtos.general.BaseDto.dirty"/>
+      <columns icon="org.lunifera.samples.carstore.dtos.general.NumberedWithDescriptionDto.dirty.image" datadescription="//@content/@elements.1/@columns.3/@orphanDatadescriptions.0" propertyPath="dirty">
+        <orphanDatadescriptions labelI18nKey="org.lunifera.samples.carstore.dtos.general.NumberedWithDescriptionDto.dirty"/>
       </columns>
       <columns icon="org.lunifera.samples.carstore.dtos.general.WeightDto.amount.image" datadescription="//@content/@elements.1/@columns.4/@orphanDatadescriptions.0" propertyPath="weight.amount">
         <orphanDatadescriptions labelI18nKey="org.lunifera.samples.carstore.dtos.general.WeightDto.amount"/>

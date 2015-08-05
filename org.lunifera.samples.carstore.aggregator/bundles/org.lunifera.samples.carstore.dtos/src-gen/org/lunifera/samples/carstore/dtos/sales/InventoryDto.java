@@ -1,23 +1,69 @@
 package org.lunifera.samples.carstore.dtos.sales;
 
 import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import org.lunifera.dsl.common.datatypes.IDto;
 import org.lunifera.dsl.dto.lib.MappingContext;
 import org.lunifera.runtime.common.annotations.Dispose;
-import org.lunifera.runtime.common.annotations.DomainReference;
-import org.lunifera.samples.carstore.dtos.general.BaseDto;
-import org.lunifera.samples.carstore.dtos.general.ItemDto;
 import org.lunifera.samples.carstore.dtos.general.QuantityDto;
 
 @SuppressWarnings("all")
-public class InventoryDto extends BaseDto implements IDto, Serializable, PropertyChangeListener {
-  @DomainReference
-  private ItemDto item;
+public class InventoryDto implements IDto, Serializable, PropertyChangeListener {
+  private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
+  
+  @Dispose
+  private boolean disposed;
   
   private QuantityDto requestedQuantity;
   
   private QuantityDto countedQuantity;
+  
+  private String id = java.util.UUID.randomUUID().toString();
+  
+  /**
+   * Returns true, if the object is disposed. 
+   * Disposed means, that it is prepared for garbage collection and may not be used anymore. 
+   * Accessing objects that are already disposed will cause runtime exceptions.
+   */
+  public boolean isDisposed() {
+    return this.disposed;
+  }
+  
+  /**
+   * @see PropertyChangeSupport#addPropertyChangeListener(PropertyChangeListener)
+   */
+  public void addPropertyChangeListener(final PropertyChangeListener listener) {
+    propertyChangeSupport.addPropertyChangeListener(listener);
+  }
+  
+  /**
+   * @see PropertyChangeSupport#addPropertyChangeListener(String, PropertyChangeListener)
+   */
+  public void addPropertyChangeListener(final String propertyName, final PropertyChangeListener listener) {
+    propertyChangeSupport.addPropertyChangeListener(propertyName, listener);
+  }
+  
+  /**
+   * @see PropertyChangeSupport#removePropertyChangeListener(PropertyChangeListener)
+   */
+  public void removePropertyChangeListener(final PropertyChangeListener listener) {
+    propertyChangeSupport.removePropertyChangeListener(listener);
+  }
+  
+  /**
+   * @see PropertyChangeSupport#removePropertyChangeListener(String, PropertyChangeListener)
+   */
+  public void removePropertyChangeListener(final String propertyName, final PropertyChangeListener listener) {
+    propertyChangeSupport.removePropertyChangeListener(propertyName, listener);
+  }
+  
+  /**
+   * @see PropertyChangeSupport#firePropertyChange(String, Object, Object)
+   */
+  public void firePropertyChange(final String propertyName, final Object oldValue, final Object newValue) {
+    propertyChangeSupport.firePropertyChange(propertyName, oldValue, newValue);
+  }
   
   /**
    * Checks whether the object is disposed.
@@ -41,26 +87,7 @@ public class InventoryDto extends BaseDto implements IDto, Serializable, Propert
     if (isDisposed()) {
       return;
     }
-    super.dispose();
-  }
-  
-  /**
-   * Returns the item property or <code>null</code> if not present.
-   */
-  public ItemDto getItem() {
-    return this.item;
-  }
-  
-  /**
-   * Sets the <code>item</code> property to this instance.
-   * 
-   * @param item - the property
-   * @throws RuntimeException if instance is <code>disposed</code>
-   * 
-   */
-  public void setItem(final ItemDto item) {
-    checkDisposed();
-    firePropertyChange("item", this.item, this.item = item);
+    firePropertyChange("disposed", this.disposed, this.disposed = true);
   }
   
   /**
@@ -125,6 +152,49 @@ public class InventoryDto extends BaseDto implements IDto, Serializable, Propert
     }
   }
   
+  /**
+   * Returns the id property or <code>null</code> if not present.
+   */
+  public String getId() {
+    return this.id;
+  }
+  
+  /**
+   * Sets the <code>id</code> property to this instance.
+   * 
+   * @param id - the property
+   * @throws RuntimeException if instance is <code>disposed</code>
+   * 
+   */
+  public void setId(final String id) {
+    firePropertyChange("id", this.id, this.id = id );
+  }
+  
+  @Override
+  public boolean equals(final Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    InventoryDto other = (InventoryDto) obj;
+    if (this.id == null) {
+      if (other.id != null)
+        return false;
+    } else if (!this.id.equals(other.id))
+      return false;
+    return true;
+  }
+  
+  @Override
+  public int hashCode() {
+     int prime = 31;
+    int result = 1;
+    result = prime * result + ((this.id== null) ? 0 : this.id.hashCode());
+    return result;
+  }
+  
   public InventoryDto createDto() {
     return new InventoryDto();
   }
@@ -173,7 +243,6 @@ public class InventoryDto extends BaseDto implements IDto, Serializable, Propert
     	throw new IllegalArgumentException("Context must not be null!");
     }
     
-    super.copyContainments(dto, newDto, context);
     
     // copy attributes and beans (beans if derived from entity model)
     // copy dto requestedQuantity
@@ -184,6 +253,8 @@ public class InventoryDto extends BaseDto implements IDto, Serializable, Propert
     if(getCountedQuantity() != null) {
     	newDto.setCountedQuantity(getCountedQuantity().copy(context));
     }
+    // copy id
+    newDto.setId(getId());
     
     // copy containment references (cascading is true)
   }
@@ -195,13 +266,8 @@ public class InventoryDto extends BaseDto implements IDto, Serializable, Propert
     	throw new IllegalArgumentException("Context must not be null!");
     }
     
-    super.copyCrossReferences(dto, newDto, context);
     
     // copy cross references (cascading is false)
-    // copy dto item
-    if(getItem() != null) {
-    	newDto.setItem(getItem().copy(context));
-    }
   }
   
   public void propertyChange(final java.beans.PropertyChangeEvent event) {
@@ -216,7 +282,7 @@ public class InventoryDto extends BaseDto implements IDto, Serializable, Propert
     	firePropertyChange("countedQuantity" + "_" + event.getPropertyName(), event.getOldValue(), event.getNewValue());
     } else 
     { 
-    	super.propertyChange(event);
+    	// no super class available to forward event
     }
   }
 }

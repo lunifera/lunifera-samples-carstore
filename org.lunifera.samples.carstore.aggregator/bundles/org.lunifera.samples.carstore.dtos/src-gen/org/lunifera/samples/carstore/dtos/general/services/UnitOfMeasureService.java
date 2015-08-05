@@ -1,11 +1,16 @@
 package org.lunifera.samples.carstore.dtos.general.services;
 
-import org.lunifera.dsl.dto.lib.services.impl.AbstractDTOService;
+import org.lunifera.dsl.dto.lib.services.impl.AbstractDTOServiceWithMutablePersistence;
 import org.lunifera.samples.carstore.dtos.general.UnitOfMeasureDto;
 import org.lunifera.samples.carstore.entities.general.UnitOfMeasure;
 
 @SuppressWarnings("all")
-public class UnitOfMeasureService extends AbstractDTOService<UnitOfMeasureDto, UnitOfMeasure> {
+public class UnitOfMeasureService extends AbstractDTOServiceWithMutablePersistence<UnitOfMeasureDto, UnitOfMeasure> {
+  public UnitOfMeasureService() {
+    // set the default persistence ID
+    setPersistenceId("carstore");
+  }
+  
   public Class<UnitOfMeasureDto> getDtoClass() {
     return UnitOfMeasureDto.class;
   }

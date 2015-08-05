@@ -5,31 +5,45 @@ package org.lunifera.samples.carstore.dtos.general.services {
 	import org.lunifera.samples.carstore.dtos.general.dtos.*; 
 	
 	dtoservice BaseService provides BaseDto {
+		mutable persistenceID carstore
 	}
 	dtoservice CascadeRootService provides CascadeRootDto {
+		mutable persistenceID carstore
 	}
 	dtoservice CascadeYesService provides CascadeYesDto {
+		mutable persistenceID carstore
 	}
 	dtoservice CascadeNoService provides CascadeNoDto {
-	}
+		mutable persistenceID carstore
+	} 
 	dtoservice UnitOfMeasureService provides UnitOfMeasureDto {
+		mutable persistenceID carstore
 	}
 	dtoservice PaymentTermService provides PaymentTermDto {
+		mutable persistenceID carstore
 	}
 	dtoservice AccessoryService provides AccessoryDto {
+		mutable persistenceID carstore
 	}
 	dtoservice CarService provides CarDto {
+		mutable persistenceID carstore
 	}
 	dtoservice PickupService provides PickupDto {
+		mutable persistenceID carstore
 	}
 	dtoservice ConvertibleService provides ConvertibleDto {
+		mutable persistenceID carstore
 	}
 	dtoservice ConfigDetailDefinitionService provides ConfigDetailDefinitionDto {
+		mutable persistenceID carstore
 	}
 	dtoservice CurrencyService provides CurrencyDto {
+		mutable persistenceID carstore
 	}
 	dtoservice CustomerService provides CustomerDto {
+		mutable persistenceID carstore
 	}
 	dtoservice CarManufacturerService provides CarManufacturerDto {
+		mutable persistenceID carstore
 	}
 }

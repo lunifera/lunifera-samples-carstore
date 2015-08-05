@@ -13,15 +13,9 @@
         <annotationInfo xsi:type="dto:LDtoFeature"/>
         <inheritedFeature xsi:type="entity:LEntityAttribute" href="platform:/resource/org.lunifera.samples.carstore.entities/models/TransactionCarstore.entitymodel#/0/@packages.0/@types.0/@features.0"/>
       </features>
-      <features xsi:type="dto:LDtoInheritedReference">
+      <features xsi:type="dto:LDtoInheritedAttribute">
         <annotationInfo xsi:type="dto:LDtoFeature"/>
-        <type href="platform:/resource/org.lunifera.samples.carstore.dtos/models/GeneralCarstore.dtos#/0/@packages.0/@types.14"/>
-        <inheritedFeature xsi:type="entity:LEntityReference" href="platform:/resource/org.lunifera.samples.carstore.entities/models/TransactionCarstore.entitymodel#/0/@packages.0/@types.0/@features.1"/>
-      </features>
-      <features xsi:type="dto:LDtoInheritedReference">
-        <annotationInfo xsi:type="dto:LDtoFeature"/>
-        <type href="platform:/resource/org.lunifera.samples.carstore.dtos/models/GeneralCarstore.dtos#/0/@packages.0/@types.6"/>
-        <inheritedFeature xsi:type="entity:LEntityReference" href="platform:/resource/org.lunifera.samples.carstore.entities/models/TransactionCarstore.entitymodel#/0/@packages.0/@types.0/@features.2"/>
+        <inheritedFeature xsi:type="entity:LEntityAttribute" href="platform:/resource/org.lunifera.samples.carstore.entities/models/GeneralCarstore.entitymodel#/0/@packages.0/@types.0/@features.0"/>
       </features>
       <wrappedType href="platform:/resource/org.lunifera.samples.carstore.entities/models/TransactionCarstore.entitymodel#/0/@packages.0/@types.0"/>
     </types>
@@ -30,16 +24,6 @@
       <features xsi:type="dto:LDtoInheritedAttribute">
         <annotationInfo xsi:type="dto:LDtoFeature"/>
         <inheritedFeature xsi:type="entity:LEntityAttribute" href="platform:/resource/org.lunifera.samples.carstore.entities/models/TransactionCarstore.entitymodel#/0/@packages.0/@types.1/@features.0"/>
-      </features>
-      <features xsi:type="dto:LDtoInheritedReference">
-        <annotationInfo xsi:type="dto:LDtoFeature"/>
-        <type href="platform:/resource/org.lunifera.samples.carstore.dtos/models/GeneralCarstore.dtos#/0/@packages.0/@types.7"/>
-        <inheritedFeature xsi:type="entity:LEntityReference" href="platform:/resource/org.lunifera.samples.carstore.entities/models/TransactionCarstore.entitymodel#/0/@packages.0/@types.1/@features.1"/>
-      </features>
-      <features xsi:type="dto:LDtoInheritedReference">
-        <annotationInfo xsi:type="dto:LDtoFeature"/>
-        <type href="platform:/resource/org.lunifera.samples.carstore.dtos/models/GeneralCarstore.dtos#/0/@packages.0/@types.6"/>
-        <inheritedFeature xsi:type="entity:LEntityReference" href="platform:/resource/org.lunifera.samples.carstore.entities/models/TransactionCarstore.entitymodel#/0/@packages.0/@types.1/@features.2"/>
       </features>
       <features xsi:type="dto:LDtoInheritedAttribute">
         <annotationInfo xsi:type="dto:LDtoFeature"/>
@@ -57,6 +41,10 @@
         <annotationInfo xsi:type="dto:LDtoFeature"/>
         <inheritedFeature xsi:type="entity:LEntityReference" href="platform:/resource/org.lunifera.samples.carstore.entities/models/TransactionCarstore.entitymodel#/0/@packages.0/@types.1/@features.6"/>
       </features>
+      <features xsi:type="dto:LDtoInheritedAttribute">
+        <annotationInfo xsi:type="dto:LDtoFeature"/>
+        <inheritedFeature xsi:type="entity:LEntityAttribute" href="platform:/resource/org.lunifera.samples.carstore.entities/models/GeneralCarstore.entitymodel#/0/@packages.0/@types.0/@features.0"/>
+      </features>
       <wrappedType href="platform:/resource/org.lunifera.samples.carstore.entities/models/TransactionCarstore.entitymodel#/0/@packages.0/@types.1"/>
     </types>
     <types xsi:type="dto:LAutoInheritDto" name="CarConfigDetailDto">
@@ -69,10 +57,9 @@
         <annotationInfo xsi:type="dto:LDtoFeature"/>
         <inheritedFeature xsi:type="entity:LEntityReference" href="platform:/resource/org.lunifera.samples.carstore.entities/models/TransactionCarstore.entitymodel#/0/@packages.0/@types.2/@features.1"/>
       </features>
-      <features xsi:type="dto:LDtoInheritedReference">
+      <features xsi:type="dto:LDtoInheritedAttribute">
         <annotationInfo xsi:type="dto:LDtoFeature"/>
-        <type href="platform:/resource/org.lunifera.samples.carstore.dtos/models/GeneralCarstore.dtos#/0/@packages.0/@types.12"/>
-        <inheritedFeature xsi:type="entity:LEntityReference" href="platform:/resource/org.lunifera.samples.carstore.entities/models/TransactionCarstore.entitymodel#/0/@packages.0/@types.2/@features.2"/>
+        <inheritedFeature xsi:type="entity:LEntityAttribute" href="platform:/resource/org.lunifera.samples.carstore.entities/models/GeneralCarstore.entitymodel#/0/@packages.0/@types.0/@features.0"/>
       </features>
       <wrappedType href="platform:/resource/org.lunifera.samples.carstore.entities/models/TransactionCarstore.entitymodel#/0/@packages.0/@types.2"/>
     </types>
@@ -86,6 +73,10 @@
         <annotationInfo xsi:type="dto:LDtoFeature"/>
         <inheritedFeature xsi:type="entity:LEntityReference" href="platform:/resource/org.lunifera.samples.carstore.entities/models/TransactionCarstore.entitymodel#/0/@packages.0/@types.3/@features.1"/>
       </features>
+      <features xsi:type="dto:LDtoInheritedAttribute">
+        <annotationInfo xsi:type="dto:LDtoFeature"/>
+        <inheritedFeature xsi:type="entity:LEntityAttribute" href="platform:/resource/org.lunifera.samples.carstore.entities/models/GeneralCarstore.entitymodel#/0/@packages.0/@types.0/@features.0"/>
+      </features>
       <wrappedType href="platform:/resource/org.lunifera.samples.carstore.entities/models/TransactionCarstore.entitymodel#/0/@packages.0/@types.3"/>
     </types>
     <types xsi:type="dto:LAutoInheritDto" name="CarReceiptDto">
@@ -98,15 +89,14 @@
         <annotationInfo xsi:type="dto:LDtoFeature"/>
         <inheritedFeature xsi:type="entity:LEntityReference" href="platform:/resource/org.lunifera.samples.carstore.entities/models/TransactionCarstore.entitymodel#/0/@packages.0/@types.4/@features.1"/>
       </features>
+      <features xsi:type="dto:LDtoInheritedAttribute">
+        <annotationInfo xsi:type="dto:LDtoFeature"/>
+        <inheritedFeature xsi:type="entity:LEntityAttribute" href="platform:/resource/org.lunifera.samples.carstore.entities/models/GeneralCarstore.entitymodel#/0/@packages.0/@types.0/@features.0"/>
+      </features>
       <wrappedType href="platform:/resource/org.lunifera.samples.carstore.entities/models/TransactionCarstore.entitymodel#/0/@packages.0/@types.4"/>
     </types>
     <types xsi:type="dto:LAutoInheritDto" name="InventoryDto">
       <annotationInfo xsi:type="dto:LDto"/>
-      <features xsi:type="dto:LDtoInheritedReference">
-        <annotationInfo xsi:type="dto:LDtoFeature"/>
-        <type href="platform:/resource/org.lunifera.samples.carstore.dtos/models/GeneralCarstore.dtos#/0/@packages.0/@types.7"/>
-        <inheritedFeature xsi:type="entity:LEntityReference" href="platform:/resource/org.lunifera.samples.carstore.entities/models/TransactionCarstore.entitymodel#/0/@packages.0/@types.5/@features.0"/>
-      </features>
       <features xsi:type="dto:LDtoInheritedAttribute">
         <annotationInfo xsi:type="dto:LDtoFeature"/>
         <inheritedFeature xsi:type="entity:LEntityAttribute" href="platform:/resource/org.lunifera.samples.carstore.entities/models/TransactionCarstore.entitymodel#/0/@packages.0/@types.5/@features.1"/>
@@ -114,6 +104,10 @@
       <features xsi:type="dto:LDtoInheritedAttribute">
         <annotationInfo xsi:type="dto:LDtoFeature"/>
         <inheritedFeature xsi:type="entity:LEntityAttribute" href="platform:/resource/org.lunifera.samples.carstore.entities/models/TransactionCarstore.entitymodel#/0/@packages.0/@types.5/@features.2"/>
+      </features>
+      <features xsi:type="dto:LDtoInheritedAttribute">
+        <annotationInfo xsi:type="dto:LDtoFeature"/>
+        <inheritedFeature xsi:type="entity:LEntityAttribute" href="platform:/resource/org.lunifera.samples.carstore.entities/models/GeneralCarstore.entitymodel#/0/@packages.0/@types.0/@features.0"/>
       </features>
       <wrappedType href="platform:/resource/org.lunifera.samples.carstore.entities/models/TransactionCarstore.entitymodel#/0/@packages.0/@types.5"/>
     </types>
