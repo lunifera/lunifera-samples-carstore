@@ -1,0 +1,9 @@
+/org.lunifera.samples.carstore.views.general.CarDetails.ecview
+/org.lunifera.samples.carstore.views.general.CarTableView.ecview
+/org.lunifera.samples.carstore.views.general.CurrencyDetails.ecview
+/org.lunifera.samples.carstore.views.general.CurrencyTableView.ecview
+/org.lunifera.samples.carstore.views.general.CustomerView.ecview
+/org.lunifera.samples.carstore.views.general.ItemView.ecview
+/org.lunifera.samples.carstore.views.general.UomDetails.ecview
+/org.lunifera.samples.carstore.views.general.UomTableView.ecview
+/org.lunifera.samples.carstore.views.sales.invoice.InvoiceView.ecview

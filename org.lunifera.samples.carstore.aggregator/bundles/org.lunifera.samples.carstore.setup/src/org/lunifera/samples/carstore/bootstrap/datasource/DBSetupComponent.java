@@ -41,6 +41,7 @@ public class DBSetupComponent {
 	private UnitOfMeasure meter;
 	private UnitOfMeasure liter;
 	private UserTransaction ut;
+	private Currency currency16;
 
 	@Activate
 	protected void activate(ComponentContext context) {
@@ -87,6 +88,93 @@ public class DBSetupComponent {
 		usd.setDescription("US-Dollar");
 		usd.setIso3Code("USD");
 		em.persist(usd);
+		
+		Currency cur = new Currency();
+		cur.setNumber("0003");
+		cur.setDescription("Currency 3");
+		cur.setIso3Code("Cur 3");
+		em.persist(cur);
+		
+		
+		cur = new Currency();
+		cur.setNumber("0004");
+		cur.setDescription("Currency 4");
+		cur.setIso3Code("Cur 4");
+		em.persist(cur);
+		
+		cur = new Currency();
+		cur.setNumber("0005");
+		cur.setDescription("Currency 5");
+		cur.setIso3Code("Cur 5");
+		em.persist(cur);
+		
+		cur = new Currency();
+		cur.setNumber("0006");
+		cur.setDescription("Currency 6");
+		cur.setIso3Code("Cur 6");
+		em.persist(cur);
+		
+		cur = new Currency();
+		cur.setNumber("0007");
+		cur.setDescription("Currency 7");
+		cur.setIso3Code("Cur 7");
+		em.persist(cur);
+		
+		cur = new Currency();
+		cur.setNumber("0008");
+		cur.setDescription("Currency 8");
+		cur.setIso3Code("Cur 8");
+		em.persist(cur);
+		
+		cur = new Currency();
+		cur.setNumber("0009");
+		cur.setDescription("Currency 9");
+		cur.setIso3Code("Cur 9");
+		em.persist(cur);
+		
+		cur = new Currency();
+		cur.setNumber("0010");
+		cur.setDescription("Currency 10");
+		cur.setIso3Code("Cur 10");
+		em.persist(cur);
+		
+		cur = new Currency();
+		cur.setNumber("0011");
+		cur.setDescription("Currency 11");
+		cur.setIso3Code("Cur 11");
+		em.persist(cur);
+		
+		cur = new Currency();
+		cur.setNumber("0012");
+		cur.setDescription("Currency 12");
+		cur.setIso3Code("Cur 12");
+		em.persist(cur);
+		
+		cur = new Currency();
+		cur.setNumber("0013");
+		cur.setDescription("Currency 13");
+		cur.setIso3Code("Cur 13");
+		em.persist(cur);
+		
+		cur = new Currency();
+		cur.setNumber("0014");
+		cur.setDescription("Currency 14");
+		cur.setIso3Code("Cur 14");
+		em.persist(cur);
+		
+		cur = new Currency();
+		cur.setNumber("0015");
+		cur.setDescription("Currency 15");
+		cur.setIso3Code("Cur 15");
+		em.persist(cur);
+		
+		cur = new Currency();
+		cur.setNumber("0016");
+		cur.setDescription("Currency 16");
+		cur.setIso3Code("Cur 16");
+		em.persist(cur);
+		
+		currency16 = cur;
 
 	}
 
@@ -142,7 +230,7 @@ public class DBSetupComponent {
 		bmw_convertible.setNumber("00003");
 		bmw_convertible.setDescription("A german car with soft roof");
 		bmw_convertible.setAxes(2);
-		bmw_convertible.setPrice(createPrice(16000, usd));
+		bmw_convertible.setPrice(createPrice(16000, currency16));
 		bmw_convertible.setWeight(createWeight(1.89f, t));
 		bmw_convertible.setRoofType(RoofType.SOFT);
 		em.persist(bmw_convertible);

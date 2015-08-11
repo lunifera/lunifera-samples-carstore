@@ -18,27 +18,33 @@ ideview CarDetails {
 	eventTopic "org/lunifera/samples/carstore/CarDto/selection"
 	datasource pickup:org.lunifera.samples.carstore.dtos.general.PickupDto
 	datasource convertible:org.lunifera.samples.carstore.dtos.general.ConvertibleDto
- 
+
 	verticalLayout mainView {
 		horizontalLayout {
 			form Detail_left {
-				textfield number {
-					MinLengthValidator(3)
-					MaxLengthValidator(10)
+				textfield number 
+				{
+					BeanValidationValidator 
 				}
 				numericField axes
+				{
+					BeanValidationValidator 
+				}
 				decimalField (i18n "org.lunifera.samples.carstore.dtos.general.CarDto.weight") weightAmount
+				{
+					BeanValidationValidator
+				}
 				decimalField (i18n "org.lunifera.samples.carstore.dtos.general.CarDto.price") priceAmount
-  
+ 
 				bind main.number <--> [this.number].value
 				bind main.axes <--> [this.axes].value
 				bind main.weight.amount <--> [this.weightAmount].value
 				bind main.price.amount <--> [this.priceAmount].value
 			}
 			align top-left form Detail_right {
-				textfield description {
-					MinLengthValidator(3)
-					MaxLengthValidator(125)
+				textfield description
+				{
+					BeanValidationValidator 
 				}
 				checkbox(readonly) dirty
 				referenceField weightUom {

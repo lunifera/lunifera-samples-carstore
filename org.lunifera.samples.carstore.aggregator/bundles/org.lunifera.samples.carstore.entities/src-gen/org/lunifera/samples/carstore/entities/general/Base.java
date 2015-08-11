@@ -3,6 +3,7 @@ package org.lunifera.samples.carstore.entities.general;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
+import org.lunifera.dsl.common.datatypes.IEntity;
 import org.lunifera.runtime.common.annotations.Dispose;
 
 /**
@@ -10,7 +11,7 @@ import org.lunifera.runtime.common.annotations.Dispose;
  */
 @MappedSuperclass
 @SuppressWarnings("all")
-public class Base {
+public class Base implements IEntity {
   @Transient
   @Dispose
   private boolean disposed;

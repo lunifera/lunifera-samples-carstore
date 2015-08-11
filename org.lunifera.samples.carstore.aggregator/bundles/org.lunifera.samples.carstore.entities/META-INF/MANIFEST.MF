@@ -13,6 +13,7 @@ Require-Bundle: com.google.guava;bundle-version="15.0.0",
 Export-Package: org.lunifera.samples.carstore.entities.general,
  org.lunifera.samples.carstore.entities.sales
 Import-Package: javax.persistence;version="2.1.0",
+ javax.validation.constraints;version="1.0.0.GA",
  org.slf4j
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Meta-Persistence: META-INF/persistence.xml

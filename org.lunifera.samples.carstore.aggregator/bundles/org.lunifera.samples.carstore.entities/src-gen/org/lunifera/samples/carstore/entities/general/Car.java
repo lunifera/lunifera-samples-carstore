@@ -15,6 +15,10 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import org.lunifera.dsl.common.datatypes.IEntity;
 import org.lunifera.runtime.common.annotations.Dispose;
 import org.lunifera.samples.carstore.entities.general.ConfigDetailDefinition;
 import org.lunifera.samples.carstore.entities.general.Item;
@@ -25,20 +29,24 @@ import org.lunifera.samples.carstore.entities.general.Weight;
 @Table(name = "CAR")
 @DiscriminatorValue(value = "CAR")
 @SuppressWarnings("all")
-public class Car extends Item {
+public class Car extends Item implements IEntity {
   @Column(name = "AXES")
+  @Min(value = 2)
+  @Max(value = 10)
   private int axes;
   
   @Embedded
   @AttributeOverrides(value = @AttributeOverride(name = "amount", column = @Column(name = "WEIGHT_AMOUNT")))
   @AssociationOverrides(value = @AssociationOverride(name = "uom", joinColumns = @JoinColumn(name = "WEIGHT_UOM")))
   @Column(name = "WEIGHT")
+  @NotNull
   private Weight weight;
   
   @Embedded
   @AttributeOverrides(value = @AttributeOverride(name = "amount", column = @Column(name = "PRICE_AMOUNT")))
   @AssociationOverrides(value = @AssociationOverride(name = "currency", joinColumns = @JoinColumn(name = "PRICE_CURRENCY")))
   @Column(name = "PRICE")
+  @NotNull
   private Price price;
   
   @JoinColumn(name = "CONFIG_DETAILS")

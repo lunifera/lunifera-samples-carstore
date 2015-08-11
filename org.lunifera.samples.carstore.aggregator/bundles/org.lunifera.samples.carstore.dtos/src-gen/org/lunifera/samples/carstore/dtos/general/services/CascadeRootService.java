@@ -1,16 +1,11 @@
 package org.lunifera.samples.carstore.dtos.general.services;
 
-import org.lunifera.dsl.dto.lib.services.impl.AbstractDTOServiceWithMutablePersistence;
+import org.lunifera.dsl.dto.lib.services.impl.AbstractDTOService;
 import org.lunifera.samples.carstore.dtos.general.CascadeRootDto;
 import org.lunifera.samples.carstore.entities.general.CascadeRoot;
 
 @SuppressWarnings("all")
-public class CascadeRootService extends AbstractDTOServiceWithMutablePersistence<CascadeRootDto, CascadeRoot> {
-  public CascadeRootService() {
-    // set the default persistence ID
-    setPersistenceId("carstore");
-  }
-  
+public class CascadeRootService extends AbstractDTOService<CascadeRootDto, CascadeRoot> {
   public Class<CascadeRootDto> getDtoClass() {
     return CascadeRootDto.class;
   }

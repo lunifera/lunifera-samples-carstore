@@ -44,7 +44,7 @@ ideview CurrencyDetails {
 				mainLayout.enabled = false
 			}
 		}
-	}
+	} 
 
 	bind [this.saveEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/CurrencyDto/table/refresh")
 	bind [this.deleteEntity].onExecuted --> sendEvent("org/lunifera/samples/carstore/CurrencyDto/table/refresh")

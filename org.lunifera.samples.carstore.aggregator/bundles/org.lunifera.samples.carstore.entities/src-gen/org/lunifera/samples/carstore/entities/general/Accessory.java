@@ -3,6 +3,7 @@ package org.lunifera.samples.carstore.entities.general;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import org.lunifera.dsl.common.datatypes.IEntity;
 import org.lunifera.runtime.common.annotations.Dispose;
 import org.lunifera.samples.carstore.entities.general.Item;
 
@@ -10,7 +11,7 @@ import org.lunifera.samples.carstore.entities.general.Item;
 @Table(name = "ACCESSORY")
 @DiscriminatorValue(value = "ACCESSORY")
 @SuppressWarnings("all")
-public class Accessory extends Item {
+public class Accessory extends Item implements IEntity {
   /**
    * Checks whether the object is disposed.
    * @throws RuntimeException if the object is disposed.

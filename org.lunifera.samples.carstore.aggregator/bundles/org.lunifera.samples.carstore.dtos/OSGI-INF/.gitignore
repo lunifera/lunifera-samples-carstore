@@ -1,0 +1,14 @@
+/org.lunifera.samples.carstore.dtos.general.services.AccessoryService.xml
+/org.lunifera.samples.carstore.dtos.general.services.BaseService.xml
+/org.lunifera.samples.carstore.dtos.general.services.CarManufacturerService.xml
+/org.lunifera.samples.carstore.dtos.general.services.CarService.xml
+/org.lunifera.samples.carstore.dtos.general.services.CascadeNoService.xml
+/org.lunifera.samples.carstore.dtos.general.services.CascadeRootService.xml
+/org.lunifera.samples.carstore.dtos.general.services.CascadeYesService.xml
+/org.lunifera.samples.carstore.dtos.general.services.ConfigDetailDefinitionService.xml
+/org.lunifera.samples.carstore.dtos.general.services.ConvertibleService.xml
+/org.lunifera.samples.carstore.dtos.general.services.CurrencyService.xml
+/org.lunifera.samples.carstore.dtos.general.services.CustomerService.xml
+/org.lunifera.samples.carstore.dtos.general.services.PaymentTermService.xml
+/org.lunifera.samples.carstore.dtos.general.services.PickupService.xml
+/org.lunifera.samples.carstore.dtos.general.services.UnitOfMeasureService.xml

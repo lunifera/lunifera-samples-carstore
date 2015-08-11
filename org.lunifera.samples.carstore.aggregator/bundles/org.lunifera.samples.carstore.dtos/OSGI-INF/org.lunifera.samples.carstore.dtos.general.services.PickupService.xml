@@ -6,6 +6,10 @@
        </service>
        <property name="dto" type="String" value="org.lunifera.samples.carstore.dtos.general.PickupDto"/>
        <property name="service.pid" type="String" value="org.lunifera.samples.carstore.dtos.general.services.pickupservice"/>
-       <reference name="mapperAccess" interface="org.lunifera.dsl.dto.lib.IMapperAccess" cardinality="1..1" 
-       		policy="dynamic" bind="bindMapperAccess" unbind="unbindMapperAccess"/>
+<reference name="emf" interface="javax.persistence.EntityManagerFactory" cardinality="1..1" 
+	policy="dynamic" bind="bindEmf" unbind="unbindEmf" target="(osgi.unit.name=carstore)"/>
+<reference name="mapperAccess" interface="org.lunifera.dsl.dto.lib.IMapperAccess" cardinality="1..1" 
+	policy="dynamic" bind="bindMapperAccess" unbind="unbindMapperAccess"/>
+<reference name="validatorFactory" interface="javax.validation.ValidatorFactory" cardinality="1..1"
+	policy="dynamic" bind="bindValidatorFactory" unbind="unbindValidatorFactory"/>
 </scr:component>

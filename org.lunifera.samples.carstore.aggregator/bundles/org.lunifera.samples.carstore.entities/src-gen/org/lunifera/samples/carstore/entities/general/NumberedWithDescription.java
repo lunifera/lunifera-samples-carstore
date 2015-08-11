@@ -8,6 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import org.lunifera.dsl.common.datatypes.IEntity;
 import org.lunifera.runtime.common.annotations.Dispose;
 import org.lunifera.samples.carstore.entities.general.Base;
 
@@ -17,11 +21,16 @@ import org.lunifera.samples.carstore.entities.general.Base;
 @DiscriminatorColumn(name = "DISC", discriminatorType = DiscriminatorType.STRING)
 @DiscriminatorValue(value = "NUMBERED_WITH_DESCRIPTION")
 @SuppressWarnings("all")
-public abstract class NumberedWithDescription extends Base {
+public abstract class NumberedWithDescription extends Base implements IEntity {
   @Column(name = "NUMBER")
+  @Size(min = 5, max = 12)
+  @NotNull
+  @Pattern(regexp = "A[0-9]*")
   private String number;
   
   @Column(name = "DESCRIPTION")
+  @Size(min = 3, max = 125)
+  @NotNull
   private String description;
   
   /**

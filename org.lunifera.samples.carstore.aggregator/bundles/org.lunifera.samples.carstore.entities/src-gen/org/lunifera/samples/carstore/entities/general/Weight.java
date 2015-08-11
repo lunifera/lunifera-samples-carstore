@@ -7,6 +7,8 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
+import javax.validation.constraints.Digits;
+import org.lunifera.dsl.common.datatypes.IBean;
 import org.lunifera.runtime.common.annotations.Dispose;
 import org.lunifera.runtime.common.annotations.TargetEnumConstraint;
 import org.lunifera.runtime.common.annotations.TargetEnumConstraints;
@@ -15,12 +17,13 @@ import org.lunifera.samples.carstore.entities.general.UnitOfMeasure;
 
 @Embeddable
 @SuppressWarnings("all")
-public class Weight implements Serializable {
+public class Weight implements Serializable, IBean {
   @Transient
   @Dispose
   private boolean disposed;
   
   @Basic
+  @Digits(integer = 7)
   private float amount;
   
   @ManyToOne(fetch = FetchType.LAZY)

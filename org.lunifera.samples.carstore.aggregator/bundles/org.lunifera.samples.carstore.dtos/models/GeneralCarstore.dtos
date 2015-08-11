@@ -19,11 +19,12 @@ package org.lunifera.samples.carstore.dtos.general {
 	}
 
 	abstract autoDto NumberedWithDescriptionDto extends BaseDto wraps NumberedWithDescription {
-		
+
 		dirty boolean ^dirty;
 
 		inherit var number;
 		inherit var description;
+		inherit var float_pos;
 	}
 
 	autoDto CascadeRootDto wraps CascadeRoot {
@@ -85,57 +86,61 @@ package org.lunifera.samples.carstore.dtos.general {
 
 	autoDto CurrencyDto extends NumberedWithDescriptionDto wraps Currency {
 
-		inherit var iso3Code;
+		def String toString() {
+			return iso3Code;
+		}
+
+			inherit var iso3Code;
+		}
+
+		autoDto CustomerDto extends BaseDto wraps Customer {
+
+			inherit var number;
+			inherit var name;
+			inherit ref paymentTerms mapto PaymentTermDto;
+			inherit var deliveryAddress;
+			inherit var invoiceAddress;
+		}
+
+		autoDto CarManufacturerDto extends BaseDto wraps CarManufacturer {
+
+			inherit var number;
+			inherit var name;
+		}
+
+		autoDto AddressDto wraps Address {
+
+			inherit var street;
+			inherit var postalCode;
+		}
+
+		autoDto WeightDto wraps Weight {
+
+			inherit var amount;
+			inherit ref uom mapto UnitOfMeasureDto;
+		}
+
+		autoDto LengthDto wraps Length {
+
+			inherit var amount;
+			inherit ref uom mapto UnitOfMeasureDto;
+		}
+
+		autoDto QuantityDto wraps Quantity {
+
+			inherit var amount;
+			inherit ref uom mapto UnitOfMeasureDto;
+		}
+
+		autoDto PriceDto wraps Price {
+
+			inherit var amount;
+			inherit ref currency mapto CurrencyDto;
+		}
+
+		autoDto AmountDto wraps Amount {
+
+			inherit var amount;
+		}
+
 	}
-
-	autoDto CustomerDto extends BaseDto wraps Customer {
-
-		inherit var number;
-		inherit var name;
-		inherit ref paymentTerms mapto PaymentTermDto;
-		inherit var deliveryAddress;
-		inherit var invoiceAddress;
-	}
-
-	autoDto CarManufacturerDto extends BaseDto wraps CarManufacturer {
-
-		inherit var number;
-		inherit var name;
-	}
-
-	autoDto AddressDto wraps Address {
-
-		inherit var street;
-		inherit var postalCode;
-	}
-
-	autoDto WeightDto wraps Weight {
-
-		inherit var amount;
-		inherit ref uom mapto UnitOfMeasureDto;
-	}
-
-	autoDto LengthDto wraps Length {
-
-		inherit var amount;
-		inherit ref uom mapto UnitOfMeasureDto;
-	}
-
-	autoDto QuantityDto wraps Quantity {
-
-		inherit var amount;
-		inherit ref uom mapto UnitOfMeasureDto;
-	}
-
-	autoDto PriceDto wraps Price {
-
-		inherit var amount;
-		inherit ref currency mapto CurrencyDto;
-	}
-
-	autoDto AmountDto wraps Amount {
-
-		inherit var amount;
-	}
-
-}

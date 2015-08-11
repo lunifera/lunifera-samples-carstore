@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+import org.lunifera.dsl.common.datatypes.IEntity;
 import org.lunifera.runtime.common.annotations.Dispose;
 import org.lunifera.samples.carstore.entities.general.NumberedWithDescription;
 
@@ -11,8 +13,9 @@ import org.lunifera.samples.carstore.entities.general.NumberedWithDescription;
 @Table(name = "CURRENCY")
 @DiscriminatorValue(value = "CURRENCY")
 @SuppressWarnings("all")
-public class Currency extends NumberedWithDescription {
+public class Currency extends NumberedWithDescription implements IEntity {
   @Column(name = "ISO3_CODE")
+  @Size(min = 3, max = 3)
   private String iso3Code;
   
   /**

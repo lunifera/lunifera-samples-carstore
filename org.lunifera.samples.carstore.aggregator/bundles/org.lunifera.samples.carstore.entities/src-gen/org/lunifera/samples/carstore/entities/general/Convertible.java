@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import org.lunifera.dsl.common.datatypes.IEntity;
 import org.lunifera.runtime.common.annotations.Dispose;
 import org.lunifera.samples.carstore.entities.general.Car;
 import org.lunifera.samples.carstore.entities.general.RoofType;
@@ -12,7 +13,7 @@ import org.lunifera.samples.carstore.entities.general.RoofType;
 @Table(name = "CONVERTIBLE")
 @DiscriminatorValue(value = "CONVERTIBLE")
 @SuppressWarnings("all")
-public class Convertible extends Car {
+public class Convertible extends Car implements IEntity {
   @Column(name = "ROOF_TYPE")
   private RoofType roofType;
   

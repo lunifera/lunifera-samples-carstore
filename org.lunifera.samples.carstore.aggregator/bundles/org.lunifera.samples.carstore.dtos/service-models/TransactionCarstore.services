@@ -1,25 +1,14 @@
+
 package org.lunifera.samples.carstore.dtos.sales.services {
-	
-	/* Imports the original entity and dto package */
+
+/* Imports the original entity and dto package */
 	import org.lunifera.samples.carstore.dtos.sales.*;
-	import org.lunifera.samples.carstore.dtos.sales.dtos.*; 
-	
-	dtoservice SalesOrderService provides SalesOrderDto {
-		mutable persistenceID carstore
-	}
-	dtoservice SalesOrderDetailService provides SalesOrderDetailDto {
-		mutable persistenceID carstore
-	}
-	dtoservice CarConfigDetailService provides CarConfigDetailDto {
-		mutable persistenceID carstore
-	}
-	dtoservice ManufacturerOrderService provides ManufacturerOrderDto {
-		mutable persistenceID carstore
-	} 
-	dtoservice CarReceiptService provides CarReceiptDto {
-		mutable persistenceID carstore
-	}
-	dtoservice InventoryService provides InventoryDto {
-		mutable persistenceID carstore
-	}
+	import org.lunifera.samples.carstore.dtos.sales.dtos.*;
+
+	dtoservice SalesOrderDtoService provides SalesOrderDto { mutable persistenceID carstore ; }
+	dtoservice SalesOrderDetailDtoService provides SalesOrderDetailDto { mutable persistenceID carstore ; }
+	dtoservice CarConfigDetailDtoService provides CarConfigDetailDto { mutable persistenceID carstore ; }
+	dtoservice ManufacturerOrderDtoService provides ManufacturerOrderDto { mutable persistenceID carstore ; }
+	dtoservice CarReceiptDtoService provides CarReceiptDto { mutable persistenceID carstore ; }
+	dtoservice InventoryDtoService provides InventoryDto { mutable persistenceID carstore ; }
 }

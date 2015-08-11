@@ -10,6 +10,8 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import org.lunifera.dsl.common.datatypes.IEntity;
 import org.lunifera.runtime.common.annotations.Dispose;
 import org.lunifera.samples.carstore.entities.general.Car;
 import org.lunifera.samples.carstore.entities.general.Length;
@@ -18,17 +20,19 @@ import org.lunifera.samples.carstore.entities.general.Length;
 @Table(name = "PICKUP")
 @DiscriminatorValue(value = "PICKUP")
 @SuppressWarnings("all")
-public class Pickup extends Car {
+public class Pickup extends Car implements IEntity {
   @Embedded
   @AttributeOverrides(value = @AttributeOverride(name = "amount", column = @Column(name = "LOADINGAREAWIDTH_AMOUNT")))
   @AssociationOverrides(value = @AssociationOverride(name = "uom", joinColumns = @JoinColumn(name = "LOADINGAREAWIDTH_UOM")))
   @Column(name = "LOADING_AREA_WIDTH")
+  @NotNull
   private Length loadingAreaWidth;
   
   @Embedded
   @AttributeOverrides(value = @AttributeOverride(name = "amount", column = @Column(name = "LOADINGAREALENGTH_AMOUNT")))
   @AssociationOverrides(value = @AssociationOverride(name = "uom", joinColumns = @JoinColumn(name = "LOADINGAREALENGTH_UOM")))
   @Column(name = "LOADING_AREA_LENGTH")
+  @NotNull
   private Length loadingAreaLength;
   
   /**

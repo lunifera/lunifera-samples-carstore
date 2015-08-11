@@ -1,16 +1,11 @@
 package org.lunifera.samples.carstore.dtos.general.services;
 
-import org.lunifera.dsl.dto.lib.services.impl.AbstractDTOServiceWithMutablePersistence;
+import org.lunifera.dsl.dto.lib.services.impl.AbstractDTOService;
 import org.lunifera.samples.carstore.dtos.general.CurrencyDto;
 import org.lunifera.samples.carstore.entities.general.Currency;
 
 @SuppressWarnings("all")
-public class CurrencyService extends AbstractDTOServiceWithMutablePersistence<CurrencyDto, Currency> {
-  public CurrencyService() {
-    // set the default persistence ID
-    setPersistenceId("carstore");
-  }
-  
+public class CurrencyService extends AbstractDTOService<CurrencyDto, Currency> {
   public Class<CurrencyDto> getDtoClass() {
     return CurrencyDto.class;
   }

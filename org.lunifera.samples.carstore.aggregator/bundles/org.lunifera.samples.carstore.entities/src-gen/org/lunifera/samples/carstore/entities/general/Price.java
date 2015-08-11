@@ -7,12 +7,13 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
+import org.lunifera.dsl.common.datatypes.IBean;
 import org.lunifera.runtime.common.annotations.Dispose;
 import org.lunifera.samples.carstore.entities.general.Currency;
 
 @Embeddable
 @SuppressWarnings("all")
-public class Price implements Serializable {
+public class Price implements Serializable, IBean {
   @Transient
   @Dispose
   private boolean disposed;
