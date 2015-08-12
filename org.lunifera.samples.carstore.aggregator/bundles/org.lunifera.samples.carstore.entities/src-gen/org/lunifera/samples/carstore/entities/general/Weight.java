@@ -23,7 +23,7 @@ public class Weight implements Serializable, IBean {
   private boolean disposed;
   
   @Basic
-  @Digits(integer = 7)
+  @Digits(integer = 7, fraction = 3)
   private float amount;
   
   @ManyToOne(fetch = FetchType.LAZY)

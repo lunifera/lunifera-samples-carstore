@@ -58,12 +58,12 @@ package org.lunifera.samples.carstore.entities.general {
 		var RoofType roofType;
 		var String color;
 	}
-
+  
 	entity ConfigDetailDefinition extends NumberedWithDescription { inheritance per subclass { }
 		var Price [isNotNull] price;
 		ref Car car opposite configDetails;
 	}
- 
+  
 	entity Currency extends NumberedWithDescription { inheritance per subclass { }
 		var Iso3Code_String iso3Code;
 	}

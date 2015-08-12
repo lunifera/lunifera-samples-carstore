@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="org.lunifera.samples.carstore.dtos.general.mapper.pickupdtomapper">
+       <implementation class="org.lunifera.samples.carstore.dtos.general.mapper.PickupDtoMapper"/>
+       <service>
+		<provide interface="org.lunifera.dsl.dto.lib.IMapper"/>
+		  </service>
+		  
+		<property name="fordto.from.entity" type="String" value="org.lunifera.samples.carstore.entities.general.Pickup"/>
+		<property name="fordto.to.dto" type="String">org.lunifera.samples.carstore.dtos.general.PickupDto
+		org.lunifera.samples.carstore.dtos.general.CarDto
+		org.lunifera.samples.carstore.dtos.general.ItemDto
+		org.lunifera.samples.carstore.dtos.general.NumberedWithDescriptionDto
+		org.lunifera.samples.carstore.dtos.general.BaseDto
+		</property>
+
+		<property name="forentity.from.dto" type="String" value="org.lunifera.samples.carstore.dtos.general.PickupDto"/>
+		<property name="forentity.to.entity" type="String">org.lunifera.samples.carstore.entities.general.Pickup
+		org.lunifera.samples.carstore.entities.general.Car
+		org.lunifera.samples.carstore.entities.general.Item
+		org.lunifera.samples.carstore.entities.general.NumberedWithDescription
+		org.lunifera.samples.carstore.entities.general.Base
+		</property>
+		
+		<property name="service.pid" type="String" value="org.lunifera.samples.carstore.dtos.general.mapper.pickupdtomapper"/>
+		<reference name="mapperAccess" interface="org.lunifera.dsl.dto.lib.IMapperAccess" 
+				cardinality="1..1" policy="static" bind="bindMapperAccess" unbind="unbindMapperAccess"/>
+</scr:component>

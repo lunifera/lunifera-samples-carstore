@@ -12,7 +12,7 @@ package org.lunifera.samples.carstore.dtos.general {
 	enum UOMFamily { WEIGHT ,  LENGTH ,  QUANTITY ,  VOLUME }
 
 	enum RoofType { SOFT ,  HARD }
-
+ 
 	autoDto BaseDto wraps Base {
 
 		inherit var id;
@@ -24,7 +24,6 @@ package org.lunifera.samples.carstore.dtos.general {
 
 		inherit var number;
 		inherit var description;
-		inherit var float_pos;
 	}
 
 	autoDto CascadeRootDto wraps CascadeRoot {
