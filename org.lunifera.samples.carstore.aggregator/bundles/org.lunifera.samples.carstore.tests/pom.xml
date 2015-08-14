@@ -92,6 +92,11 @@
 							<level>3</level>
 							<autoStart>true</autoStart>
 						</bundle>
+						<bundle>
+							<id>javax.transaction.source</id>
+							<level>3</level>
+							<autoStart>true</autoStart>
+						</bundle>
 					</bundleStartLevel>
 
 					<dependencies>
