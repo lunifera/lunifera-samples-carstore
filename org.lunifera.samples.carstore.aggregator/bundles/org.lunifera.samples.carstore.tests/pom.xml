@@ -92,6 +92,11 @@
 							<level>3</level>
 							<autoStart>true</autoStart>
 						</bundle>
+						<bundle>
+							<id>javax.transaction.source</id>
+							<level>3</level>
+							<autoStart>true</autoStart>
+						</bundle>
 					</bundleStartLevel>
 
 					<dependencies>
@@ -119,11 +124,6 @@
 			<groupId>org.hamcrest</groupId>
 			<artifactId>com.springsource.org.hamcrest.core</artifactId>
 			<version>1.1.0</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.transaction</groupId>
-			<artifactId>transaction-api</artifactId>
-			<version>1.1</version>
 		</dependency>
 	</dependencies>
 
