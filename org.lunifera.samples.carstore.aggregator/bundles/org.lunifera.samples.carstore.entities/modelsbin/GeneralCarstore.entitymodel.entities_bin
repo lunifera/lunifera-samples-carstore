@@ -25,7 +25,7 @@
       </features>
       <features xsi:type="entity:LEntityAttribute" name="description">
         <annotationInfo xsi:type="entity:LEntityFeature"/>
-        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.22"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.19"/>
       </features>
     </types>
     <types xsi:type="entity:LEntity" name="CascadeRoot">
@@ -61,6 +61,7 @@
       <features xsi:type="entity:LEntityAttribute" name="id" uuid="true">
         <annotationInfo xsi:type="entity:LEntityFeature"/>
         <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.19"/>
+        <properties key="test" value="other"/>
       </features>
       <features xsi:type="entity:LEntityReference" name="root" type="//@packages.0/@types.3" opposite="//@packages.0/@types.3/@features.2">
         <annotationInfo xsi:type="entity:LEntityFeature"/>
@@ -208,7 +209,7 @@
       <annotationInfo xsi:type="types:LClass"/>
       <features xsi:type="entity:LBeanAttribute" name="amount">
         <annotationInfo xsi:type="entity:LBeanFeature"/>
-        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.6"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.5"/>
       </features>
       <features xsi:type="entity:LBeanReference" name="uom" type="//@packages.0/@types.6">
         <annotationInfo xsi:type="entity:LBeanFeature"/>

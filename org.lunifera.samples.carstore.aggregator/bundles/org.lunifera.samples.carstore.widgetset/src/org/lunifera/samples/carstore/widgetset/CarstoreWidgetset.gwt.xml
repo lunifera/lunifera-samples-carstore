@@ -3,8 +3,8 @@
 <module>
 	<inherits name="org.semanticsoft.vaaclipse.widgetset.DefaultWidgetset" />
 	<inherits name="com.vaadin.addon.charts.Widgetset" />
-	<inherits name="org.lunifera.runtime.web.vaadin.components.fields.LuniferaWidgetsWidgetset" />
-	
+	<inherits name="org.lunifera.runtime.web.vaadin.components.widget.LuniferaWidgetsWidgetset" />
+
 	<!-- Uncomment the following to compile the widgetset for one browser only. 
 		Multiple browsers can be specified as a comma separated list. The supported 
 		user agents at the moment of writing were: ie8,ie9,gecko1_8,safari,opera 

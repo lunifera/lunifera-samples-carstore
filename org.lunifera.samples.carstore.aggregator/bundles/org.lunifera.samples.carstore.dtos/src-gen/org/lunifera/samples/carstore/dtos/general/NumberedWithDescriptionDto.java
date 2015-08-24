@@ -21,8 +21,6 @@ public abstract class NumberedWithDescriptionDto extends BaseDto implements IDto
   @Pattern(regexp = "A[0-9]*")
   private String number;
   
-  @Size(min = 3, max = 125)
-  @NotNull
   private String description;
   
   /**

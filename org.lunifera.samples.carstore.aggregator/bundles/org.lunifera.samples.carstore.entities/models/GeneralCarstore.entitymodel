@@ -2,7 +2,6 @@ package org.lunifera.samples.carstore.entities.general {
  
  	datatype Axes_Int jvmType java.lang.Integer as primitive minNumber(2) maxNumber(10);
  
- 
 	/**
 	 * The mapped superclass providing an UUID.
 	 */
@@ -12,8 +11,8 @@ package org.lunifera.samples.carstore.entities.general {
    
 	abstract entity NumberedWithDescription extends Base { inheritance per subclass { }
 		var BK number;
-		var Desc  description;
-	}  
+		var String  description;
+	}
    
 	entity CascadeRoot {
 		uuid String id;
@@ -27,7 +26,7 @@ package org.lunifera.samples.carstore.entities.general {
 	}
 
 	entity CascadeNo {
-		uuid String id;
+		uuid String id properties (key="test" value="other");
 		ref CascadeRoot root opposite refNo;
 	}
 
@@ -57,13 +56,13 @@ package org.lunifera.samples.carstore.entities.general {
 	entity Convertible extends Car { inheritance per subclass { }
 		var RoofType roofType;
 		var String color;
-	}
-  
+	} 
+	
 	entity ConfigDetailDefinition extends NumberedWithDescription { inheritance per subclass { }
 		var Price [isNotNull] price;
 		ref Car car opposite configDetails;
 	}
-  
+ 
 	entity Currency extends NumberedWithDescription { inheritance per subclass { }
 		var Iso3Code_String iso3Code;
 	}
@@ -76,7 +75,7 @@ package org.lunifera.samples.carstore.entities.general {
 		var Address invoiceAddress;
 	}
 
-	entity CarManufacturer extends Base { inheritance per subclass { }
+	entity CarManufacturer extends Base { inheritance per subclass { } 
 		var String number;
 		var String name;
 	}
@@ -91,7 +90,7 @@ package org.lunifera.samples.carstore.entities.general {
 	}
 	 
 	bean Weight {
-		var float_pos amount;
+		var float amount;
 		ref UnitOfMeasure uom constraints {
 			family == WEIGHT;
 		}

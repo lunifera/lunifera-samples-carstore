@@ -1,0 +1,16 @@
+/AccessoryDtoService.java
+/BaseDtoService.java
+/CarDtoService.java
+/CarManufacturerDtoService.java
+/CascadeNoDtoService.java
+/CascadeRootDtoService.java
+/CascadeYesDtoService.java
+/ConfigDetailDefinitionDtoService.java
+/ConvertibleDtoService.java
+/CurrencyDtoService.java
+/CustomerDtoService.java
+/ItemDtoService.java
+/NumberedWithDescriptionDtoService.java
+/PaymentTermDtoService.java
+/PickupDtoService.java
+/UnitOfMeasureDtoService.java

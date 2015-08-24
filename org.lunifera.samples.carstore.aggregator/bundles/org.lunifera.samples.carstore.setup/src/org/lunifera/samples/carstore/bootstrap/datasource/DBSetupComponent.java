@@ -28,9 +28,13 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Component(service = {}, enabled = true, immediate = true)
 public class DBSetupComponent {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(DBSetupComponent.class);
 
 	private EntityManagerFactory emf;
 	private EntityManager em;
@@ -59,21 +63,20 @@ public class DBSetupComponent {
 			} finally {
 			}
 		} catch (IllegalStateException e) {
-			e.printStackTrace();
+			LOGGER.error("{}", e);
 		} catch (SecurityException e) {
-			e.printStackTrace();
+			LOGGER.error("{}", e);
 		} catch (HeuristicMixedException e) {
-			e.printStackTrace();
+			LOGGER.error("{}", e);
 		} catch (HeuristicRollbackException e) {
-			e.printStackTrace();
+			LOGGER.error("{}", e);
 		} catch (RollbackException e) {
-			e.printStackTrace();
+			LOGGER.error("{}", e);
 		} catch (NotSupportedException e) {
-			e.printStackTrace();
+			LOGGER.error("{}", e);
 		} catch (SystemException e) {
-			e.printStackTrace();
+			LOGGER.error("{}", e);
 		}
-
 	}
 
 	private void prepareCurrencies() {
@@ -210,7 +213,7 @@ public class DBSetupComponent {
 
 	private void prepareCars() {
 		Car volvo = new Car();
-		volvo.setNumber("00001");
+		volvo.setNumber("A00001");
 		volvo.setDescription("A swedish car");
 		volvo.setAxes(2);
 		volvo.setPrice(createPrice(10000, eur));
@@ -218,7 +221,7 @@ public class DBSetupComponent {
 		em.persist(volvo);
 
 		Car bmw = new Car();
-		bmw.setNumber("00002");
+		bmw.setNumber("A00002");
 		bmw.setDescription("A german car");
 		bmw.setAxes(2);
 		bmw.setPrice(createPrice(12000, eur));
@@ -227,7 +230,7 @@ public class DBSetupComponent {
 
 		// bmw with configs
 		Convertible bmw_convertible = new Convertible();
-		bmw_convertible.setNumber("00003");
+		bmw_convertible.setNumber("A00003");
 		bmw_convertible.setDescription("A german car with soft roof");
 		bmw_convertible.setAxes(2);
 		bmw_convertible.setPrice(createPrice(16000, currency16));
@@ -248,7 +251,7 @@ public class DBSetupComponent {
 		bmw_def2.setCar(bmw_convertible);
 
 		Pickup man = new Pickup();
-		man.setNumber("00004");
+		man.setNumber("A00004");
 		man.setDescription("A pickup to carry hughe weights");
 		man.setAxes(4);
 		man.setPrice(createPrice(27000, usd));

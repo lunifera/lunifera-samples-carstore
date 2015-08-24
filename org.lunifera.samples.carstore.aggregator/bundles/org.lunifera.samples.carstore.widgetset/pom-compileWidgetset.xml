@@ -15,7 +15,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.lunifera.runtime.web</groupId>
-			<artifactId>org.lunifera.runtime.web.vaadin.components</artifactId>
+			<artifactId>org.lunifera.runtime.web.vaadin.components.widget</artifactId>
 			<version>${lunifera.runtimeweb.version}</version>
 		</dependency>
 		<dependency>

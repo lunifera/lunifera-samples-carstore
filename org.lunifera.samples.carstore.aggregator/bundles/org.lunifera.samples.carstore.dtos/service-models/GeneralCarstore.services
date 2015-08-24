@@ -1,49 +1,22 @@
+
 package org.lunifera.samples.carstore.dtos.general.services {
-	
-	/* Imports the original entity and dto package */
+
+/* Imports the original entity and dto package */
 	import org.lunifera.samples.carstore.dtos.general.*;
-	import org.lunifera.samples.carstore.dtos.general.dtos.*; 
-	
-	dtoservice BaseService provides BaseDto {
-		 persistenceID carstore;
-	}
-	dtoservice CascadeRootService provides CascadeRootDto {
-		 persistenceID carstore;
-	}
-	dtoservice CascadeYesService provides CascadeYesDto {
-		 persistenceID carstore;
-	}
-	dtoservice CascadeNoService provides CascadeNoDto {
-		 persistenceID carstore;
-	}
-	dtoservice UnitOfMeasureService provides UnitOfMeasureDto {
-		 persistenceID carstore;
-	}
-	dtoservice PaymentTermService provides PaymentTermDto {
-		 persistenceID carstore;
-	}
-	dtoservice AccessoryService provides AccessoryDto {
-		 persistenceID carstore;
-	}
-	dtoservice CarService provides CarDto {
-		 persistenceID carstore;
-	}
-	dtoservice PickupService provides PickupDto {
-		 persistenceID carstore;
-	}
-	dtoservice ConvertibleService provides ConvertibleDto {
-		 persistenceID carstore;
-	}
-	dtoservice ConfigDetailDefinitionService provides ConfigDetailDefinitionDto {
-		 persistenceID carstore;
-	}
-	dtoservice CurrencyService provides CurrencyDto {
-		 persistenceID carstore;
-	}
-	dtoservice CustomerService provides CustomerDto {
-		 persistenceID carstore;
-	}
-	dtoservice CarManufacturerService provides CarManufacturerDto {
-		 persistenceID carstore;
-	}
+	import org.lunifera.samples.carstore.dtos.general.dtos.*;
+
+	dtoservice BaseDtoService provides BaseDto { mutable persistenceUnit carstore ; }
+	dtoservice CascadeRootDtoService provides CascadeRootDto { mutable persistenceUnit carstore ; }
+	dtoservice CascadeYesDtoService provides CascadeYesDto { mutable persistenceUnit carstore ; }
+	dtoservice CascadeNoDtoService provides CascadeNoDto { mutable persistenceUnit carstore ; }
+	dtoservice UnitOfMeasureDtoService provides UnitOfMeasureDto { mutable persistenceUnit carstore ; }
+	dtoservice PaymentTermDtoService provides PaymentTermDto { mutable persistenceUnit carstore ; }
+	dtoservice AccessoryDtoService provides AccessoryDto { mutable persistenceUnit carstore ; }
+	dtoservice CarDtoService provides CarDto { mutable persistenceUnit carstore ; }
+	dtoservice PickupDtoService provides PickupDto { mutable persistenceUnit carstore ; }
+	dtoservice ConvertibleDtoService provides ConvertibleDto { mutable persistenceUnit carstore ; }
+	dtoservice ConfigDetailDefinitionDtoService provides ConfigDetailDefinitionDto { mutable persistenceUnit carstore ; }
+	dtoservice CurrencyDtoService provides CurrencyDto { mutable persistenceUnit carstore ; }
+	dtoservice CustomerDtoService provides CustomerDto { mutable persistenceUnit carstore ; }
+	dtoservice CarManufacturerDtoService provides CarManufacturerDto { mutable persistenceUnit carstore ; }
 }

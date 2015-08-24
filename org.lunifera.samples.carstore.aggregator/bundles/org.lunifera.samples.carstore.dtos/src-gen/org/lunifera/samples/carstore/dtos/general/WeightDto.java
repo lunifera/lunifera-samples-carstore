@@ -3,7 +3,6 @@ package org.lunifera.samples.carstore.dtos.general;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
-import javax.validation.constraints.Digits;
 import org.lunifera.dsl.common.datatypes.IDto;
 import org.lunifera.dsl.dto.lib.MappingContext;
 import org.lunifera.runtime.common.annotations.Dispose;
@@ -20,7 +19,6 @@ public class WeightDto implements IDto, Serializable, PropertyChangeListener {
   @Dispose
   private boolean disposed;
   
-  @Digits(integer = 7, fraction = 3)
   private float amount;
   
   @DomainReference

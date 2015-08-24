@@ -14,7 +14,7 @@ package org.lunifera.samples.carstore.dtos.sales {
 		inherit var number;
 		inherit var id;
 	}
- 
+   
 	autoDto SalesOrderDetailDto wraps SalesOrderDetail {
 
 		inherit var number;

@@ -12,7 +12,7 @@ package org.lunifera.samples.carstore.dtos.general {
 	enum UOMFamily { WEIGHT ,  LENGTH ,  QUANTITY ,  VOLUME }
 
 	enum RoofType { SOFT ,  HARD }
- 
+
 	autoDto BaseDto wraps Base {
 
 		inherit var id;

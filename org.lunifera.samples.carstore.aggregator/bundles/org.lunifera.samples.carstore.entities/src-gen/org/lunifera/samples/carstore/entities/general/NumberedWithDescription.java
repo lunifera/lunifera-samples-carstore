@@ -29,8 +29,6 @@ public abstract class NumberedWithDescription extends Base implements IEntity {
   private String number;
   
   @Column(name = "DESCRIPTION")
-  @Size(min = 3, max = 125)
-  @NotNull
   private String description;
   
   /**
